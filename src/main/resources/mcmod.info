@@ -1,0 +1,15 @@
+[
+{
+  "modid": "welectromagic",
+  "name": "Electro-Magic Tools",
+  "version": "0.0.1",
+  "mcVersion": "1.12.2",
+  "authorList": [
+    "Weissmoon"
+  ],
+  "description": "Random things I want in the game.",
+  "dependencies": [
+         "WeissCore", "Thaumcraft", "IndustrialCraft 2", "Baubles"
+  ]
+}
+]
