@@ -1,4 +1,4 @@
-package weissmoon.electromagictools.item.armour;
+package weissmoon.electromagictools.item.armour.googles;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EntityEquipmentSlot;

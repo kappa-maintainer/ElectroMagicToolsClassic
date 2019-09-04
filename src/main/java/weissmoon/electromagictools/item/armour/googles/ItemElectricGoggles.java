@@ -1,18 +1,21 @@
-package weissmoon.electromagictools.item.armour;
+package weissmoon.electromagictools.item.armour.googles;
 
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 import ic2.api.item.IMetalArmor;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import thaumcraft.api.items.IGoggles;
 import thaumcraft.api.items.IVisDiscountGear;
 import weissmoon.core.item.armour.ItemArmourBase;
+import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.lib.Textures;
 
@@ -29,10 +32,6 @@ public class ItemElectricGoggles extends ItemArmourBase implements IElectricItem
 
     public ItemElectricGoggles(){
         this(Strings.Items.ELECTRIC_GOGGLES_NAME, ArmorMaterial.IRON);
-    }
-
-    protected ItemElectricGoggles(String name, ArmorMaterial material) {
-        super(name , material, 0, EntityEquipmentSlot.HEAD);
         this.maxCharge = 100000;
         this.transferLimit = 100;
         this.tier = 2;
@@ -40,11 +39,26 @@ public class ItemElectricGoggles extends ItemArmourBase implements IElectricItem
         this.visDiscount = 4;
     }
 
+    protected ItemElectricGoggles(String name, ArmorMaterial material) {
+        super(name , material, 0, EntityEquipmentSlot.HEAD);
+        setCreativeTab(ElectroMagicTools.EMTtab);
+        this.maxCharge = 0;
+        this.transferLimit = 0;
+        this.tier = 10;
+        this.energyPerDamage = 0;
+        this.visDiscount = 0;
+    }
+
     @Nullable
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
     {
         return Textures.Armour.ELECTRIC_GOOGLE_TEXTURE;
+    }
+
+    @Override
+    public CreativeTabs[] getCreativeTabs(){
+        return new CreativeTabs[]{ElectroMagicTools.EMTtab, CreativeTabs.COMBAT};
     }
 
     @Override

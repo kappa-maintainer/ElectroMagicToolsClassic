@@ -6,6 +6,7 @@ import ic2.api.item.IElectricItem;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.items.IScribeTools;
 import weissmoon.core.item.WeissItem;
+import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Strings;
 
 /**
@@ -17,6 +18,7 @@ public class ItemScribingTools extends WeissItem implements IScribeTools, IElect
         setMaxDamage(400);
         setNoRepair();
         setMaxStackSize(1);
+        setCreativeTab(ElectroMagicTools.EMTtab);
     }
 
     @Override
