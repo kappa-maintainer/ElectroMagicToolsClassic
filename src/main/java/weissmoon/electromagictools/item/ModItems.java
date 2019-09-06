@@ -13,6 +13,7 @@ import weissmoon.electromagictools.item.armour.boots.ItemQuantumBootsTraveller;
 import weissmoon.electromagictools.item.armour.googles.ItemElectricGoggles;
 import weissmoon.electromagictools.item.armour.googles.ItemNanoGoggles;
 import weissmoon.electromagictools.item.armour.googles.ItemQuantumGoggles;
+import weissmoon.electromagictools.item.armour.googles.ItemSolarHelmetRevealing;
 
 /**
  * Created by Weissmoon on 9/3/19.
@@ -26,6 +27,7 @@ public class ModItems {
     public static final ItemArmourBase electricBoots = new ItemElectricBootsTraveller();
     public static final ItemArmourBase nanoBoots = new ItemNanoBootsTraveller();
     public static final ItemArmourBase quantumBoots = new ItemQuantumBootsTraveller();
+    public static final ItemArmourBase solarHelmet = new ItemSolarHelmetRevealing();
 
     public static void init(){
         MinecraftForge.EVENT_BUS.register(new ModItems());
@@ -40,6 +42,7 @@ public class ModItems {
         GameRegistry.register(electricGoggles);
         GameRegistry.register(nanoGoggles);
         GameRegistry.register(quantumGoggles);
+        GameRegistry.register(solarHelmet);
         GameRegistry.register(electricBoots);
         GameRegistry.register(nanoBoots);
         GameRegistry.register(quantumBoots);

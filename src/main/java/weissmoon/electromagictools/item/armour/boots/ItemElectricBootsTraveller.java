@@ -159,12 +159,12 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IElect
             if (playersWithStepUp.contains(player.getName())) {
                 if(playerHasBoots(player)){
                     ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-                    double discharge = ElectricItem.manager.discharge(stack, 1.2, getTier(stack), true, false, true);
+                    double discharge = ElectricItem.manager.discharge(stack, 1.2, ((ItemElectricBootsTraveller)stack.getItem()).getTier(stack), true, false, true);
                     boolean energyRecieved = discharge != 0;
                     //boolean trust = ElectricItem.manager.use(stack, 40, null); //Works here always return false
                     if ((!player.capabilities.isFlying) && player.moveForward > 0 && energyRecieved){
                         //boolean trust = ElectricItem.rawManager.use(stack, 40, null); //Does not work here always return false
-                        ElectricItem.manager.discharge(stack, discharge, getTier(stack), true, false, false);
+                        ElectricItem.manager.discharge(stack, discharge, ((ItemElectricBootsTraveller)stack.getItem()).getTier(stack), true, false, false);
                         player.moveRelative(0, 0, ((ItemElectricBootsTraveller)stack.getItem()).getSpeedBonus(), 4);
 
                         if (player.isSneaking())
@@ -193,7 +193,7 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IElect
                 iattributeinstance.removeModifier(monsterMotionUUID);
                 iattributeinstance.applyModifier(new AttributeModifier(monsterMotionUUID,
                         monsterMotionUUID.toString(),
-                        getSpeedBonus() - 1,
+                        ((ItemElectricBootsTraveller)stack.getItem()).getSpeedBonus() - 1,
                         2));
             }else{
                 AbstractAttributeMap entityAttributeMap = entityLiving.getAttributeMap();
