@@ -31,11 +31,11 @@ public class ItemSolarHelmetRevealing extends ItemQuantumGoggles {
 
         this.genDay = 65536;
         this.genNight = 4096;
-        maxCharge = 20000000;
-        visDiscount = 7;
-        tier = 4;
-        transferLimit = 18000;
-        energyPerDamage = 20000;
+        this.maxCharge = 20000000;
+        this.transferLimit = 18000;
+        this.tier = 4;
+        this.energyPerDamage = 20000;
+        this.visDiscount = 7;
     }
 
     @Nullable

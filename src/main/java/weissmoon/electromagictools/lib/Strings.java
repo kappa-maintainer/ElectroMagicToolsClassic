@@ -14,6 +14,8 @@ public class Strings {
         public static final String QUANTUM_GOGGLES_NAME = "itemQuantumGoggles";
         public static final String QUANTUM_BOOTS_NAME = "itemQuantumBoots";
         public static final String SOLAR_GOGGLES_NAME = "itemSolarGoggles";
-        //public static final String
+        public static final String ELECTRIC_HOE_NAME = "itemElectricHoe";
+        public static final String THAUMIUM_DRILL_NAME = "itemThaumiumDrill";
+        public static final String ROCKBREAKER_DRILL_NAME = "itemRockbreakerDrill";
     }
 }

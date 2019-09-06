@@ -1,6 +1,7 @@
 package weissmoon.electromagictools.item;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemHoe;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -14,6 +15,7 @@ import weissmoon.electromagictools.item.armour.googles.ItemElectricGoggles;
 import weissmoon.electromagictools.item.armour.googles.ItemNanoGoggles;
 import weissmoon.electromagictools.item.armour.googles.ItemQuantumGoggles;
 import weissmoon.electromagictools.item.armour.googles.ItemSolarHelmetRevealing;
+import weissmoon.electromagictools.item.tool.ItemElectricHoeGrowth;
 
 /**
  * Created by Weissmoon on 9/3/19.
@@ -28,6 +30,7 @@ public class ModItems {
     public static final ItemArmourBase nanoBoots = new ItemNanoBootsTraveller();
     public static final ItemArmourBase quantumBoots = new ItemQuantumBootsTraveller();
     public static final ItemArmourBase solarHelmet = new ItemSolarHelmetRevealing();
+    public static final ItemHoe electricHoe = new ItemElectricHoeGrowth();
 
     public static void init(){
         MinecraftForge.EVENT_BUS.register(new ModItems());
@@ -46,5 +49,6 @@ public class ModItems {
         GameRegistry.register(electricBoots);
         GameRegistry.register(nanoBoots);
         GameRegistry.register(quantumBoots);
+        GameRegistry.register(electricHoe);
     }
 }

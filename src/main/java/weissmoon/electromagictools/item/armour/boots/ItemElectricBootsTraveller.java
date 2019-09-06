@@ -186,20 +186,15 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IElect
         }else{
             EntityLivingBase entityLiving = event.getEntityLiving();
             ItemStack stack = entityLiving.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+            AbstractAttributeMap entityAttributeMap = entityLiving.getAttributeMap();
+            IAttributeInstance iattributeinstance = entityAttributeMap.getAttributeInstance(SharedMonsterAttributes.MOVEMENT_SPEED);
+            iattributeinstance.removeModifier(monsterMotionUUID);
             if(stack.getItem() instanceof ItemElectricBootsTraveller && ElectricItem.manager.getCharge(stack) > 0){
-                AbstractAttributeMap entityAttributeMap = entityLiving.getAttributeMap();
-                IAttributeInstance iattributeinstance = entityAttributeMap.getAttributeInstance(SharedMonsterAttributes.MOVEMENT_SPEED);
 
-                iattributeinstance.removeModifier(monsterMotionUUID);
                 iattributeinstance.applyModifier(new AttributeModifier(monsterMotionUUID,
                         monsterMotionUUID.toString(),
                         ((ItemElectricBootsTraveller)stack.getItem()).getSpeedBonus() - 1,
                         2));
-            }else{
-                AbstractAttributeMap entityAttributeMap = entityLiving.getAttributeMap();
-                IAttributeInstance iattributeinstance = entityAttributeMap.getAttributeInstance(SharedMonsterAttributes.MOVEMENT_SPEED);
-
-                iattributeinstance.removeModifier(monsterMotionUUID);
             }
         }
     }
