@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
 public class ItemSolarHelmetRevealing extends ItemQuantumGoggles {
 
     private int genDay, genNight;
-    private String NBT_INFUSED_SOLAR = "solarPanel";
+    public static final String NBT_INFUSED_SOLAR = "solarPanel";
 
     public ItemSolarHelmetRevealing(){
         super(Strings.Items.SOLAR_GOGGLES_NAME, ArmorMaterial.IRON);
@@ -52,12 +52,12 @@ public class ItemSolarHelmetRevealing extends ItemQuantumGoggles {
         ItemStack solarPanel = getSolar(stack);
         BlockPos playerPos = new BlockPos(player.posX, player.posY + 1, player.posZ);double enerj = 0;
         if(solarPanel.isEmpty()){
-            ISolarRequirements iSolarRequirements = SolarHelmetRegistry.requirements.getObject(null);
+            //ISolarRequirements iSolarRequirements = SolarHelmetRegistry.stringRequirements.getObject(null);
             if(world.canSeeSky(playerPos)){
                 enerj = (world.isDaytime() ? (double)genDay : (double) genNight) / 12000D;
             }
         }else{
-            ISolarRequirements iSolarRequirements = SolarHelmetRegistry.requirements.getObject(stack.getItem().getRegistryName().toString());
+            ISolarRequirements iSolarRequirements = SolarHelmetRegistry.stackRequirements.getObject(stack);
             if(iSolarRequirements.canGenerate(world, playerPos)){
                 enerj = iSolarRequirements.getEnergyPerTick(world, new Vec3d(playerPos), solarPanel);
             }

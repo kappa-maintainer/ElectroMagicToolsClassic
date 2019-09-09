@@ -1,5 +1,6 @@
 package weissmoon.electromagictools.api;
 
+import ic2.api.item.IC2Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -27,10 +28,11 @@ public class SolarHelmetRegistry {
         }
     };
 
-    public static final RegistryDefaultedLocked<String, ISolarRequirements> requirements = new RegistryDefaultedLocked<String, ISolarRequirements>(defaultRequirements);
+    public static final RegistryDefaultedLocked<String, ISolarRequirements> stringRequirements = new RegistryDefaultedLocked<String, ISolarRequirements>(defaultRequirements);
+    public static final RegistryDefaultedLocked<ItemStack, ISolarRequirements> stackRequirements = new RegistryDefaultedLocked<ItemStack, ISolarRequirements>(defaultRequirements);
 
     static{
-        requirements.putObject("ic2:blockgenerator", new ISolarRequirements() {
+        ISolarRequirements solarPanel = new ISolarRequirements() {
             @Override
             public boolean canGenerate(World world, BlockPos blockPos) {
                 return world.canSeeSky(blockPos) && world.isDaytime() && world.isRainingAt(blockPos);
@@ -45,6 +47,8 @@ public class SolarHelmetRegistry {
             public double getEnergyPerTick(World world, BlockPos blockPos) {
                 return 1;
             }
-        });
+        };
+        stringRequirements.putObjectB("ic2:blockgenerator", solarPanel);
+        stackRequirements.putObjectB(IC2Items.getItem("te","solar_generator"), solarPanel);
     }
 }
