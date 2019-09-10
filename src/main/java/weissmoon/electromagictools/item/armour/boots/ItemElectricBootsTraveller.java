@@ -165,7 +165,7 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IElect
                     if ((!player.capabilities.isFlying) && player.moveForward > 0 && energyRecieved){
                         //boolean trust = ElectricItem.rawManager.use(stack, 40, null); //Does not work here always return false
                         ElectricItem.manager.discharge(stack, discharge, ((ItemElectricBootsTraveller)stack.getItem()).getTier(stack), true, false, false);
-                        player.moveRelative(0, 0, ((ItemElectricBootsTraveller)stack.getItem()).getSpeedBonus(), 4);
+                        player.moveRelative(0, 0, ((ItemElectricBootsTraveller)stack.getItem()).getSpeedBonus(), 1.5F);
 
                         if (player.isSneaking())
                             player.stepHeight = 0.60001F;

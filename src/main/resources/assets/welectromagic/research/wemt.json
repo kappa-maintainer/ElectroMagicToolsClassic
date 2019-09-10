@@ -1,0 +1,76 @@
+{
+  "entries":[
+    {
+      "key": "ELECTROTHAUMICTOOLS",
+      "name": "Electro-Thaumic Tools",
+      "icons": ["welectromagic:textures/logo.png"],
+      "category": "WEMT",
+      "parents": ["FIRSTSTEPS"],
+      "siblings": [],
+      "meta": ["ROUND", "SPIKY", "AUTOUNLOCK"],
+      "location": [0,0],
+      "stages": [
+        {
+          "text": "research.example.text.stage.1"
+        },
+        {
+          "text": "wemt.research.WEMT.stage.2"
+        }
+      ]
+    },
+    {
+      "key": "ELECTRICGOGGLES",
+      "name": "item.welectromagic:itemElectricGoggles.name",
+      "icons": ["welectromagic:itemElectricGoggles;1;1"],
+      "category": "WEMT",
+      "parents": ["ELECTROTHAUMICTOOLS"],
+      "siblings": [],
+      "meta": ["ROUND"],
+      "location": [1,-2],
+      "stages": [
+        {
+          "text": "research.example.text.stage.1"
+        },
+        {
+          "text": "wemt.research.electricGoggles.stage.2"
+        }
+      ]
+    },
+    {
+      "key": "NANOGOGGLES",
+      "name": "item.welectromagic:itemNanoGoggles.name",
+      "icons": ["welectromagic:itemNanoGoggles;1;1"],
+      "category": "WEMT",
+      "parents": ["ELECTRICGOGGLES", "INFUSION"],
+      "siblings": [],
+      "meta": ["ROUND"],
+      "location": [3,-2],
+      "stages": [
+        {
+          "text": "research.example.text.stage.1"
+        },
+        {
+          "text": "wemt.research.nanoGoggles.stage.2"
+        }
+      ]
+    },
+    {
+      "key": "QUANTUMGOGGLES",
+      "name": "item.welectromagic:itemQuantumGoggles.name",
+      "icons": ["welectromagic:itemQuantumGoggles;1;1"],
+      "category": "WEMT",
+      "parents": ["NANOGOGGLES"],
+      "siblings": [],
+      "meta": ["ROUND"],
+      "location": [5,-2],
+      "stages": [
+        {
+          "text": "research.example.text.stage.1"
+        },
+        {
+          "text": "wemt.research.quantumGoggles.stage.2"
+        }
+      ]
+    }
+  ]
+}

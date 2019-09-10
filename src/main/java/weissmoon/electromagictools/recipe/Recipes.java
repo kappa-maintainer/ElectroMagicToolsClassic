@@ -38,6 +38,9 @@ public class Recipes {
                         IC2Items.getItem("solar_helmet"),
                         new ItemStack(IC2Items.getItemAPI().getItem("cable"), 1, 9),
                         IC2Items.getItem("lapotron_crystal")));
+    }
+
+    public static void initArcareCraftingRecipes(){
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":scribingTools"),
                 new ShapedArcaneRecipe(new ResourceLocation(""),
                         "FORTRESSMASK",
@@ -48,5 +51,9 @@ public class Recipes {
                         'C', IC2Items.getItem("crafting", "circuit"),
                         'S', new ItemStack(ItemsTC.scribingTools),
                         'E', new ItemStack(IC2Items.getItemAPI().getItem("energy_crystal"), 1, OreDictionary.WILDCARD_VALUE)));
+    }
+
+    public static void initIC2Recipes(){
+
     }
 }
