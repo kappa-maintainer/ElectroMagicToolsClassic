@@ -48,7 +48,7 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IElect
         this.maxCharge = 10000;
         this.transferLimit = 100;
         this.jumpBonus = 0.16;
-        this.speedBonus = 0.067F;
+        this.speedBonus = 0.0225F;
         this.tier = 2;
         this.energyPerDamage = 1000;
         this.visDiscount = 2;

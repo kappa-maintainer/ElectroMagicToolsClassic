@@ -23,7 +23,7 @@ public class ItemQuantumBootsTraveller extends ItemNanoBootsTraveller {
         this.maxCharge = 1000000;
         this.transferLimit = 12000;
         this.jumpBonus = 0.67;
-        this.speedBonus = 0.0355F;
+        this.speedBonus = 0.067F;
         this.tier = 4;
         this.energyPerDamage = 20000;
         this.visDiscount = 5;

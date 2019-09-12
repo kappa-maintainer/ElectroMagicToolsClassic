@@ -18,7 +18,7 @@ public class ItemNanoBootsTraveller extends ItemElectricBootsTraveller {
         this.maxCharge = 100000;
         this.transferLimit = 1600;
         this.jumpBonus = 0.4;
-        this.speedBonus = 0.0225F;
+        this.speedBonus = 0.04F;
         this.tier = 3;
         this.energyPerDamage = 5000;
         this.visDiscount = 4;
