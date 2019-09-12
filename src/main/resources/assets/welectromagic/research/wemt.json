@@ -5,14 +5,11 @@
       "name": "Electro-Thaumic Tools",
       "icons": ["welectromagic:textures/logo.png"],
       "category": "WEMT",
-      "parents": ["FIRSTSTEPS"],
+      "parents": ["~FIRSTSTEPS"],
       "siblings": [],
-      "meta": ["ROUND", "SPIKY", "AUTOUNLOCK"],
-      "location": [0,0],
+      "meta": ["ROUND", "SPIKY", "HIDDEN"],
+      "location": [0, 0],
       "stages": [
-        {
-          "text": "research.example.text.stage.1"
-        },
         {
           "text": "wemt.research.WEMT.stage.2"
         }
@@ -23,13 +20,14 @@
       "name": "item.welectromagic:itemElectricGoggles.name",
       "icons": ["welectromagic:itemElectricGoggles;1;1"],
       "category": "WEMT",
-      "parents": ["ELECTROTHAUMICTOOLS"],
+      "parents": ["~ELECTROTHAUMICTOOLS"],
       "siblings": [],
-      "meta": ["ROUND"],
-      "location": [1,-2],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [1, -2],
       "stages": [
         {
-          "text": "research.example.text.stage.1"
+          "text": "research.example.text.stage.1",
+          "required_item": ["minecraft:diamond_helmet"]
         },
         {
           "text": "wemt.research.electricGoggles.stage.2"
@@ -43,8 +41,8 @@
       "category": "WEMT",
       "parents": ["ELECTRICGOGGLES", "INFUSION"],
       "siblings": [],
-      "meta": ["ROUND"],
-      "location": [3,-2],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [3, -2],
       "stages": [
         {
           "text": "research.example.text.stage.1"
@@ -61,14 +59,104 @@
       "category": "WEMT",
       "parents": ["NANOGOGGLES"],
       "siblings": [],
-      "meta": ["ROUND"],
-      "location": [5,-2],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [5, -2],
       "stages": [
         {
           "text": "research.example.text.stage.1"
         },
         {
           "text": "wemt.research.quantumGoggles.stage.2"
+        }
+      ]
+    },
+    {
+      "key": "ELECTRICBOOTS",
+      "name": "item.welectromagic:itemElectricBoots.name",
+      "icons": ["welectromagic:itemElectricBoots;1;1"],
+      "category": "WEMT",
+      "parents": ["~ELECTROTHAUMICTOOLS"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [2, 0],
+      "stages": [
+        {
+          "text": "research.example.text.stage.1"
+        },
+        {
+          "text": "wemt.research.electricBoots.stage.2"
+        }
+      ]
+    },
+    {
+      "key": "NANOBOOTS",
+      "name": "item.welectromagic:itemNanoBoots.name",
+      "icons": ["welectromagic:itemNanoBoots;1;1"],
+      "category": "WEMT",
+      "parents": ["ELECTRICBOOTS", "INFUSION"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [4, 0],
+      "stages": [
+        {
+          "text": "research.example.text.stage.1"
+        },
+        {
+          "text": "wemt.research.nanoBoots.stage.2"
+        }
+      ]
+    },
+    {
+      "key": "QUANTUMBOOTS",
+      "name": "item.welectromagic:itemQuantumBoots.name",
+      "icons": ["welectromagic:itemQuantumBoots;1;1"],
+      "category": "WEMT",
+      "parents": ["NANOBOOTS"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [6, 0],
+      "stages": [
+        {
+          "text": "research.example.text.stage.1"
+        },
+        {
+          "text": "wemt.research.quantumBoots.stage.2"
+        }
+      ]
+    },
+    {
+      "key": "ELECTRICSCRIBINGTOOLS",
+      "name": "item.welectromagic:itemElectricScribingTools.name",
+      "icons": ["welectromagic:itemElectricScribingTools;1;1"],
+      "category": "WEMT",
+      "parents": ["~ELECTROTHAUMICTOOLS"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-6, -5],
+      "stages": [
+        {
+          "text": "research.example.text.stage.1"
+        },
+        {
+          "text": "wemt.research.electricScribingTools.stage.2"
+        }
+      ]
+    },
+    {
+      "key": "ELECTRICHOE",
+      "name": "item.welectromagic:itemElectricHoe.name",
+      "icons": ["welectromagic:itemElectricHoe;1;1"],
+      "category": "WEMT",
+      "parents": ["~ELECTROTHAUMICTOOLS"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-1, -4],
+      "stages": [
+        {
+          "text": "research.example.text.stage.1"
+        },
+        {
+          "text": "wemt.research.electricHoe.stage.2"
         }
       ]
     }

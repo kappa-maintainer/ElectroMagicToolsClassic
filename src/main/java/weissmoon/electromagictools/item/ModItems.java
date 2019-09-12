@@ -32,6 +32,35 @@ public class ModItems {
     public static final ItemArmourBase solarHelmet = new ItemSolarHelmetRevealing();
     public static final ItemHoe electricHoe = new ItemElectricHoeGrowth();
 
+
+    public static Item onering;
+    public static Item materials;
+    public static Item crafing;
+    public static Item focusCristmas;
+    public static Item thaumiumDrill;
+    public static Item diamondChainsaw;
+    public static Item ironOmnitool;
+    public static Item diamondOmnitool;
+    public static Item thaumiumOmnitool;
+    public static Item focusExplosion;
+    public static Item focusShield;
+    public static Item focusEnergyBall;
+    public static Item streamChainsaw;
+    public static Item rockBreakerDrill;
+    public static Item mjolnir;
+    public static Item stormCaster;
+    public static Item stormBreaker;
+    public static Item focusCharge;
+    public static Item focusWandCharge;
+    public static Item featherWings;
+    public static Item thaumiumWings;
+    public static Item nanoWings;
+    public static Item quantumWings;
+    public static Item quantumChestpiece;
+
+    public static Item itemEMTItems;
+    public static Item emtBauble;
+
     public static void init(){
         MinecraftForge.EVENT_BUS.register(new ModItems());
     }

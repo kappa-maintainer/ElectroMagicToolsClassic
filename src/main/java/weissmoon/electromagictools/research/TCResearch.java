@@ -17,7 +17,7 @@ public class TCResearch {
 
     public static void registerResearchTab(){
         ResearchCategories.registerCategory("WEMT",
-                null,
+                "FIRSTSTEPS",
                 new AspectList(),
                 new ResourceLocation(Reference.MOD_ID + ":textures/logo.png"),
                 new ResourceLocation(Reference.MOD_ID + ":textures/misc/background.png"),

@@ -1,0 +1,416 @@
+[
+  {
+    "key": "DIAMONDCHAINSAW",
+    "name": "itemDiamondChainsaw",
+    "icons": ["itemDiamondChainsaw"],
+    "category": "WEMT",
+    "parents": ["FIRSTSTEPS"],
+    "siblings": [],
+    "meta": ["ROUND", "AUTOUNLOCK"],
+    "location": [5, -6],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.diamondChainsaw.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "THAUMIUMPLATE",
+    "name": "itemThaumiumPlate",
+    "icons": ["itemThaumiumPlate"],
+    "category": "WEMT",
+    "parents": ["FIRSTSTEPS"],
+    "siblings": [],
+    "meta": ["ROUND", "AUTOUNLOCK"],
+    "location": [6, -6],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemThaumiumPlate.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "MACERATINGCLUSTERS",
+    "name": "itemCluster",
+    "icons": ["itemCluster"],
+    "category": "WEMT",
+    "parents": ["FIRSTSTEPS"],
+    "siblings": [],
+    "meta": ["ROUND", "AUTOUNLOCK"],
+    "location": [5, -7],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemCluster.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "TAINTEDLEGEND",
+    "name": "itemStormBringer",
+    "icons": ["itemStormBringer"],
+    "category": "WEMT",
+    "parents": ["FIRSTSTEPS"],
+    "siblings": [],
+    "meta": ["ROUND", "AUTOUNLOCK"],
+    "location": [5, -5],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemStormBringer.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "LightningSummoner",
+    "name": "itemLogo",
+    "icons": ["itemLogo"],
+    "category": "WEMT",
+    "parents": ["FIRSTSTEPS"],
+    "siblings": [],
+    "meta": ["ROUND", "AUTOUNLOCK"],
+    "location": [6, -5],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemLightningSummoner.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "ONERING",
+    "name": "itemOneRing",
+    "icons": ["itemOneRing"],
+    "category": "WEMT",
+    "parents": ["FIRSTSTEPS"],
+    "siblings": [],
+    "meta": ["ROUND", "AUTOUNLOCK"],
+    "location": [6, -7],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemOneRing.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "ELECTRICCLOUD",
+    "name": "itemElectricCloud",
+    "icons": ["itemElectricCloud"],
+    "category": "WEMT",
+    "parents": ["FIRSTSTEPS"],
+    "siblings": [],
+    "meta": ["ROUND", "AUTOUNLOCK"],
+    "location": [4, -7],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemElectricCloud.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "FEATHERWINGS",
+    "name": "itemFeatherWings",
+    "icons": ["itemFeatherWings"],
+    "category": "WEMT",
+    "parents": ["FIRSTSTEPS"],
+    "siblings": [],
+    "meta": ["ROUND", "AUTOUNLOCK"],
+    "location": [0, -2],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemFeatherWings.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "THUAMICDRILL",
+    "name": "itemThaumiumDrill",
+    "icons": ["itemThaumiumDrill"],
+    "category": "WEMT",
+    "parents": ["ELECTROTHAUMICTOOLS"],
+    "siblings": [],
+    "meta": ["ROUND"],
+    "location": [-1, -2],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemThaumiumDrill.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "ROCKBREAKERDRILL",
+    "name": "itemRockBreakerDrill",
+    "icons": ["itemRockBreakerDrill"],
+    "category": "WEMT",
+    "parents": ["THUAMICDRILL"],
+    "siblings": [],
+    "meta": ["ROUND"],
+    "location": [0, -4],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemRockBreakerDrill.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "THUAMICCHAINSAW",
+    "name": "itemThaumiumChainsaw",
+    "icons": ["itemThaumiumChainsaw"],
+    "category": "WEMT",
+    "parents": ["ELECTROTHAUMICTOOLS"],
+    "siblings": [],
+    "meta": ["ROUND"],
+    "location": [-2, -2],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemThaumiumChainsaw.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "CHAINSAWOFSTREAM",
+    "name": "itemStreamChainsaw",
+    "icons": ["itemStreamChainsaw"],
+    "category": "WEMT",
+    "parents": ["THUAMICCHAINSAW"],
+    "siblings": [],
+    "meta": ["ROUND"],
+    "location": [-3, -4],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemStreamChainsaw.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "IRONOMNITOOL",
+    "name": "itemOmniTool",
+    "icons": ["itemOmniTool"],
+    "category": "WEMT",
+    "parents": ["ELECTROTHAUMICTOOLS"],
+    "siblings": [],
+    "meta": ["ROUND", "AUTOUNLOCK"],
+    "location": [-2, 0],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemOmniTool.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "DIAMONDOMNITOOL",
+    "name": "itemDiamondOmniTool",
+    "icons": ["itemDiamondOmniTool"],
+    "category": "WEMT",
+    "parents": ["IRONOMNITOOL"],
+    "siblings": [],
+    "meta": ["ROUND"],
+    "location": [-4, 0],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemDiamondOmniTool.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "THAUMICOMNITOOL",
+    "name": "itemThaumicOmniTool",
+    "icons": ["itemThaumicOmniTool"],
+    "category": "WEMT",
+    "parents": ["DIAMONDOMNITOOL"],
+    "siblings": [],
+    "meta": ["ROUND"],
+    "location": [-6, 0],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemThaumicOmniTool.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "FOCUSMEGUMIN",
+    "name": "itemFocusExplosion",
+    "icons": ["itemFocusExplosion"],
+    "category": "WEMT",
+    "parents": ["ELECTROTHAUMICTOOLS"],
+    "siblings": [],
+    "meta": ["ROUND"],
+    "location": [2, 3],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemFocusExplosion.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "FOCUSCHRISTMAS",
+    "name": "itemFocusChristmas",
+    "icons": ["itemFocusChristmas"],
+    "category": "WEMT",
+    "parents": ["ELECTROTHAUMICTOOLS"],
+    "siblings": [],
+    "meta": ["ROUND"],
+    "location": [3, 3],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemFocusChristmas.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "FOCUSSHIELD",
+    "name": "itemFocusShield",
+    "icons": ["itemFocusShield"],
+    "category": "WEMT",
+    "parents": ["ELECTROTHAUMICTOOLS"],
+    "siblings": [],
+    "meta": ["ROUND"],
+    "location": [4, 3],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemFocusShield.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "FOCUSBLOCK",
+    "name": "itemFocusBlock",
+    "icons": ["itemFocusBlock"],
+    "category": "WEMT",
+    "parents": ["FOCUSSHIELD"],
+    "siblings": [],
+    "meta": ["ROUND"],
+    "location": [4, 5],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemFocusBlock.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "FOCUSENERGYBALL",
+    "name": "itemFocusEnergyBall",
+    "icons": ["itemFocusEnergyBall"],
+    "category": "WEMT",
+    "parents": ["ELECTROTHAUMICTOOLS"],
+    "siblings": [],
+    "meta": ["ROUND"],
+    "location": [1, 3],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemFocusEnergyBall.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "MJOLNIR",
+    "name": "itemMjolnir",
+    "icons": ["itemMjolnir"],
+    "category": "WEMT",
+    "parents": ["FIRSTSTEPS"],
+    "siblings": [],
+    "meta": ["ROUND"],
+    "location": [-5, 5],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemMjolnir.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "STORMBREAKER",
+    "name": "itemStormBreaker",
+    "icons": ["itemStormBreaker"],
+    "category": "WEMT",
+    "parents": ["MJOLNIR"],
+    "siblings": [],
+    "meta": ["ROUND"],
+    "location": [-6, 6],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.itemStormBreaker.stage.2"
+      }
+    ]
+  },
+  {
+    "key": "COMPRESSEDSOLAR",
+    "name": "blockSolarPanel",
+    "icons": ["blockSolarPanel"],
+    "category": "WEMT",
+    "parents": ["FIRSTSTEPS"],
+    "siblings": [],
+    "meta": ["ROUND"],
+    "location": [-4, -5],
+    "stages": [
+      {
+        "text": "research.example.text.stage.1"
+      },
+      {
+        "text": "wemt.research.blockSolarPanel.stage.2"
+      }
+    ]
+  }
+]
