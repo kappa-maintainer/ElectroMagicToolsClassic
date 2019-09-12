@@ -63,7 +63,7 @@ public class ItemElectricGoggles extends ItemArmourBase implements IElectricItem
 
     @Override
     public boolean canProvideEnergy(ItemStack stack) {
-        return false;
+        return true;
     }
 
     @Override

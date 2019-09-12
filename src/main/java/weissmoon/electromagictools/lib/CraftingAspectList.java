@@ -17,4 +17,5 @@ public class CraftingAspectList {
     public static AspectList electricBoots = new AspectList().add(Aspect.ENERGY, 16).add(Aspect.PROTECT, 32).add(Aspect.MOTION, 32);
     public static AspectList nanoBoots = new AspectList().add(Aspect.ENERGY, 25).add(Aspect.PROTECT, 32).add(Aspect.MOTION, 48);
     public static AspectList quantumBoots = new AspectList().add(Aspect.ENERGY, 32).add(Aspect.PROTECT, 32).add(Aspect.MOTION, 64);
+    public static AspectList electricHoe = new AspectList().add(Aspect.ENERGY, 32).add(Aspect.PLANT, 25).add(Aspect.TOOL, 32).add(Aspect.MAGIC, 48);
 }

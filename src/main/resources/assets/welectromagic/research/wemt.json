@@ -30,7 +30,8 @@
           "required_item": ["minecraft:diamond_helmet"]
         },
         {
-          "text": "wemt.research.electricGoggles.stage.2"
+          "text": "wemt.research.electricGoggles.stage.2",
+          "recipes": ["welectromagic:electricGoggles"]
         }
       ]
     },
@@ -45,10 +46,12 @@
       "location": [3, -2],
       "stages": [
         {
-          "text": "research.example.text.stage.1"
+          "text": "research.example.text.stage.1",
+          "required_item": ["ic2:itemarmornanohelmet"]
         },
         {
-          "text": "wemt.research.nanoGoggles.stage.2"
+          "text": "wemt.research.nanoGoggles.stage.2",
+          "recipes": ["welectromagic:nanoGoggles"]
         }
       ]
     },
@@ -63,10 +66,12 @@
       "location": [5, -2],
       "stages": [
         {
-          "text": "research.example.text.stage.1"
+          "text": "research.example.text.stage.1",
+          "required_item": ["ic2:itemarmorquantumhelmet"]
         },
         {
-          "text": "wemt.research.quantumGoggles.stage.2"
+          "text": "wemt.research.quantumGoggles.stage.2",
+          "recipes": ["welectromagic:quantumGoggles"]
         }
       ]
     },
@@ -75,16 +80,18 @@
       "name": "item.welectromagic:itemElectricBoots.name",
       "icons": ["welectromagic:itemElectricBoots;1;1"],
       "category": "WEMT",
-      "parents": ["~ELECTROTHAUMICTOOLS"],
+      "parents": ["~ELECTROTHAUMICTOOLS", "INFUSION"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
       "location": [2, 0],
       "stages": [
         {
-          "text": "research.example.text.stage.1"
+          "text": "research.example.text.stage.1",
+          "required_item": ["thaumcraft:traveller_boots"]
         },
         {
-          "text": "wemt.research.electricBoots.stage.2"
+          "text": "wemt.research.electricBoots.stage.2",
+          "recipes": ["welectromagic:electricBoots"]
         }
       ]
     },
@@ -99,10 +106,12 @@
       "location": [4, 0],
       "stages": [
         {
-          "text": "research.example.text.stage.1"
+          "text": "research.example.text.stage.1",
+          "required_item": ["ic2:itemarmornanoboots"]
         },
         {
-          "text": "wemt.research.nanoBoots.stage.2"
+          "text": "wemt.research.nanoBoots.stage.2",
+          "recipes": ["welectromagic:nanoBoots"]
         }
       ]
     },
@@ -117,10 +126,12 @@
       "location": [6, 0],
       "stages": [
         {
-          "text": "research.example.text.stage.1"
+          "text": "research.example.text.stage.1",
+          "required_item": ["ic2:itemarmorquantumboots"]
         },
         {
-          "text": "wemt.research.quantumBoots.stage.2"
+          "text": "wemt.research.quantumBoots.stage.2",
+          "recipes": ["welectromagic:quantumBoots"]
         }
       ]
     },
@@ -135,10 +146,12 @@
       "location": [-6, -5],
       "stages": [
         {
-          "text": "research.example.text.stage.1"
+          "text": "research.example.text.stage.1",
+          "required_items": "thaumcraft:scribing_tools"
         },
         {
-          "text": "wemt.research.electricScribingTools.stage.2"
+          "text": "wemt.research.electricScribingTools.stage.2",
+          "recipes": ["welectromagic:scribingTools"]
         }
       ]
     },
@@ -153,10 +166,12 @@
       "location": [-1, -4],
       "stages": [
         {
-          "text": "research.example.text.stage.1"
+          "text": "research.example.text.stage.1",
+          "required_item": [""]
         },
         {
-          "text": "wemt.research.electricHoe.stage.2"
+          "text": "wemt.research.electricHoe.stage.2",
+          "recipes": ["welectromagic:electricHoe"]
         }
       ]
     }

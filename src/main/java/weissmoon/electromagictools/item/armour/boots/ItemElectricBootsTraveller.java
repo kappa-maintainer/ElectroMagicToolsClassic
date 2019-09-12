@@ -81,7 +81,7 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IElect
 
     @Override
     public boolean canProvideEnergy(ItemStack stack) {
-        return false;
+        return true;
     }
 
     @Override

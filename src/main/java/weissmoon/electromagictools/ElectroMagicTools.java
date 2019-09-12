@@ -33,6 +33,7 @@ public class ElectroMagicTools {
         Recipes.initArcareCraftingRecipes();
         Recipes.initInfusionRecipes();
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/wemt.json"));
+        //ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/nya.json"));
     }
 
     @EventHandler

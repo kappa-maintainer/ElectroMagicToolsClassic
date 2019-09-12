@@ -2,6 +2,7 @@ package weissmoon.electromagictools.item.armour.googles;
 
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -36,6 +37,7 @@ public class ItemSolarHelmetRevealing extends ItemQuantumGoggles {
         this.tier = 4;
         this.energyPerDamage = 20000;
         this.visDiscount = 7;
+        this.setCreativeTab(null);
     }
 
     @Nullable
@@ -91,5 +93,10 @@ public class ItemSolarHelmetRevealing extends ItemQuantumGoggles {
         if(cmp == null)
             return ItemStack.EMPTY;
         return new ItemStack(cmp);
+    }
+
+    @Override
+    public CreativeTabs[] getCreativeTabs(){
+        return new CreativeTabs[]{};
     }
 }

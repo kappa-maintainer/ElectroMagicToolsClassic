@@ -3,6 +3,7 @@ package weissmoon.electromagictools.item.tool;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 import net.minecraft.block.IGrowable;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemDye;
@@ -14,6 +15,7 @@ import thaumcraft.api.ThaumcraftMaterials;
 import thaumcraft.api.blocks.BlocksTC;
 import weissmoon.core.item.tools.WeissItemHoe;
 import weissmoon.core.utils.NBTHelper;
+import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Strings;
 
 import java.util.Random;
@@ -31,6 +33,7 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IElectricItem
     public ItemElectricHoeGrowth() {
         super(ThaumcraftMaterials.TOOLMAT_THAUMIUM, Strings.Items.ELECTRIC_HOE_NAME);
         setNoRepair();
+        this.setCreativeTab(ElectroMagicTools.EMTtab);
     }
 
     @Override
@@ -48,8 +51,10 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IElectricItem
                 }
             }
         }
-        if(used)
+        if(used){
+            NBTHelper.setBoolean(player.getHeldItem(hand), "Unbreakable", false);
             return EnumActionResult.SUCCESS;
+        }
         if(ElectricItem.manager.canUse(hoeStack, 250)){
             used = ItemDye.applyBonemeal(new ItemStack(Items.DYE, 1, 15), world, blockPos);
             if (!used){
@@ -80,6 +85,7 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IElectricItem
             return EnumActionResult.PASS;
         }
     }
+
     @Override
     public boolean canProvideEnergy(ItemStack stack) {
         return false;
