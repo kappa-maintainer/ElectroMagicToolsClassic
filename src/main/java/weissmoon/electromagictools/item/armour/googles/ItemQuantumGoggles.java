@@ -33,7 +33,7 @@ public class ItemQuantumGoggles extends ItemElectricGoggles {
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
     {
-        return Textures.Armour.QUANTUM_GOOGLES_TEXTURE;
+        return Textures.Armour.QUANTUM_ARMOUR_TEXTURE;
     }
 
     @Override

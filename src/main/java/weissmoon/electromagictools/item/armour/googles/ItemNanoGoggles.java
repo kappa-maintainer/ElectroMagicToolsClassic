@@ -26,7 +26,7 @@ public class ItemNanoGoggles extends ItemElectricGoggles {
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
     {
-        return Textures.Armour.NANO_GOGGLES_TEXTURE;
+        return Textures.Armour.NANO_ARMOUR_TEXTURE;
     }
 
     @Override

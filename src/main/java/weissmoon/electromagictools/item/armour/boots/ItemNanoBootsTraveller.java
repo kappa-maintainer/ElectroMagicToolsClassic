@@ -32,7 +32,7 @@ public class ItemNanoBootsTraveller extends ItemElectricBootsTraveller {
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
     {
-        return Textures.Armour.NANO_BOOTS_TRAVELER_TEXTURE;
+        return Textures.Armour.NANO_ARMOUR_TEXTURE;
     }
 
     @Override

@@ -34,7 +34,7 @@ public class ItemQuantumBootsTraveller extends ItemNanoBootsTraveller {
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
     {
-        return Textures.Armour.ELECTRIC_BOOTS_TRAVELLER_TEXTURE;
+        return Textures.Armour.QUANTUM_ARMOUR_TEXTURE;
     }
 
     @Override

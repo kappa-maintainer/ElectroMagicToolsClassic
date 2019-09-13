@@ -10,7 +10,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import thaumcraft.api.items.IGoggles;
 import thaumcraft.api.items.IVisDiscountGear;
@@ -53,7 +52,7 @@ public class ItemElectricGoggles extends ItemArmourBase implements IElectricItem
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
     {
-        return Textures.Armour.ELECTRIC_GOOGLE_TEXTURE;
+        return Textures.Armour.ELECTRIC_ARMOUR_TEXTURE;
     }
 
     @Override
