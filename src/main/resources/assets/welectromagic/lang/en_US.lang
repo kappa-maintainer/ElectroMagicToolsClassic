@@ -7,6 +7,22 @@ item.welectromagic:itemElectricBoots.name=Electric Boots of the Traveller
 item.welectromagic:itemNanoBoots.name=Nanosuit Boots of the Traveller
 item.welectromagic:itemQuantumBoots.name=Quantum Boots of the Traveller
 item.welectromagic:itemElectricHoe.name=Electric Hoe of Growth
+item.welectromagic:itemMaterialNull.name=NULL
+item.welectromagic:itemMaterialUraniumCluster.name=Uranium Cluster
+item.welectromagic:itemMaterialLightningSummoner.name=Lightning Summoner
+item.welectromagic:itemMaterialFeatherMesh.name=Feather Mesh
+item.welectromagic:itemMaterialGlue.name=Glue
+item.welectromagic:itemMaterialDuctTape.name=Duct Tape
+item.welectromagic:itemMaterialRubberBall.name=Rubber Ball
+item.welectromagic:itemMaterialCardBoard.name=Cardboard
+item.welectromagic:itemMaterialFeatherWing.name=Feather Wings
+item.welectromagic:itemMaterialTaintedFeather.name=Tainted Feather
+item.welectromagic:itemMaterialThaumiumWing.name=Thaumium Wings
+item.welectromagic:itemMaterialUUMatterDrop.name=UU-Matter
+item.welectromagic:itemMaterialCrushedAmberOre.name=Crushed Amber Ore
+item.welectromagic:itemMaterialPurifiedAmberOre.name=Purified Amber Ore
+item.welectromagic:itemMaterialCrushedCinnabarOre.name=Crushed Cinnabar Ore
+item.welectromagic:itemMaterialPurifiedCinnabarOre.name=Purified Cinnabar Ore
 
 research.example.text.stage.1=Text not Found
 

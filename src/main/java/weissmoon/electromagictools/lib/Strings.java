@@ -17,5 +17,24 @@ public class Strings {
         public static final String ELECTRIC_HOE_NAME = "itemElectricHoe";
         public static final String THAUMIUM_DRILL_NAME = "itemThaumiumDrill";
         public static final String ROCKBREAKER_DRILL_NAME = "itemRockbreakerDrill";
+
+        public static final String MATERIALS_NAME = "itemMaterial";
+        public static final String[] Materials = {
+                "UraniumCluster",
+                "LightningSummoner",
+                "FeatherMesh",
+                "Glue",
+                "DuctTape",
+                "RubberBall",
+                "CardBoard",
+                "FeatherWing",
+                "TaintedFeather",
+                "ThaumiumWing",
+                "UUMatterDrop",
+                "CrushedAmberOre",
+                "PurifiedAmberOre",
+                "CrushedCinnabarOre",
+                "PurifiedCinnabarOre"
+        };
     }
 }

@@ -1,7 +1,7 @@
 package weissmoon.electromagictools;
 
-import com.sun.org.apache.regexp.internal.RE;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -11,28 +11,31 @@ import weissmoon.core.client.creativetab.CreativeTabWeiss;
 import weissmoon.electromagictools.client.EMTTab;
 import weissmoon.electromagictools.item.ModItems;
 import weissmoon.electromagictools.lib.Reference;
-import weissmoon.electromagictools.recipe.Recipes;
+import weissmoon.electromagictools.recipe.EMTRecipes;
 import weissmoon.electromagictools.research.TCResearch;
 
 /**
  * Created by Weissmoon on 9/3/19.
  */
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, dependencies = "required-after:weisscore@[0.1.1,);after:industrialcraft2;after:thaumcraft")
 public class ElectroMagicTools {
 
     @Instance
     public static ElectroMagicTools INSTANCE;
 
+    public static boolean ic2ceLoaded;
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event){
+        ic2ceLoaded = Loader.isModLoaded("ic2c_extras");
         ModItems.init();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event){
-        Recipes.initArcareCraftingRecipes();
-        Recipes.initInfusionRecipes();
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/wemt.json"));
+        EMTRecipes.initArcareCraftingRecipes();
+        EMTRecipes.initInfusionRecipes();
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/wemt"));
         //ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/nya.json"));
     }
 
