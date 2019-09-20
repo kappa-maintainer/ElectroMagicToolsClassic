@@ -40,7 +40,7 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IElect
     protected float speedBonus;
     protected int tier, energyPerDamage, visDiscount;
 
-    private static final List<String> playersWithStepUp = new ArrayList<String>();
+    public static final List<String> playersWithStepUp = new ArrayList<String>();
     private UUID monsterMotionUUID = UUID.fromString("29d2b7de-c2dd-4d16-a401-190a7b34eb0d");
 
     public ItemElectricBootsTraveller(){
@@ -197,12 +197,6 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IElect
                         2));
             }
         }
-    }
-
-    @SubscribeEvent
-    public void playerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
-        String username = event.player.getName();
-        playersWithStepUp.remove(username);
     }
 
     public float getSpeedBonus(){

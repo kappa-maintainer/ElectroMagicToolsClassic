@@ -32,9 +32,9 @@ public class ModItems {
     public static final ItemArmourBase solarHelmet = new ItemSolarHelmetRevealing();
     public static final ItemHoe electricHoe = new ItemElectricHoeGrowth();
     public static final WeissItem materials = new ItemMaterials();
+    public static final WeissItem onering = new ItemOneRing();
 
 
-    public static Item onering;
     public static Item crafing;
     public static Item focusCristmas;
     public static Item thaumiumDrill;
@@ -80,5 +80,6 @@ public class ModItems {
         GameRegistry.register(quantumBoots);
         GameRegistry.register(electricHoe);
         GameRegistry.register(materials);
+        GameRegistry.register(onering);
     }
 }
