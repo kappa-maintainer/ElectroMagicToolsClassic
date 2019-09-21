@@ -1,10 +1,13 @@
 package weissmoon.electromagictools.item;
 
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import weissmoon.core.api.client.item.IItemRenderCustom;
+import weissmoon.core.api.client.item.IItemRenderer;
 import weissmoon.core.client.render.IIcon;
 import weissmoon.core.client.render.IIconRegister;
 import weissmoon.core.item.WeissItem;
@@ -15,7 +18,7 @@ import weissmoon.electromagictools.lib.Strings;
 /**
  * Created by Weissmoon on 9/17/19.
  */
-public class ItemMaterials extends WeissItem{
+public class ItemMaterials extends WeissItem implements IItemRenderCustom{
 
 
     public ItemMaterials() {
@@ -64,6 +67,8 @@ public class ItemMaterials extends WeissItem{
     @SideOnly(Side.CLIENT)
     @Override
     public void getSubItems(CreativeTabs creativeTabs, NonNullList<ItemStack> list) {
+        if(creativeTabs != this.getCreativeTab())
+            return;
         if (ElectroMagicTools.ic2ceLoaded) {
             for (int i = 1; i <= Strings.Items.Materials.length; i++) {
                 list.add(new ItemStack(this, 1, i - 1));
@@ -72,6 +77,28 @@ public class ItemMaterials extends WeissItem{
             for (int i = 1; i <= Strings.Items.Materials.length-4; i++) {
                 list.add(new ItemStack(this, 1, i - 1));
             }
+        }
+    }
+
+    @Override
+    public IItemRenderer getIItemRender() {
+        return new MaterialRender();
+    }
+
+    public class MaterialRender implements IItemRenderer{
+        @Override
+        public boolean handleRenderType(ItemStack item, ItemCameraTransforms.TransformType cameraTransformType) {
+            return false;
+        }
+
+        @Override
+        public boolean shouldUseRenderHelper(ItemCameraTransforms.TransformType cameraTransformType, ItemStack item, ItemRendererHelper helper) {
+            return false;
+        }
+
+        @Override
+        public void renderItem(ItemCameraTransforms.TransformType cameraTransformType, ItemStack item, Object... data) {
+
         }
     }
 }

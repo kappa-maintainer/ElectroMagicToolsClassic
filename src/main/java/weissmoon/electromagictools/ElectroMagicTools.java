@@ -5,6 +5,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import thaumcraft.api.ThaumcraftApi;
 import weissmoon.core.client.creativetab.CreativeTabWeiss;
@@ -36,6 +37,8 @@ public class ElectroMagicTools {
         EMTRecipes.initArcareCraftingRecipes();
         EMTRecipes.initInfusionRecipes();
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/wemt"));
+        OreDictionaryEntries.initOreEntries();
+        EMTRecipes.initNativeClusters();
         //ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/nya.json"));
     }
 

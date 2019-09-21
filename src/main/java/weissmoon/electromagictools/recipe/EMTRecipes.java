@@ -6,9 +6,11 @@ import ic2.api.recipe.IBasicMachineRecipeManager;
 import ic2.api.recipe.Recipes;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.blocks.BlocksTC;
@@ -205,5 +207,11 @@ public class EMTRecipes {
 
         Recipes.centrifuge.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 12)), heatAmount, true, IC2Items.getItem("dust", "small_copper"), new ItemStack(ItemsTC.amber, 1, 6));
         Recipes.centrifuge.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 14)), heatAmount, true, IC2Items.getItem("dust", "small_tin"), new ItemStack(ItemsTC.amber, 1, 3));
+    }
+
+    public static void initNativeClusters(){
+        int uraId = Item.getIdFromItem(IC2Items.getItem("dust", "iron").getItem());
+        int uraCluId = Item.getIdFromItem(ModItems.materials);
+        FMLInterModComms.sendMessage("thaumcraft", "nativeCluster",uraId+",180,"+uraCluId+",0,2.0");
     }
 }
