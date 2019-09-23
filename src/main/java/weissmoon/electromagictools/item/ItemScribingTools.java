@@ -39,8 +39,7 @@ public class ItemScribingTools extends WeissItem implements IScribeTools, IElect
 
     @Override
     public boolean showDurabilityBar(ItemStack stack) {
-        double durability = this.getDurabilityForDisplay(stack);
-        return durability != 0D;
+        return ElectricItem.manager.getCharge(stack) != 400;
     }
 
     @Override

@@ -17,6 +17,12 @@ public class Strings {
         public static final String ELECTRIC_HOE_NAME = "itemElectricHoe";
         public static final String THAUMIUM_DRILL_NAME = "itemThaumiumDrill";
         public static final String ROCKBREAKER_DRILL_NAME = "itemRockbreakerDrill";
+        public static final String DIAMOND_CHAINSAW_NAME = "itemDiamondChainsaw";
+        public static final String THAUMIUM_CHAINSAW_NAME = "itemThaumiumChainsaw";
+        public static final String STREAM_CHAINSAW_NAME = "itemStreamChainsaw";
+        public static final String IRON_OMNITOOL_NAME = "itemIronOmniTool";
+        public static final String DIAMOND_OMNITOOL_NAME = "itemDiamondOmniTool";
+        public static final String THAUMIUM_OMNITOOL_NAME = "itemThaumiumOmniTool";
 
         public static final String MATERIALS_NAME = "itemMaterial";
         public static final String[] Materials = {
