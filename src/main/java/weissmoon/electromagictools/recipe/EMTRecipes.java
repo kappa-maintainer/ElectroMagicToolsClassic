@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.blocks.BlocksTC;
@@ -172,17 +173,27 @@ public class EMTRecipes {
         }
     }
 
-    public static void initIC2CRecipes(){
-
+    private static void initIC2CRecipes(){
+        GameRegistry.addShapedRecipe(new ResourceLocation("welectromagictools:itemironomnitool"), null, new ItemStack(ModItems.ironOmnitool),
+                "C", "D", "r",
+                'C', IC2Items.getItem("chainsaw"),
+                'D', IC2Items.getItem("drill"),
+                'r', new ItemStack(IC2Items.getItem("ingot", "tin").getItem(), 1, 53));
     }
 
-    public static void initIC2CERecipes(){
+    private static void initIC2CERecipes(){
+        GameRegistry.addShapedRecipe(new ResourceLocation("welectromagictools:itemironomnitool"), null, new ItemStack(ModItems.ironOmnitool),
+                "C", "D", "p",
+                'C', IC2Items.getItem("chainsaw"),
+                'D', IC2Items.getItem("drill"),
+                'p', IC2Items.getItem("plate", "iron"));
 
-		/* Thaumium Plates Recipes */
+
+        /* Thaumium Plates Recipes */
         //thaumiumPlate = GameRegistry.addShapedRecipe(new ItemStack(EMTItems.itemEMTItems, 1, 5), "X", "Y", "Z", 'Y', new ItemStack(ConfigItems.itemResource, 1, 2), 'X', new ItemStack(IC2Items.getItem("ForgeHammer").getItem(), 1, OreDictionary.WILDCARD_VALUE), 'Z', new ItemStack(Blocks.obsidian));
         Recipes.metalformerRolling.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.ingots)), null, true, new ItemStack(ItemsTC.plate, 1, 2));
 
-		/* Ore Processing for Amber and Cinnabar */
+        /* Ore Processing for Amber and Cinnabar */
         ItemStack crushedAmberRecipe = new ItemStack(ModItems.materials, 1, 11);
         crushedAmberRecipe.setCount(2);
         Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(BlocksTC.oreAmber, 1, 7)), null, true, crushedAmberRecipe);
@@ -207,6 +218,11 @@ public class EMTRecipes {
 
         Recipes.centrifuge.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 12)), heatAmount, true, IC2Items.getItem("dust", "small_copper"), new ItemStack(ItemsTC.amber, 1, 6));
         Recipes.centrifuge.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 14)), heatAmount, true, IC2Items.getItem("dust", "small_tin"), new ItemStack(ItemsTC.amber, 1, 3));
+    }
+
+    public static void initSmeltingRecipes(){
+        GameRegistry.addSmelting(new ItemStack(ModItems.materials, 1, 0), new ItemStack(IC2Items.getItem("nuclear", "uranium_238").getItem(), 2, 180), 0);
+        GameRegistry.addSmelting(new ItemStack(ModItems.materials, 1, 5), new ItemStack(ModItems.materials, 1, 3), 0);
     }
 
     public static void initNativeClusters(){
