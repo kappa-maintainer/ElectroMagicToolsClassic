@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "RR",
+    "RR"
+  ],
+  "key": {
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "itemRubber"
+    }
+  },
+  "result": {
+    "item": "welectromagic:itemmaterial",
+    "data": 5
+  }
+}

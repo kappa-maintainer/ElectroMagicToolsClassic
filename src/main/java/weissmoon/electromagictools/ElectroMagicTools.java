@@ -34,11 +34,13 @@ public class ElectroMagicTools {
 
     @EventHandler
     public void init(FMLInitializationEvent event){
+        OreDictionaryEntries.initOreEntries();
         EMTRecipes.initArcareCraftingRecipes();
         EMTRecipes.initInfusionRecipes();
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/wemt"));
-        OreDictionaryEntries.initOreEntries();
         EMTRecipes.initNativeClusters();
+        EMTRecipes.initIC2Recipes();
+        EMTRecipes.initSmeltingRecipes();
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/wemt"));
         //ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/nya.json"));
     }
 

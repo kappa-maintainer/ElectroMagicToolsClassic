@@ -11,5 +11,7 @@ public class OreDictionaryEntries {
 
     public static void initOreEntries() {
         OreDictionary.registerOre("clusterUranium", new ItemStack(ModItems.materials, 1, 0));
+        OreDictionary.registerOre("glue", new ItemStack(ModItems.materials, 1, 3));
+        OreDictionary.registerOre("slimeball", new ItemStack(ModItems.materials, 1, 3));
     }
 }

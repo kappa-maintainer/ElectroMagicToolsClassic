@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "FTF",
+    "TFT",
+    "FTF"
+  ],
+  "key": {
+    "F": {
+      "type": "forge:ore_dict",
+      "ore": "feather"
+    },
+    "T": {
+      "item": "welectromagic:itemmaterial",
+      "data": 4
+    }
+  },
+  "result": {
+    "item": "welectromagic:itemmaterial",
+    "data": 2
+  }
+}

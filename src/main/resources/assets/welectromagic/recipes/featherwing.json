@@ -1,0 +1,26 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "MGC",
+    "MGC",
+    "MGC"
+  ],
+  "key": {
+    "M": {
+      "item": "welectromagic:itemmaterial",
+      "data": 2
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "glue"
+    },
+    "C": {
+      "item": "welectromagic:itemmaterial",
+      "data": 6
+    }
+  },
+  "result": {
+    "item": "welectromagic:itemmaterial",
+    "data": 7
+  }
+}

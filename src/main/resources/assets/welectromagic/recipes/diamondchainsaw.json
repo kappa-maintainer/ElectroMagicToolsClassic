@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " D ",
+    "DCD"
+  ],
+  "key": {
+    "D": {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    },
+    "C": {
+      "item": "ic2:itemtoolchainsaw"
+    }
+  },
+  "result": {
+    "item": "welectromagic:itemdiamondchainsaw"
+  }
+}

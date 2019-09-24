@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "GGG",
+    "PPP",
+    "GGG"
+  ],
+  "key": {
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "paper"
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "glue"
+    }
+  },
+  "result": {
+    "item": "welectromagic:itemmaterial",
+    "data": 4
+  }
+}

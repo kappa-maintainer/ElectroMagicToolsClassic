@@ -26,21 +26,21 @@ public class Strings {
 
         public static final String MATERIALS_NAME = "itemMaterial";
         public static final String[] Materials = {
-                "UraniumCluster",
-                "LightningSummoner",
-                "FeatherMesh",
-                "Glue",
-                "DuctTape",
-                "RubberBall",
-                "CardBoard",
-                "FeatherWing",
-                "TaintedFeather",
-                "ThaumiumWing",
-                "UUMatterDrop",
-                "CrushedAmberOre",
-                "PurifiedAmberOre",
-                "CrushedCinnabarOre",
-                "PurifiedCinnabarOre"
+                "UraniumCluster",       //0
+                "LightningSummoner",    //1
+                "FeatherMesh",          //2
+                "Glue",                 //3
+                "DuctTape",             //4
+                "RubberBall",           //5
+                "CardBoard",            //6
+                "FeatherWing",          //7
+                "TaintedFeather",       //8
+                "ThaumiumWing",         //9
+                "UUMatterDrop",         //10
+                "CrushedAmberOre",      //11
+                "PurifiedAmberOre",     //12
+                "CrushedCinnabarOre",   //13
+                "PurifiedCinnabarOre"   //14
         };
     }
 }

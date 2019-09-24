@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "WW"
+  ],
+  "key": {
+    "W": {
+      "item": "welectromagic:itemmaterial",
+      "data": 7
+    }
+  },
+  "result": {
+    "item": "welectromagic:itemmaterial",
+    "data": 7,
+    "count": 2
+  }
+}
