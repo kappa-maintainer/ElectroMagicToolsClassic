@@ -17,6 +17,7 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
+import thaumcraft.api.crafting.ShapelessArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.api.SolarHelmetRegistry;
@@ -29,6 +30,18 @@ import weissmoon.electromagictools.util.ItemHelper;
  * Created by Weissmoon on 9/7/19.
  */
 public class EMTRecipes {
+
+    private static ItemStack refinedIron, denseIron;
+
+    public static void initMaterials() {
+        if (ElectroMagicTools.ic2ceLoaded) {
+            refinedIron = IC2Items.getItem("plate", "iron");
+            denseIron = IC2Items.getItem("plate", "dense_iron");
+        }else{
+            refinedIron = new ItemStack(IC2Items.getItem("ingot", "tin").getItem(), 1, 53);
+            denseIron = new ItemStack(Blocks.IRON_BLOCK, 1, 0);
+        }
+    }
 
     public static void initInfusionRecipes(){
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":solarupgrade"),
@@ -114,6 +127,66 @@ public class EMTRecipes {
                         new ItemStack(Items.DYE, 1, 15),
                         IC2Items.getItem("crafting", "advanced_circuit"),
                         new ItemStack(Blocks.SAPLING, 1, OreDictionary.WILDCARD_VALUE)));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":thaumiumdrill"),
+                new ElectricInfusionRecipe("THAMIUMDRILL",
+                        new ItemStack(ModItems.thaumiumDrill),
+                        5,
+                        CraftingAspectList.thaumiumDrill,
+                        new ItemStack(IC2Items.getItem("diamond_drill").getItem(), 1, OreDictionary.WILDCARD_VALUE),
+                        new ItemStack(Items.DIAMOND),
+                        new ItemStack(Items.DIAMOND),
+                        new ItemStack(ItemsTC.plate, 1, 2),
+                        new ItemStack(ItemsTC.plate, 1, 2),
+                        new ItemStack(ItemsTC.plate, 1, 2),
+                        denseIron));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":thaumiumchainsaw"),
+                new ElectricInfusionRecipe("THAUMIUMCHAINSAW",
+                        new ItemStack(ModItems.thaumiumChainsaw),
+                        5,
+                        CraftingAspectList.thaumiumChainsaw,
+                        new ItemStack(ModItems.diamondChainsaw, 1, OreDictionary.WILDCARD_VALUE),
+                        new ItemStack(Items.DIAMOND),
+                        new ItemStack(Items.DIAMOND),
+                        new ItemStack(ItemsTC.plate, 1, 2),
+                        new ItemStack(ItemsTC.plate, 1, 2),
+                        new ItemStack(ItemsTC.plate, 1, 2),
+                        denseIron));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":thaumiumtool"),
+                new ElectricInfusionRecipe("THAUMIUMOMNITOOL",
+                        new ItemStack(ModItems.thaumiumOmnitool),
+                        6,
+                        CraftingAspectList.thaumiumOmnitool,
+                        new ItemStack(ModItems.thaumiumChainsaw, 1, OreDictionary.WILDCARD_VALUE),
+                        new ItemStack(ModItems.thaumiumDrill, 1, OreDictionary.WILDCARD_VALUE),
+                        new ItemStack(ItemsTC.plate, 1, 2),
+                        new ItemStack(ItemsTC.plate, 1, 2),
+                        new ItemStack(ItemsTC.plate, 1, 2),
+                        IC2Items.getItem("crafting", "carbon_plate"),
+                        new ItemStack(IC2Items.getItem("ingot", "tin").getItem(), 1, 302)));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":thaumiumomnitoolupgrade"),
+                new ElectricInfusionRecipe("THAUMIUMOMNITOOL",
+                        new ItemStack(ModItems.thaumiumOmnitool),
+                        6,
+                        CraftingAspectList.thaumiumOmnitool,
+                        new ItemStack(ModItems.diamondOmnitool, 1, OreDictionary.WILDCARD_VALUE),
+                        new ItemStack(Blocks.DIAMOND_BLOCK),
+                        new ItemStack(BlocksTC.metalAlchemical),
+                        new ItemStack(BlocksTC.metalAlchemical),
+                        new ItemStack(IC2Items.getItem("energy_crystal").getItem(), 1, OreDictionary.WILDCARD_VALUE),
+                        IC2Items.getItem("crafting", "carbon_plate"),
+                        IC2Items.getItem("crafting", "advanced_circuit")));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":streamchainsaw"),
+                new ElectricInfusionRecipe("STREAMCHAINSAW",
+                        new ItemStack(ModItems.streamChainsaw),
+                        6,
+                        CraftingAspectList.streamChainsaw,
+                        new ItemStack(ModItems.thaumiumChainsaw, 1, OreDictionary.WILDCARD_VALUE),
+                        new ItemStack(Items.WATER_BUCKET),
+                        new ItemStack(ItemsTC.elementalAxe),
+                        new ItemStack(BlocksTC.logGreatwood),
+                        new ItemStack(IC2Items.getItem("lapotron_crystal").getItem(), 1, OreDictionary.WILDCARD_VALUE),
+                        IC2Items.getItem("crafting", "iridium"),
+                        IC2Items.getItem("upgrade", "overclocker")));
     }
 
     public static void initArcareCraftingRecipes(){
@@ -136,9 +209,28 @@ public class EMTRecipes {
                         " H ", "BGB", "RCR",
                         'G', new ItemStack(ItemsTC.goggles),
                         'C', IC2Items.getItem("crafting", "circuit"),
-                        'H', new ItemStack(Items.DIAMOND_HELMET),
+                        'H', new ItemStack(Items.DIAMOND_HELMET,1 , 0),
                         'B', new ItemStack(IC2Items.getItemAPI().getItem("re_battery"), 1, OreDictionary.WILDCARD_VALUE),
                         'R', new ItemStack(Items.REPEATER)));
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":diamondomnitool"),
+                new ShapelessArcaneRecipe(new ResourceLocation(""),
+                        "DIAMONDOMNITOOL",
+                        10,
+                        CraftingAspectList.diamondOmnitool,
+                        ModItems.diamondOmnitool,
+                        new ItemStack(ModItems.diamondChainsaw, 1, OreDictionary.WILDCARD_VALUE),
+                        new ItemStack(IC2Items.getItem("diamond_drill").getItem(), 1, OreDictionary.WILDCARD_VALUE)));
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":diamondomnitoolupgrade"),
+                new ShapedArcaneRecipe(new ResourceLocation(""),
+                        "DIAMONDOMNITOOL",
+                        10,
+                        CraftingAspectList.diamondOmnitool,
+                        ModItems.diamondOmnitool,
+                        "DCD", "DTD", "DCD",
+                        'D', new ItemStack(Items.DIAMOND),
+                        'C', IC2Items.getItem("crafting", "advanced_circuit"),
+                        'T', new ItemStack(ModItems.ironOmnitool, 1, OreDictionary.WILDCARD_VALUE)));
+
     }
 
     public static void initIC2Recipes(){
@@ -166,6 +258,14 @@ public class EMTRecipes {
         ItemStack leadClusterRecipe = IC2Items.getItem("dust", "small_lead").copy();
         leadClusterRecipe.setCount(22);
         ((IBasicMachineRecipeManager) Recipes.macerator).addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 5)), null, true, leadClusterRecipe);
+
+
+        GameRegistry.addShapedRecipe(new ResourceLocation("welectromagictools:itemironomnitool"), null, new ItemStack(ModItems.ironOmnitool),
+                "C", "p", "D",
+                'C', IC2Items.getItem("chainsaw"),
+                'D', IC2Items.getItem("drill"),
+                'p', refinedIron);
+
         if(ElectroMagicTools.ic2ceLoaded){
             initIC2CERecipes();
         }else{
@@ -174,20 +274,10 @@ public class EMTRecipes {
     }
 
     private static void initIC2CRecipes(){
-        GameRegistry.addShapedRecipe(new ResourceLocation("welectromagictools:itemironomnitool"), null, new ItemStack(ModItems.ironOmnitool),
-                "C", "D", "r",
-                'C', IC2Items.getItem("chainsaw"),
-                'D', IC2Items.getItem("drill"),
-                'r', new ItemStack(IC2Items.getItem("ingot", "tin").getItem(), 1, 53));
+
     }
 
     private static void initIC2CERecipes(){
-        GameRegistry.addShapedRecipe(new ResourceLocation("welectromagictools:itemironomnitool"), null, new ItemStack(ModItems.ironOmnitool),
-                "C", "D", "p",
-                'C', IC2Items.getItem("chainsaw"),
-                'D', IC2Items.getItem("drill"),
-                'p', IC2Items.getItem("plate", "iron"));
-
 
         /* Thaumium Plates Recipes */
         //thaumiumPlate = GameRegistry.addShapedRecipe(new ItemStack(EMTItems.itemEMTItems, 1, 5), "X", "Y", "Z", 'Y', new ItemStack(ConfigItems.itemResource, 1, 2), 'X', new ItemStack(IC2Items.getItem("ForgeHammer").getItem(), 1, OreDictionary.WILDCARD_VALUE), 'Z', new ItemStack(Blocks.obsidian));

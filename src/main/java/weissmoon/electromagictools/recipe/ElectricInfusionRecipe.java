@@ -13,8 +13,8 @@ import java.util.List;
  * Created by Weissmoon on 9/12/19.
  */
 public class ElectricInfusionRecipe extends InfusionRecipe{
-    public ElectricInfusionRecipe(String research, Object outputResult, int inst, AspectList aspects2, Object centralItem, Object... recipe) {
-        super(research, outputResult, inst, aspects2, centralItem, recipe);
+    public ElectricInfusionRecipe(String research, Object output, int inst, AspectList aspects, Object centralItem, Object... recipe) {
+        super(research, output, inst, aspects, centralItem, recipe);
     }
 
     public Object getRecipeOutput(EntityPlayer player, ItemStack input, List<ItemStack> comps ) {

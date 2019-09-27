@@ -35,6 +35,7 @@ public class ElectroMagicTools {
     @EventHandler
     public void init(FMLInitializationEvent event){
         OreDictionaryEntries.initOreEntries();
+        EMTRecipes.initMaterials();
         EMTRecipes.initArcareCraftingRecipes();
         EMTRecipes.initInfusionRecipes();
         EMTRecipes.initNativeClusters();
