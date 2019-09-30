@@ -121,18 +121,18 @@ public class EMTRecipes {
                         new ItemStack(ModItems.electricHoe),
                         5,
                         CraftingAspectList.electricHoe,
-                        new ItemStack(ItemsTC.elementalHoe),
+                        new ItemStack(ItemsTC.elementalHoe, 1, 0),
                         new ItemStack(IC2Items.getItemAPI().getItem("lapotron_crystal"), 1, OreDictionary.WILDCARD_VALUE),
                         new ItemStack(IC2Items.getItemAPI().getItem("electric_hoe"), 1, OreDictionary.WILDCARD_VALUE),
                         new ItemStack(Items.DYE, 1, 15),
                         IC2Items.getItem("crafting", "advanced_circuit"),
                         new ItemStack(Blocks.SAPLING, 1, OreDictionary.WILDCARD_VALUE)));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":thaumiumdrill"),
-                new ElectricInfusionRecipe("THAMIUMDRILL",
+                new ElectricInfusionRecipe("THAUMIUMDRILL",
                         new ItemStack(ModItems.thaumiumDrill),
                         5,
                         CraftingAspectList.thaumiumDrill,
-                        new ItemStack(IC2Items.getItem("diamond_drill").getItem(), 1, OreDictionary.WILDCARD_VALUE),
+                        IC2Items.getItem("diamond_drill"),
                         new ItemStack(Items.DIAMOND),
                         new ItemStack(Items.DIAMOND),
                         new ItemStack(ItemsTC.plate, 1, 2),
@@ -198,7 +198,7 @@ public class EMTRecipes {
                         ItemHelper.getChargedItem((IElectricItem) ModItems.electricScribingTools, 0),
                         "CSC", "SES", "CSC",
                         'C', IC2Items.getItem("crafting", "circuit"),
-                        'S', new ItemStack(ItemsTC.scribingTools),
+                        'S', new ItemStack(ItemsTC.scribingTools, 1, 0),
                         'E', new ItemStack(IC2Items.getItemAPI().getItem("energy_crystal"), 1, OreDictionary.WILDCARD_VALUE)));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":electricGoggles"),
                 new ShapedArcaneRecipe(new ResourceLocation("electricGoggles"),
@@ -219,7 +219,7 @@ public class EMTRecipes {
                         CraftingAspectList.diamondOmnitool,
                         ModItems.diamondOmnitool,
                         new ItemStack(ModItems.diamondChainsaw, 1, OreDictionary.WILDCARD_VALUE),
-                        new ItemStack(IC2Items.getItem("diamond_drill").getItem(), 1, OreDictionary.WILDCARD_VALUE)));
+                        IC2Items.getItem("diamond_drill")));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":diamondomnitoolupgrade"),
                 new ShapedArcaneRecipe(new ResourceLocation(""),
                         "DIAMONDOMNITOOL",
@@ -260,7 +260,7 @@ public class EMTRecipes {
         ((IBasicMachineRecipeManager) Recipes.macerator).addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 5)), null, true, leadClusterRecipe);
 
 
-        GameRegistry.addShapedRecipe(new ResourceLocation("welectromagictools:itemironomnitool"), null, new ItemStack(ModItems.ironOmnitool),
+        GameRegistry.addShapedRecipe(new ResourceLocation("welectromagic:itemironomnitool"), null, new ItemStack(ModItems.ironOmnitool),
                 "C", "p", "D",
                 'C', IC2Items.getItem("chainsaw"),
                 'D', IC2Items.getItem("drill"),
