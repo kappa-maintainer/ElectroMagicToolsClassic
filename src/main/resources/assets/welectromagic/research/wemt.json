@@ -360,7 +360,7 @@
         {
           "text": "",
           "recipes": ["welectromagic:thaumiumtool"],
-          "required_research":["THUAMICCHAINSAW", "THAUMIUMDRILL"]
+          "required_research":["THAUMIUMCHAINSAW", "THAUMIUMDRILL"]
         }
       ]
     }
