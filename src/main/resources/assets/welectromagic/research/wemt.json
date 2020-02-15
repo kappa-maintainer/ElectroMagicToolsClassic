@@ -20,13 +20,13 @@
       "name": "item.welectromagic:itemElectricGoggles.name",
       "icons": ["welectromagic:itemElectricGoggles;1;1"],
       "category": "WEMT",
-      "parents": ["~ELECTROTHAUMICTOOLS"],
+      "parents": ["~ELECTROTHAUMICTOOLS", "UNLOCKARTIFICE"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
       "location": [1, -2],
       "stages": [
         {
-          "text": "research.example.text.stage.1",
+          "text": "wemt.research.electricGoggles.stage.1",
           "required_craft": ["minecraft:diamond_helmet"]
         },
         {
@@ -46,7 +46,7 @@
       "location": [3, -2],
       "stages": [
         {
-          "text": "research.example.text.stage.1",
+          "text": "wemt.research.nanoGoggles.stage.1",
           "required_craft": ["ic2:itemmisc;1;451"]
         },
         {
@@ -66,7 +66,7 @@
       "location": [5, -2],
       "stages": [
         {
-          "text": "research.example.text.stage.1",
+          "text": "wemt.research.quantumGoggles.stage.1",
           "required_craft": ["ic2:itemmisc;1;452"]
         },
         {
@@ -80,15 +80,14 @@
       "name": "item.welectromagic:itemElectricBoots.name",
       "icons": ["welectromagic:itemElectricBoots;1;1"],
       "category": "WEMT",
-      "parents": ["~ELECTROTHAUMICTOOLS", "INFUSION"],
+      "parents": ["~ELECTROTHAUMICTOOLS", "BOOTSTRAVELLER"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
       "location": [2, 0],
-      "reward_item": [ "thaumcraft:traveller_boots" ],
       "stages": [
         {
-          "text": "research.example.text.stage.1",
-          "required_item": ["thaumcraft:traveller_boots"]
+          "text": "wemt.research.electricBoots.stage.1",
+          "required_craft": ["thaumcraft:traveller_boots"]
         },
         {
           "text": "wemt.research.electricBoots.stage.2",
@@ -107,7 +106,7 @@
       "location": [4, 0],
       "stages": [
         {
-          "text": "research.example.text.stage.1",
+          "text": "wemt.research.nanoBoots.stage.1",
           "required_craft": ["ic2:itembatcrystal"]
         },
         {
@@ -127,7 +126,7 @@
       "location": [6, 0],
       "stages": [
         {
-          "text": "research.example.text.stage.1",
+          "text": "wemt.research.quantumBoots.stage.1",
           "required_craft": ["ic2:itembatlamacrystal"]
         },
         {
@@ -141,13 +140,13 @@
       "name": "item.welectromagic:itemElectricScribingTools.name",
       "icons": ["welectromagic:itemElectricScribingTools;1;1"],
       "category": "WEMT",
-      "parents": ["~ELECTROTHAUMICTOOLS"],
+      "parents": ["~ELECTROTHAUMICTOOLS", "~THEORYRESEARCH"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
       "location": [-6, -5],
       "stages": [
         {
-          "text": "research.example.text.stage.1",
+          "text": "wemt.research.electricScribingTools.stage.1",
           "required_craft": ["thaumcraft:scribing_tools;3"]
         },
         {
@@ -161,15 +160,14 @@
       "name": "item.welectromagic:itemElectricHoe.name",
       "icons": ["welectromagic:itemElectricHoe;1;1"],
       "category": "WEMT",
-      "parents": ["~ELECTROTHAUMICTOOLS"],
+      "parents": ["~ELECTROTHAUMICTOOLS", "ELEMENTALTOOLS"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
       "location": [-1, -4],
-      "reward_item": [ "thaumcraft:elemental_hoe" ],
       "stages": [
         {
-          "text": "research.example.text.stage.1",
-          "required_item": ["thaumcraft:elemental_hoe"]
+          "text": "wemt.research.electricHoe.stage.1",
+          "required_craft": ["thaumcraft:elemental_hoe"]
         },
         {
           "text": "wemt.research.electricHoe.stage.2",
@@ -182,13 +180,14 @@
       "name": "item.welectromagic:itemDiamondChainsaw.name",
       "icons": ["welectromagic:itemDiamondChainsaw"],
       "category": "WEMT",
-      "parents": ["~FIRSTSTEPS"],
+      "parents": ["~FIRSTSTEPS", "~ELECTROTHAUMICTOOLS"],
       "siblings": [],
-      "meta": ["ROUND"],
+      "meta": ["ROUND", "HIDDEN"],
       "location": [5, -6],
       "stages": [
         {
-          "text": "research.example.text.stage.1"
+          "text": "wemt.research.diamondChainsaw.stage.1",
+          "required_craft": ["ic2:itemtoolchainsaw"]
         },
         {
           "text": "wemt.research.diamondChainsaw.stage.2",
@@ -201,13 +200,14 @@
       "name": "wemt.research.itemCluster.name",
       "icons": ["welectromagic:itemMaterial"],
       "category": "WEMT",
-      "parents": ["~FIRSTSTEPS"],
+      "parents": ["~ELECTROTHAUMICTOOLS", "METALPURIFICATION"],
       "siblings": [],
-      "meta": ["ROUND"],
+      "meta": ["ROUND", "HIDDEN"],
       "location": [5, -7],
       "stages": [
         {
-          "text": "research.example.text.stage.1"
+          "text": "wemt.research.itemCluster.stage.2",
+          "required_item": ["minecraft:flint"]
         },
         {
           "text": "wemt.research.itemCluster.stage.2"
@@ -219,14 +219,11 @@
       "name": "item.welectromagic:itemOneRing.name",
       "icons": ["thaumcraft:baubles;1;1"],
       "category": "WEMT",
-      "parents": ["~FIRSTSTEPS"],
+      "parents": ["~FIRSTSTEPS", "~BASEINFUSION"],
       "siblings": [],
       "meta": ["ROUND"],
       "location": [6, -7],
       "stages": [
-        {
-          "text": "research.example.text.stage.1"
-        },
         {
           "text": "wemt.research.itemOneRing.stage.2",
           "warp": 2
@@ -238,14 +235,14 @@
       "name": "item.welectromagic:itemThaumiumDrill.name",
       "icons": ["welectromagic:itemThaumiumDrill"],
       "category": "WEMT",
-      "parents": ["~ELECTROTHAUMICTOOLS"],
+      "parents": ["~ELECTROTHAUMICTOOLS", "METALLURGY"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
       "location": [-1, -2],
       "stages": [
         {
-          "text": "research.example.text.stage.1",
-          "required_item": ["minecraft:diamond"]
+          "text": "wemt.research.itemThaumiumDrill.stage.1",
+          "required_craft": ["ic2:itemdrills;1;1"]
         },
         {
           "text": "wemt.research.itemThaumiumDrill.stage.2",
@@ -258,15 +255,14 @@
       "name": "item.welectromagic:itemThaumiumChainsaw.name",
       "icons": ["welectromagic:itemThaumiumChainsaw"],
       "category": "WEMT",
-      "parents": ["~ELECTROTHAUMICTOOLS"],
+      "parents": ["~ELECTROTHAUMICTOOLS", "METALLURGY", "~DIAMONDCHAINSAW"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
       "location": [-2, -2],
-      "reward_item": [ "welectromagic:itemdiamondchainsaw" ],
       "stages": [
         {
-          "text": "research.example.text.stage.1",
-          "required_item": ["minecraft:diamond"]
+          "text": "wemt.research.itemThaumiumChainsaw.stage.1",
+          "required_craft": ["welectromagic:itemDiamondChainsaw"]
         },
         {
           "text": "wemt.research.itemThaumiumChainsaw.stage.2",
@@ -279,9 +275,9 @@
       "name": "item.welectromagic:itemStreamChainsaw.name",
       "icons": ["welectromagic:itemStreamChainsaw"],
       "category": "WEMT",
-      "parents": ["THAUMIUMCHAINSAW"],
+      "parents": ["THAUMIUMCHAINSAW", "~ELEMENTALTOOLS"],
       "siblings": [],
-      "meta": ["ROUND"],
+      "meta": ["ROUND", "HIDDEN"],
       "location": [-3, -4],
       "stages": [
         {
@@ -305,7 +301,7 @@
       "location": [-2, 0],
       "stages": [
         {
-          "text": "research.example.text.stage.1",
+          "text": "wemt.research.itemOmniTool.stage.1",
           "required_item": ["minecraft:iron_ingot"]
         },
         {
@@ -319,18 +315,25 @@
       "name": "item.welectromagic:itemDiamondOmniTool.name",
       "icons": ["welectromagic:itemDiamondOmniTool"],
       "category": "WEMT",
-      "parents": ["IRONOMNITOOL", "~DIAMONDCHAINSAW"],
+      "parents": ["IRONOMNITOOL"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
       "location": [-4, 0],
       "stages": [
         {
-          "text": "research.example.text.stage.1",
+          "text": "wemt.research.itemDiamondOmniTool.stage.1",
           "required_item": ["ic2:itemmisc;1;452"]
         },
         {
           "text": "wemt.research.itemDiamondOmniTool.stage.2",
-          "recipes": ["welectromagic:diamondomnitool", "welectromagic:diamondomnitoolupgrade"]
+          "recipes": ["welectromagic:diamondomnitoolupgrade"]
+        }
+      ],
+      "addenda": [
+        {
+          "text": "",
+          "recipes": ["welectromagic:diamondomnitool"],
+          "required_research":["DIAMONDCHAINSAW"]
         }
       ]
     },
@@ -345,7 +348,7 @@
       "location": [-6, 0],
       "stages": [
         {
-          "text": "research.example.text.stage.1",
+          "text": "wemt.research.itemThaumicOmniTool.stage.1",
           "required_item": ["ic2:itemmisc;1;256"]
         },
         {
