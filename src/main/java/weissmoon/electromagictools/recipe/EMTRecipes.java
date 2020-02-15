@@ -35,8 +35,8 @@ public class EMTRecipes {
 
     public static void initMaterials() {
         if (ElectroMagicTools.ic2ceLoaded) {
-            refinedIron = IC2Items.getItem("plate", "iron");
-            denseIron = IC2Items.getItem("plate", "dense_iron");
+            refinedIron = new ItemStack(Item.getByNameOrId("ic2c_extras:refinedironplate"));
+            denseIron = new ItemStack(Item.getByNameOrId("ic2c_extras:denseironplate"));
         }else{
             refinedIron = new ItemStack(IC2Items.getItem("ingot", "tin").getItem(), 1, 53);
             denseIron = new ItemStack(Blocks.IRON_BLOCK, 1, 0);
