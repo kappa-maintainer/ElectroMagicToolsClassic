@@ -133,12 +133,11 @@ public class ItemThaumiumDrill extends WeissItemsPickaxe implements IElectricIte
     @SideOnly(Side.CLIENT)
     @Override
     public void getSubItems (CreativeTabs tab, NonNullList<ItemStack> list){
-        for (CreativeTabs tabbe : this.getCreativeTabs())
-            if (tab == tabbe){
-                ItemStack stack = new ItemStack(this, 1, 0);
-                list.add(stack);
-                list.add(getChargedItem(this, 1));
-            }
+        if (this.isInCreativeTab(tab)){
+            ItemStack stack = new ItemStack(this, 1, 0);
+            list.add(stack);
+            list.add(getChargedItem(this, 1));
+        }
     }
 
     @Override

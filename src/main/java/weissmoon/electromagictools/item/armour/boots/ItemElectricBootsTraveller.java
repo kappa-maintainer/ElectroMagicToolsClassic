@@ -14,11 +14,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.*;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.items.IVisDiscountGear;
 import weissmoon.core.item.armour.ItemArmourBase;
 import weissmoon.electromagictools.ElectroMagicTools;
@@ -30,6 +33,8 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 
 /**
  * Created by Weissmoon on 9/3/19.
@@ -77,6 +82,16 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IElect
     @Override
     public CreativeTabs[] getCreativeTabs(){
         return new CreativeTabs[]{ElectroMagicTools.EMTtab, CreativeTabs.COMBAT};
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void getSubItems (CreativeTabs tab, NonNullList<ItemStack> list){
+        if (this.isInCreativeTab(tab)){
+            ItemStack stack = new ItemStack(this, 1, 0);
+            list.add(stack);
+            list.add(getChargedItem(this, 1));
+        }
     }
 
     @Override

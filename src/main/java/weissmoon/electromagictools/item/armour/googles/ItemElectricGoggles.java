@@ -10,7 +10,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.ISpecialArmor;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.items.IGoggles;
 import thaumcraft.api.items.IVisDiscountGear;
 import weissmoon.core.item.armour.ItemArmourBase;
@@ -20,6 +23,8 @@ import weissmoon.electromagictools.lib.Textures;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 
 /**
  * Created by Weissmoon on 9/3/19.
@@ -58,6 +63,16 @@ public class ItemElectricGoggles extends ItemArmourBase implements IElectricItem
     @Override
     public CreativeTabs[] getCreativeTabs(){
         return new CreativeTabs[]{ElectroMagicTools.EMTtab, CreativeTabs.COMBAT};
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void getSubItems (CreativeTabs tab, NonNullList<ItemStack> list){
+        if (this.isInCreativeTab(tab)) {
+            ItemStack stack = new ItemStack(this, 1, 0);
+            list.add(stack);
+            list.add(getChargedItem(this, 1));
+        }
     }
 
     @Override
