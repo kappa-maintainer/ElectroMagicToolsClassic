@@ -11,6 +11,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.ThaumcraftMaterials;
 import thaumcraft.api.blocks.BlocksTC;
 import weissmoon.core.item.tools.WeissItemHoe;
@@ -19,6 +21,8 @@ import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Strings;
 
 import java.util.Random;
+
+import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 
 /**
  * Created by Weissmoon on 9/6/19.
@@ -84,6 +88,17 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IElectricItem
         }else{
             return EnumActionResult.PASS;
         }
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void getSubItems (CreativeTabs tab, NonNullList<ItemStack> list){
+        for (CreativeTabs tabbe : this.getCreativeTabs())
+            if (tab == tabbe){
+                ItemStack stack = new ItemStack(this, 1, 0);
+                list.add(stack);
+                list.add(getChargedItem(this, 1));
+            }
     }
 
     @Override

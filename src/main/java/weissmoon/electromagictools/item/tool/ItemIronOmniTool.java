@@ -4,16 +4,22 @@ import com.google.common.collect.Multimap;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.IShearable;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import weissmoon.core.item.tools.WeissItemsPickaxe;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Strings;
+
+import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 
 /**
  * Created by Weissmoon on 9/23/19.
@@ -125,6 +131,17 @@ public class ItemIronOmniTool extends WeissItemsPickaxe implements IElectricItem
     @Override
     public boolean isRepairable() {
         return false;
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void getSubItems (CreativeTabs tab, NonNullList<ItemStack> list){
+        for (CreativeTabs tabbe : this.getCreativeTabs())
+            if (tab == tabbe){
+                ItemStack stack = new ItemStack(this, 1, 0);
+                list.add(stack);
+                list.add(getChargedItem(this, 1));
+            }
     }
 
     @Override

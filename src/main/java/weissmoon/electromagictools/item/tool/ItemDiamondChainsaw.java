@@ -4,6 +4,7 @@ import com.google.common.collect.Multimap;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,9 +18,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.ThaumcraftMaterials;
 import weissmoon.core.api.item.IModesCore;
 import weissmoon.core.item.tools.WeissItemAxe;
@@ -29,6 +33,8 @@ import weissmoon.electromagictools.lib.Strings;
 
 import java.util.List;
 import java.util.Random;
+
+import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 
 /**
  * Created by Weissmoon on 9/22/19.
@@ -201,6 +207,17 @@ public class ItemDiamondChainsaw extends WeissItemAxe implements IElectricItem, 
 
         return multimap;
         //return this.getItemAttributeModifiers(slot);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void getSubItems (CreativeTabs tab, NonNullList<ItemStack> list){
+        for (CreativeTabs tabbe : this.getCreativeTabs())
+            if (tab == tabbe){
+                ItemStack stack = new ItemStack(this, 1, 0);
+                list.add(stack);
+                list.add(getChargedItem(this, 1));
+            }
     }
 
     @Override
