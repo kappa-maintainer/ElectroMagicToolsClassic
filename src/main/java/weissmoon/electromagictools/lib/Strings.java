@@ -23,6 +23,9 @@ public class Strings {
         public static final String IRON_OMNITOOL_NAME = "itemIronOmniTool";
         public static final String DIAMOND_OMNITOOL_NAME = "itemDiamondOmniTool";
         public static final String THAUMIUM_OMNITOOL_NAME = "itemThaumiumOmniTool";
+        public static final String STORMBRINGER_NAME = "itemStormCaster";
+        public static final String MJÖLNIR_NAME = "itemMjolnir";
+        public static final String STORMBREAKER_NAME = "itemStormBreaker";
 
         public static final String MATERIALS_NAME = "itemMaterial";
         public static final String[] Materials = {

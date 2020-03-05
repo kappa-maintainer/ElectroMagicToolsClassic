@@ -42,6 +42,8 @@ public class ModItems {
     public static final WeissItemsPickaxe ironOmnitool = new ItemIronOmniTool();
     public static final WeissItemsPickaxe diamondOmnitool = new ItemDiamondOmniTool();
     public static final WeissItemsPickaxe thaumiumOmnitool = new ItemThaumiumOmniTool();
+    public static final Item stormCaster = new ItemStormCaster();
+    public static final Item mjölnir = new ItemMjölnir();
 
 
     public static Item crafing;
@@ -50,8 +52,6 @@ public class ModItems {
     public static Item focusShield;
     public static Item focusEnergyBall;
     public static Item rockBreakerDrill;
-    public static Item mjolnir;
-    public static Item stormCaster;
     public static Item stormBreaker;
     public static Item focusCharge;
     public static Item focusWandCharge;
@@ -89,6 +89,8 @@ public class ModItems {
         GameRegistry.register(ironOmnitool);
         GameRegistry.register(diamondOmnitool);
         GameRegistry.register(thaumiumOmnitool);
+        GameRegistry.register(stormCaster);
+        GameRegistry.register(mjölnir);
         GameRegistry.register(materials);
         GameRegistry.register(onering);
     }

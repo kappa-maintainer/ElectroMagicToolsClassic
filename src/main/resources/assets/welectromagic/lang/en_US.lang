@@ -31,6 +31,14 @@ item.welectromagic:itemMaterialPurifiedAmberOre.name=Purified Amber Ore
 item.welectromagic:itemMaterialCrushedCinnabarOre.name=Crushed Cinnabar Ore
 item.welectromagic:itemMaterialPurifiedCinnabarOre.name=Purified Cinnabar Ore
 item.welectromagic:itemOneRing.name=The One Ring
+item.welectromagic:itemStormCaster.name=Storm Caster
+item.welectromagic:itemMjolnir.name=Mjölnir
+
+tooltip.EMT.hammer.broken.Mjölnir=The Hammer of Thor
+tooltip.EMT.hammer.broken.thor=It was once the Hammer of Thor.
+tooltip.EMT.hammer.broken.danger=It is now very dangerous.
+tooltip.EMT.hammer.broken.plsNoRightClick=Do NOT right-click.
+tooltip.EMT.hammer.broken.plsRightClick=Do right-click.
 
 tc.research_category.WEMT=Electro-Thaumic Tools
 
