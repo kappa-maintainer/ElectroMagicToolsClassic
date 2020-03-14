@@ -235,31 +235,6 @@ public class EMTRecipes {
 
     public static void initIC2Recipes(){
 
-        ItemStack ironClusterRecipe = IC2Items.getItem("dust", "small_iron").copy();
-        ironClusterRecipe.setCount(22);
-        ((IBasicMachineRecipeManager) Recipes.macerator).addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 0)), null, true, ironClusterRecipe);
-
-        ItemStack goldClusterRecipe = IC2Items.getItem("dust", "small_gold").copy();
-        goldClusterRecipe.setCount(22);
-        ((IBasicMachineRecipeManager) Recipes.macerator).addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 1)), null, true, goldClusterRecipe);
-
-        ItemStack copperClusterRecipe = IC2Items.getItem("dust", "small_copper").copy();
-        copperClusterRecipe.setCount(22);
-        ((IBasicMachineRecipeManager) Recipes.macerator).addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 2)), null, true, copperClusterRecipe);
-
-        ItemStack tinClusterRecipe = IC2Items.getItem("dust", "small_tin").copy();
-        tinClusterRecipe.setCount(22);
-        ((IBasicMachineRecipeManager) Recipes.macerator).addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 3)), null, true, tinClusterRecipe);
-
-        ItemStack silverClusterRecipe = IC2Items.getItem("dust", "small_silver").copy();
-        silverClusterRecipe.setCount(22);
-        ((IBasicMachineRecipeManager) Recipes.macerator).addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 4)), null, true, silverClusterRecipe);
-
-        ItemStack leadClusterRecipe = IC2Items.getItem("dust", "small_lead").copy();
-        leadClusterRecipe.setCount(22);
-        ((IBasicMachineRecipeManager) Recipes.macerator).addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 5)), null, true, leadClusterRecipe);
-
-
         GameRegistry.addShapedRecipe(new ResourceLocation("welectromagic:itemironomnitool"), null, new ItemStack(ModItems.ironOmnitool),
                 "C", "p", "D",
                 'C', IC2Items.getItem("chainsaw"),
@@ -274,10 +249,63 @@ public class EMTRecipes {
     }
 
     private static void initIC2CRecipes(){
+        ItemStack ironClusterRecipe = IC2Items.getItem("dust", "iron").copy();
+        ironClusterRecipe.setCount(2);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 0)), null, true, ironClusterRecipe);
+
+        ItemStack goldClusterRecipe = IC2Items.getItem("dust", "gold").copy();
+        goldClusterRecipe.setCount(2);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 1)), null, true, goldClusterRecipe);
+
+        ItemStack copperClusterRecipe = IC2Items.getItem("dust", "copper").copy();
+        copperClusterRecipe.setCount(2);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 2)), null, true, copperClusterRecipe);
+
+        ItemStack tinClusterRecipe = IC2Items.getItem("dust", "tin").copy();
+        tinClusterRecipe.setCount(2);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 3)), null, true, tinClusterRecipe);
+
+        ItemStack silverClusterRecipe = IC2Items.getItem("dust", "silver").copy();
+        silverClusterRecipe.setCount(2);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 4)), null, true, silverClusterRecipe);
+
+//        ItemStack leadClusterRecipe = IC2Items.getItem("dust", "lead").copy();
+//        leadClusterRecipe.setCount(22);
+//        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 5)), null, true, leadClusterRecipe);
+
+        ItemStack uraniumCluster = new ItemStack(IC2Items.getItem("nuclear", "uranium_238").getItem(), 3, 180).copy();
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 0)), null, true, uraniumCluster);
 
     }
 
     private static void initIC2CERecipes(){
+
+        ItemStack ironClusterRecipe = IC2Items.getItem("dust", "small_iron").copy();
+        ironClusterRecipe.setCount(22);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 0)), null, true, ironClusterRecipe);
+
+        ItemStack goldClusterRecipe = IC2Items.getItem("dust", "small_gold").copy();
+        goldClusterRecipe.setCount(22);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 1)), null, true, goldClusterRecipe);
+
+        ItemStack copperClusterRecipe = IC2Items.getItem("dust", "small_copper").copy();
+        copperClusterRecipe.setCount(22);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 2)), null, true, copperClusterRecipe);
+
+        ItemStack tinClusterRecipe = IC2Items.getItem("dust", "small_tin").copy();
+        tinClusterRecipe.setCount(22);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 3)), null, true, tinClusterRecipe);
+
+        ItemStack silverClusterRecipe = IC2Items.getItem("dust", "small_silver").copy();
+        silverClusterRecipe.setCount(22);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 4)), null, true, silverClusterRecipe);
+
+        ItemStack leadClusterRecipe = IC2Items.getItem("dust", "small_lead").copy();
+        leadClusterRecipe.setCount(22);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 5)), null, true, leadClusterRecipe);
+
+        ItemStack uraniumCluster = new ItemStack(Item.getByNameOrId("ic2c_extras:uraniumcrushedore"), 5, 180);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 0)), null, true, uraniumCluster);
 
         /* Thaumium Plates Recipes */
         //thaumiumPlate = GameRegistry.addShapedRecipe(new ItemStack(EMTItems.itemEMTItems, 1, 5), "X", "Y", "Z", 'Y', new ItemStack(ConfigItems.itemResource, 1, 2), 'X', new ItemStack(IC2Items.getItem("ForgeHammer").getItem(), 1, OreDictionary.WILDCARD_VALUE), 'Z', new ItemStack(Blocks.obsidian));
@@ -286,33 +314,47 @@ public class EMTRecipes {
         /* Ore Processing for Amber and Cinnabar */
         ItemStack crushedAmberRecipe = new ItemStack(ModItems.materials, 1, 11);
         crushedAmberRecipe.setCount(2);
-        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(BlocksTC.oreAmber, 1, 7)), null, true, crushedAmberRecipe);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(BlocksTC.oreAmber)), null, true, crushedAmberRecipe);
 
         ItemStack crushedCinnabarRecipe = new ItemStack(ModItems.materials, 1, 13);
         crushedCinnabarRecipe.setCount(2);
-        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(BlocksTC.oreCinnabar, 1, 0)), null, true, crushedCinnabarRecipe);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(BlocksTC.oreCinnabar)), null, true, crushedCinnabarRecipe);
 
         NBTTagCompound waterAmount = new NBTTagCompound();
         waterAmount.setInteger("amount", 1000);
 
-        ItemStack smallCopperDust = IC2Items.getItem("dust", "small_copper");
-        smallCopperDust.setCount(2);
-        ItemStack smallTinDust = IC2Items.getItem("dust", "small_tin");
-        smallCopperDust.setCount(2);
-
-        Recipes.oreWashing.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 11)), waterAmount, true, new ItemStack(ModItems.materials, 1, 12), smallCopperDust, IC2Items.getItem("stoneDust"));
-        Recipes.oreWashing.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 13)), waterAmount, true, new ItemStack(ModItems.materials, 1, 14), smallTinDust, IC2Items.getItem("stoneDust"));
-
         NBTTagCompound heatAmount = new NBTTagCompound();
         heatAmount.setInteger("minHeat", 1000);
 
-        Recipes.centrifuge.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 12)), heatAmount, true, IC2Items.getItem("dust", "small_copper"), new ItemStack(ItemsTC.amber, 1, 6));
-        Recipes.centrifuge.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 14)), heatAmount, true, IC2Items.getItem("dust", "small_tin"), new ItemStack(ItemsTC.amber, 1, 3));
+        ItemStack smallCopperDust = IC2Items.getItem("dust", "small_copper");
+        ItemStack smallTinDust = IC2Items.getItem("dust", "small_tin");
+
+        ItemStack stoneDust = new ItemStack(Item.getByNameOrId("ic2c_extras:stonedust"));
+
+        /* Skipping Ore Washing Plant */
+        Recipes.centrifuge.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 11)), heatAmount, true, smallCopperDust, new ItemStack(ItemsTC.amber), stoneDust);
+        Recipes.centrifuge.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 13)), heatAmount, true, smallTinDust, new ItemStack(ItemsTC.quicksilver), stoneDust);
+
+        smallCopperDust.setCount(2);
+        smallTinDust.setCount(2);
+
+        Recipes.oreWashing.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 11)), waterAmount, true, new ItemStack(ModItems.materials, 1, 12), smallCopperDust, stoneDust);
+        Recipes.oreWashing.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 13)), waterAmount, true, new ItemStack(ModItems.materials, 1, 14), smallTinDust, stoneDust);
+
+        Recipes.centrifuge.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 12)), heatAmount, true, smallCopperDust, new ItemStack(ItemsTC.amber));
+        Recipes.centrifuge.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ModItems.materials, 1, 14)), heatAmount, true, smallTinDust, new ItemStack(ItemsTC.quicksilver));
     }
 
     public static void initSmeltingRecipes(){
-        GameRegistry.addSmelting(new ItemStack(ModItems.materials, 1, 0), new ItemStack(IC2Items.getItem("nuclear", "uranium_238").getItem(), 2, 180), 0);
-        GameRegistry.addSmelting(new ItemStack(ModItems.materials, 1, 5), new ItemStack(ModItems.materials, 1, 3), 0);
+        //GameRegistry.addSmelting(new ItemStack(ModItems.materials, 1, 0), new ItemStack(IC2Items.getItem("nuclear", "uranium_238").getItem(), 2, 180), 0);
+        GameRegistry.addSmelting(new ItemStack(ModItems.materials, 1, 5), new ItemStack(ModItems.materials, 1, 3), 0.5f);
+
+        if(ElectroMagicTools.ic2ceLoaded){
+            GameRegistry.addSmelting(new ItemStack(ModItems.materials, 1, 11), new ItemStack(ItemsTC.amber), 0.1f);
+            GameRegistry.addSmelting(new ItemStack(ModItems.materials, 1, 12), new ItemStack(ItemsTC.amber), 0.1f);
+            GameRegistry.addSmelting(new ItemStack(ModItems.materials, 1, 13), new ItemStack(ItemsTC.quicksilver), 0.1f);
+            GameRegistry.addSmelting(new ItemStack(ModItems.materials, 1, 14), new ItemStack(ItemsTC.quicksilver), 0.1f);
+        }
     }
 
     public static void initNativeClusters(){
