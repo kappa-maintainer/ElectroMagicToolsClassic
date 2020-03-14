@@ -67,18 +67,19 @@ public class ItemMaterials extends WeissItem implements IItemRenderCustom{
     @SideOnly(Side.CLIENT)
     @Override
     public void getSubItems(CreativeTabs creativeTabs, NonNullList<ItemStack> list) {
-        if(creativeTabs != this.getCreativeTab())
+        if (!this.isInCreativeTab(creativeTabs))
             return;
 
         list.add(new ItemStack(this, 1, 0));
         list.add(new ItemStack(this, 1, 3));
         list.add(new ItemStack(this, 1, 5));
-        return;
+        //return;
 
-//        if (ElectroMagicTools.ic2ceLoaded) {
-//            for (int i = 1; i <= Strings.Items.Materials.length; i++) {
-//                list.add(new ItemStack(this, 1, i - 1));
-//            }
+        if (ElectroMagicTools.ic2ceLoaded) {
+            for (int i = 12; i <= Strings.Items.Materials.length; i++) {
+                list.add(new ItemStack(this, 1, i - 1));
+            }
+        }
 //        }else{
 //            for (int i = 1; i <= Strings.Items.Materials.length-4; i++) {
 //                list.add(new ItemStack(this, 1, i - 1));
