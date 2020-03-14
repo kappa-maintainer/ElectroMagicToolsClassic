@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "welectromagic:items/material/crushedamberore"
+    "layer0": "welectromagic:items/material/crushed_amber_ore"
   }
 }
