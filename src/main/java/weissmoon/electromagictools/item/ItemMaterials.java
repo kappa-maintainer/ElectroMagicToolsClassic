@@ -15,6 +15,8 @@ import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created by Weissmoon on 9/17/19.
  */
@@ -66,11 +68,12 @@ public class ItemMaterials extends WeissItem implements IItemRenderCustom{
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems(CreativeTabs creativeTabs, NonNullList<ItemStack> list) {
+    public void getSubItems(@Nonnull CreativeTabs creativeTabs, @Nonnull NonNullList<ItemStack> list) {
         if (!this.isInCreativeTab(creativeTabs))
             return;
 
         list.add(new ItemStack(this, 1, 0));
+        list.add(new ItemStack(this, 1, 1));
         list.add(new ItemStack(this, 1, 3));
         list.add(new ItemStack(this, 1, 5));
         //return;

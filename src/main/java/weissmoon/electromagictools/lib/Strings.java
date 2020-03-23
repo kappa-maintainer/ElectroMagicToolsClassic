@@ -26,6 +26,7 @@ public class Strings {
         public static final String STORMBRINGER_NAME = "itemStormCaster";
         public static final String MJÖLNIR_NAME = "itemMjolnir";
         public static final String STORMBREAKER_NAME = "itemStormBreaker";
+        public static final String CHARGE_RING_NAME = "itemChargeRing";
 
         public static final String MATERIALS_NAME = "itemMaterial";
         public static final String[] Materials = {

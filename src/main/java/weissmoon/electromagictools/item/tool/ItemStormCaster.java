@@ -31,7 +31,7 @@ public class ItemStormCaster extends WeissItemSword {
     public ItemStormCaster() {
         super(ToolMaterial.DIAMOND, Strings.Items.STORMBRINGER_NAME);
         setMaxDamage(1000);
-        setCreativeTab(ElectroMagicTools.EMTtab);
+        //setCreativeTab(ElectroMagicTools.EMTtab);
     }
 
     @Override

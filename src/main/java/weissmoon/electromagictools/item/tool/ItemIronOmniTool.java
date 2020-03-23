@@ -19,6 +19,8 @@ import weissmoon.core.item.tools.WeissItemsPickaxe;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Strings;
 
+import javax.annotation.Nonnull;
+
 import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 
 /**
@@ -135,7 +137,7 @@ public class ItemIronOmniTool extends WeissItemsPickaxe implements IElectricItem
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems (CreativeTabs tab, NonNullList<ItemStack> list){
+    public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> list) {
         if (this.isInCreativeTab(tab)){
             ItemStack stack = new ItemStack(this, 1, 0);
             list.add(stack);

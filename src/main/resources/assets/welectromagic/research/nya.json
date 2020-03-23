@@ -37,24 +37,6 @@
     ]
   },
   {
-    "key": "LightningSummoner",
-    "name": "itemLogo",
-    "icons": ["itemLogo"],
-    "category": "WEMT",
-    "parents": ["FIRSTSTEPS"],
-    "siblings": [],
-    "meta": ["ROUND", "AUTOUNLOCK"],
-    "location": [6, -5],
-    "stages": [
-      {
-        "text": "research.example.text.stage.1"
-      },
-      {
-        "text": "wemt.research.itemLightningSummoner.stage.2"
-      }
-    ]
-  },
-  {
     "key": "ELECTRICCLOUD",
     "name": "itemElectricCloud",
     "icons": ["itemElectricCloud"],

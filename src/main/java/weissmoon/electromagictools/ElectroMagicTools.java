@@ -1,6 +1,7 @@
 package weissmoon.electromagictools;
 
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.*;
@@ -10,6 +11,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import thaumcraft.api.ThaumcraftApi;
 import weissmoon.core.client.creativetab.CreativeTabWeiss;
 import weissmoon.electromagictools.client.EMTTab;
+import weissmoon.electromagictools.event.EventPool;
 import weissmoon.electromagictools.item.ModItems;
 import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.recipe.EMTRecipes;
@@ -41,6 +43,7 @@ public class ElectroMagicTools {
         EMTRecipes.initNativeClusters();
         EMTRecipes.initIC2Recipes();
         EMTRecipes.initSmeltingRecipes();
+        MinecraftForge.EVENT_BUS.register(new EventPool());
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/wemt"));
         //ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/nya.json"));
     }

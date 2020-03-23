@@ -20,6 +20,7 @@ import weissmoon.core.utils.NBTHelper;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Strings;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 
 import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
@@ -92,7 +93,7 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IElectricItem
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems (CreativeTabs tab, NonNullList<ItemStack> list){
+    public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> list) {
         if (this.isInCreativeTab(tab)){
             ItemStack stack = new ItemStack(this, 1, 0);
             list.add(stack);

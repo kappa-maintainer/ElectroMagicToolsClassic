@@ -33,6 +33,9 @@ item.welectromagic:itemMaterialPurifiedCinnabarOre.name=Purified Cinnabar Ore
 item.welectromagic:itemOneRing.name=The One Ring
 item.welectromagic:itemStormCaster.name=Storm Caster
 item.welectromagic:itemMjolnir.name=Mjölnir
+item.welectromagic:itemChargeRing.name=Charging Ring
+item.welectromagic:itemChargeRing0.name=Armor Charging Ring
+item.welectromagic:itemChargeRing1.name=Inventory Charging Ring
 
 tooltip.EMT.hammer.broken.Mjölnir=The Hammer of Thor
 tooltip.EMT.hammer.broken.thor=It was once the Hammer of Thor.
@@ -102,3 +105,12 @@ wemt.research.itemDiamondOmniTool.stage.2=Your discovery of an Iron Omnitool has
 
 wemt.research.itemThaumicOmniTool.stage.1=Mystical multitool
 wemt.research.itemThaumicOmniTool.stage.2=After creating the Diamond and Iron Omnitools, the next logical step was to do the same with Thaumium. Unfortunately, this isn't as easy. You have discovered a way to combine the Thaumium Drill and the Thaumium Chainsaw, resulting in a tool capable of mining and chopping trees at great speed with a high energy capacity. These tools have already once been infused with magic. You are not sure what will happen if they were to be infused again.
+
+wemt.research.itemInventoryRing.stage.1=Passive charger
+wemt.research.itemInventoryRing.stage.2=While other thaumaturgists use rings to charge their runic shields, you feel that there are better applications for them.  By fusing power sources into a mundane ring, you have learned how to funnel its charging effects into electric items in your inventory instead. It doesn't generate much at only 32 EU per tick, but that just means there's room for improvement.
+
+wemt.research.itemArmourRing.stage.1=Passive life-saver
+wemt.research.itemArmourRing.stage.2=You have found the low but constant recharge rate of your new ring to be more useful than anticipated, but it would be nice if it charged your armor when there wasn't a tool in need of power.  By infusing a few more power sources and a piece of armor, you have found a way to have it do just that.  Sadly, the new power sources do not increase the recharge rate, but progress is progress.
+
+wemt.research.itemLightningSummoner.stage.1=From vilest enemies
+wemt.research.itemLightningSummoner.stage.2=This item is dropped by your archenemy, the Supercharged Creeper. You feel it is going to be very useful later on.

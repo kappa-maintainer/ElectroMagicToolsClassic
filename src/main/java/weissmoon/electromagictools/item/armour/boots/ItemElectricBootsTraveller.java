@@ -86,7 +86,7 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IElect
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems (CreativeTabs tab, NonNullList<ItemStack> list){
+    public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> list) {
         if (this.isInCreativeTab(tab)){
             ItemStack stack = new ItemStack(this, 1, 0);
             list.add(stack);

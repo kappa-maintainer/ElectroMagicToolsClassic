@@ -187,6 +187,32 @@ public class EMTRecipes {
                         new ItemStack(IC2Items.getItem("lapotron_crystal").getItem(), 1, OreDictionary.WILDCARD_VALUE),
                         IC2Items.getItem("crafting", "iridium"),
                         IC2Items.getItem("upgrade", "overclocker")));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID, "armourring"),
+                new InfusionRecipe("ARMOURCHARGINGRING",
+                        new ItemStack(ModItems.chargeRing),
+                        6,
+                        CraftingAspectList.armourChargingRing,
+                        new ItemStack(ItemsTC.baubles, 1, 1),
+                        new ItemStack(ModItems.electricBoots),
+                        IC2Items.getItem("te", "generator"),
+                        IC2Items.getItem("te", "geo_generator"),
+                        IC2Items.getItem("te", "solar_generator"),
+                        new ItemStack(IC2Items.getItem("te", "generator").getItem(), 1, 12),
+                        new ItemStack(IC2Items.getItem("te", "generator").getItem(), 1, 4),
+                        IC2Items.getItem("te", "nuclear_reactor")));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID, "inventoryring"),
+                new InfusionRecipe("INVENTORYCHARGINGRING",
+                        new ItemStack(ModItems.chargeRing, 1, 1),
+                        6,
+                        CraftingAspectList.inventoryChargingRing,
+                        new ItemStack(ItemsTC.baubles, 1, 1),
+                        new ItemStack(ModItems.thaumiumDrill),
+                        IC2Items.getItem("te", "generator"),
+                        IC2Items.getItem("te", "geo_generator"),
+                        IC2Items.getItem("te", "solar_generator"),
+                        new ItemStack(IC2Items.getItem("te", "generator").getItem(), 1, 12),
+                        new ItemStack(IC2Items.getItem("te", "generator").getItem(), 1, 4),
+                        IC2Items.getItem("te", "nuclear_reactor")));
     }
 
     public static void initArcareCraftingRecipes(){

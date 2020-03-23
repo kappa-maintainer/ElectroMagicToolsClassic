@@ -31,7 +31,7 @@ public class ItemMjölnir extends WeissItemSword {
     public ItemMjölnir() {
         super(ToolMaterial.DIAMOND, Strings.Items.MJÖLNIR_NAME);
         setMaxDamage(2000);
-        setCreativeTab(ElectroMagicTools.EMTtab);
+        //setCreativeTab(ElectroMagicTools.EMTtab);
     }
 
     @Override

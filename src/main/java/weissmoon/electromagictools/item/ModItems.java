@@ -44,7 +44,7 @@ public class ModItems {
     public static final WeissItemsPickaxe thaumiumOmnitool = new ItemThaumiumOmniTool();
     public static final Item stormCaster = new ItemStormCaster();
     public static final Item mjölnir = new ItemMjölnir();
-
+    public static final Item chargeRing = new ItemChargeRing();
 
     public static Item crafing;
     public static Item focusCristmas;
@@ -91,6 +91,7 @@ public class ModItems {
         GameRegistry.register(thaumiumOmnitool);
         GameRegistry.register(stormCaster);
         GameRegistry.register(mjölnir);
+        GameRegistry.register(chargeRing);
         GameRegistry.register(materials);
         GameRegistry.register(onering);
     }

@@ -363,6 +363,63 @@
           "required_research":["THAUMIUMCHAINSAW", "THAUMIUMDRILL"]
         }
       ]
+    },
+    {
+      "key": "INVENTORYCHARGINGRING",
+      "name": "item.welectromagic:itemChargeRing1.name",
+      "icons": ["welectromagic:itemChargeRing;1;1"],
+      "category": "WEMT",
+      "parents": ["~INFUSION", "~THAUMIUMDRILL"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-5, -3],
+      "stages": [
+        {
+          "text": "wemt.research.itemInventoryRing.stage.1",
+          "required_item": ["ic2:itemmisc;1;452"],
+          "warp": 2
+        },
+        {
+          "text": "wemt.research.itemInventoryRing.stage.2",
+          "recipes": ["welectromagic:inventoryring"]
+        }
+      ]
+    },
+    {
+      "key": "ARMOURCHARGINGRING",
+      "name": "item.welectromagic:itemChargeRing0.name",
+      "icons": ["welectromagic:itemChargeRing"],
+      "category": "WEMT",
+      "parents": ["INVENTORYCHARGINGRING", "~INFUSION", "~ELECTRICBOOTS"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-7, -3],
+      "stages": [
+        {
+          "text": "wemt.research.itemArmourRing.stage.1",
+          "required_item": ["ic2:itemmisc;1;452"],
+          "warp": 2
+        },
+        {
+          "text": "wemt.research.itemArmourRing.stage.2",
+          "recipes": ["welectromagic:armourring"]
+        }
+      ]
+    },
+    {
+      "key": "LIGHTNINGSUMMONER",
+      "name": "item.welectromagic:itemMaterialLightningSummoner.name",
+      "icons": ["welectromagic:itemMaterial;1;1"],
+      "category": "WEMT",
+      "parents": ["FIRSTSTEPS"],
+      "siblings": [],
+      "meta": ["ROUND"],
+      "location": [6, -5],
+      "stages": [
+        {
+          "text": "wemt.research.itemLightningSummoner.stage.2"
+        }
+      ]
     }
   ]
 }
