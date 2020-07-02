@@ -28,7 +28,7 @@ group= "weissmoon.electromagictools" // http://maven.apache.org/guides/mini/guid
 archivesBaseName = "ElectroMagicToolsIC2C"
 
 minecraft {
-    version = "1.12.2-14.23.5.2768"
+    version = "1.12.2-14.23.5.2807"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.
