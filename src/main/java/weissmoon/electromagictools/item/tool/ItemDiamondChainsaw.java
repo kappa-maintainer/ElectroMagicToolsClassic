@@ -3,6 +3,7 @@ package weissmoon.electromagictools.item.tool;
 import com.google.common.collect.Multimap;
 import ic2.api.item.ElectricItem;
 import ic2.core.IC2;
+import ic2.core.platform.registry.Ic2Items;
 import ic2.core.platform.registry.Ic2Lang;
 import ic2.core.util.misc.StackUtil;
 import ic2.core.util.obj.ToolTipType;
@@ -20,7 +21,6 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -137,26 +137,7 @@ public class ItemDiamondChainsaw extends ItemWeissElectricTool implements IModes
         if(NBTHelper.getBoolean(itemstack, SHEARMODE_NBT_TAG) || player.world.isRemote)
             return false;
 
-        IBlockState block = player.world.getBlockState(pos);
-        if (block instanceof IShearable) {
-            IShearable target = (IShearable) block;
-            if (target.isShearable(itemstack, player.world, pos)) {
-                List<ItemStack> drops = target.onSheared(itemstack, player.world, pos, EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByLocation("fortune"), itemstack));
-                Random rand = new Random();
-
-                for (ItemStack stack : drops) {
-                    float f = 0.7F;
-                    double xOffset = (double) (rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
-                    double yOffset = (double) (rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
-                    double zOffset = (double) (rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
-                    EntityItem entityitem = new EntityItem(player.world, (double) pos.getX() + xOffset, (double) pos.getY() + yOffset, (double) pos.getZ() + zOffset, stack);
-                    entityitem.setDefaultPickupDelay();
-                    player.world.spawnEntity(entityitem);
-                }
-                player.addStat(StatList.getBlockStats(block.getBlock()));
-            }
-        }
-        return false;
+        return Ic2Items.chainSaw.getItem().onBlockStartBreak(itemstack, pos, player);
     }
 
     @Override
