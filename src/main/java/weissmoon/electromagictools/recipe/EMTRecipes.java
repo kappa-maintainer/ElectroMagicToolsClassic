@@ -2,7 +2,6 @@ package weissmoon.electromagictools.recipe;
 
 import ic2.api.item.IC2Items;
 import ic2.api.item.IElectricItem;
-import ic2.api.recipe.IBasicMachineRecipeManager;
 import ic2.api.recipe.Recipes;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -144,7 +143,7 @@ public class EMTRecipes {
                         new ItemStack(ModItems.thaumiumChainsaw),
                         5,
                         CraftingAspectList.thaumiumChainsaw,
-                        new ItemStack(ModItems.diamondChainsaw, 1, OreDictionary.WILDCARD_VALUE),
+                        getDiamondChainsaw(),
                         new ItemStack(Items.DIAMOND),
                         new ItemStack(Items.DIAMOND),
                         new ItemStack(ItemsTC.plate, 1, 2),
@@ -218,7 +217,7 @@ public class EMTRecipes {
                         10,
                         CraftingAspectList.diamondOmnitool,
                         ModItems.diamondOmnitool,
-                        new ItemStack(ModItems.diamondChainsaw, 1, OreDictionary.WILDCARD_VALUE),
+                        getDiamondChainsaw(),
                         IC2Items.getItem("diamond_drill")));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":diamondomnitoolupgrade"),
                 new ShapedArcaneRecipe(new ResourceLocation(""),
@@ -233,31 +232,38 @@ public class EMTRecipes {
 
     }
 
+    public static ItemStack getDiamondChainsaw(){
+        if (ElectroMagicTools.gtcxLoaded){
+            return new ItemStack(Item.getByNameOrId("gtc_expansion:diamond_chainsaw"), 1, OreDictionary.WILDCARD_VALUE);
+        }
+        return new ItemStack(ModItems.diamondChainsaw, 1, OreDictionary.WILDCARD_VALUE);
+    }
+
     public static void initIC2Recipes(){
 
         ItemStack ironClusterRecipe = IC2Items.getItem("dust", "small_iron").copy();
         ironClusterRecipe.setCount(22);
-        ((IBasicMachineRecipeManager) Recipes.macerator).addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 0)), null, true, ironClusterRecipe);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 0)), null, true, ironClusterRecipe);
 
         ItemStack goldClusterRecipe = IC2Items.getItem("dust", "small_gold").copy();
         goldClusterRecipe.setCount(22);
-        ((IBasicMachineRecipeManager) Recipes.macerator).addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 1)), null, true, goldClusterRecipe);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 1)), null, true, goldClusterRecipe);
 
         ItemStack copperClusterRecipe = IC2Items.getItem("dust", "small_copper").copy();
         copperClusterRecipe.setCount(22);
-        ((IBasicMachineRecipeManager) Recipes.macerator).addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 2)), null, true, copperClusterRecipe);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 2)), null, true, copperClusterRecipe);
 
         ItemStack tinClusterRecipe = IC2Items.getItem("dust", "small_tin").copy();
         tinClusterRecipe.setCount(22);
-        ((IBasicMachineRecipeManager) Recipes.macerator).addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 3)), null, true, tinClusterRecipe);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 3)), null, true, tinClusterRecipe);
 
         ItemStack silverClusterRecipe = IC2Items.getItem("dust", "small_silver").copy();
         silverClusterRecipe.setCount(22);
-        ((IBasicMachineRecipeManager) Recipes.macerator).addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 4)), null, true, silverClusterRecipe);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 4)), null, true, silverClusterRecipe);
 
         ItemStack leadClusterRecipe = IC2Items.getItem("dust", "small_lead").copy();
         leadClusterRecipe.setCount(22);
-        ((IBasicMachineRecipeManager) Recipes.macerator).addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 5)), null, true, leadClusterRecipe);
+        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 5)), null, true, leadClusterRecipe);
 
 
         GameRegistry.addShapedRecipe(new ResourceLocation("welectromagic:itemironomnitool"), null, new ItemStack(ModItems.ironOmnitool),
@@ -268,13 +274,7 @@ public class EMTRecipes {
 
         if(ElectroMagicTools.ic2ceLoaded){
             initIC2CERecipes();
-        }else{
-            initIC2CRecipes();
         }
-    }
-
-    private static void initIC2CRecipes(){
-
     }
 
     private static void initIC2CERecipes(){

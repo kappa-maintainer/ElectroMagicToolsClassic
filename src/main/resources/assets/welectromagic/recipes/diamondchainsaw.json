@@ -1,5 +1,12 @@
 {
   "type": "forge:ore_shaped",
+  "conditions": [{
+    "type": "forge:not",
+    "value": {
+      "type": "forge:mod_loaded",
+      "modid": "gtc_expansion"
+    }
+  }],
   "pattern": [
     " D ",
     "DCD"

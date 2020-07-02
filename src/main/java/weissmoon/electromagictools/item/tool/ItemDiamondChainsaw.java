@@ -2,11 +2,15 @@ package weissmoon.electromagictools.item.tool;
 
 import com.google.common.collect.Multimap;
 import ic2.api.item.ElectricItem;
-import ic2.api.item.IElectricItem;
+import ic2.core.IC2;
+import ic2.core.platform.registry.Ic2Lang;
+import ic2.core.util.misc.StackUtil;
+import ic2.core.util.obj.ToolTipType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -15,23 +19,27 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import thaumcraft.api.ThaumcraftMaterials;
 import weissmoon.core.api.item.IModesCore;
-import weissmoon.core.item.tools.WeissItemAxe;
 import weissmoon.core.utils.NBTHelper;
 import weissmoon.electromagictools.ElectroMagicTools;
+import weissmoon.electromagictools.item.ItemWeissElectricTool;
+import weissmoon.electromagictools.lib.LocaleComps;
 import weissmoon.electromagictools.lib.Strings;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
@@ -39,32 +47,41 @@ import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 /**
  * Created by Weissmoon on 9/22/19.
  */
-public class ItemDiamondChainsaw extends WeissItemAxe implements IElectricItem, IModesCore {
+public class ItemDiamondChainsaw extends ItemWeissElectricTool implements IModesCore {
     
-    protected int maxCharge, cost, hitCost, tier;
+    protected int hitCost;
     protected double transferLimit;
     private static final String SHEARMODE_NBT_TAG= "shearsMode";
 
     public ItemDiamondChainsaw() {
-        super(ThaumcraftMaterials.TOOLMAT_THAUMIUM, 10, -3.2F, Strings.Items.DIAMOND_CHAINSAW_NAME);
-        this.maxCharge = 100000;
-        this.cost = 250;
-        this.hitCost = 300;
-        this.tier = 2;
-        this.transferLimit = 100;
-        this.efficiency = 16F;
+        this(ToolMaterial.DIAMOND, 10, 0.0F, Strings.Items.DIAMOND_CHAINSAW_NAME, 10000, 100, 1);
+    }
+
+    public ItemDiamondChainsaw(ToolMaterial material, float damage, float speed, String name, int maxCharge, int transferLimit, int tier) {
+        super(damage, speed, material, name);
+        this.maxCharge = maxCharge;
+        this.operationEnergyCost = 50;
+        this.hitCost = operationEnergyCost + 100;
+        this.tier = tier;
+        this.transferLimit = transferLimit;
+        this.efficiency = 10;
+        this.setMaxDamage(0);
+        this.setNoRepair();
+        this.setHarvestLevel("axe", 3);
         this.setCreativeTab(ElectroMagicTools.EMTtab);
     }
 
-    public ItemDiamondChainsaw(ToolMaterial material, float damage, float speed, String name) {
-        super(material, damage, speed, name);
-        this.maxCharge = 0;
-        this.cost = 0;
-        this.hitCost = 0;
-        this.tier = 0;
-        this.transferLimit = 0;
-        this.efficiency = 0;
-        this.setCreativeTab(ElectroMagicTools.EMTtab);
+    @Override
+    public void onSortedItemToolTip(ItemStack stack, EntityPlayer player, boolean debugTooltip, List<String> tooltip, Map<ToolTipType, List<String>> sortedTooltip) {
+        NBTTagCompound tag = StackUtil.getOrCreateNbtData(stack);
+        if (!tag.getBoolean(SHEARMODE_NBT_TAG)) {
+            tooltip.add(LocaleComps.MESSAGE_DIAMOND_CHAINSAW_NORMAL.getLocalized());
+        } else {
+            tooltip.add(LocaleComps.MESSAGE_DIAMOND_CHAINSAW_NO_SHEAR.getLocalized());
+        }
+        List<String> ctrlTip = sortedTooltip.get(ToolTipType.Ctrl);
+        ctrlTip.add(Ic2Lang.onItemRightClick.getLocalized());
+        ctrlTip.add(Ic2Lang.pressTo.getLocalizedFormatted(IC2.keyboard.getKeyName(2), LocaleComps.DIAMOND_CHAINSAW_SHEAR_TOGGLE.getLocalized()));
     }
 
     @Override
@@ -73,42 +90,15 @@ public class ItemDiamondChainsaw extends WeissItemAxe implements IElectricItem, 
     }
 
     @Override
-    public int getMaxDamage(ItemStack stack){
-        return this.cost;
-    }
-
-    @Override
-    public int getDamage(ItemStack stack){
-        return this.maxCharge - (int) ElectricItem.manager.getCharge(stack);
-    }
-
-    @Override
-    public boolean showDurabilityBar(ItemStack stack) {
-        return ElectricItem.manager.getCharge(stack) != this.maxCharge;
-    }
-
-    @Override
-    public double getDurabilityForDisplay(ItemStack stack){
-        return this.getDamage(stack) / this.maxCharge;
-    }
-
-    @Override
-    public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-        ElectricItem.manager.use(stack, cost, entityLiving);
-        return true;
-    }
-
-    @Override
     public boolean canHarvestBlock(IBlockState state, ItemStack stack) {
         return Items.DIAMOND_AXE.canHarvestBlock(state, stack) ||
-                Items.DIAMOND_AXE.canHarvestBlock(state, stack) ||
                 Items.SHEARS.canHarvestBlock(state, stack);
     }
 
     @Override
     public float getDestroySpeed(ItemStack stack, IBlockState block) {
-        if (!ElectricItem.manager.canUse(stack, cost)) {
-            return 1.0F;
+        if (!ElectricItem.manager.canUse(stack, operationEnergyCost)) {
+            return 0.2F;
         }
 
         if (Items.DIAMOND_AXE.getDestroySpeed(stack, block) > 1.0F || Items.DIAMOND_SWORD.getDestroySpeed(stack, block) > 1.0F) {
@@ -120,14 +110,26 @@ public class ItemDiamondChainsaw extends WeissItemAxe implements IElectricItem, 
 
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker){
-        ElectricItem.manager.use(stack, ((ItemThaumiumDrill)stack.getItem()).cost, attacker);
+        ElectricItem.manager.use(stack, operationEnergyCost, attacker);
         return true;
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand handIn){
-        //Tool mode handled by changeToolMode
-        return super.onItemRightClick(world, player, handIn);
+        ItemStack stack = player.getHeldItem(handIn);
+        NBTTagCompound tag = StackUtil.getOrCreateNbtData(stack);
+        if (IC2.platform.isSimulating() && IC2.keyboard.isModeSwitchKeyDown(player)) {
+            if (tag.getBoolean(SHEARMODE_NBT_TAG)) {
+                tag.setBoolean(SHEARMODE_NBT_TAG, false);
+                IC2.platform.messagePlayer(player, TextFormatting.GREEN, LocaleComps.MESSAGE_DIAMOND_CHAINSAW_NORMAL);
+            } else {
+                tag.setBoolean(SHEARMODE_NBT_TAG, true);
+                IC2.platform.messagePlayer(player, TextFormatting.RED, LocaleComps.MESSAGE_DIAMOND_CHAINSAW_NO_SHEAR);
+            }
+            return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
+        } else {
+            return super.onItemRightClick(world, player, handIn);
+        }
     }
 
     @Override
@@ -198,7 +200,7 @@ public class ItemDiamondChainsaw extends WeissItemAxe implements IElectricItem, 
         if (slot == EntityEquipmentSlot.MAINHAND)
         {
             double attackDamage = 1.5;
-            if(ElectricItem.manager.canUse(stack, ((ItemDiamondChainsaw)stack.getItem()).hitCost)) {
+            if(ElectricItem.manager.canUse(stack, hitCost)) {
                 attackDamage = this.attackDamage;
             }
             multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Tool modifier", attackDamage, 0));
@@ -220,27 +222,12 @@ public class ItemDiamondChainsaw extends WeissItemAxe implements IElectricItem, 
     }
 
     @Override
-    public boolean canProvideEnergy(ItemStack stack) {
-        return false;
-    }
-
-    @Override
-    public double getMaxCharge(ItemStack stack) {
-        return this.maxCharge;
-    }
-
-    @Override
-    public int getTier(ItemStack stack) {
-        return this.tier;
-    }
-
-    @Override
-    public double getTransferLimit(ItemStack stack) {
-        return this.transferLimit;
-    }
-
-    @Override
     public void changeToolMode(ItemStack stack){
-        NBTHelper.toggleBoolean(stack, SHEARMODE_NBT_TAG);
+        //NBTHelper.toggleBoolean(stack, SHEARMODE_NBT_TAG);
+    }
+
+    @Override
+    public EnumEnchantmentType getType(ItemStack itemStack) {
+        return EnumEnchantmentType.DIGGER;
     }
 }

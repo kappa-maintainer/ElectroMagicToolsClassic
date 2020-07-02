@@ -3,9 +3,9 @@ package weissmoon.electromagictools;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.*;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import thaumcraft.api.ThaumcraftApi;
 import weissmoon.core.client.creativetab.CreativeTabWeiss;
@@ -25,10 +25,12 @@ public class ElectroMagicTools {
     public static ElectroMagicTools INSTANCE;
 
     public static boolean ic2ceLoaded;
+    public static boolean gtcxLoaded;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event){
         ic2ceLoaded = Loader.isModLoaded("ic2c_extras");
+        gtcxLoaded = Loader.isModLoaded("gtc_expansion");
         ModItems.init();
     }
 

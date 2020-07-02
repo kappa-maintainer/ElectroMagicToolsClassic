@@ -9,12 +9,8 @@ import weissmoon.electromagictools.lib.Strings;
 public class ItemThaumiumChainsaw extends ItemDiamondChainsaw {
 
     public ItemThaumiumChainsaw() {
-        super(ThaumcraftMaterials.TOOLMAT_THAUMIUM, 12, -3.2F, Strings.Items.THAUMIUM_CHAINSAW_NAME);
-        this.maxCharge = 100000;
-        this.cost = 250;
-        this.hitCost = 350;
-        this.tier = 2;
-        this.transferLimit = 600;
+        super(ThaumcraftMaterials.TOOLMAT_THAUMIUM, 12, 0F, Strings.Items.THAUMIUM_CHAINSAW_NAME, 100000, 600, 2);
+        this.operationEnergyCost = 250;
         this.efficiency = 21F;
     }
 
