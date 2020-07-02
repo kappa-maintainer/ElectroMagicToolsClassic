@@ -7,14 +7,16 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
-        flatDir {
-            dirs './libs'
+        maven {
+            url "https://plugins.gradle.org/m2/"
         }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath "com.wynprice.cursemaven:CurseMaven:2.1.0"
     }
 }
+apply plugin: "com.wynprice.cursemaven"
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 /*
@@ -53,13 +55,19 @@ configurations{
     customCompile
 }
 
+repositories {
+    jcenter()
+    maven { url 'https://jitpack.io' }
+}
+
 dependencies {
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
     //compile "some.group:artifact:version"
 
-    compile fileTree(dir: './libs', include: '*.jar')
+    //compile fileTree(dir: './libs', include: '*.jar')
+    implementation 'com.github.Trinsdar:IC2Classic:master-SNAPSHOT:api'
     //compile files('libs/weisscore-0.0.1.1.jar')
     //deobfCompile "weissmoon.core:weisscore:0.0.1.1"
     //compile "weissmoon.core:weisscore:0.0.1.1"
