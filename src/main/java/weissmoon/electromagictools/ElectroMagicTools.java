@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.logging.log4j.Logger;
 import thaumcraft.api.ThaumcraftApi;
 import weissmoon.core.client.creativetab.CreativeTabWeiss;
 import weissmoon.electromagictools.client.EMTTab;
@@ -27,8 +28,11 @@ public class ElectroMagicTools {
     public static boolean ic2ceLoaded;
     public static boolean gtcxLoaded;
 
+    public static Logger logger;
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event){
+        logger = event.getModLog();
         ic2ceLoaded = Loader.isModLoaded("ic2c_extras");
         gtcxLoaded = Loader.isModLoaded("gtc_expansion");
         ModItems.init();

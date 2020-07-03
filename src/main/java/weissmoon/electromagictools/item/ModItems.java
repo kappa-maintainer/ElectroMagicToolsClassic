@@ -43,7 +43,7 @@ public class ModItems {
     public static final ItemHoe electricHoe = new ItemElectricHoeGrowth();
     public static final WeissItem materials = new ItemMaterials();
     public static final WeissItem onering = new ItemOneRing();
-    public static final WeissItemsPickaxe thaumiumDrill = new ItemThaumiumDrill();
+    public static final ItemWeissElectricTool thaumiumDrill = new ItemThaumiumDrill();
     public static final ItemWeissElectricTool diamondChainsaw = new ItemDiamondChainsaw();
     public static final ItemWeissElectricTool thaumiumChainsaw = new ItemThaumiumChainsaw();
     public static final ItemWeissElectricTool streamChainsaw = new ItemStreamChainsaw();

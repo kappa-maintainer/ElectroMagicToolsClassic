@@ -16,12 +16,14 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
@@ -50,15 +52,16 @@ import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 public class ItemDiamondChainsaw extends ItemWeissElectricTool implements IModesCore {
     
     protected int hitCost;
-    protected double transferLimit;
+    protected double transferLimit, attackDamage;
     private static final String SHEARMODE_NBT_TAG= "shearsMode";
 
     public ItemDiamondChainsaw() {
-        this(ToolMaterial.DIAMOND, 10, 0.0F, Strings.Items.DIAMOND_CHAINSAW_NAME, 10000, 100, 1);
+        this(ToolMaterial.DIAMOND, 15, 0.0F, Strings.Items.DIAMOND_CHAINSAW_NAME, 10000, 100, 1);
     }
 
     public ItemDiamondChainsaw(ToolMaterial material, float damage, float speed, String name, int maxCharge, int transferLimit, int tier) {
-        super(damage, speed, material, name);
+        super(damage - 1, speed, material, name);
+        this.attackDamage = damage;
         this.maxCharge = maxCharge;
         this.operationEnergyCost = 50;
         this.hitCost = operationEnergyCost + 100;
@@ -96,9 +99,18 @@ public class ItemDiamondChainsaw extends ItemWeissElectricTool implements IModes
     }
 
     @Override
+    public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState blockIn, BlockPos pos,
+                                    EntityLivingBase entityLiving) {
+        if (entityLiving instanceof EntityPlayer) {
+            IC2.achievements.issueStat((EntityPlayer) entityLiving, "blocksSawed");
+        }
+        return super.onBlockDestroyed(stack, worldIn, blockIn, pos, entityLiving);
+    }
+
+    @Override
     public float getDestroySpeed(ItemStack stack, IBlockState block) {
         if (!ElectricItem.manager.canUse(stack, operationEnergyCost)) {
-            return 0.2F;
+            return 0.5F;
         }
 
         if (Items.DIAMOND_AXE.getDestroySpeed(stack, block) > 1.0F || Items.DIAMOND_SWORD.getDestroySpeed(stack, block) > 1.0F) {
@@ -109,9 +121,26 @@ public class ItemDiamondChainsaw extends ItemWeissElectricTool implements IModes
     }
 
     @Override
-    public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker){
-        ElectricItem.manager.use(stack, operationEnergyCost, attacker);
-        return true;
+    public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+        if (!(attacker instanceof EntityPlayer)) {
+            return true;
+        } else {
+            if (ElectricItem.manager.use(stack, this.hitCost, (EntityPlayer)attacker)) {
+                target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)attacker), (float) attackDamage);
+            } else {
+                target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)attacker), 1.0F);
+            }
+
+            if (target.getHealth() <= 0.0F) {
+                if (target instanceof EntityCreeper) {
+                    IC2.achievements.issueStat((EntityPlayer)attacker, "killCreeperChainsaw");
+                }
+
+                IC2.achievements.issueStat((EntityPlayer)attacker, "chainsawKills");
+            }
+
+            return false;
+        }
     }
 
     @Override
