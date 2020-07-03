@@ -36,12 +36,14 @@ public class EMTRecipes {
 
     private static ItemStack refinedIron, denseIron;
 
+    static ICraftingRecipeList recipes = ClassicRecipes.advCrafting;
+
     public static void initMaterials() {
         if (ElectroMagicTools.ic2ceLoaded) {
             refinedIron = new ItemStack(Item.getByNameOrId("ic2c_extras:refinedironplate"));
             denseIron = new ItemStack(Item.getByNameOrId("ic2c_extras:denseironplate"));
         }else{
-            refinedIron = new ItemStack(IC2Items.getItem("ingot", "tin").getItem(), 1, 53);
+            refinedIron = Ic2Items.refinedIronIngot;
             denseIron = new ItemStack(Blocks.IRON_BLOCK, 1, 0);
         }
     }
@@ -62,7 +64,7 @@ public class EMTRecipes {
                         CraftingAspectList.solarHelmetRevealing,
                         new ItemStack(ModItems.quantumGoggles),
                         IC2Items.getItem("solar_helmet"),
-                        new ItemStack(IC2Items.getItemAPI().getItem("cable"), 1, 9),
+                        Ic2Items.glassFiberCable.copy(),
                         IC2Items.getItem("lapotron_crystal")));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":nanoGoggles"),
                 new ElectricInfusionRecipe("NANOGOGGLES",
@@ -270,13 +272,13 @@ public class EMTRecipes {
         Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 5)), null, true, leadClusterRecipe);
 
 
-        GameRegistry.addShapedRecipe(new ResourceLocation("welectromagic:itemironomnitool"), null, new ItemStack(ModItems.ironOmnitool),
+        recipes.addRecipe(new ItemStack(ModItems.ironOmnitool),
                 "C", "p", "D",
                 'C', IC2Items.getItem("chainsaw"),
                 'D', IC2Items.getItem("drill"),
                 'p', refinedIron);
 
-        ICraftingRecipeList recipes = ClassicRecipes.advCrafting;
+
         ItemStack helmet = new ItemStack(ModItems.quantumGoggles);
         recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "EUReaderUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.euReader.copy());
         recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "CropUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.cropAnalyzer.copy());

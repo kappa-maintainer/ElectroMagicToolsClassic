@@ -16,6 +16,7 @@ import weissmoon.electromagictools.item.armour.googles.ItemElectricGoggles;
 import weissmoon.electromagictools.item.armour.googles.ItemNanoGoggles;
 import weissmoon.electromagictools.item.armour.googles.ItemQuantumGoggles;
 import weissmoon.electromagictools.item.armour.googles.ItemSolarHelmetRevealing;
+import weissmoon.electromagictools.item.tool.ItemCoreDrill;
 import weissmoon.electromagictools.item.tool.ItemDiamondChainsaw;
 import weissmoon.electromagictools.item.tool.ItemDiamondOmniTool;
 import weissmoon.electromagictools.item.tool.ItemElectricHoeGrowth;
@@ -44,6 +45,7 @@ public class ModItems {
     public static final WeissItem materials = new ItemMaterials();
     public static final WeissItem onering = new ItemOneRing();
     public static final ItemWeissElectricTool thaumiumDrill = new ItemThaumiumDrill();
+    public static final ItemWeissElectricTool coreDrill = new ItemCoreDrill();
     public static final ItemWeissElectricTool diamondChainsaw = new ItemDiamondChainsaw();
     public static final ItemWeissElectricTool thaumiumChainsaw = new ItemThaumiumChainsaw();
     public static final ItemWeissElectricTool streamChainsaw = new ItemStreamChainsaw();
@@ -91,6 +93,7 @@ public class ModItems {
         GameRegistry.register(quantumBoots);
         GameRegistry.register(electricHoe);
         GameRegistry.register(thaumiumDrill);
+        GameRegistry.register(coreDrill);
         GameRegistry.register(diamondChainsaw);
         GameRegistry.register(thaumiumChainsaw);
         GameRegistry.register(streamChainsaw);

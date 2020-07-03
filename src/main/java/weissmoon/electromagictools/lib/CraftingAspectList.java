@@ -22,5 +22,6 @@ public class CraftingAspectList {
     public static AspectList thaumiumChainsaw = new AspectList().add(Aspect.TOOL, 16).add(Aspect.AVERSION, 16).add(Aspect.ENERGY, 16);
     public static AspectList thaumiumOmnitool = new AspectList().add(Aspect.TOOL, 25).add(Aspect.MECHANISM, 25).add(Aspect.ENERGY, 25).add(Aspect.AVERSION, 25);
     public static AspectList streamChainsaw = new AspectList().add(Aspect.ENERGY, 48).add(Aspect.MECHANISM, 48).add(Aspect.TOOL, 32).add(Aspect.WATER, 32);
+    public static AspectList coreDrill = new AspectList().add(Aspect.ENERGY, 48).add(Aspect.MECHANISM, 48).add(Aspect.TOOL, 32).add(Aspect.EARTH, 32);
     public static AspectList diamondOmnitool = new AspectList().add(Aspect.ORDER, 15).add(Aspect.AIR, 15);
 }

@@ -24,6 +24,7 @@ public class ElectricInfusionRecipe extends InfusionRecipe{
         super(research, output, inst, aspects, centralItem, recipe);
     }
 
+    @Override
     public Object getRecipeOutput(EntityPlayer player, ItemStack input, List<ItemStack> comps ) {
         ItemStack itemOuput = ((ItemStack)this.recipeOutput).copy();
         NBTTagCompound nbt = StackUtil.getOrCreateNbtData(itemOuput);
