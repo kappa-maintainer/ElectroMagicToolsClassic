@@ -29,6 +29,14 @@ version = "1.12.2-0.0.4"
 group= "weissmoon.electromagictools" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ElectroMagicToolsIC2C"
 
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 minecraft {
     version = "${mc_version}-${forge_version}"
     runDir = "run"
@@ -42,18 +50,9 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
-compileJava {
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
-}
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 
-configurations{
-    customCompile
-}
+
 
 repositories {
     maven {

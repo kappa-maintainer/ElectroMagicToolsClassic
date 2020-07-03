@@ -99,4 +99,19 @@ public class ItemSolarHelmetRevealing extends ItemQuantumGoggles {
     public CreativeTabs[] getCreativeTabs(){
         return new CreativeTabs[]{};
     }
+
+    @Override
+    public boolean isCropAnalyzer(ItemStack stack) {
+        return false;
+    }
+
+    @Override
+    public boolean isEUReader(ItemStack stack) {
+        return false;
+    }
+
+    @Override
+    public boolean isThermometer(ItemStack stack) {
+        return false;
+    }
 }

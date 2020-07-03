@@ -1,8 +1,12 @@
 package weissmoon.electromagictools.recipe;
 
+import ic2.api.classic.recipe.ClassicRecipes;
+import ic2.api.classic.recipe.crafting.ICraftingRecipeList;
 import ic2.api.item.IC2Items;
 import ic2.api.item.IElectricItem;
 import ic2.api.recipe.Recipes;
+import ic2.core.item.recipe.upgrades.FlagModifier;
+import ic2.core.platform.registry.Ic2Items;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -271,6 +275,16 @@ public class EMTRecipes {
                 'C', IC2Items.getItem("chainsaw"),
                 'D', IC2Items.getItem("drill"),
                 'p', refinedIron);
+
+        ICraftingRecipeList recipes = ClassicRecipes.advCrafting;
+        ItemStack helmet = new ItemStack(ModItems.quantumGoggles);
+        recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "EUReaderUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.euReader.copy());
+        recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "CropUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.cropAnalyzer.copy());
+        recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "ThermometerUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.thermometer.copy());
+        helmet = new ItemStack(ModItems.nanoGoggles);
+        recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "EUReaderUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.euReader.copy());
+        recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "CropUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.cropAnalyzer.copy());
+        recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "ThermometerUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.thermometer.copy());
 
         if(ElectroMagicTools.ic2ceLoaded){
             initIC2CERecipes();
