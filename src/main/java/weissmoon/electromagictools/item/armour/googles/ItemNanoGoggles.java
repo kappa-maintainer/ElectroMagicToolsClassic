@@ -5,7 +5,6 @@ import ic2.api.classic.item.IEUReader;
 import ic2.api.classic.item.IThermometer;
 import ic2.core.platform.registry.Ic2Lang;
 import ic2.core.util.misc.StackUtil;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -39,9 +38,9 @@ public class ItemNanoGoggles extends ItemElectricGoggles implements IEUReader, I
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        boolean shift = GuiScreen.isShiftKeyDown();
         NBTTagCompound nbt = StackUtil.getNbtData(stack);
         if (nbt.hasKey("EUReaderUpgrade") || nbt.hasKey("CropUpgrade") || nbt.hasKey("ThermometerUpgrade")){
+            boolean shift = Ic2Lang.isShiftDown(tooltip);
             if (shift){
                 if (nbt.hasKey("EUReaderUpgrade")) {
                     tooltip.add(Ic2Lang.upgradeEU.getLocalized());
@@ -54,8 +53,6 @@ public class ItemNanoGoggles extends ItemElectricGoggles implements IEUReader, I
                 if (nbt.hasKey("ThermometerUpgrade")) {
                     tooltip.add(Ic2Lang.upgradeThermo.getLocalized());
                 }
-            } else {
-                tooltip.add(Ic2Lang.pressShift.getLocalized());
             }
         }
     }
