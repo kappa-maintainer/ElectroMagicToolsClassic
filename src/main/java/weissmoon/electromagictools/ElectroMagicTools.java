@@ -1,6 +1,7 @@
 package weissmoon.electromagictools;
 
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -11,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 import thaumcraft.api.ThaumcraftApi;
 import weissmoon.core.client.creativetab.CreativeTabWeiss;
 import weissmoon.electromagictools.client.EMTTab;
+import weissmoon.electromagictools.event.EventHarvest;
 import weissmoon.electromagictools.item.ModItems;
 import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.recipe.EMTRecipes;
@@ -36,6 +38,7 @@ public class ElectroMagicTools {
         ic2ceLoaded = Loader.isModLoaded("ic2c_extras");
         gtcxLoaded = Loader.isModLoaded("gtc_expansion");
         ModItems.init();
+        MinecraftForge.EVENT_BUS.register(new EventHarvest());
     }
 
     @EventHandler

@@ -1,9 +1,12 @@
 package weissmoon.electromagictools.item.armour.boots;
 
+import ic2.api.classic.item.IDamagelessElectricItem;
+import ic2.api.classic.item.IElectricTool;
 import ic2.api.item.ElectricItem;
-import ic2.api.item.IElectricItem;
 import ic2.api.item.IMetalArmor;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -11,6 +14,7 @@ import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -39,7 +43,7 @@ import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 /**
  * Created by Weissmoon on 9/3/19.
  */
-public class ItemElectricBootsTraveller extends ItemArmourBase implements IElectricItem, IVisDiscountGear, IMetalArmor, ISpecialArmor {
+public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamagelessElectricItem, IVisDiscountGear, IMetalArmor, ISpecialArmor, IElectricTool {
 
     protected double maxCharge, transferLimit, jumpBonus;
     protected float speedBonus;
@@ -92,6 +96,16 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IElect
             list.add(stack);
             list.add(getChargedItem(this, 1));
         }
+    }
+
+    @Override
+    public boolean showDurabilityBar(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public double getDurabilityForDisplay(ItemStack stack) {
+        return 1.0D - ElectricItem.manager.getCharge(stack) / this.getMaxCharge(stack);
     }
 
     @Override
@@ -221,5 +235,20 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IElect
     public boolean playerHasBoots(EntityPlayer player){
         ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
         return stack.getItem() instanceof ItemElectricBootsTraveller;
+    }
+
+    @Override
+    public EnumEnchantmentType getType(ItemStack itemStack) {
+        return EnumEnchantmentType.ARMOR_FEET;
+    }
+
+    @Override
+    public boolean isSpecialSupported(ItemStack itemStack, Enchantment enchantment) {
+        return false;
+    }
+
+    @Override
+    public boolean isExcluded(ItemStack itemStack, Enchantment enchantment) {
+        return enchantment == Enchantments.MENDING || enchantment == Enchantments.THORNS;
     }
 }
