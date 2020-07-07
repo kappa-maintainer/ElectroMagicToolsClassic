@@ -78,9 +78,6 @@ public class ItemThaumiumDrill extends ItemWeissElectricTool implements IMiningD
     public void onSortedItemToolTip(ItemStack stack, EntityPlayer player, boolean debugTooltip, List<String> tooltip, Map<ToolTipType, List<String>> sortedTooltip) {
         NBTTagCompound nbt = StackUtil.getNbtData(stack);
         tooltip.add((nbt.getBoolean("dirtMode") ? Ic2InfoLang.enableDrillMode : Ic2InfoLang.disableDrillMode).getLocalized());
-        if (nbt.getBoolean("Rockcutter")) {
-            tooltip.add(Ic2InfoLang.drillRockCutter.getLocalized());
-        }
 
         List<String> ctrlTip = sortedTooltip.get(ToolTipType.Ctrl);
         ctrlTip.add(Ic2Lang.onItemRightClick.getLocalized());
