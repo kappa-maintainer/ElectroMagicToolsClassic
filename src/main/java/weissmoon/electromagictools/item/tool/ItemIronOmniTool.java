@@ -1,77 +1,46 @@
 package weissmoon.electromagictools.item.tool;
 
 import com.google.common.collect.Multimap;
+import ic2.api.classic.item.IMiningDrill;
 import ic2.api.item.ElectricItem;
-import ic2.api.item.IElectricItem;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IShearable;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import weissmoon.core.item.tools.WeissItemsPickaxe;
 import weissmoon.electromagictools.ElectroMagicTools;
+import weissmoon.electromagictools.item.ItemWeissElectricTool;
 import weissmoon.electromagictools.lib.Strings;
-
-import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 
 /**
  * Created by Weissmoon on 9/23/19.
  */
-public class ItemIronOmniTool extends WeissItemsPickaxe implements IElectricItem {
+public class ItemIronOmniTool extends ItemWeissElectricTool implements IMiningDrill {
 
-    protected int maxCharge, cost, hitCost, tier;
-    protected double transferLimit;
-    private static final String SHEARMODE_NBT_TAG= "shearsMode";
+    protected int hitCost;
+    protected static final String SHEARMODE_NBT_TAG= "shearsMode";
 
     public ItemIronOmniTool() {
-        super(ToolMaterial.IRON, Strings.Items.IRON_OMNITOOL_NAME);
-        this.maxCharge = 50000;
-        this.cost = 100;
-        this.hitCost = 125;
-        this.tier = 2;
-        this.transferLimit = 200;
+        this(7, ToolMaterial.IRON, Strings.Items.IRON_OMNITOOL_NAME, 20000, 200, 1);
         this.efficiency = 13;
-        this.attackDamage = 7;
+    }
+
+    public ItemIronOmniTool(int attackDamage, ToolMaterial material, String name, int maxCharge, int transferLimit, int tier) {
+        super(attackDamage, -3.0F, material, name);
+        this.maxCharge = maxCharge;
+        this.hitCost = (int)(operationEnergyCost * 1.5F);
+        this.tier = tier;
+        this.transferLimit = transferLimit;
         this.setCreativeTab(ElectroMagicTools.EMTtab);
-    }
-
-    public ItemIronOmniTool(ToolMaterial material, String name) {
-        super(material, name);
-        this.maxCharge = 0;
-        this.cost = 0;
-        this.hitCost = 0;
-        this.tier = 0;
-        this.transferLimit = 0;
-        this.efficiency = 0;
-        this.attackDamage = 0;
-        this.setCreativeTab(ElectroMagicTools.EMTtab);
-    }
-
-    @Override
-    public int getMaxDamage(ItemStack stack){
-        return this.cost;
-    }
-
-    @Override
-    public int getDamage(ItemStack stack){
-        return this.maxCharge - (int) ElectricItem.manager.getCharge(stack);
-    }
-
-    @Override
-    public boolean showDurabilityBar(ItemStack stack) {
-        return ElectricItem.manager.getCharge(stack) != this.maxCharge;
-    }
-
-    @Override
-    public double getDurabilityForDisplay(ItemStack stack){
-        return this.getDamage(stack) / this.maxCharge;
     }
 
     @Override
@@ -84,8 +53,8 @@ public class ItemIronOmniTool extends WeissItemsPickaxe implements IElectricItem
     }
 
     public float getDestroySpeed(ItemStack stack, IBlockState block) {
-        if (!ElectricItem.manager.canUse(stack, cost)) {
-            return 1.0F;
+        if (!ElectricItem.manager.canUse(stack, operationEnergyCost)) {
+            return 0.5F;
         }
 
         if (Items.IRON_AXE.getDestroySpeed(stack, block) > 1.0F ||
@@ -101,7 +70,7 @@ public class ItemIronOmniTool extends WeissItemsPickaxe implements IElectricItem
 
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker){
-        ElectricItem.manager.use(stack, ((ItemIronOmniTool)stack.getItem()).cost, attacker);
+        ElectricItem.manager.use(stack, hitCost, attacker);
         return true;
     }
 
@@ -133,16 +102,6 @@ public class ItemIronOmniTool extends WeissItemsPickaxe implements IElectricItem
         return false;
     }
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void getSubItems (CreativeTabs tab, NonNullList<ItemStack> list){
-        if (this.isInCreativeTab(tab)){
-            ItemStack stack = new ItemStack(this, 1, 0);
-            list.add(stack);
-            list.add(getChargedItem(this, 1));
-        }
-    }
-
     @Override
     public boolean canProvideEnergy(ItemStack stack) {
         return false;
@@ -161,5 +120,55 @@ public class ItemIronOmniTool extends WeissItemsPickaxe implements IElectricItem
     @Override
     public double getTransferLimit(ItemStack stack) {
         return this.transferLimit;
+    }
+
+    @Override
+    public EnumEnchantmentType getType(ItemStack itemStack) {
+        return EnumEnchantmentType.DIGGER;
+    }
+
+    @Override
+    public boolean isBasicDrill(ItemStack stack) {
+        return !stack.isItemEnchantable();
+    }
+
+    @Override
+    public int getExtraSpeed(ItemStack stack) {
+        int pointBoost = this.getPointBoost(stack);
+        return pointBoost;
+    }
+
+    private int getPointBoost(ItemStack stack) {
+        int lvl = EnchantmentHelper.getEnchantmentLevel(Enchantments.EFFICIENCY, stack);
+        return lvl <= 0 ? 0 : lvl * lvl + 1;
+    }
+
+    @Override
+    public int getExtraEnergyCost(ItemStack stack) {
+        int points = this.getEnergyChange(stack);
+        return Math.max(points, 0);
+    }
+
+    @Override
+    public void useDrill(ItemStack stack) {
+        ElectricItem.manager.use(stack, this.getEnergyCost(stack), null);
+    }
+
+    @Override
+    public boolean canMine(ItemStack stack) {
+        return ElectricItem.manager.canUse(stack, this.getEnergyCost(stack));
+    }
+
+    @Override
+    public boolean canMineBlock(ItemStack itemStack, IBlockState iBlockState, IBlockAccess worldIn, BlockPos blockPos) {
+        return ForgeHooks.canToolHarvestBlock(worldIn, blockPos, itemStack);
+    }
+
+    public int getEnergyChange(ItemStack stack) {
+        int eff = EnchantmentHelper.getEnchantmentLevel(Enchantments.EFFICIENCY, stack);
+        int unb = EnchantmentHelper.getEnchantmentLevel(Enchantments.UNBREAKING, stack);
+        int points = eff * eff + 1;
+        points -= unb * (unb + unb);
+        return points;
     }
 }

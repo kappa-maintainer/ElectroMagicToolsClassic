@@ -42,6 +42,7 @@ tooltip.EMT.hammer.broken.plsNoRightClick=Do NOT right-click.
 tooltip.EMT.hammer.broken.plsRightClick=Do right-click.
 
 tooltip.diamondChainsawShearToggle.name=Enable/Disable Shearing
+tooltip.diamondOmnitoolToggle.name=Cycle through Shearing and Dirt Modes
 message.diamondChainsawNormal.name=Enabled Shearing
 message.diamondChainsawNoShear.name=Disabled Shearing
 

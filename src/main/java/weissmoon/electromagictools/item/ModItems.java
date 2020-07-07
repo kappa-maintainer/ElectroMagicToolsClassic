@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import weissmoon.core.item.WeissItem;
 import weissmoon.core.item.armour.ItemArmourBase;
-import weissmoon.core.item.tools.WeissItemsPickaxe;
 import weissmoon.electromagictools.item.armour.boots.ItemElectricBootsTraveller;
 import weissmoon.electromagictools.item.armour.boots.ItemNanoBootsTraveller;
 import weissmoon.electromagictools.item.armour.boots.ItemQuantumBootsTraveller;
@@ -49,9 +48,9 @@ public class ModItems {
     public static final ItemWeissElectricTool diamondChainsaw = new ItemDiamondChainsaw();
     public static final ItemWeissElectricTool thaumiumChainsaw = new ItemThaumiumChainsaw();
     public static final ItemWeissElectricTool streamChainsaw = new ItemStreamChainsaw();
-    public static final WeissItemsPickaxe ironOmnitool = new ItemIronOmniTool();
-    public static final WeissItemsPickaxe diamondOmnitool = new ItemDiamondOmniTool();
-    public static final WeissItemsPickaxe thaumiumOmnitool = new ItemThaumiumOmniTool();
+    public static final ItemWeissElectricTool ironOmnitool = new ItemIronOmniTool();
+    public static final ItemWeissElectricTool diamondOmnitool = new ItemDiamondOmniTool();
+    public static final ItemWeissElectricTool thaumiumOmnitool = new ItemThaumiumOmniTool();
     public static final Item stormCaster = new ItemStormCaster();
     public static final Item mjölnir = new ItemMjölnir();
 

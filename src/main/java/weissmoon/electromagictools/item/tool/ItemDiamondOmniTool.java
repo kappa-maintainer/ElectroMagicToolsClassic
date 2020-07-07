@@ -1,31 +1,66 @@
 package weissmoon.electromagictools.item.tool;
 
+import ic2.api.classic.item.IScannerItem;
+import ic2.api.item.ElectricItem;
+import ic2.core.IC2;
+import ic2.core.platform.lang.storage.Ic2InfoLang;
+import ic2.core.platform.registry.Ic2Items;
+import ic2.core.platform.registry.Ic2Lang;
+import ic2.core.util.misc.StackUtil;
+import ic2.core.util.obj.ToolTipType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
-import weissmoon.electromagictools.ElectroMagicTools;
+import weissmoon.core.utils.NBTHelper;
+import weissmoon.electromagictools.lib.LocaleComps;
 import weissmoon.electromagictools.lib.Strings;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by Weissmoon on 9/23/19.
  */
 public class ItemDiamondOmniTool extends ItemIronOmniTool {
-
+    protected static String NBT_DIRT_MODE = "dirtMode";
     public ItemDiamondOmniTool() {
-        super(ToolMaterial.DIAMOND, Strings.Items.DIAMOND_OMNITOOL_NAME);
-        this.maxCharge = 100000;
-        this.cost = 200;
-        this.hitCost = 250;
-        this.tier = 2;
-        this.transferLimit = 400;
+        super(9, ToolMaterial.DIAMOND, Strings.Items.DIAMOND_OMNITOOL_NAME, 20000, 200, 1);
+        this.operationEnergyCost = 100;
         this.efficiency = 16;
-        this.attackDamage = 9;
-        this.setCreativeTab(ElectroMagicTools.EMTtab);
     }
 
-    public ItemDiamondOmniTool(ToolMaterial material, String name) {
-        super(material, name);
+    public ItemDiamondOmniTool(int attackDamage, ToolMaterial material, String name, int maxCharge, int transferLimit, int tier) {
+        super(attackDamage, material, name, maxCharge, transferLimit, tier);
+    }
+
+    @Override
+    public void onSortedItemToolTip(ItemStack stack, EntityPlayer player, boolean debugTooltip, List<String> tooltip, Map<ToolTipType, List<String>> sortedTooltip) {
+        NBTTagCompound tag = StackUtil.getOrCreateNbtData(stack);
+        tooltip.add((!tag.getBoolean(SHEARMODE_NBT_TAG) ? LocaleComps.MESSAGE_DIAMOND_CHAINSAW_NORMAL : LocaleComps.MESSAGE_DIAMOND_CHAINSAW_NO_SHEAR).getLocalized());
+        tooltip.add((tag.getBoolean(NBT_DIRT_MODE) ? Ic2InfoLang.enableDrillMode : Ic2InfoLang.disableDrillMode).getLocalized());
+        List<String> ctrlTip = sortedTooltip.get(ToolTipType.Ctrl);
+        ctrlTip.add(Ic2Lang.onItemRightClick.getLocalized());
+        ctrlTip.add(Ic2Lang.pressTo.getLocalizedFormatted(IC2.keyboard.getKeyName(2), LocaleComps.DIAMOND_OMNITOOL_TOGGLE.getLocalized()));
+        ctrlTip.add("");
+        ctrlTip.add(Ic2Lang.onBlockClick.getLocalized());
+        ctrlTip.add(Ic2Lang.pressTo.getLocalizedFormatted(IC2.keyboard.getKeyName(0), Ic2InfoLang.drillProbing.getLocalized()));
     }
 
     @Override
@@ -38,7 +73,146 @@ public class ItemDiamondOmniTool extends ItemIronOmniTool {
     }
 
     @Override
+    public float getDestroySpeed(ItemStack stack, IBlockState block) {
+        if (!ElectricItem.manager.canUse(stack, operationEnergyCost)) {
+            return 0.5F;
+        }
+        NBTTagCompound nbt = StackUtil.getOrCreateNbtData(stack);
+        if (nbt.getBoolean(NBT_DIRT_MODE) && block.getMaterial() == Material.GROUND) {
+            return efficiency / 8.0F;
+        }
+        return super.getDestroySpeed(stack, block);
+    }
+
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand handIn){
+        ItemStack stack = player.getHeldItem(handIn);
+        NBTTagCompound tag = StackUtil.getOrCreateNbtData(stack);
+
+
+        if (IC2.keyboard.isModeSwitchKeyDown(player)) {
+            if (IC2.platform.isRendering()){
+                return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
+            }
+            BreakModes mode = BreakModes.fromBool(tag.getBoolean(SHEARMODE_NBT_TAG), tag.getBoolean(NBT_DIRT_MODE)).cycle(player);
+            tag.setBoolean(NBT_DIRT_MODE, mode.dirtMode);
+            tag.setBoolean(SHEARMODE_NBT_TAG, mode.shearMode);
+            return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
+        }
+
+        if (IC2.keyboard.isAltKeyDown(player) && !this.getScanner(player.inventory).isEmpty()) {
+            return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
+        }
+
+        return super.onItemRightClick(world, player, handIn);
+    }
+
+    @Override
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (IC2.keyboard.isAltKeyDown(player)) {
+            return Ic2Items.diamondDrill.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+        }
+        return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+    }
+
+    public ItemStack getScanner(InventoryPlayer player) {
+        ItemStack result = ItemStack.EMPTY;
+
+        for(int i = 0; i < 9; ++i) {
+            ItemStack stack = player.getStackInSlot(i);
+            if (stack.getItem() instanceof IScannerItem) {
+                result = stack;
+                break;
+            }
+        }
+
+        if (result.isEmpty()) {
+            ItemStack stack = player.player.getHeldItemOffhand();
+            if (stack.getItem() instanceof IScannerItem) {
+                result = stack;
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, EntityPlayer player){
+        if(NBTHelper.getBoolean(itemstack, SHEARMODE_NBT_TAG) || player.world.isRemote)
+            return false;
+
+        return Ic2Items.chainSaw.getItem().onBlockStartBreak(itemstack, pos, player);
+    }
+
+    @Override
+    public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand){
+        if(NBTHelper.getBoolean(stack, SHEARMODE_NBT_TAG) || player.world.isRemote){
+            return false;
+        }
+
+        if (target instanceof IShearable) {
+            BlockPos tatgetPos = new BlockPos((int) target.posX, (int) target.posY, (int) target.posZ);
+            if ((((IShearable)target).isShearable(stack, target.world, tatgetPos))) {
+                List<ItemStack> drops = ((IShearable)target).onSheared(stack, target.world, tatgetPos, EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByLocation("fortune"), stack));
+
+                Random rand = new Random();
+                for (ItemStack istack : drops) {
+                    EntityItem ent = target.entityDropItem(istack, 1.0F);
+                    ent.motionY += rand.nextFloat() * 0.05F;
+                    ent.motionX += (rand.nextFloat() - rand.nextFloat()) * 0.1F;
+                    ent.motionZ += (rand.nextFloat() - rand.nextFloat()) * 0.1F;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public int getItemEnchantability() {
         return 4;
+    }
+
+    enum BreakModes{
+        SHEARMODE_AND_DIRTMODE(false, true),
+        SHEARMODE_ONLY(false, false),
+        DIRTMODE_ONLY(true, true),
+        NEITHER(true, false);
+        boolean shearMode;
+        boolean dirtMode;
+        BreakModes(boolean shearMode, boolean dirtMode){
+            this.shearMode = shearMode;
+            this.dirtMode = dirtMode;
+        }
+
+        static BreakModes fromBool(boolean shear, boolean dirt){
+            if (!shear && dirt){
+                return SHEARMODE_AND_DIRTMODE;
+            } else if (!shear){
+                return SHEARMODE_ONLY;
+            } else if (dirt){
+                return DIRTMODE_ONLY;
+            } else {
+                return NEITHER;
+            }
+        }
+
+        BreakModes cycle(EntityPlayer player){
+            if (this == SHEARMODE_AND_DIRTMODE){
+                IC2.platform.messagePlayer(player, TextFormatting.RED, Ic2InfoLang.disableDrillMode);
+                return SHEARMODE_ONLY;
+            } else if (this == SHEARMODE_ONLY){
+                IC2.platform.messagePlayer(player, TextFormatting.RED, LocaleComps.MESSAGE_DIAMOND_CHAINSAW_NO_SHEAR);
+                IC2.platform.messagePlayer(player, TextFormatting.GREEN, Ic2InfoLang.enableDrillMode);
+                return DIRTMODE_ONLY;
+            } else if (this == DIRTMODE_ONLY){
+                IC2.platform.messagePlayer(player, TextFormatting.RED, Ic2InfoLang.disableDrillMode);
+                return NEITHER;
+            } else {
+                IC2.platform.messagePlayer(player, TextFormatting.GREEN, LocaleComps.MESSAGE_DIAMOND_CHAINSAW_NORMAL);
+                IC2.platform.messagePlayer(player, TextFormatting.GREEN, Ic2InfoLang.enableDrillMode);
+                return SHEARMODE_AND_DIRTMODE;
+            }
+        }
     }
 }
