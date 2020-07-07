@@ -171,7 +171,7 @@ public class ItemDiamondChainsaw extends ItemWeissElectricTool implements IModes
 
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand){
-        if(!NBTHelper.getBoolean(stack, SHEARMODE_NBT_TAG) || player.world.isRemote){
+        if(NBTHelper.getBoolean(stack, SHEARMODE_NBT_TAG) || player.world.isRemote){
             return false;
         }
 

@@ -1,13 +1,17 @@
 package weissmoon.electromagictools.item.tool;
 
 import ic2.api.classic.item.IDamagelessElectricItem;
+import ic2.api.classic.item.IElectricTool;
 import ic2.api.item.ElectricItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
@@ -36,7 +40,7 @@ import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 /**
  * Created by Weissmoon on 9/6/19.
  */
-public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessElectricItem {
+public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessElectricItem, IElectricTool {
 
     private Random all0 = new Random(){
         public int nextInt(int na){
@@ -178,5 +182,20 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessEl
     @Override
     public double getTransferLimit(ItemStack stack) {
         return 1000;
+    }
+
+    @Override
+    public EnumEnchantmentType getType(ItemStack itemStack) {
+        return EnumEnchantmentType.BREAKABLE;
+    }
+
+    @Override
+    public boolean isSpecialSupported(ItemStack itemStack, Enchantment enchantment) {
+        return enchantment == Enchantments.FORTUNE || enchantment == Enchantments.UNBREAKING;
+    }
+
+    @Override
+    public boolean isExcluded(ItemStack itemStack, Enchantment enchantment) {
+        return enchantment == Enchantments.MENDING;
     }
 }
