@@ -22,8 +22,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.items.IGoggles;
 import thaumcraft.api.items.IVisDiscountGear;
+import weissmoon.core.client.render.IIconRegister;
 import weissmoon.core.item.armour.ItemArmourBase;
 import weissmoon.electromagictools.ElectroMagicTools;
+import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.lib.Textures;
 
@@ -52,6 +54,7 @@ public class ItemElectricGoggles extends ItemArmourBase implements IDamagelessEl
 
     protected ItemElectricGoggles(String name, ArmorMaterial material) {
         super(name , material, 0, EntityEquipmentSlot.HEAD);
+        this.setUnlocalizedName(Reference.MOD_ID + "." + name);
         setCreativeTab(ElectroMagicTools.EMTtab);
         this.maxCharge = 0;
         this.transferLimit = 0;
@@ -72,6 +75,11 @@ public class ItemElectricGoggles extends ItemArmourBase implements IDamagelessEl
     @Override
     public CreativeTabs[] getCreativeTabs(){
         return new CreativeTabs[]{ElectroMagicTools.EMTtab, CreativeTabs.COMBAT};
+    }
+
+    @Override
+    public void registerIcons(IIconRegister iconRegister) {
+        this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
     }
 
     @SideOnly(Side.CLIENT)

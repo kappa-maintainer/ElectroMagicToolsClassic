@@ -27,8 +27,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.items.IVisDiscountGear;
+import weissmoon.core.client.render.IIconRegister;
 import weissmoon.core.item.armour.ItemArmourBase;
 import weissmoon.electromagictools.ElectroMagicTools;
+import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.lib.Textures;
 
@@ -67,6 +69,7 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
     protected ItemElectricBootsTraveller(String name, ArmorMaterial materialIn) {
         super(name, materialIn, 0, EntityEquipmentSlot.FEET);
         setCreativeTab(ElectroMagicTools.EMTtab);
+        this.setUnlocalizedName(Reference.MOD_ID + "." + name);
         this.maxCharge = 0;
         this.transferLimit = 0;
         this.jumpBonus = 0;
@@ -96,6 +99,11 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
             list.add(stack);
             list.add(getChargedItem(this, 1));
         }
+    }
+
+    @Override
+    public void registerIcons(IIconRegister iconRegister) {
+        this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
     }
 
     @Override

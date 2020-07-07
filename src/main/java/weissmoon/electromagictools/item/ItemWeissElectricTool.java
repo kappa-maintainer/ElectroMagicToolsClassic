@@ -14,7 +14,7 @@ public abstract class ItemWeissElectricTool extends ItemElectricTool implements 
     public ItemWeissElectricTool(float attackDamageIn, float attackSpeedIn, ToolMaterial material, String name) {
         super(attackDamageIn, attackSpeedIn, material);
         this.regName = name;
-        this.setUnlocalizedName(getModID().toLowerCase() + ":" + this.regName);
+        this.setUnlocalizedName(getModID().toLowerCase() + "." + this.regName);
         this.setRegistryName(getModID().toLowerCase() + ":" + this.regName);
         WeissItemRegistry.weissItemRegistry.regItem(this);
     }
@@ -36,6 +36,6 @@ public abstract class ItemWeissElectricTool extends ItemElectricTool implements 
 
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIconWeiss = iconRegister.registerIcon(this, this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
+        this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
     }
 }

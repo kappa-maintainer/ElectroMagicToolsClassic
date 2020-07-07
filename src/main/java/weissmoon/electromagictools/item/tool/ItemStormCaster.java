@@ -14,10 +14,12 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import org.lwjgl.input.Keyboard;
+import thaumcraft.common.entities.projectile.EntityAlumentum;
+import weissmoon.core.client.render.IIconRegister;
 import weissmoon.core.item.tools.WeissItemSword;
 import weissmoon.electromagictools.ElectroMagicTools;
+import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
-import thaumcraft.common.entities.projectile.EntityAlumentum;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -30,6 +32,7 @@ public class ItemStormCaster extends WeissItemSword {
 
     public ItemStormCaster() {
         super(ToolMaterial.DIAMOND, Strings.Items.STORMBRINGER_NAME);
+        this.setUnlocalizedName(Reference.MOD_ID + "." + Strings.Items.STORMBRINGER_NAME);
         setMaxDamage(1000);
         setCreativeTab(ElectroMagicTools.EMTtab);
     }
@@ -71,5 +74,10 @@ public class ItemStormCaster extends WeissItemSword {
         }
 
         return multimap;
+    }
+
+    @Override
+    public void registerIcons(IIconRegister iconRegister) {
+        this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
     }
 }
