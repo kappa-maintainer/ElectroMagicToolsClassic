@@ -15,11 +15,11 @@ public class ItemNanoGoggles extends ItemElectricGoggles {
 
     public ItemNanoGoggles() {
         super(Strings.Items.NANO_GOGGLES_NAME, ArmorMaterial.IRON);
-        this.maxCharge = 1000000;
-        this.transferLimit = 1600;
-        this.tier = 3;
-        this.energyPerDamage = 5000;
-        this.visDiscount = 6;
+        maxCharge = 1000000;
+        transferLimit = 1600;
+        tier = 2;
+        energyPerDamage = 5000;
+        visDiscount = 6;
     }
 
     @Nullable

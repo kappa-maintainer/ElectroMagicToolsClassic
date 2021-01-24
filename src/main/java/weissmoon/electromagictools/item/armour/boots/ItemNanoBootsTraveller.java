@@ -15,28 +15,31 @@ public class ItemNanoBootsTraveller extends ItemElectricBootsTraveller {
 
     public ItemNanoBootsTraveller(){
         super(Strings.Items.NANO_BOOTS_NAME, ArmorMaterial.IRON);
-        this.maxCharge = 100000;
-        this.transferLimit = 1600;
-        this.jumpBonus = 0.4;
-        this.speedBonus = 0.04F;
-        this.tier = 3;
-        this.energyPerDamage = 5000;
-        this.visDiscount = 4;
+        maxCharge = 100000;
+        transferLimit = 1600;
+        jumpBonus = 0.4F;
+        speedBonus = 0.04F;
+        tier = 2;
+        energyPerDamage = 5000;
+        visDiscount = 4;
     }
 
-    ItemNanoBootsTraveller(String name, ArmorMaterial materialIn) {
+    ItemNanoBootsTraveller(String name, ArmorMaterial materialIn){
         super(name, materialIn);
     }
 
     @Nullable
     @Override
-    public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
-    {
+    public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type){
         return Textures.Armour.NANO_ARMOUR_TEXTURE;
     }
 
     @Override
-    protected double getAbsorptionRatio() {
+    protected double getAbsorptionRatio(){
         return 0.9;
+    }
+
+    public int getEnergyPerDamage(){
+        return energyPerDamage;
     }
 }

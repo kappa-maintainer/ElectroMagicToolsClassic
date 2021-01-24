@@ -1,0 +1,21 @@
+{
+  "display": {
+    "icon": {
+      "item": "welectromagic:itemEntropyStaff"
+    },
+    "title": {
+      "translate": "advancements.welectromagic.hitbauble.name"
+    },
+    "description": {
+      "translate": "advancements.welectromagic.hitbauble.desc"
+    },
+    "frame": "challenge",
+    "hidden": true
+  },
+  "parent": "welectromagic:electrothaumic/root",
+  "criteria": {
+    "wings": {
+      "trigger": "welectromagic:baubledeathhit"
+    }
+  }
+}

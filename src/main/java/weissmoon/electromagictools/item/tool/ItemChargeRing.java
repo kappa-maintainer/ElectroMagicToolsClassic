@@ -16,6 +16,7 @@ import weissmoon.core.api.client.item.IItemRenderCustom;
 import weissmoon.core.api.client.item.IItemRenderer;
 import weissmoon.core.client.render.IIcon;
 import weissmoon.core.client.render.IIconRegister;
+import weissmoon.core.client.render.renderOverride.CustomRenderRegistry;
 import weissmoon.core.item.WeissItem;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Reference;
@@ -39,16 +40,14 @@ public class ItemChargeRing extends WeissItem implements IBauble, IItemRenderCus
         try{
             int i = itemstack.getMetadata();
             sub = String.valueOf(i).intern();
-        }catch (ArrayIndexOutOfBoundsException e){
-            //sub = sub;
-        }
+        }catch (ArrayIndexOutOfBoundsException ignored){}
         return "item." + Reference.MOD_ID + ":" + Strings.Items.CHARGE_RING_NAME + sub;
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void getSubItems(@Nonnull CreativeTabs creativeTabs, @Nonnull NonNullList<ItemStack> list) {
-        if (!this.isInCreativeTab(creativeTabs))
+        if (!isInCreativeTab(creativeTabs))
             return;
 
         list.add(new ItemStack(this, 1, 0));
@@ -56,24 +55,22 @@ public class ItemChargeRing extends WeissItem implements IBauble, IItemRenderCus
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons (IIconRegister iconRegister){
-        this.itemIconWeiss = iconRegister.registerIcon(this, getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1));
-        this.itemIconArray = new IIcon[2];
-        this.itemIconArray[0] = iconRegister.registerIcon(this, Reference.MOD_ID + ":" + "itemarmourring");
-        this.itemIconArray[1] = iconRegister.registerIcon(this, Reference.MOD_ID + ":" + "iteminventoryring");
+    public void registerIcons(IIconRegister iconRegister){
+        itemIconWeiss = iconRegister.registerIcon(this, getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1));
+        itemIconArray = new IIcon[2];
+        itemIconArray[0] = iconRegister.registerIcon(this, Reference.MOD_ID + ":" + "itemarmourring");
+        itemIconArray[1] = iconRegister.registerIcon(this, Reference.MOD_ID + ":" + "iteminventoryring");
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public IIcon getIcon (ItemStack stack, int pass){
+    public IIcon getIcon(ItemStack stack, int pass){
         int i = stack.getMetadata();
         try {
             if (itemIconArray[i] != null)
                 return itemIconArray[i];
-        }catch (ArrayIndexOutOfBoundsException e){
-            //e.printStackTrace();
-        }
-        return this.itemIconWeiss;
+        }catch (ArrayIndexOutOfBoundsException ignored){}
+        return itemIconWeiss;
     }
 
     @Override
@@ -111,22 +108,6 @@ public class ItemChargeRing extends WeissItem implements IBauble, IItemRenderCus
 
     @Override
     public IItemRenderer getIItemRender() {
-        return new IItemRenderer(){
-            @Override
-            public boolean handleRenderType(ItemStack item, ItemCameraTransforms.TransformType cameraTransformType) {
-                return false;
-            }
-
-            @Override
-            public boolean shouldUseRenderHelper(ItemCameraTransforms.TransformType cameraTransformType, ItemStack item, IItemRenderer.ItemRendererHelper
-            helper) {
-                return false;
-            }
-
-            @Override
-            public void renderItem(ItemCameraTransforms.TransformType cameraTransformType, ItemStack item, Object... data) {
-
-            }
-        };
+        return CustomRenderRegistry.getMissingRender();
     }
 }

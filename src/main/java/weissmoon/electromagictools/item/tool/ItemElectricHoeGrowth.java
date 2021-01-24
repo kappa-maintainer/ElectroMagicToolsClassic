@@ -1,7 +1,7 @@
 package weissmoon.electromagictools.item.tool;
 
+import ic2.api.classic.item.IDamagelessElectricItem;
 import ic2.api.item.ElectricItem;
-import ic2.api.item.IElectricItem;
 import net.minecraft.block.IGrowable;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,21 +24,24 @@ import javax.annotation.Nonnull;
 import java.util.Random;
 
 import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
+import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
 
 /**
  * Created by Weissmoon on 9/6/19.
  */
-public class ItemElectricHoeGrowth extends WeissItemHoe implements IElectricItem{
+public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessElectricItem {
 
     private Random all0 = new Random(){
         public int nextInt(int na){
             return 0;
         }
     };
+    private final int maxCharge = 200000;
+
     public ItemElectricHoeGrowth() {
         super(ThaumcraftMaterials.TOOLMAT_THAUMIUM, Strings.Items.ELECTRIC_HOE_NAME);
         setNoRepair();
-        this.setCreativeTab(ElectroMagicTools.EMTtab);
+        setCreativeTab(ElectroMagicTools.EMTtab);
     }
 
     @Override
@@ -94,11 +97,21 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IElectricItem
     @SideOnly(Side.CLIENT)
     @Override
     public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> list) {
-        if (this.isInCreativeTab(tab)){
+        if (isInCreativeTab(tab)){
             ItemStack stack = new ItemStack(this, 1, 0);
             list.add(stack);
             list.add(getChargedItem(this, 1));
         }
+    }
+
+    @Override
+    public boolean showDurabilityBar(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public double getDurabilityForDisplay(ItemStack stack){
+        return getElectricDurability(stack);
     }
 
     @Override
@@ -108,7 +121,7 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IElectricItem
 
     @Override
     public double getMaxCharge(ItemStack stack) {
-        return 200000;
+        return maxCharge;
     }
 
     @Override

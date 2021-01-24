@@ -100,7 +100,7 @@
       "name": "item.welectromagic:itemNanoBoots.name",
       "icons": ["welectromagic:itemNanoBoots;1;1"],
       "category": "WEMT",
-      "parents": ["ELECTRICBOOTS", "INFUSION"],
+      "parents": ["ELECTRICBOOTS", "INFUSION", "METALLURGY"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
       "location": [4, 0],
@@ -180,9 +180,9 @@
       "name": "item.welectromagic:itemDiamondChainsaw.name",
       "icons": ["welectromagic:itemDiamondChainsaw"],
       "category": "WEMT",
-      "parents": ["~FIRSTSTEPS", "~ELECTROTHAUMICTOOLS"],
+      "parents": ["~FIRSTSTEPS"],
       "siblings": [],
-      "meta": ["ROUND", "HIDDEN"],
+      "meta": ["ROUND"],
       "location": [5, -6],
       "stages": [
         {
@@ -235,10 +235,10 @@
       "name": "item.welectromagic:itemThaumiumDrill.name",
       "icons": ["welectromagic:itemThaumiumDrill"],
       "category": "WEMT",
-      "parents": ["~ELECTROTHAUMICTOOLS", "METALLURGY"],
+      "parents": ["~ELECTROTHAUMICTOOLS", "METALLURGY", "INFUSION"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
-      "location": [-1, -2],
+      "location": [-1, -3],
       "stages": [
         {
           "text": "wemt.research.itemThaumiumDrill.stage.1",
@@ -255,10 +255,10 @@
       "name": "item.welectromagic:itemThaumiumChainsaw.name",
       "icons": ["welectromagic:itemThaumiumChainsaw"],
       "category": "WEMT",
-      "parents": ["~ELECTROTHAUMICTOOLS", "METALLURGY", "~DIAMONDCHAINSAW"],
+      "parents": ["~ELECTROTHAUMICTOOLS", "METALLURGY", "INFUSION", "~DIAMONDCHAINSAW"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
-      "location": [-2, -2],
+      "location": [-1, -2],
       "stages": [
         {
           "text": "wemt.research.itemThaumiumChainsaw.stage.1",
@@ -282,6 +282,7 @@
       "stages": [
         {
           "text": "wemt.research.itemStreamChainsaw.stage.1",
+          "required_craft": ["thaumcraft:elemental_pick"],
           "required_item": ["thaumcraft:log_greatwood"]
         },
         {
@@ -342,7 +343,7 @@
       "name": "item.welectromagic:itemThaumiumOmniTool.name",
       "icons": ["welectromagic:itemThaumiumOmniTool"],
       "category": "WEMT",
-      "parents": ["DIAMONDOMNITOOL", "INFUSION"],
+      "parents": ["DIAMONDOMNITOOL", "METALLURGY@2", "INFUSION"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
       "location": [-6, 0],
@@ -353,14 +354,19 @@
         },
         {
           "text": "wemt.research.itemThaumicOmniTool.stage.2",
-          "recipes": ["welectromagic:thaumiumomnitoolupgrade"]
+          "recipes": ["thaumcraft:nitor"]
         }
       ],
       "addenda": [
         {
-          "text": "",
+          "text": "wemt.research.itemThaumicOmniTool.addenda.1",
           "recipes": ["welectromagic:thaumiumtool"],
-          "required_research":["THAUMIUMCHAINSAW", "THAUMIUMDRILL"]
+          "required_research":["THAUMIUMCHAINSAW", "METALLURGY", "THAUMIUMDRILL"]
+        },
+        {
+          "text": "",
+          "recipes": ["welectromagic:thaumiumomnitoolupgrade"],
+          "required_research":["TUBES"]
         }
       ]
     },
@@ -418,6 +424,532 @@
       "stages": [
         {
           "text": "wemt.research.itemLightningSummoner.stage.2"
+        }
+      ]
+    },
+    {
+      "key": "FEATHERWINGS",
+      "name": "item.welectromagic:itemFeatherWings.name",
+      "icons": ["welectromagic:itemFeatherWings"],
+      "category": "WEMT",
+      "parents": ["~ELECTROTHAUMICTOOLS"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [0, -2],
+      "stages": [
+        {
+          "text": "wemt.research.itemFeatherWings.stage.1",
+          "required_craft": ["welectromagic:itemmaterial;1;2"],
+          "recipes": ["welectromagic:feathermesh"]
+        },
+        {
+          "text": "wemt.research.itemFeatherWings.stage.2",
+          "recipes": ["welectromagic:cardboard", "welectromagic:feathermesh", "welectromagic:featherwing", "welectromagic:featherwings"]
+        }
+      ]
+    },
+    {
+      "key": "THAUMICWINGS",
+      "name": "item.welectromagic:itemThaumiumWings.name",
+      "icons": ["welectromagic:itemThaumiumWings"],
+      "category": "WEMT",
+      "parents": ["FEATHERWINGS", "METALLURGY"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [0, -4],
+      "stages": [
+        {
+          "text": "wemt.research.itemThaumiumWings.stage.1",
+          "required_craft": ["welectromagic:itemmaterial;1;2"]
+        },
+        {
+          "text": "wemt.research.itemThaumiumWings.stage.2",
+          "recipes": ["welectromagic:thaumiumwing", "welectromagic:thaumiumwings"]
+        }
+      ]
+    },
+    {
+      "key": "NANOWINGS",
+      "name": "item.welectromagic:itemNanoWings.name",
+      "icons": ["welectromagic:itemNanoWings"],
+      "category": "WEMT",
+      "parents": ["THAUMICWINGS", "INFUSION"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [0, -6],
+      "stages": [
+        {
+          "text": "wemt.research.itemNanoWings.stage.1",
+          "required_item": ["thaumcraft:nitor_yellow"]
+        },
+        {
+          "text": "wemt.research.itemNanoWings.stage.2",
+          "recipes": ["welectromagic:nanowings"]
+        }
+      ]
+    },
+    {
+      "key": "QUANTUMWINGS",
+      "name": "item.welectromagic:itemQuantumWings.name",
+      "icons": ["welectromagic:itemQuantumWings"],
+      "category": "WEMT",
+      "parents": ["NANOWINGS"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [0, -8],
+      "stages": [
+        {
+          "text": "wemt.research.itemQuantumWings.stage.1",
+          "required_item": ["thaumcraft:nitor_yellow"]
+        },
+        {
+          "text": "wemt.research.itemQuantumWings.stage.2",
+          "recipes": ["welectromagic:quantumwings"]
+        }
+      ]
+    },
+    {
+      "key": "ROCKBREAKERDRILL",
+      "name": "item.welectromagic:itemRockbreakerDrill.name",
+      "icons": ["welectromagic:itemRockbreakerDrill"],
+      "category": "WEMT",
+      "parents": ["THAUMIUMDRILL", "ELEMENTALTOOLS"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-2, -4],
+      "stages": [
+        {
+          "text": "wemt.research.itemRockbreakerDrill.stage.1",
+          "required_craft": ["thaumcraft:elemental_pick"]
+        },
+        {
+          "text": "wemt.research.itemRockbreakerDrill.stage.2",
+          "recipes": ["welectromagic:rockbreakerdrill"]
+        }
+      ]
+    },
+    {
+      "key": "UUCRYSTAL",
+      "name": "wemt.research.crystalUU.name",
+      "icons": ["welectromagic:itemMaterial;1;10"],
+      "category": "WEMT",
+      "parents": ["UNLOCKALCHEMY", "INFUSION"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [5, -5],
+      "stages": [
+        {
+          "text": "wemt.research.crystalUU.stage.1",
+          "required_knowledge": ["THEORY;ELDRITCH;1", "THEORY;INFUSION;1"]
+        },
+        {
+          "text": "wemt.research.crystalUU.stage.2",
+          "recipes": ["welectromagic:uumattercrystal", "welectromagic:uuglowstone", "welectromagic:uulapis",
+            "welectromagic:uuredstone", "welectromagic:uuresin", "welectromagic:uucoal", "welectromagic:uuuranium",
+            "welectromagic:uulead", "welectromagic:uutin", "welectromagic:uucopper", "welectromagic:uuiron",
+            "welectromagic:uugold", "welectromagic:uudiamond", "welectromagic:uuuraniumd", "welectromagic:uuiridium"
+          ],
+          "warp": 5
+        }
+      ]
+    },
+    {
+      "key": "COMPRESSEDSOLAR",
+      "name": "item.welectromagic:blockSolarPanel.name",
+      "icons": ["welectromagic:blockSolarPanel", "welectromagic:blockSolarPanel;1;8"],
+      "category": "WEMT",
+      "parents": ["~ELECTROTHAUMICTOOLS", "UNLOCKALCHEMY"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [9, -2],
+      "stages": [
+        {
+          "text": "wemt.research.blockSolarPanel.stage.1",
+          "required_item":[
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'aer'}]}",
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'terra'}]}",
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'ignis'}]}",
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'aqua'}]}",
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'ordo'}]}",
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'perditio'}]}"
+          ]
+        },
+        {
+          "text": "wemt.research.blockSolarPanel.stage.2",
+          "recipes": ["welectromagic:basicCompressed", "welectromagic:basicCompressed2"],
+          "warp": 2
+        }
+      ],
+      "addenda": [
+        {
+          "text": "",
+          "recipes": ["welectromagic:basicCompressed3"],
+          "required_research":["INFUSION"],
+          "warp": 1
+        }
+      ]
+    },
+    {
+      "key": "COMPRESSEDSOLARAQUA",
+      "name": "wemt.research.blockSolarAqua.name",
+      "icons": ["welectromagic:blockSolarPanel;1;1", "welectromagic:blockSolarPanel;1;9"],
+      "category": "WEMT",
+      "parents": ["COMPRESSEDSOLAR"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN", "REVERSE"],
+      "location": [10, -1],
+      "stages": [
+        {
+          "text": "wemt.research.blockSolarAqua.stage.1",
+          "required_item":[
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'aqua'}]}"
+          ]
+        },
+        {
+          "text": "wemt.research.blockSolarAqua.stage.2",
+          "recipes": ["welectromagic:aquaCompressed", "welectromagic:aquaCompressed2"],
+          "warp": 1
+        }
+      ],
+      "addenda": [
+        {
+          "text": "",
+          "recipes": ["welectromagic:aquaCompressed3"],
+          "required_research":["INFUSION"],
+          "warp": 1
+        }
+      ]
+    },
+    {
+      "key": "COMPRESSEDSOLARPERDITIO",
+      "name": "wemt.research.blockSolarPerditio.name",
+      "icons": ["welectromagic:blockSolarPanel;1;2", "welectromagic:blockSolarPanel;1;10"],
+      "category": "WEMT",
+      "parents": ["COMPRESSEDSOLAR"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [9, 0],
+      "stages": [
+        {
+          "text": "wemt.research.blockSolarPerditio.stage.1",
+          "required_item":[
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'perditio'}]}"
+          ]
+        },
+        {
+          "text": "wemt.research.blockSolarPerditio.stage.2",
+          "recipes": ["welectromagic:perditioCompressed", "welectromagic:perditioCompressed2"],
+          "warp": 1
+        }
+      ],
+      "addenda": [
+        {
+          "text": "",
+          "recipes": ["welectromagic:perditioCompressed3"],
+          "required_research":["INFUSION"],
+          "warp": 2
+        }
+      ]
+    },
+    {
+      "key": "COMPRESSEDSOLARORDO",
+      "name": "wemt.research.blockSolarOrdo.name",
+      "icons": ["welectromagic:blockSolarPanel;1;3", "welectromagic:blockSolarPanel;1;11"],
+      "category": "WEMT",
+      "parents": ["COMPRESSEDSOLAR"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [9, -4],
+      "stages": [
+        {
+          "text": "wemt.research.blockSolarOrdo.stage.1",
+          "required_item":[
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'ordo'}]}"
+          ]
+        },
+        {
+          "text": "wemt.research.blockSolarOrdo.stage.2",
+          "recipes": ["welectromagic:ordoCompressed", "welectromagic:ordoCompressed2"],
+          "warp": 2
+        }
+      ],
+      "addenda": [
+        {
+          "text": "",
+          "recipes": ["welectromagic:ordoCompressed3"],
+          "required_research":["INFUSION"],
+          "warp": 4
+        }
+      ]
+    },
+    {
+      "key": "COMPRESSEDSOLARIGNIS",
+      "name": "wemt.research.blockSolarIgnis.name",
+      "icons": ["welectromagic:blockSolarPanel;1;4", "welectromagic:blockSolarPanel;1;12"],
+      "category": "WEMT",
+      "parents": ["COMPRESSEDSOLAR"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN", "REVERSE"],
+      "location": [8, -3],
+      "stages": [
+        {
+          "text": "wemt.research.blockSolarIgnis.stage.1",
+          "required_item":[
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'ignis'}]}"
+          ]
+        },
+        {
+          "text": "wemt.research.blockSolarIgnis.stage.2",
+          "recipes": ["welectromagic:ignisCompressed", "welectromagic:ignisCompressed2"],
+          "warp": 2
+        }
+      ],
+      "addenda": [
+        {
+          "text": "",
+          "recipes": ["welectromagic:ignisCompressed3"],
+          "required_research":["INFUSION"],
+          "warp": 2
+        }
+      ]
+    },
+    {
+      "key": "COMPRESSEDSOLARAER",
+      "name": "wemt.research.blockSolarAer.name",
+      "icons": ["welectromagic:blockSolarPanel;1;5", "welectromagic:blockSolarPanel;1;13"],
+      "category": "WEMT",
+      "parents": ["COMPRESSEDSOLAR"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN", "REVERSE"],
+      "location": [10,-3],
+      "stages": [
+        {
+          "text": "wemt.research.blockSolarAer.stage.1",
+          "required_item":[
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'aer'}]}"
+          ]
+        },
+        {
+          "text": "wemt.research.blockSolarAer.stage.2",
+          "recipes": ["welectromagic:aerCompressed", "welectromagic:aerCompressed2"]
+        }
+      ],
+      "addenda": [
+        {
+          "text": "",
+          "recipes": ["welectromagic:aerCompressed3"],
+          "required_research":["INFUSION"],
+          "warp": 1
+        }
+      ]
+    },
+    {
+      "key": "COMPRESSEDSOLARTERRA",
+      "name": "wemt.research.blockSolarTerra.name",
+      "icons": ["welectromagic:blockSolarPanel;1;6", "welectromagic:blockSolarPanel;1;14"],
+      "category": "WEMT",
+      "parents": ["COMPRESSEDSOLAR"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN", "REVERSE"],
+      "location": [8, -1],
+      "stages": [
+        {
+          "text": "wemt.research.blockSolarTerra.stage.1",
+          "required_item":[
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'terra'}]}"
+          ]
+        },
+        {
+          "text": "wemt.research.blockSolarTerra.stage.2",
+          "recipes": ["welectromagic:terraCompressed", "welectromagic:terraCompressed2"],
+          "warp": 1
+        }
+      ],
+      "addenda": [
+        {
+          "text": "",
+          "recipes": ["welectromagic:terraCompressed3"],
+          "required_research":["INFUSION"],
+          "warp": 1
+        }
+      ]
+    },
+    {
+      "key": "TAINTEDLEGEND",
+      "name": "wemt.research.itemStormCaster.name",
+      "icons": ["welectromagic:itemMjolnir"],
+      "category": "WEMT",
+      "parents": ["~ELECTROTHAUMICTOOLS"],
+      "siblings": [],
+      "meta": ["ROUND"],
+      "location": [5, -4],
+      "stages": [
+        {
+          "text": "wemt.research.itemStormCaster.stage.1",
+          "required_item":[
+            "minecraft:rotten_flesh"
+          ]
+        },
+        {
+          "text": "wemt.research.itemStormCaster.stage.2"
+        }
+      ]
+    },
+    {
+      "key": "MJOLNIR",
+      "name": "item.welectromagic:itemMjolnir.name",
+      "icons": ["welectromagic:itemMjolnir"],
+      "category": "WEMT",
+      "parents": ["~TAINTEDLEGEND", "~LIGHTNINGSUMMONER", "ELEMENTALTOOLS", "p_stormcaster"],
+      "siblings": [],
+      "meta": ["ROUND","HIDDEN"],
+      "location": [3, -4],
+      "stages": [
+        {
+          "text": "wemt.research.itemMjolnir.stage.1",
+          "required_item":[
+            "welectromagic:itemMaterial;1;1"
+          ]
+        },
+        {
+          "text": "wemt.research.itemMjolnir.stage.2",
+          "recipes": ["welectromagic:mjölnir"]
+        }
+      ]
+    },
+    {
+      "key": "STORMBREAKER",
+      "name": "item.welectromagic:itemStormBreaker.name",
+      "icons": ["welectromagic:itemStormBreaker"],
+      "category": "WEMT",
+      "parents": ["MJOLNIR"],
+      "siblings": [],
+      "meta": ["ROUND", "REVERSE", "HIDDEN", "SPIKY"],
+      "location": [2, -5],
+      "stages": [
+        {
+          "text": "wemt.research.itemStormBreaker.stage.1",
+          "required_item":[
+            "welectromagic:itemMaterial;1;1"
+          ]
+        },
+        {
+          "text": "wemt.research.itemStormBreaker.stage.2",
+          "recipes": ["welectromagic:stormbreaker"]
+        }
+      ]
+    },
+    {
+      "key": "GENERATORPOTENTIA",
+      "name": "wemt.research.blockEssentiaGeneratorPotentia.name",
+      "icons": ["welectromagic:blockEssentiaGenerator"],
+      "category": "WEMT",
+      "parents": ["~ELECTROTHAUMICTOOLS", "INFUSION", "WARDEDJARS"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-2, 4],
+      "stages": [
+        {
+          "text": "wemt.research.blockEssentiaGeneratorPotentia.stage.1",
+          "required_item":[
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'potentia'}]}",
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'permutatio'}]}"
+          ],
+          "required_knowledge": ["THEORY;INFUSION;1"]
+        },
+        {
+          "text": "wemt.research.blockEssentiaGeneratorPotentia.stage.2",
+          "recipes": ["welectromagic:generatorPotentia"]
+        }
+      ]
+    },
+    {
+      "key": "GENERATORIGNIS",
+      "name": "wemt.research.blockEssentiaGeneratorIgnis.name",
+      "icons": ["welectromagic:blockEssentiaGenerator"],
+      "category": "WEMT",
+      "parents": ["GENERATORPOTENTIA"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-3, 3],
+      "stages": [
+        {
+          "text": "wemt.research.blockEssentiaGeneratorIgnis.stage.1",
+          "required_item":[
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'ignis'}]}",
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'permutatio'}]}"
+          ]
+        },
+        {
+          "text": "wemt.research.blockEssentiaGeneratorIgnis.stage.2",
+          "recipes": ["welectromagic:ignisgenerator"]
+        }
+      ]
+    },
+    {
+      "key": "GENERATORAURAM",
+      "name": "wemt.research.blockEssentiaGeneratorAuram.name",
+      "icons": ["welectromagic:blockEssentiaGenerator"],
+      "category": "WEMT",
+      "parents": ["GENERATORPOTENTIA"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-1, 3],
+      "stages": [
+        {
+          "text": "wemt.research.blockEssentiaGeneratorAuram.stage.1",
+          "required_item":[
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'auram'}]}",
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'permutatio'}]}"
+          ]
+        },
+        {
+          "text": "wemt.research.blockEssentiaGeneratorAuram.stage.2",
+          "recipes": ["welectromagic:auramgenerator"],
+          "warp": 2
+        }
+      ]
+    },
+    {
+      "key": "GENERATORAER",
+      "name": "wemt.research.blockEssentiaGeneratorAer.name",
+      "icons": ["welectromagic:blockEssentiaGenerator"],
+      "category": "WEMT",
+      "parents": ["GENERATORPOTENTIA"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-2, 2],
+      "stages": [
+        {
+          "text": "wemt.research.blockEssentiaGeneratorAer.stage.1",
+          "required_item":[
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'aer'}]}",
+            "thaumcraft:crystal_essence;1;0;{Aspects:[{amount:1,key:'permutatio'}]}"
+          ]
+        },
+        {
+          "text": "wemt.research.blockEssentiaGeneratorAer.stage.2",
+          "recipes": ["welectromagic:aergenerator"]
+        }
+      ]
+    },
+    {
+      "key": "CHARGINGSTATION",
+      "name": "block.welectromagic:blockChargePedestal.name",
+      "icons": ["welectromagic:blockChargePedestal"],
+      "category": "WEMT",
+      "parents": ["GENERATORPOTENTIA", "RECHARGEPEDESTAL"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-2, 6],
+      "stages": [
+        {
+          "text": "wemt.research.blockChargePedestal.stage.1",
+          "required_knowledge": ["THEORY;ELDRITCH;1", "THEORY;INFUSION;1"]
+        },
+        {
+          "text": "wemt.research.blockChargePedestal.stage.2",
+          "recipes": ["welectromagic:industrialVisCharger"]
         }
       ]
     }

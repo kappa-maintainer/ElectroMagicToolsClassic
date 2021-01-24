@@ -1,7 +1,7 @@
 package weissmoon.electromagictools.item.armour.googles;
 
+import ic2.api.classic.item.IDamagelessElectricItem;
 import ic2.api.item.ElectricItem;
-import ic2.api.item.IElectricItem;
 import ic2.api.item.IMetalArmor;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -25,32 +25,34 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
+import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
 
 /**
  * Created by Weissmoon on 9/3/19.
  */
-public class ItemElectricGoggles extends ItemArmourBase implements IElectricItem, IVisDiscountGear, IGoggles, IMetalArmor, ISpecialArmor{
+public class ItemElectricGoggles extends ItemArmourBase implements IDamagelessElectricItem, IVisDiscountGear, IGoggles, IMetalArmor, ISpecialArmor{
 
-    protected double maxCharge, transferLimit;
-    protected int tier, energyPerDamage, visDiscount;
+    protected int tier, energyPerDamage, visDiscount, maxCharge, transferLimit;
 
     public ItemElectricGoggles(){
         this(Strings.Items.ELECTRIC_GOGGLES_NAME, ArmorMaterial.IRON);
-        this.maxCharge = 100000;
-        this.transferLimit = 100;
-        this.tier = 2;
-        this.energyPerDamage = 1000;
-        this.visDiscount = 4;
+        maxCharge = 100000;
+        transferLimit = 100;
+        tier = 1;
+        energyPerDamage = 1000;
+        visDiscount = 4;
     }
 
     protected ItemElectricGoggles(String name, ArmorMaterial material) {
         super(name , material, 0, EntityEquipmentSlot.HEAD);
+        setNoRepair();
+        setMaxDamage(0);
         setCreativeTab(ElectroMagicTools.EMTtab);
-        this.maxCharge = 0;
-        this.transferLimit = 0;
-        this.tier = 10;
-        this.energyPerDamage = 0;
-        this.visDiscount = 0;
+//        maxCharge = 0;
+//        transferLimit = 0;
+//        tier = 10;
+//        energyPerDamage = 0;
+//        visDiscount = 0;
     }
 
     @Nullable
@@ -68,7 +70,7 @@ public class ItemElectricGoggles extends ItemArmourBase implements IElectricItem
     @SideOnly(Side.CLIENT)
     @Override
     public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> list) {
-        if (this.isInCreativeTab(tab)) {
+        if (isInCreativeTab(tab)) {
             ItemStack stack = new ItemStack(this, 1, 0);
             list.add(stack);
             list.add(getChargedItem(this, 1));
@@ -76,23 +78,33 @@ public class ItemElectricGoggles extends ItemArmourBase implements IElectricItem
     }
 
     @Override
-    public boolean canProvideEnergy(ItemStack stack) {
+    public boolean showDurabilityBar(ItemStack stack) {
         return true;
     }
 
     @Override
+    public double getDurabilityForDisplay(ItemStack stack){
+        return getElectricDurability(stack);
+    }
+
+    @Override
+    public boolean canProvideEnergy(ItemStack stack) {
+        return false;
+    }
+
+    @Override
     public double getMaxCharge(ItemStack stack) {
-        return this.maxCharge;
+        return maxCharge;
     }
 
     @Override
     public int getTier(ItemStack stack) {
-        return this.tier;
+        return tier;
     }
 
     @Override
     public double getTransferLimit(ItemStack stack) {
-        return this.transferLimit;
+        return transferLimit;
     }
 
     @Override
@@ -102,7 +114,7 @@ public class ItemElectricGoggles extends ItemArmourBase implements IElectricItem
 
     @Override
     public int getVisDiscount(ItemStack stack, EntityPlayer player) {
-        return this.visDiscount;
+        return visDiscount;
     }
 
     @Override
@@ -111,26 +123,26 @@ public class ItemElectricGoggles extends ItemArmourBase implements IElectricItem
     }
 
     @Override
-    public ArmorProperties getProperties(EntityLivingBase player, @Nonnull ItemStack armor, DamageSource source, double damage, int slot) {
+    public ArmorProperties getProperties(EntityLivingBase player, @Nonnull ItemStack armor, @Nonnull DamageSource source, double damage, int slot) {
         if(source.isUnblockable()){
             return new ISpecialArmor.ArmorProperties(0,0, 0);
         }else{
             double absorptionRatio = 0.15 * getAbsorptionRatio();
-            double damageLimit = (25 * ElectricItem.manager.getCharge(armor)) / this.energyPerDamage;
+            double damageLimit = (25 * ElectricItem.manager.getCharge(armor)) / energyPerDamage;
             return new ISpecialArmor.ArmorProperties(0, absorptionRatio, (int)damageLimit);
         }
     }
 
     @Override
     public int getArmorDisplay(EntityPlayer player, @Nonnull ItemStack armor, int slot) {
-        if(ElectricItem.manager.getCharge(armor) >= this.energyPerDamage)
+        if(ElectricItem.manager.getCharge(armor) >= energyPerDamage)
             return (int) Math.round(3 * getAbsorptionRatio());
         return 0;
     }
 
     @Override
     public void damageArmor(EntityLivingBase entity, @Nonnull ItemStack stack, DamageSource source, int damage, int slot) {
-        ElectricItem.manager.discharge(stack, damage * this.energyPerDamage, 0, true, false, false);
+        ElectricItem.manager.discharge(stack, damage * energyPerDamage, 2147483647, true, false, false);
     }
 
     protected double getAbsorptionRatio(){

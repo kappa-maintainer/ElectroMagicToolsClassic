@@ -23,7 +23,7 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "1.12.2-0.0.5"
+version = "1.12.2-0.0.6"
 group= "weissmoon.electromagictools" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ElectroMagicToolsIC2C"
 
@@ -45,6 +45,11 @@ compileJava {
     targetCompatibility = 1.8
 }
 
+idea{
+    module{
+        inheritOutputDirs = true;
+    }
+}
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 

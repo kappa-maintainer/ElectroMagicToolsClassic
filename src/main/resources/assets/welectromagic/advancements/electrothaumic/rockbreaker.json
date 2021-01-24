@@ -1,0 +1,21 @@
+{
+  "display": {
+    "icon": {
+      "item": "welectromagic:itemRockbreakerDrill"
+    },
+    "title": {
+      "translate": "advancements.welectromagic.rockBreaker.name"
+    },
+    "description": {
+      "translate": "advancements.welectromagic.rockBreaker.desc"
+    },
+    "frame": "challenge",
+    "hidden": true
+  },
+  "parent": "welectromagic:electrothaumic/root",
+  "criteria": {
+    "wings": {
+      "trigger": "welectromagic:rockbreaker"
+    }
+  }
+}

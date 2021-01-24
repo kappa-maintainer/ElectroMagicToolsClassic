@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "welectromagic:itemEntropyStaff"
+    },
+    "title": {
+      "translate": "advancements.welectromagic.efferet.name"
+    },
+    "description": {
+      "translate": "advancements.welectromagic.efferet.desc"
+    },
+    "frame": "challenge",
+    "hidden": true
+  },
+  "parent": "welectromagic:electrothaumic/root",
+  "criteria": {
+    "iron": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "welectromagic:itemEntropyStaff"
+          }
+        ]
+      }
+    }
+  }
+}

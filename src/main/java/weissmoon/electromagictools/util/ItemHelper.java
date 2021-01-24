@@ -20,4 +20,11 @@ public class ItemHelper {
             return ItemStack.EMPTY;
         }
     }
+
+    public static double getElectricDurability(ItemStack stack ) {
+        if(!(stack.getItem() instanceof IElectricItem))
+            return 0;
+        double maxCharge = ((IElectricItem)stack.getItem()).getMaxCharge(stack);
+        return (maxCharge - ElectricItem.manager.getCharge(stack)) / (float)maxCharge;
+    }
 }

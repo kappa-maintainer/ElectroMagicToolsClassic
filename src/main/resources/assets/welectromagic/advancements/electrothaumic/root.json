@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "item": "welectromagic:itemthaumiumdrill"
+    },
+    "title": {
+      "translate": "tc.research_category.WEMT"
+    },
+    "description": {
+      "translate": "advancements.welectromagic.root.desc"
+    },
+    "background": "welectromagic:textures/blocks/solarbottom.png",
+    "show_toast": true,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "magic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thaumcraft:thaumonomicon"
+          }
+        ]
+      }
+    },
+    "science": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "ic2:itemmisc",
+            "data": 53
+          }
+        ]
+      }
+    }
+  }
+}
