@@ -813,7 +813,7 @@
         },
         {
           "text": "wemt.research.itemMjolnir.stage.2",
-          "recipes": ["welectromagic:mjölnir"]
+          "recipes": ["welectromagic:mjolnir"]
         }
       ]
     },
@@ -935,7 +935,7 @@
     },
     {
       "key": "CHARGINGSTATION",
-      "name": "block.welectromagic:blockChargePedestal.name",
+      "name": "tile.welectromagic:blockChargePedestal.name",
       "icons": ["welectromagic:blockChargePedestal"],
       "category": "WEMT",
       "parents": ["GENERATORPOTENTIA", "RECHARGEPEDESTAL"],

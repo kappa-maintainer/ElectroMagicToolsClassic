@@ -28,6 +28,7 @@ import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.crafting.ShapelessArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
+import thaumcraft.common.lib.enchantment.EnumInfusionEnchantment;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.api.SolarHelmetRegistry;
 import weissmoon.electromagictools.block.ModBlocks;
@@ -197,9 +198,12 @@ public class EMTRecipes {
                         IC2Items.getItem("energy_crystal"),
                         IC2Items.getItem("crafting", "carbon_plate"),
                         IC2Items.getItem("crafting", "advanced_circuit")));
+        ItemStack streamChainsawStack = new ItemStack(ModItems.streamChainsaw);
+        EnumInfusionEnchantment.addInfusionEnchantment(streamChainsawStack, EnumInfusionEnchantment.BURROWING, 1);
+        EnumInfusionEnchantment.addInfusionEnchantment(streamChainsawStack, EnumInfusionEnchantment.COLLECTOR, 1);
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":streamchainsaw"),
                 new ElectricInfusionRecipe("STREAMCHAINSAW",
-                        new ItemStack(ModItems.streamChainsaw),
+                        streamChainsawStack,
                         6,
                         CraftingAspectList.streamChainsaw,
                         ModItems.thaumiumChainsaw,
@@ -257,9 +261,12 @@ public class EMTRecipes {
                         IC2Items.getItem("crafting", "iridium"),
                         IC2Items.getItem("quantum_chestplate"),
                         new OreIngredient("nitor")));
+        ItemStack rockbreakerDrillStack = new ItemStack(ModItems.rockBreakerDrill);
+        EnumInfusionEnchantment.addInfusionEnchantment(rockbreakerDrillStack, EnumInfusionEnchantment.SOUNDING, 2);
+        EnumInfusionEnchantment.addInfusionEnchantment(rockbreakerDrillStack, EnumInfusionEnchantment.REFINING, 1);
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID, "rockbreakerdrill"),
                 new ElectricInfusionRecipe("ROCKBREAKERDRILL",
-                        new ItemStack(ModItems.rockBreakerDrill),
+                        rockbreakerDrillStack,
                         6,
                         CraftingAspectList.rockbreakerRill,
                         new ItemStack(ModItems.thaumiumDrill),
@@ -286,7 +293,7 @@ public class EMTRecipes {
                         new ItemStack(ModBlocks.solarGenerator, 1, 8),
                         new ItemStack(ModBlocks.solarGenerator, 1, 8),
                         new ItemStack(ModBlocks.solarGenerator, 1, 8)));
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID, "mjölnir"),
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID, "mjolnir"),
                 new ElectricInfusionRecipe("MJOLNIR",
                         new ItemStack(ModItems.mjölnir),
                         1,

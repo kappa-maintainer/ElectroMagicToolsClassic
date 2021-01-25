@@ -8,10 +8,7 @@ import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import org.lwjgl.opengl.GL11;
-import weissmoon.electromagictools.item.ModItems;
 
 import javax.annotation.Nonnull;
 
@@ -52,6 +49,8 @@ public class WingsModelRenderer extends ModelBiped {
 
         //ItemStack chestStack = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
         GlStateManager.pushMatrix();
+        if(wing == 2)
+            this.bipedBody.render(scale);
         GlStateManager.translate(0, 0.4, 0.4);
         if (entity.isSneaking())
         {
@@ -62,20 +61,20 @@ public class WingsModelRenderer extends ModelBiped {
         GlStateManager.rotate((float)-(this.bipedBody.rotateAngleY * (180 / Math.PI)), 0, 1, 0);
         GlStateManager.rotate((float)-(this.bipedBody.rotateAngleZ * (180 / Math.PI)), 0, 0, 1);
         GlStateManager.scale(-1, -1, -1);
-        if(wing == 0) {
-            GlStateManager.translate(-0.5, 0, 0);
-        }else{
+        if(wing == 1){
             GlStateManager.translate(-0.3, 0, 0.1);
+        }else{
+            GlStateManager.translate(-0.5, 0, 0);
         }
         GlStateManager.rotate(-25, 0, 1, 0);
         GlStateManager.rotate(15, 1, 0, 0);
         Minecraft.getMinecraft().getRenderItem().renderItem(feather, ItemCameraTransforms.TransformType.NONE);
         GlStateManager.rotate(-15, 1, 0, 0);
         GlStateManager.rotate(25, 0, 1, 0);
-        if(wing == 0) {
-            GlStateManager.translate(1, 0, 0);
-        }else{
+        if(wing == 1){
             GlStateManager.translate(0.6, 0, 0);
+        }else{
+            GlStateManager.translate(1, 0, 0);
         }
         GlStateManager.rotate(25, 0, 1, 0);
         GlStateManager.rotate(15, 1, 0, 0);

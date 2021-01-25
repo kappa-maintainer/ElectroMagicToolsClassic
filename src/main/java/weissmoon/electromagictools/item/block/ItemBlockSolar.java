@@ -63,12 +63,12 @@ public class ItemBlockSolar extends WeissItemBlock implements IItemRenderCustom 
             int i = itemstack.getMetadata();
             boolean c = i > 7;
             sub = icon[c ? i-8: i];
-            String aspect = new TextComponentTranslation("block.welectromagic:"+sub+".name").getUnformattedComponentText();
-            String name = new TextComponentTranslation("block.welectromagic:blockSolarPanel.name", aspect).getUnformattedComponentText();
+            String aspect = new TextComponentTranslation("tile.welectromagic:"+sub+".name").getUnformattedComponentText();
+            String name = new TextComponentTranslation("tile.welectromagic:blockSolarPanel.name", aspect).getUnformattedComponentText();
             if(compressed) {
-                return new TextComponentTranslation("block.welectromagic:solarTriple.name", name).getUnformattedComponentText();
+                return new TextComponentTranslation("tile.welectromagic:solarTriple.name", name).getUnformattedComponentText();
             }else if(c){
-                return new TextComponentTranslation("block.welectromagic:solarDouble.name", name).getUnformattedComponentText();
+                return new TextComponentTranslation("tile.welectromagic:solarDouble.name", name).getUnformattedComponentText();
             }
             return name;
         }catch (ArrayIndexOutOfBoundsException e){

@@ -46,7 +46,7 @@ import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
 /**
  * Created by Weissmoon on 9/22/19.
  */
-public class ItemDiamondChainsaw extends WeissItemAxe implements IDamagelessElectricItem, IModesCore {
+public class ItemDiamondChainsaw extends WeissItemAxe implements IDamagelessElectricItem {
     
     protected int maxCharge, cost, hitCost, tier, transferLimit;
     private static final String SHEARMODE_NBT_TAG= "shearsMode";
@@ -257,8 +257,8 @@ public class ItemDiamondChainsaw extends WeissItemAxe implements IDamagelessElec
         return transferLimit;
     }
 
-    @Override
-    public void changeToolMode(ItemStack stack){
-        NBTHelper.toggleBoolean(stack, SHEARMODE_NBT_TAG);
-    }
+//    @Override
+//    public void changeToolMode(ItemStack stack){
+//        NBTHelper.toggleBoolean(stack, SHEARMODE_NBT_TAG);
+//    }
 }

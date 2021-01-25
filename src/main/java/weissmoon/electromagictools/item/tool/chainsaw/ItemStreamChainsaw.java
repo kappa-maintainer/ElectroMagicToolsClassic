@@ -2,16 +2,24 @@ package weissmoon.electromagictools.item.tool.chainsaw;
 
 import ic2.api.item.ElectricItem;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.ThaumcraftMaterials;
+import thaumcraft.common.lib.enchantment.EnumInfusionEnchantment;
 import thaumcraft.common.lib.utils.BlockUtils;
 import thaumcraft.common.lib.utils.Utils;
 import weissmoon.electromagictools.lib.Strings;
+
+import javax.annotation.Nonnull;
+
+import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 
 /**
  * Created by Weissmoon on 9/23/19.
@@ -50,16 +58,21 @@ public class ItemStreamChainsaw extends ItemDiamondChainsaw {
 
     @Override
     public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, EntityPlayer player){
-        IBlockState state = player.world.getBlockState(pos);
-        if(!player.isSneaking() && Utils.isWoodLog(player.world, pos) && ElectricItem.manager.canUse(player.getHeldItemMainhand(), cost)){
-            if(!player.world.isRemote){
-                if(BlockUtils.breakFurthestBlock(player.world, pos, state, player)){
-                    player.world.playSound(null, pos, new SoundEvent(new ResourceLocation("thaumcraft:bubble")), SoundCategory.PLAYERS, 0.15F, 1.0F);
-                    ElectricItem.manager.use(itemstack, cost, player);
-                    return true;
-                }
-            }
-        }
         return super.onBlockStartBreak(itemstack, pos, player);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> list) {
+        if (isInCreativeTab(tab)){
+            ItemStack stack = new ItemStack(this, 1, 0);
+            EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.BURROWING, 1);
+            EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.COLLECTOR, 1);
+            list.add(stack);
+            stack = getChargedItem(this, 1);
+            EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.BURROWING, 1);
+            EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.COLLECTOR, 1);
+            list.add(stack);
+        }
     }
 }

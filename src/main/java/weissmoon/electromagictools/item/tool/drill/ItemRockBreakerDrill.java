@@ -82,7 +82,7 @@ public class ItemRockBreakerDrill extends ItemThaumiumDrill {
                     if((a == 0 && b == 0) || !ForgeHooks.isToolEffective(worldIn, effectPos, stack)){
                         continue;
                     }
-                    EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByID(35), stack);
+                    EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByID(35), stack);//Fortune
                     if (ElectricItem.manager.canUse(stack, cost)) {
                         IBlockState iblockstate = worldIn.getBlockState(effectPos);
                         BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(worldIn, effectPos, iblockstate, (EntityPlayer) entityLiving);
@@ -181,9 +181,11 @@ public class ItemRockBreakerDrill extends ItemThaumiumDrill {
         if (isInCreativeTab(tab)){
             ItemStack stack = new ItemStack(this, 1, 0);
             EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.SOUNDING, 2);
+            EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.REFINING, 1);
             list.add(stack);
             stack = getChargedItem(this, 1);
             EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.SOUNDING, 2);
+            EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.REFINING, 1);
             list.add(stack);
         }
     }

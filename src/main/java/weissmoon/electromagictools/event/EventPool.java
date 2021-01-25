@@ -66,12 +66,14 @@ public class EventPool {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onDeath(LivingDeathEvent event){
         {
-            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-            int slot = BaublesApi.isBaubleEquipped(player, ModItems.hitBauble);
-            if (slot != -1) {
-                if (event.getSource().damageType.matches("infinity")){
-                    event.setCanceled(true);
-                    return;//todo remove
+            if(event.getEntity() instanceof EntityPlayer) {
+                EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+                int slot = BaublesApi.isBaubleEquipped(player, ModItems.hitBauble);
+                if (slot != -1) {
+                    if (event.getSource().damageType.matches("infinity")) {
+                        event.setCanceled(true);
+                        return;//todo remove
+                    }
                 }
             }
         }

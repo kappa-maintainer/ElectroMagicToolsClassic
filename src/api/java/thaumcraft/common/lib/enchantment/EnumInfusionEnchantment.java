@@ -7,6 +7,9 @@ import net.minecraft.item.ItemStack;
  */
 public enum EnumInfusionEnchantment {
 
+    COLLECTOR(),
+    BURROWING(),
+    REFINING(),
     SOUNDING();
     private EnumInfusionEnchantment(){
 

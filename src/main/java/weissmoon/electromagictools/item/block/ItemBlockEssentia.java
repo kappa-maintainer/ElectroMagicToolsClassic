@@ -52,8 +52,8 @@ public class ItemBlockEssentia extends WeissItemBlock {
         String sub = "Null";
         try{
             sub = icon[itemstack.getMetadata()];
-            String aspect = new TextComponentTranslation("block.welectromagic:"+sub+".name").getUnformattedComponentText();
-            return new TextComponentTranslation("block.welectromagic:blockEssentiaGenerator.name", aspect).getUnformattedComponentText();
+            String aspect = new TextComponentTranslation("tile.welectromagic:"+sub+".name").getUnformattedComponentText();
+            return new TextComponentTranslation("tile.welectromagic:blockEssentiaGenerator.name", aspect).getUnformattedComponentText();
         }catch (ArrayIndexOutOfBoundsException e){
             //sub = sub;
         }

@@ -48,7 +48,7 @@ public class ItemQuantumWings extends ItemNanoWings{
         if(model == null){
             ItemStack s = new ItemStack(ModItems.materials, 1, 16);
             NBTHelper.setInteger(s, "icon", 2);
-            model = new WingsModelRenderer(s, 0);
+            model = new WingsModelRenderer(s, 2);
         }
         return model;
     }
