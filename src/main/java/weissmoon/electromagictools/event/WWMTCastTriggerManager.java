@@ -25,36 +25,40 @@ public class WWMTCastTriggerManager implements ICasterTriggerManager {
 
     @Override
     public boolean performTrigger(World world, ItemStack casterStack, EntityPlayer player, BlockPos pos, EnumFacing side, int event) {
-        if(event == 1){
-            TileEntity tileEntity = world.getTileEntity(pos);
-            if(tileEntity instanceof TileInfusionMatrix){
-                TileInfusionMatrix matrix = (TileInfusionMatrix) tileEntity;
-                TileEntity ped = world.getTileEntity(pos.down(2));
-                if (ped instanceof TilePedestal) {
-                    TilePedestal pedestal = (TilePedestal) ped;
-                    ItemStack input = pedestal.getStackInSlot(0);
-                    if (input.isEmpty()) {
+        if(event == 1) {
+            try {
+                TileEntity tileEntity = world.getTileEntity(pos);
+                if (tileEntity instanceof TileInfusionMatrix) {
+                    TileInfusionMatrix matrix = (TileInfusionMatrix) tileEntity;
+                    if(!matrix.active)
                         return false;
-                    }
 
-                    ArrayList<BlockPos> pedestals = new ArrayList<>();
+                    TileEntity ped = world.getTileEntity(pos.down(2));
+                    if (ped instanceof TilePedestal) {
+                        TilePedestal pedestal = (TilePedestal) ped;
+                        ItemStack input = pedestal.getStackInSlot(0);
+                        if (input.isEmpty()) {
+                            return false;
+                        }
 
-                    int x, y, z;
-                    h:
-                    for(int a = -8; a <= 8; a++){
-                        for(int b = -8; b <= 8; b++){
-                            for(int c = -3; c <= 7; c++){
-                                x = -a;
-                                y = c;
-                                z = -b;
-                                if ((a == 0 && b == 0)) {
-                                    continue;
-                                }
-                                BlockPos effectPos = new BlockPos(pos).add(x, y, z);
-                                Block block = world.getBlockState(effectPos).getBlock();
-                                if(block instanceof BlockPedestal){
-                                    pedestals.add(effectPos);
-                                }
+                        ArrayList<BlockPos> pedestals = new ArrayList<>();
+
+                        int x, y, z;
+                        h:
+                        for (int a = -8; a <= 8; a++) {
+                            for (int b = -8; b <= 8; b++) {
+                                for (int c = -3; c <= 7; c++) {
+                                    x = -a;
+                                    y = c;
+                                    z = -b;
+                                    if ((a == 0 && b == 0)) {
+                                        continue;
+                                    }
+                                    BlockPos effectPos = new BlockPos(pos).add(x, y, z);
+                                    Block block = world.getBlockState(effectPos).getBlock();
+                                    if (block instanceof BlockPedestal) {
+                                        pedestals.add(effectPos);
+                                    }
 //                                    EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByID(35), stack);
 //                                    if (ElectricItem.manager.canUse(stack, cost)) {
 //                                        IBlockState iblockstate = worldIn.getBlockState(effectPos);
@@ -66,31 +70,32 @@ public class WWMTCastTriggerManager implements ICasterTriggerManager {
 //                                            }
 //                                        }
 //                                    }
+                                }
                             }
                         }
-                    }
-                    ArrayList<ItemStack> components = new ArrayList<>();
-                    for(BlockPos epos:pedestals){
-                        TileEntity pedC = world.getTileEntity(epos);
-                        if (pedC instanceof TilePedestal) {
-                            TilePedestal pedestalC = (TilePedestal) pedC;
-                            if (!pedestalC.getStackInSlot(0).isEmpty()) {
-                                components.add(pedestalC.getStackInSlot(0).copy());
+                        ArrayList<ItemStack> components = new ArrayList<>();
+                        for (BlockPos epos : pedestals) {
+                            TileEntity pedC = world.getTileEntity(epos);
+                            if (pedC instanceof TilePedestal) {
+                                TilePedestal pedestalC = (TilePedestal) pedC;
+                                if (!pedestalC.getStackInSlot(0).isEmpty()) {
+                                    components.add(pedestalC.getStackInSlot(0).copy());
+                                }
                             }
                         }
-                    }
-                    InfusionRecipe recipe = ThaumcraftCraftingManager.findMatchingInfusionRecipe(components,  input.copy(), player);
-                    if(!(recipe == null)) {
-                        if (recipe.getRecipeOutput() instanceof ItemStack && !(((ItemStack) recipe.getRecipeOutput()).getItem() == ModItems.stormBreaker)) {
+                        InfusionRecipe recipe = ThaumcraftCraftingManager.findMatchingInfusionRecipe(components, input.copy(), player);
+                        if (!(recipe == null)) {
+                            if (recipe.getRecipeOutput() instanceof ItemStack && !(((ItemStack) recipe.getRecipeOutput()).getItem() == ModItems.stormBreaker)) {
+                                return false;
+                            }
+                        } else
                             return false;
-                        }
-                    }else
-                        return false;
+                    }
                 }
-            }
-            world.getWorldInfo().setThundering(true);
-            world.getWorldInfo().setRaining(true);
-            MinecraftForge.EVENT_BUS.register(new StormCraftingTicker(world, pos));
+                world.getWorldInfo().setThundering(true);
+                world.getWorldInfo().setRaining(true);
+                MinecraftForge.EVENT_BUS.register(new StormCraftingTicker(world, pos));
+            }catch(Error ignored){}
         }
         return false;
     }

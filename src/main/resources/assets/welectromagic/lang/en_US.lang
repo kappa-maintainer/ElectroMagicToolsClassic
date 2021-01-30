@@ -88,6 +88,8 @@ advancements.welectromagic.efferet.name=Embraced by the flame
 advancements.welectromagic.efferet.desc=Obtain Efferet's Gift.
 advancements.welectromagic.hitbauble.name=Kill me if you can
 advancements.welectromagic.hitbauble.desc=Block 50 points of damage with a hit bauble.
+advancements.welectromagic.stormbringer.name=Doomsday Clock
+advancements.welectromagic.stormbringer.desc=Obtain the broken relic of Mjölnir.
 
 tc.research_category.WEMT=Electro-Thaumic Tools
 

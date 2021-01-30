@@ -63,23 +63,23 @@ public class EMTRecipes {
     }
 
     public static void initInfusionRecipes(){
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":solarupgrade"),
-                new SolarUpgradeInfusionRecipe("WMMISSINGRESEARCH",
-                        new ItemStack(ModItems.solarHelmet),
-                        5,
-                        CraftingAspectList.solarHelmetRevealing,
-                        new ItemStack(ModItems.solarHelmet),
-                        Ingredient.fromStacks(SolarHelmetRegistry.stackRequirements.getKeys().toArray(new ItemStack[]{})),
-                        IC2Items.getItem("crafting", "advanced_circuit")));
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":solarHelmet"),
-                new InfusionRecipe("WMMISSINGRESEARCH",
-                        ItemHelper.getChargedItem((IElectricItem) ModItems.solarHelmet, 0),
-                        5,
-                        CraftingAspectList.solarHelmetRevealing,
-                        new ItemStack(ModItems.quantumGoggles),
-                        IC2Items.getItem("solar_helmet"),
-                        new ItemStack(IC2Items.getItemAPI().getItem("cable"), 1, 9),
-                        IC2Items.getItem("lapotron_crystal")));
+//        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":solarupgrade"),
+//                new SolarUpgradeInfusionRecipe("WMMISSINGRESEARCH",
+//                        new ItemStack(ModItems.solarHelmet),
+//                        5,
+//                        CraftingAspectList.solarHelmetRevealing,
+//                        new ItemStack(ModItems.solarHelmet),
+//                        Ingredient.fromStacks(SolarHelmetRegistry.stackRequirements.getKeys().toArray(new ItemStack[]{})),
+//                        IC2Items.getItem("crafting", "advanced_circuit")));
+//        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":solarHelmet"),
+//                new InfusionRecipe("WMMISSINGRESEARCH",
+//                        ItemHelper.getChargedItem((IElectricItem) ModItems.solarHelmet, 0),
+//                        5,
+//                        CraftingAspectList.solarHelmetRevealing,
+//                        new ItemStack(ModItems.quantumGoggles),
+//                        IC2Items.getItem("solar_helmet"),
+//                        new ItemStack(IC2Items.getItemAPI().getItem("cable"), 1, 9),
+//                        IC2Items.getItem("lapotron_crystal")));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":nanoGoggles"),
                 new ElectricInfusionRecipe("NANOGOGGLES",
                         new ItemStack(ModItems.nanoGoggles),
@@ -182,7 +182,7 @@ public class EMTRecipes {
                         new OreIngredient("plateThaumium"),
                         new OreIngredient("plateThaumium"),
                         IC2Items.getItem("crafting", "carbon_plate"),
-                        new weissmoon.electromagictools.recipe.Ingredient(
+                        Ingredient.fromStacks(
                                 new ItemStack(IC2Items.getItem("ingot", "tin").getItem(), 1, 302),
                                 new ItemStack(IC2Items.getItem("ingot", "tin").getItem(), 1, 303)
                         )));
