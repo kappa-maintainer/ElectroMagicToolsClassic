@@ -43,14 +43,14 @@ public class ModItems {
     public static final ItemHoe electricHoe = new ItemElectricHoeGrowth();
     public static final WeissItem materials = new ItemMaterials();
     public static final WeissItem onering = new ItemOneRing();
-    public static final ItemWeissElectricTool thaumiumDrill = new ItemThaumiumDrill();
-    public static final ItemWeissElectricTool coreDrill = new ItemCoreDrill();
-    public static final ItemWeissElectricTool diamondChainsaw = new ItemDiamondChainsaw();
-    public static final ItemWeissElectricTool thaumiumChainsaw = new ItemThaumiumChainsaw();
-    public static final ItemWeissElectricTool streamChainsaw = new ItemStreamChainsaw();
-    public static final ItemWeissElectricTool ironOmnitool = new ItemIronOmniTool();
-    public static final ItemWeissElectricTool diamondOmnitool = new ItemDiamondOmniTool();
-    public static final ItemWeissElectricTool thaumiumOmnitool = new ItemThaumiumOmniTool();
+    public static final WeissItemElectricTool thaumiumDrill = new ItemThaumiumDrill();
+    public static final WeissItemElectricTool coreDrill = new ItemCoreDrill();
+    public static final WeissItemElectricTool diamondChainsaw = new ItemDiamondChainsaw();
+    public static final WeissItemElectricTool thaumiumChainsaw = new ItemThaumiumChainsaw();
+    public static final WeissItemElectricTool streamChainsaw = new ItemStreamChainsaw();
+    public static final WeissItemElectricTool ironOmnitool = new ItemIronOmniTool();
+    public static final WeissItemElectricTool diamondOmnitool = new ItemDiamondOmniTool();
+    public static final WeissItemElectricTool thaumiumOmnitool = new ItemThaumiumOmniTool();
     public static final Item stormCaster = new ItemStormCaster();
     public static final Item mjölnir = new ItemMjölnir();
 

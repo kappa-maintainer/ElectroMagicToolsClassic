@@ -18,13 +18,13 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IShearable;
 import weissmoon.electromagictools.ElectroMagicTools;
-import weissmoon.electromagictools.item.ItemWeissElectricTool;
+import weissmoon.electromagictools.item.WeissItemElectricTool;
 import weissmoon.electromagictools.lib.Strings;
 
 /**
  * Created by Weissmoon on 9/23/19.
  */
-public class ItemIronOmniTool extends ItemWeissElectricTool implements IMiningDrill {
+public class ItemIronOmniTool extends WeissItemElectricTool implements IMiningDrill {
 
     protected int hitCost;
     protected static final String SHEARMODE_NBT_TAG= "shearsMode";

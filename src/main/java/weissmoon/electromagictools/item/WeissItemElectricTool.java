@@ -8,10 +8,10 @@ import weissmoon.core.helper.WeissItemRegistry;
 import weissmoon.core.item.IItemWeiss;
 import weissmoon.electromagictools.lib.Reference;
 
-public abstract class ItemWeissElectricTool extends ItemElectricTool implements IItemWeiss {
+public abstract class WeissItemElectricTool extends ItemElectricTool implements IItemWeiss {
     protected IIcon itemIconWeiss;
     protected final String regName;
-    public ItemWeissElectricTool(float attackDamageIn, float attackSpeedIn, ToolMaterial material, String name) {
+    public WeissItemElectricTool(float attackDamageIn, float attackSpeedIn, ToolMaterial material, String name) {
         super(attackDamageIn, attackSpeedIn, material);
         this.regName = name;
         this.setUnlocalizedName(getModID().toLowerCase() + "." + this.regName);

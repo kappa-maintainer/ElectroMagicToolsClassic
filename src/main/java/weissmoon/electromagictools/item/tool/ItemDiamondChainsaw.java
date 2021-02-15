@@ -36,7 +36,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import weissmoon.core.api.item.IModesCore;
 import weissmoon.core.utils.NBTHelper;
 import weissmoon.electromagictools.ElectroMagicTools;
-import weissmoon.electromagictools.item.ItemWeissElectricTool;
+import weissmoon.electromagictools.item.WeissItemElectricTool;
 import weissmoon.electromagictools.lib.LocaleComps;
 import weissmoon.electromagictools.lib.Strings;
 
@@ -49,7 +49,7 @@ import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 /**
  * Created by Weissmoon on 9/22/19.
  */
-public class ItemDiamondChainsaw extends ItemWeissElectricTool implements IModesCore {
+public class ItemDiamondChainsaw extends WeissItemElectricTool implements IModesCore {
     
     protected int hitCost;
     protected double transferLimit, attackDamage;

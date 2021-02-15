@@ -40,7 +40,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import thaumcraft.api.ThaumcraftMaterials;
 import weissmoon.electromagictools.ElectroMagicTools;
-import weissmoon.electromagictools.item.ItemWeissElectricTool;
+import weissmoon.electromagictools.item.WeissItemElectricTool;
 import weissmoon.electromagictools.lib.Strings;
 
 import java.util.List;
@@ -53,7 +53,7 @@ import static net.minecraft.item.ItemBlock.setTileEntityNBT;
 /**
  * Created by Weissmoon on 9/6/19.
  */
-public class ItemThaumiumDrill extends ItemWeissElectricTool implements IMiningDrill {
+public class ItemThaumiumDrill extends WeissItemElectricTool implements IMiningDrill {
 
     protected double transferLimit = 0;
 
