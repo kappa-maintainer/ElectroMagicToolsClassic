@@ -27,6 +27,17 @@ public class Strings {
         public static final String STORMBRINGER_NAME = "itemStormCaster";
         public static final String MJÖLNIR_NAME = "itemMjolnir";
         public static final String STORMBREAKER_NAME = "itemStormBreaker";
+        public static final String CHARGE_RING_NAME = "itemChargeRing";
+        public static final String FEATHER_WINGS_GAME = "itemFeatherWings";
+        public static final String THAUMIUM_WINGS_GAME = "itemThaumiumWings";
+        public static final String NANO_WINGS_GAME = "itemNanoWings";
+        public static final String QUANTUM_WINGS_GAME = "itemQuantumWings";
+
+        public static final String IRIDIUM_DRILL_NAME = "itemIridiumDrill";
+        public static final String ENERGY_PACK_NEME = "itemEnergyPack";
+        public static final String COIN_NAME = "itemCoin";
+        public static final String ENTROPY_STAFF_NAME = "itemEntropyStaff";
+        public static final String HIT_BAUBLE = "itemHitBauble";
 
         public static final String MATERIALS_NAME = "itemMaterial";
         public static final String[] Materials = {
@@ -46,5 +57,12 @@ public class Strings {
                 "CrushedCinnabarOre",   //13
                 "PurifiedCinnabarOre"   //14
         };
+    }
+
+    public static final class Blocks{
+        public static final String SOLAR_BLOCK_NAME = "blockSolarPanel";
+        public static final String SOLAR_COMPRESSED_BLOCK_NAME = "blockSolarCompressedPanel";
+        public static final String ESSENTIA_GENERATOR_BLOCK_NAME = "blockEssentiaGenerator";
+        public static final String INDUSTRIAL_CHARGE_PEDESTAL = "blockChargePedestal";
     }
 }

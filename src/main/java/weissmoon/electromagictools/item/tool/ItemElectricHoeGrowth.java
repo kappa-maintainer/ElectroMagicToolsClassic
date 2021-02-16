@@ -1,9 +1,13 @@
 package weissmoon.electromagictools.item.tool;
 
 import ic2.api.classic.item.IDamagelessElectricItem;
+<<<<<<< HEAD
 import ic2.api.classic.item.IElectricTool;
 import ic2.api.item.ElectricItem;
 import net.minecraft.block.Block;
+=======
+import ic2.api.item.ElectricItem;
+>>>>>>> master
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -33,24 +37,32 @@ import weissmoon.core.utils.NBTHelper;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Strings;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 
 import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
+import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
 
 /**
  * Created by Weissmoon on 9/6/19.
  */
+<<<<<<< HEAD
 public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessElectricItem, IElectricTool {
+=======
+public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessElectricItem {
+>>>>>>> master
 
     private Random all0 = new Random(){
         public int nextInt(int na){
             return 0;
         }
     };
+    private final int maxCharge = 200000;
+
     public ItemElectricHoeGrowth() {
         super(ThaumcraftMaterials.TOOLMAT_THAUMIUM, Strings.Items.ELECTRIC_HOE_NAME);
         setNoRepair();
-        this.setCreativeTab(ElectroMagicTools.EMTtab);
+        setCreativeTab(ElectroMagicTools.EMTtab);
     }
 
     @Override
@@ -146,8 +158,8 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessEl
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems (CreativeTabs tab, NonNullList<ItemStack> list){
-        if (this.isInCreativeTab(tab)){
+    public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> list) {
+        if (isInCreativeTab(tab)){
             ItemStack stack = new ItemStack(this, 1, 0);
             list.add(stack);
             list.add(getChargedItem(this, 1));
@@ -160,8 +172,13 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessEl
     }
 
     @Override
+<<<<<<< HEAD
     public double getDurabilityForDisplay(ItemStack stack) {
         return 1.0D - ElectricItem.manager.getCharge(stack) / this.getMaxCharge(stack);
+=======
+    public double getDurabilityForDisplay(ItemStack stack){
+        return getElectricDurability(stack);
+>>>>>>> master
     }
 
     @Override
@@ -171,7 +188,7 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessEl
 
     @Override
     public double getMaxCharge(ItemStack stack) {
-        return 200000;
+        return maxCharge;
     }
 
     @Override

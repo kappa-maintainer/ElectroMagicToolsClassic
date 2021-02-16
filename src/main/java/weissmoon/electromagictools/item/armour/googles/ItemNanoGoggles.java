@@ -24,11 +24,19 @@ public class ItemNanoGoggles extends ItemElectricGoggles implements IEUReader, I
 
     public ItemNanoGoggles() {
         super(Strings.Items.NANO_GOGGLES_NAME, ArmorMaterial.IRON);
+<<<<<<< HEAD
         this.maxCharge = 100000;
         this.transferLimit = 1600;
         this.tier = 2;
         this.energyPerDamage = 800;
         this.visDiscount = 6;
+=======
+        maxCharge = 1000000;
+        transferLimit = 1600;
+        tier = 2;
+        energyPerDamage = 5000;
+        visDiscount = 6;
+>>>>>>> master
     }
 
     public ItemNanoGoggles(String name, ArmorMaterial material){

@@ -9,7 +9,7 @@ import weissmoon.electromagictools.lib.Reference;
  */
 public class DummyLogo extends WeissItem {
 
-    public static DummyLogo instance = new DummyLogo();
+    //public static DummyLogo instance = new DummyLogo();
 
     private DummyLogo() {
         super("logo");

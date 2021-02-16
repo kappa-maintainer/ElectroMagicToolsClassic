@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "welectromagic:items/material/taitedfeather"
+    "layer0": "welectromagic:items/material/tainted_feather"
   }
 }

@@ -13,6 +13,8 @@ import weissmoon.core.item.WeissItem;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Strings;
 
+import javax.annotation.Nonnull;
+
 import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 
 /**
@@ -39,14 +41,19 @@ public class ItemScribingTools extends WeissItem implements IScribeTools, IDamag
     }
 
     @Override
+<<<<<<< HEAD
     public double getDurabilityForDisplay(ItemStack stack) {
         return 1.0D - ElectricItem.manager.getCharge(stack) / this.getMaxCharge(stack);
+=======
+    public double getDurabilityForDisplay(ItemStack stack){
+        return getDamage(stack) / 400D;
+>>>>>>> master
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems (CreativeTabs tab, NonNullList<ItemStack> list){
-        if (this.isInCreativeTab(tab)){
+    public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> list) {
+        if (isInCreativeTab(tab)){
             ItemStack stack = new ItemStack(this, 1, 0);
             list.add(stack);
             list.add(getChargedItem(this, 1));

@@ -2,7 +2,7 @@
 {
   "modid": "welectromagic",
   "name": "Electro-Magic Tools",
-  "version": "0.0.4",
+  "version": "0.0.6.2",
   "mcVersion": "1.12.2",
   "authorList": [
     "Weissmoon"

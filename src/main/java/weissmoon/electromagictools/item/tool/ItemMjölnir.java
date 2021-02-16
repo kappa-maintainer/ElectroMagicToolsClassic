@@ -34,6 +34,7 @@ public class ItemMjölnir extends WeissItemSword {
         super(ToolMaterial.DIAMOND, Strings.Items.MJÖLNIR_NAME);
         this.setUnlocalizedName(Reference.MOD_ID + "." + Strings.Items.MJÖLNIR_NAME);
         setMaxDamage(2000);
+        setNoRepair();
         setCreativeTab(ElectroMagicTools.EMTtab);
     }
 
@@ -48,13 +49,15 @@ public class ItemMjölnir extends WeissItemSword {
         EntityLightningBolt lightning = null;
         if(result.typeOfHit == RayTraceResult.Type.BLOCK)
             lightning = new EntityLightningBolt(world, result.getBlockPos().getX(), result.getBlockPos().getY(), result.getBlockPos().getZ(), false);
-        else if (result.typeOfHit == RayTraceResult.Type.ENTITY)
+        else if(result.typeOfHit == RayTraceResult.Type.ENTITY)
             lightning = new EntityLightningBolt(world, result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ, false);
 
         if(lightning == null)
             return ActionResult.newResult(EnumActionResult.PASS, itemstack);
         else
             world.spawnEntity(lightning);
+            world.spawnEntity(new EntityLightningBolt(world, player.posX - 0.5, player.posY + player.height, player.posZ - 0.5, true));
+            player.swingArm(hand);
 
 
         if(!player.isCreative())

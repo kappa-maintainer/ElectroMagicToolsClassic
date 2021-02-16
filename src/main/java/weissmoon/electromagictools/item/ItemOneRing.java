@@ -123,11 +123,6 @@ public class ItemOneRing extends WeissItem implements IBauble {
     }
 
     @Override
-    public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
-        return true;
-    }
-
-    @Override
     public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
         int corruption;
         NBTTagCompound entityData = player.getEntityData();

@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "welectromagic:itemmaterial",
+      "data": 7
+    },
+    "title": {
+      "translate": "wemt.research.itemFeatherWings.stage.1"
+    },
+    "description": {
+      "translate": "advancements.welectromagic.wings.desc"
+    },
+    "frame": "challenge",
+    "hidden": true
+  },
+  "parent": "welectromagic:electrothaumic/root",
+  "criteria": {
+    "wings": {
+      "trigger": "welectromagic:wings_death",
+      "conditions": {
+        "items": [
+          {
+            "item": "welectromagic:itemfeatherwings"
+          }
+        ]
+      }
+    }
+  }
+}

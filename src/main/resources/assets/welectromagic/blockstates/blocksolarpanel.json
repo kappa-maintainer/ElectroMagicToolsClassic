@@ -1,0 +1,31 @@
+{
+  "multipart": [
+    {   "apply": { "model": "welectromagic:solar_base" }},
+    {   "when": { "compressed": "false" },
+      "apply": { "model": "welectromagic:solartop1"}
+    },{   "when": { "compressed": "true" },
+      "apply": { "model": "welectromagic:solartop2"}
+    },
+    {   "when": { "element": "0" },
+      "apply": { "model": "welectromagic:solarbasic"}
+    },
+    {   "when": { "element": "1" },
+      "apply": { "model": "welectromagic:solaraqua"}
+    },
+    {   "when": { "element": "2" },
+      "apply": { "model": "welectromagic:solarperditio"}
+    },
+    {   "when": { "element": "3" },
+      "apply": { "model": "welectromagic:solarordo"}
+    },
+    {   "when": { "element": "4" },
+      "apply": { "model": "welectromagic:solarignis"}
+    },
+    {   "when": { "element": "5" },
+      "apply": { "model": "welectromagic:solaraer"}
+    },
+    {   "when": { "element": "6" },
+      "apply": { "model": "welectromagic:solarterra"}
+    }
+  ]
+}

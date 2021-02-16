@@ -18,11 +18,19 @@ public class ItemQuantumGoggles extends ItemNanoGoggles {
 
     public ItemQuantumGoggles() {
         super(Strings.Items.QUANTUM_GOGGLES_NAME, ArmorMaterial.IRON);
+<<<<<<< HEAD
         this.maxCharge = 1000000;
         this.transferLimit = 1200;
         this.tier = 3;
         this.energyPerDamage = 1000;
         this.visDiscount = 8;
+=======
+        maxCharge = 10000000;
+        transferLimit = 12000;
+        tier = 3;
+        energyPerDamage = 20000;
+        visDiscount = 8;
+>>>>>>> master
     }
 
     public ItemQuantumGoggles(String name, ArmorMaterial material) {

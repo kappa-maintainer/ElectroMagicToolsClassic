@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "welectromagic:items/material/thaumiumwing"
+    "layer0": "welectromagic:items/material/thaumium_wing"
   }
 }

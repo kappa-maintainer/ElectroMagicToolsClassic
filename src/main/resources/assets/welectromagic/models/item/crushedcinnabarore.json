@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "welectromagic:items/material/crushedcinnabarore"
+    "layer0": "welectromagic:items/material/crushed_cinnabar_ore"
   }
 }
