@@ -7,13 +7,9 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-        classpath "com.wynprice.cursemaven:CurseMaven:2.1.0"
     }
 }
 apply plugin: "com.wynprice.cursemaven"
@@ -50,8 +46,6 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
-<<<<<<< HEAD
-=======
 compileJava {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
@@ -69,7 +63,6 @@ targetCompatibility = 1.8
 configurations{
     customCompile
 }
->>>>>>> master
 
 
 
@@ -83,16 +76,19 @@ repositories {
         name "JEI Fallback"
         url "https://modmaven.k-4u.nl"
     }
+    maven {
+        url = "https://www.cursemaven.com"
+    }
 }
 
 
 dependencies {
     deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
-    compile "curse.maven:thaumcraft:2629023"
-    compile "curse.maven:baubles:2518667"
-    compile "curse.maven:ic2-classic:2979877"
-    compile "curse.maven:weisscore:2776632"
+    compile "curse.maven:thaumcraft-223628:2629023"
+    compile "curse.maven:baubles-227083:2518667"
+    compile "curse.maven:ic2_classic-242942:3076009"
+    compile "curse.maven:weisscore-226657:2776632"
 }
 
 processResources
