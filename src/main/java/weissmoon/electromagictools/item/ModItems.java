@@ -1,7 +1,6 @@
 package weissmoon.electromagictools.item;
 
 import ic2.api.item.IBoxable;
-import ic2.api.item.IC2Items;
 import ic2.api.item.IMetalArmor;
 import ic2.api.item.ItemWrapper;
 import net.minecraft.item.Item;
@@ -33,7 +32,7 @@ import weissmoon.electromagictools.item.armour.googles.ItemNanoGoggles;
 import weissmoon.electromagictools.item.armour.googles.ItemQuantumGoggles;
 import weissmoon.electromagictools.item.armour.googles.ItemSolarHelmetRevealing;
 <<<<<<< HEAD
-import weissmoon.electromagictools.item.tool.ItemCoreDrill;
+import weissmoon.electromagictools.item.tool.drill.ItemCoreDrill;
 import weissmoon.electromagictools.item.tool.ItemDiamondChainsaw;
 import weissmoon.electromagictools.item.tool.ItemDiamondOmniTool;
 import weissmoon.electromagictools.item.tool.ItemElectricHoeGrowth;
@@ -50,15 +49,8 @@ import weissmoon.electromagictools.item.armour.wings.ItemNanoWings;
 import weissmoon.electromagictools.item.armour.wings.ItemQuantumWings;
 import weissmoon.electromagictools.item.armour.wings.ItemThaumiumWings;
 import weissmoon.electromagictools.item.tool.*;
-import weissmoon.electromagictools.item.tool.chainsaw.ItemDiamondChainsaw;
-import weissmoon.electromagictools.item.tool.chainsaw.ItemStreamChainsaw;
-import weissmoon.electromagictools.item.tool.chainsaw.ItemThaumiumChainsaw;
 import weissmoon.electromagictools.item.tool.drill.ItemIridiumDrill;
 import weissmoon.electromagictools.item.tool.drill.ItemRockBreakerDrill;
-import weissmoon.electromagictools.item.tool.drill.ItemThaumiumDrill;
-import weissmoon.electromagictools.item.tool.omnitool.ItemDiamondOmniTool;
-import weissmoon.electromagictools.item.tool.omnitool.ItemIronOmniTool;
-import weissmoon.electromagictools.item.tool.omnitool.ItemThaumiumOmniTool;
 >>>>>>> master
 
 /**

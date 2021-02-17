@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.items.ItemsTC;
 import weissmoon.electromagictools.item.ModItems;
-import weissmoon.electromagictools.item.tool.ItemCoreDrill;
+import weissmoon.electromagictools.item.tool.drill.ItemCoreDrill;
 
 import java.util.Random;
 
