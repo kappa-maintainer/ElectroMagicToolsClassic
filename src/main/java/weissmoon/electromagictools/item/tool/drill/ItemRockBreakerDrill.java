@@ -41,11 +41,8 @@ import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 public class ItemRockBreakerDrill extends ItemThaumiumDrill {
     private EnumFacing.Axis side;
     public ItemRockBreakerDrill(){
-        super(ToolMaterial.DIAMOND, Strings.Items.ROCKBREAKER_DRILL_NAME);
-        maxCharge = 900000;
-        cost = 800;//todo
-        tier = 2;
-        transferLimit = 1000;
+        super(ToolMaterial.DIAMOND, Strings.Items.ROCKBREAKER_DRILL_NAME, 900000, 1000, 2);
+        operationEnergyCost = 800;//todo
         efficiency = 25F;
     }
 
@@ -83,13 +80,13 @@ public class ItemRockBreakerDrill extends ItemThaumiumDrill {
                         continue;
                     }
                     EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByID(35), stack);//Fortune
-                    if (ElectricItem.manager.canUse(stack, cost)) {
+                    if (ElectricItem.manager.canUse(stack, operationEnergyCost)) {
                         IBlockState iblockstate = worldIn.getBlockState(effectPos);
                         BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(worldIn, effectPos, iblockstate, (EntityPlayer) entityLiving);
                         MinecraftForge.EVENT_BUS.post(event);
                         if (!event.isCanceled()){
                             if (breakBlock(worldIn, effectPos, (EntityPlayer) entityLiving, stack, event.getExpToDrop())) {
-                                ElectricItem.manager.use(stack, cost, entityLiving);
+                                ElectricItem.manager.use(stack, operationEnergyCost, entityLiving);
                             }
                         }
                     }

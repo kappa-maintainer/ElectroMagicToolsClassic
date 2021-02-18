@@ -83,10 +83,6 @@ public class ItemThaumiumDrill extends WeissItemElectricTool implements IMiningD
         this.efficiency = 0;
         this.setCreativeTab(ElectroMagicTools.EMTtab);
     }
-    @Override
-    public int getMaxDamage(ItemStack stack){
-        return 0;
-    }
 
     @Override
     public boolean showDurabilityBar(ItemStack stack) {
