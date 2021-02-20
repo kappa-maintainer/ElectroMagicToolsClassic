@@ -62,14 +62,11 @@ public class ElectroMagicTools {
         ic2ceLoaded = Loader.isModLoaded("ic2c_extras");
         gtcxLoaded = Loader.isModLoaded("gtc_expansion");
         ModItems.init();
-<<<<<<< HEAD
         MinecraftForge.EVENT_BUS.register(new EventHarvest());
-=======
         ModBlocks.init();
         PacketHandler.init();
         if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
             MinecraftForge.EVENT_BUS.register(new ClientEvents());
->>>>>>> master
     }
 
     @EventHandler

@@ -49,18 +49,14 @@ import java.util.ConcurrentModificationException;
 public class EMTRecipes {
 
     private static Ingredient refinedIron, denseIron, generatorWater;
-
-<<<<<<< HEAD
     static ICraftingRecipeList recipes = ClassicRecipes.advCrafting;
 
-    public static void initMaterials() {
-=======
     static{
         initMaterials();
     }
 
     private static void initMaterials() {
->>>>>>> master
+
         if (ElectroMagicTools.ic2ceLoaded) {
             refinedIron = new OreIngredient("plateRefinedIron");
             denseIron = new OreIngredient("plateDenseIron");
@@ -68,19 +64,13 @@ public class EMTRecipes {
 //            denseIron = new ItemStack(Item.getByNameOrId("ic2c_extras:denseironplate"));
             generatorWater = Ingredient.fromStacks(new ItemStack(Item.getByNameOrId("ic2c_extras:orewashingplant")));
         }else{
-<<<<<<< HEAD
-            refinedIron = Ic2Items.refinedIronIngot;
-            denseIron = new ItemStack(Blocks.IRON_BLOCK, 1, 0);
-=======
             refinedIron = Ingredient.fromStacks(new ItemStack(IC2Items.getItem("ingot", "tin").getItem(), 1, 53));
             denseIron = new OreIngredient("blockIron");
             generatorWater = Ingredient.fromStacks(IC2Items.getItem("te", "electrolyzer"));
->>>>>>> master
         }
     }
 
     public static void initInfusionRecipes(){
-<<<<<<< HEAD
         try {
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":solarupgrade"),
                     new SolarUpgradeInfusionRecipe("WMMISSINGRESEARCH",
@@ -232,7 +222,7 @@ public class EMTRecipes {
 
     }
 
-    public static void initArcareCraftingRecipes(){
+    public static void initArcaneCraftingRecipes(){
         try {
             ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":scribingTools"),
                     new ShapedArcaneRecipe(new ResourceLocation(""),
@@ -285,7 +275,6 @@ public class EMTRecipes {
             return new ItemStack(Item.getByNameOrId("gtc_expansion:diamond_chainsaw"), 1, OreDictionary.WILDCARD_VALUE);
         }
         return new ItemStack(ModItems.diamondChainsaw, 1, OreDictionary.WILDCARD_VALUE);
-=======
 //        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":solarupgrade"),
 //                new SolarUpgradeInfusionRecipe("WMMISSINGRESEARCH",
 //                        new ItemStack(ModItems.solarHelmet),
@@ -780,7 +769,6 @@ public class EMTRecipes {
                         "ppp", "ppp", "ppp",
                         'p', new ItemStack(ModBlocks.solarGenerator)));
 
->>>>>>> master
     }
     public static void initCrucibleRecipes(){
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation(Reference.MOD_ID, "aquaCompressed"),
@@ -814,32 +802,6 @@ public class EMTRecipes {
                         new ItemStack(ModBlocks.solarGeneratorCompressed, 1, 2),
                         new ItemStack(ModBlocks.solarGeneratorCompressed),
                         CraftingAspectList.perditioSolar));
-
-<<<<<<< HEAD
-        ItemStack ironClusterRecipe = IC2Items.getItem("dust", "small_iron").copy();
-        ironClusterRecipe.setCount(22);
-        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 0)), null, true, ironClusterRecipe);
-
-        ItemStack goldClusterRecipe = IC2Items.getItem("dust", "small_gold").copy();
-        goldClusterRecipe.setCount(22);
-        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 1)), null, true, goldClusterRecipe);
-
-        ItemStack copperClusterRecipe = IC2Items.getItem("dust", "small_copper").copy();
-        copperClusterRecipe.setCount(22);
-        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 2)), null, true, copperClusterRecipe);
-
-        ItemStack tinClusterRecipe = IC2Items.getItem("dust", "small_tin").copy();
-        tinClusterRecipe.setCount(22);
-        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 3)), null, true, tinClusterRecipe);
-
-        ItemStack silverClusterRecipe = IC2Items.getItem("dust", "small_silver").copy();
-        silverClusterRecipe.setCount(22);
-        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 4)), null, true, silverClusterRecipe);
-
-        ItemStack leadClusterRecipe = IC2Items.getItem("dust", "small_lead").copy();
-        leadClusterRecipe.setCount(22);
-        Recipes.macerator.addRecipe(Recipes.inputFactory.forStack(new ItemStack(ItemsTC.clusters, 1, 5)), null, true, leadClusterRecipe);
-=======
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation(Reference.MOD_ID, "ordoCompressed"),
                 new CrucibleRecipe("COMPRESSEDSOLARORDO",
                         new ItemStack(ModBlocks.solarGenerator, 1, 3),
@@ -925,7 +887,6 @@ public class EMTRecipes {
                         new ItemStack(ModBlocks.essentiaGenerator),
                         CraftingAspectList.generatorAer));
     }
->>>>>>> master
 
     public static void initIC2Recipes(){
 
@@ -935,7 +896,6 @@ public class EMTRecipes {
                 'D', IC2Items.getItem("drill"),
                 'p', refinedIron);
 
-<<<<<<< HEAD
 
         ItemStack helmet = new ItemStack(ModItems.quantumGoggles);
         recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "EUReaderUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.euReader.copy());
@@ -946,7 +906,6 @@ public class EMTRecipes {
         recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "CropUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.cropAnalyzer.copy());
         recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "ThermometerUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.thermometer.copy());
 
-=======
         ICraftingRecipeList recipes = ClassicRecipes.advCrafting;
 
         ItemStack thaumiumDrill = new ItemStack(ModItems.thaumiumDrill);
@@ -1009,14 +968,12 @@ public class EMTRecipes {
                 'L', new ItemStack(Blocks.LAPIS_BLOCK),
                 'P', new ItemStack(ModItems.gemPack),
                 'C', IC2Items.getItem("crafting", "advanced_circuit"));
->>>>>>> master
+
         if(ElectroMagicTools.ic2ceLoaded){
             initIC2CERecipes();
         }
     }
 
-<<<<<<< HEAD
-=======
     private static void initIC2CRecipes(){
         ItemStack ironClusterRecipe = IC2Items.getItem("dust", "iron").copy();
         ironClusterRecipe.setCount(2);
@@ -1047,7 +1004,6 @@ public class EMTRecipes {
 
     }
 
->>>>>>> master
     private static void initIC2CERecipes(){
 
         ItemStack ironClusterRecipe = IC2Items.getItem("dust", "small_iron").copy();
