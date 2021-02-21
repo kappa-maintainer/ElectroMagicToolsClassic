@@ -3,21 +3,15 @@ package weissmoon.electromagictools;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
-<<<<<<< HEAD
-=======
 import net.minecraftforge.fml.common.FMLCommonHandler;
->>>>>>> master
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-<<<<<<< HEAD
 import org.apache.logging.log4j.Logger;
-=======
 import net.minecraftforge.fml.relauncher.Side;
->>>>>>> master
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.casters.CasterTriggerRegistry;
@@ -28,12 +22,9 @@ import weissmoon.electromagictools.advancements.WingDeathTrigger;
 import weissmoon.electromagictools.block.ModBlocks;
 import weissmoon.electromagictools.client.ClientEvents;
 import weissmoon.electromagictools.client.EMTTab;
-<<<<<<< HEAD
 import weissmoon.electromagictools.event.EventHarvest;
-=======
 import weissmoon.electromagictools.event.EventPool;
 import weissmoon.electromagictools.event.WWMTCastTriggerManager;
->>>>>>> master
 import weissmoon.electromagictools.item.ModItems;
 import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.network.PacketHandler;
@@ -72,7 +63,7 @@ public class ElectroMagicTools {
     @EventHandler
     public void init(FMLInitializationEvent event){
         OreDictionaryEntries.initOreEntries();
-        EMTRecipes.initArcareCraftingRecipes();
+        EMTRecipes.initArcaneCraftingRecipes();
         EMTRecipes.initInfusionRecipes();
         EMTRecipes.initCrucibleRecipes();
         EMTRecipes.initNativeClusters();
