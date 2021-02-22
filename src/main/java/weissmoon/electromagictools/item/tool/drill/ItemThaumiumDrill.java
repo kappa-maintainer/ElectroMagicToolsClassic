@@ -13,6 +13,7 @@ import ic2.core.util.obj.ToolTipType;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -25,6 +26,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -85,6 +87,19 @@ public class ItemThaumiumDrill extends WeissItemElectricTool implements IMiningD
     }
 
     @Override
+    public void onSortedItemToolTip(ItemStack stack, EntityPlayer player, boolean debugTooltip, List<String> tooltip, Map<ToolTipType, List<String>> sortedTooltip) {
+        NBTTagCompound nbt = StackUtil.getNbtData(stack);
+        tooltip.add((nbt.getBoolean("dirtMode") ? Ic2InfoLang.enableDrillMode : Ic2InfoLang.disableDrillMode).getLocalized());
+
+        List<String> ctrlTip = sortedTooltip.get(ToolTipType.Ctrl);
+        ctrlTip.add(Ic2Lang.onItemRightClick.getLocalized());
+        ctrlTip.add(Ic2Lang.pressTo.getLocalizedFormatted(IC2.keyboard.getKeyName(2), Ic2InfoLang.drillModeSwitch.getLocalized()));
+        ctrlTip.add("");
+        ctrlTip.add(Ic2Lang.onBlockClick.getLocalized());
+        ctrlTip.add(Ic2Lang.pressTo.getLocalizedFormatted(IC2.keyboard.getKeyName(0), Ic2InfoLang.drillProbing.getLocalized()));
+    }
+
+    @Override
     public boolean showDurabilityBar(ItemStack stack) {
         return true;
     }
@@ -120,19 +135,6 @@ public class ItemThaumiumDrill extends WeissItemElectricTool implements IMiningD
     }
 
     @Override
-    public void onSortedItemToolTip(ItemStack stack, EntityPlayer player, boolean debugTooltip, List<String> tooltip, Map<ToolTipType, List<String>> sortedTooltip) {
-        NBTTagCompound nbt = StackUtil.getNbtData(stack);
-        tooltip.add((nbt.getBoolean("dirtMode") ? Ic2InfoLang.enableDrillMode : Ic2InfoLang.disableDrillMode).getLocalized());
-
-        List<String> ctrlTip = sortedTooltip.get(ToolTipType.Ctrl);
-        ctrlTip.add(Ic2Lang.onItemRightClick.getLocalized());
-        ctrlTip.add(Ic2Lang.pressTo.getLocalizedFormatted(IC2.keyboard.getKeyName(2), Ic2InfoLang.drillModeSwitch.getLocalized()));
-        ctrlTip.add("");
-        ctrlTip.add(Ic2Lang.onBlockClick.getLocalized());
-        ctrlTip.add(Ic2Lang.pressTo.getLocalizedFormatted(IC2.keyboard.getKeyName(0), Ic2InfoLang.drillProbing.getLocalized()));
-    }
-
-    @Override
     public boolean canHarvestBlock(IBlockState block, ItemStack stack) {
         return Items.DIAMOND_PICKAXE.canHarvestBlock(block, stack) ||
                 Items.DIAMOND_SHOVEL.canHarvestBlock(block, stack);
@@ -143,6 +145,10 @@ public class ItemThaumiumDrill extends WeissItemElectricTool implements IMiningD
         if (!ElectricItem.manager.canUse(stack, operationEnergyCost)) {
             return 1.0F;
         }
+        NBTTagCompound nbt = StackUtil.getOrCreateNbtData(stack);
+        if (nbt.getBoolean("dirtMode") && block.getMaterial() == Material.GROUND) {
+            return efficiency / 8.0F;
+        }
         if (Items.DIAMOND_PICKAXE.getDestroySpeed(stack, block) > 1.0F || Items.DIAMOND_SHOVEL.getDestroySpeed(stack, block) > 1.0F) {
             return efficiency;
         }else{
@@ -152,7 +158,7 @@ public class ItemThaumiumDrill extends WeissItemElectricTool implements IMiningD
 
     @Override
     public boolean hitEntity(ItemStack itemstack, EntityLivingBase entityliving, EntityLivingBase player){
-        ElectricItem.manager.use(itemstack, ((ItemThaumiumDrill)itemstack.getItem()).operationEnergyCost, player);
+        ElectricItem.manager.use(itemstack, operationEnergyCost, player);
         return true;
     }
 
@@ -227,14 +233,30 @@ public class ItemThaumiumDrill extends WeissItemElectricTool implements IMiningD
     }
 
     @Override
-    public int getExtraSpeed(ItemStack drill) {
-        return 5;
+    public int getExtraSpeed(ItemStack d) {
+        int pointBoost = this.getPointBoost(d);
+        return pointBoost + 5;
+    }
+
+    private int getPointBoost(ItemStack drill) {
+        int lvl = EnchantmentHelper.getEnchantmentLevel(Enchantments.EFFICIENCY, drill);
+        return lvl <= 0 ? 0 : lvl * lvl + 1;
     }
 
     @Override
-    public int getExtraEnergyCost(ItemStack drill) {
-        return 21;
+    public int getExtraEnergyCost(ItemStack d) {
+        int points = this.getEnergyChange(d) + 21;
+        return Math.max(points, 0);
     }
+
+    public int getEnergyChange(ItemStack drill) {
+        int eff = EnchantmentHelper.getEnchantmentLevel(Enchantments.EFFICIENCY, drill);
+        int unb = EnchantmentHelper.getEnchantmentLevel(Enchantments.UNBREAKING, drill);
+        int points = eff * eff + 1;
+        points -= unb * (unb + unb);
+        return points;
+    }
+
 
     @Override
     public void useDrill(ItemStack drill) {

@@ -1,13 +1,10 @@
 package weissmoon.electromagictools.item.tool;
 
+import ic2.api.classic.crops.IDropController;
 import ic2.api.classic.item.IDamagelessElectricItem;
-<<<<<<< HEAD
 import ic2.api.classic.item.IElectricTool;
 import ic2.api.item.ElectricItem;
 import net.minecraft.block.Block;
-=======
-import ic2.api.item.ElectricItem;
->>>>>>> master
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -46,11 +43,8 @@ import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
 /**
  * Created by Weissmoon on 9/6/19.
  */
-<<<<<<< HEAD
-public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessElectricItem, IElectricTool {
-=======
-public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessElectricItem {
->>>>>>> master
+public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessElectricItem, IElectricTool, IDropController {
+
 
     private Random all0 = new Random(){
         public int nextInt(int na){
@@ -172,13 +166,8 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessEl
     }
 
     @Override
-<<<<<<< HEAD
-    public double getDurabilityForDisplay(ItemStack stack) {
-        return 1.0D - ElectricItem.manager.getCharge(stack) / this.getMaxCharge(stack);
-=======
     public double getDurabilityForDisplay(ItemStack stack){
         return getElectricDurability(stack);
->>>>>>> master
     }
 
     @Override
@@ -214,5 +203,10 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessEl
     @Override
     public boolean isExcluded(ItemStack itemStack, Enchantment enchantment) {
         return enchantment == Enchantments.MENDING;
+    }
+
+    @Override
+    public boolean isChangingCropDrops(ItemStack itemStack) {
+        return true;
     }
 }

@@ -16,7 +16,6 @@ import thaumcraft.common.lib.SoundsTC;
 import thaumcraft.common.lib.network.PacketHandler;
 import thaumcraft.common.lib.network.fx.PacketFXScanSource;
 import weissmoon.electromagictools.ElectroMagicTools;
-import weissmoon.electromagictools.item.tool.ItemThaumiumDrill;
 import weissmoon.electromagictools.lib.Strings;
 
 public class ItemCoreDrill extends ItemThaumiumDrill {
