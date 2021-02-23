@@ -18,29 +18,13 @@ import javax.annotation.Nullable;
 public class ItemNanoBootsTraveller extends ItemElectricBootsTraveller {
 
     public ItemNanoBootsTraveller(){
-        super(Strings.Items.NANO_BOOTS_NAME, ArmorMaterial.IRON);
-<<<<<<< HEAD
-        this.maxCharge = 100000;
-        this.transferLimit = 1600;
-        this.jumpBonus = 0.4;
-        this.speedBonus = 0.04F;
-        this.tier = 2;
-        this.energyPerDamage = 800;
-        this.visDiscount = 4;
-=======
-        maxCharge = 100000;
-        transferLimit = 1600;
-        jumpBonus = 0.4F;
-        speedBonus = 0.04F;
-        tier = 2;
-        energyPerDamage = 5000;
-        visDiscount = 4;
->>>>>>> master
+        super(Strings.Items.NANO_BOOTS_NAME, ArmorMaterial.IRON, 100000, 1600, 0.4F, 0.04F, 2, 800, 4);
     }
 
-    ItemNanoBootsTraveller(String name, ArmorMaterial materialIn){
-        super(name, materialIn);
+    protected ItemNanoBootsTraveller(String name, ArmorMaterial materialIn, int maxCharge, int transferLimit, float jumpBonus, float speedBonus, int tier, int energyPerDamage, int visDiscount) {
+        super(name, materialIn, maxCharge, transferLimit, jumpBonus, speedBonus, tier, energyPerDamage, visDiscount);
     }
+
 
     @Nullable
     @Override

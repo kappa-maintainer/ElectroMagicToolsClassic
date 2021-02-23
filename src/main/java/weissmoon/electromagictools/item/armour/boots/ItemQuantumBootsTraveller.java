@@ -1,6 +1,5 @@
 package weissmoon.electromagictools.item.armour.boots;
 
-<<<<<<< HEAD
 import ic2.api.item.ElectricItem;
 import ic2.core.IC2;
 import net.minecraft.entity.Entity;
@@ -12,11 +11,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-=======
-import net.minecraft.entity.Entity;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemStack;
->>>>>>> master
 import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.lib.Textures;
 
@@ -28,25 +22,8 @@ import javax.annotation.Nullable;
 public class ItemQuantumBootsTraveller extends ItemNanoBootsTraveller {
 
     public ItemQuantumBootsTraveller(){
-        super(Strings.Items.QUANTUM_BOOTS_NAME, ArmorMaterial.IRON);
-<<<<<<< HEAD
-        this.maxCharge = 1000000;
-        this.transferLimit = 1200;
-        this.jumpBonus = 0.67;
-        this.speedBonus = 0.067F;
-        this.tier = 3;
-        this.energyPerDamage = 1000;
-        this.visDiscount = 5;
+        super(Strings.Items.QUANTUM_BOOTS_NAME, ArmorMaterial.IRON, 1000000, 1200, 0.67F, 0.067F, 3, 1000, 5);
         MinecraftForge.EVENT_BUS.register(this);
-=======
-        maxCharge = 1000000;
-        transferLimit = 12000;
-        jumpBonus = 0.67F;
-        speedBonus = 0.067F;
-        tier = 3;
-        energyPerDamage = 20000;
-        visDiscount = 5;
->>>>>>> master
     }
 
     @Nullable
@@ -60,7 +37,6 @@ public class ItemQuantumBootsTraveller extends ItemNanoBootsTraveller {
     protected double getAbsorptionRatio(){
         return 1;
     }
-<<<<<<< HEAD
 
     public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
         if (source == DamageSource.FALL) {
@@ -87,6 +63,4 @@ public class ItemQuantumBootsTraveller extends ItemNanoBootsTraveller {
             }
         }
     }
-=======
->>>>>>> master
 }

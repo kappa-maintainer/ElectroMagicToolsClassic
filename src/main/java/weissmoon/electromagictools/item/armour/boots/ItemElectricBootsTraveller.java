@@ -1,10 +1,7 @@
 package weissmoon.electromagictools.item.armour.boots;
 
 import ic2.api.classic.item.IDamagelessElectricItem;
-<<<<<<< HEAD
 import ic2.api.classic.item.IElectricTool;
-=======
->>>>>>> master
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IMetalArmor;
 import net.minecraft.creativetab.CreativeTabs;
@@ -49,11 +46,7 @@ import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
 /**
  * Created by Weissmoon on 9/3/19.
  */
-<<<<<<< HEAD
 public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamagelessElectricItem, IVisDiscountGear, IMetalArmor, ISpecialArmor, IElectricTool {
-=======
-public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamagelessElectricItem, IVisDiscountGear, IMetalArmor, ISpecialArmor {
->>>>>>> master
 
     protected float jumpBonus, speedBonus;
     protected int tier, energyPerDamage, visDiscount, maxCharge, transferLimit;
@@ -62,50 +55,23 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
     private UUID monsterMotionUUID = UUID.fromString("29d2b7de-c2dd-4d16-a401-190a7b34eb0d");
 
     public ItemElectricBootsTraveller(){
-        this(Strings.Items.ELECTRIC_BOOTS_NAME, ArmorMaterial.IRON);
-<<<<<<< HEAD
-        this.maxCharge = 10000;
-        this.transferLimit = 100;
-        this.jumpBonus = 0.16;
-        this.speedBonus = 0.0225F;
-        this.tier = 1;
-        this.energyPerDamage = 1000;
-        this.visDiscount = 2;
-=======
-        maxCharge = 10000;
-        transferLimit = 100;
-        jumpBonus = 0.16F;
-        speedBonus = 0.0225F;
-        tier = 1;
-        energyPerDamage = 1000;
-        visDiscount = 2;
->>>>>>> master
+        this(Strings.Items.ELECTRIC_BOOTS_NAME, ArmorMaterial.IRON, 10000, 100, 0.16F, 0.0225F, 1, 1000, 2);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    protected ItemElectricBootsTraveller(String name, ArmorMaterial materialIn) {
+    protected ItemElectricBootsTraveller(String name, ArmorMaterial materialIn, int maxCharge, int transferLimit, float jumpBonus, float speedBonus, int tier, int energyPerDamage, int visDiscount) {
         super(name, materialIn, 0, EntityEquipmentSlot.FEET);
         setNoRepair();
         setMaxDamage(0);
         setCreativeTab(ElectroMagicTools.EMTtab);
-<<<<<<< HEAD
         this.setUnlocalizedName(Reference.MOD_ID + "." + name);
-        this.maxCharge = 0;
-        this.transferLimit = 0;
-        this.jumpBonus = 0;
-        this.tier = 10;
-        this.energyPerDamage = 0;
-        this.visDiscount = 0;
-        this.speedBonus = 0;
-=======
-//        maxCharge = 0;
-//        transferLimit = 0;
-//        jumpBonus = 0;
-//        tier = 10;
-//        energyPerDamage = 0;
-//        visDiscount = 0;
-//        speedBonus = 0;
->>>>>>> master
+        this.maxCharge = maxCharge;
+        this.transferLimit = transferLimit;
+        this.jumpBonus = jumpBonus;
+        this.tier = tier;
+        this.energyPerDamage = energyPerDamage;
+        this.visDiscount = visDiscount;
+        this.speedBonus = speedBonus;
     }
 
     @Nullable
@@ -131,26 +97,12 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
     }
 
     @Override
-<<<<<<< HEAD
     public void registerIcons(IIconRegister iconRegister) {
         this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
     }
 
     @Override
     public boolean showDurabilityBar(ItemStack stack) {
-        return true;
-    }
-
-    @Override
-    public double getDurabilityForDisplay(ItemStack stack) {
-        return 1.0D - ElectricItem.manager.getCharge(stack) / this.getMaxCharge(stack);
-    }
-
-    @Override
-    public boolean canProvideEnergy(ItemStack stack) {
-=======
-    public boolean showDurabilityBar(ItemStack stack) {
->>>>>>> master
         return true;
     }
 
