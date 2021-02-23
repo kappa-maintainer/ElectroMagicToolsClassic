@@ -23,24 +23,11 @@ import java.util.List;
 public class ItemNanoGoggles extends ItemElectricGoggles implements IEUReader, IThermometer, ICropAnalyzer {
 
     public ItemNanoGoggles() {
-        super(Strings.Items.NANO_GOGGLES_NAME, ArmorMaterial.IRON);
-<<<<<<< HEAD
-        this.maxCharge = 100000;
-        this.transferLimit = 1600;
-        this.tier = 2;
-        this.energyPerDamage = 800;
-        this.visDiscount = 6;
-=======
-        maxCharge = 1000000;
-        transferLimit = 1600;
-        tier = 2;
-        energyPerDamage = 5000;
-        visDiscount = 6;
->>>>>>> master
+        super(Strings.Items.NANO_GOGGLES_NAME, ArmorMaterial.IRON, 100000, 1600, 2, 800, 6);
     }
 
-    public ItemNanoGoggles(String name, ArmorMaterial material){
-        super(name, material);
+    public ItemNanoGoggles(String name, ArmorMaterial material, int maxCharge, int transferLimit, int tier, int energyPerDamage, int visDiscount){
+        super(name, material, maxCharge, transferLimit, tier, energyPerDamage, visDiscount);
     }
 
     @Override

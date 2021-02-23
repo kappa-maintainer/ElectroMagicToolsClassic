@@ -1,10 +1,7 @@
 package weissmoon.electromagictools.item.armour.googles;
 
 import ic2.api.classic.item.IDamagelessElectricItem;
-<<<<<<< HEAD
 import ic2.api.classic.item.IElectricTool;
-=======
->>>>>>> master
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IMetalArmor;
 import ic2.core.IC2;
@@ -42,45 +39,26 @@ import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
 /**
  * Created by Weissmoon on 9/3/19.
  */
-<<<<<<< HEAD
 public class ItemElectricGoggles extends ItemArmourBase implements IDamagelessElectricItem, IVisDiscountGear, IGoggles, IMetalArmor, ISpecialArmor, IElectricTool {
-=======
-public class ItemElectricGoggles extends ItemArmourBase implements IDamagelessElectricItem, IVisDiscountGear, IGoggles, IMetalArmor, ISpecialArmor{
->>>>>>> master
+
 
     protected int tier, energyPerDamage, visDiscount, maxCharge, transferLimit;
 
     public ItemElectricGoggles(){
-        this(Strings.Items.ELECTRIC_GOGGLES_NAME, ArmorMaterial.IRON);
-<<<<<<< HEAD
-        this.maxCharge = 10000;
-        this.transferLimit = 100;
-        this.tier = 1;
-        this.energyPerDamage = 500;
-        this.visDiscount = 4;
-=======
-        maxCharge = 100000;
-        transferLimit = 100;
-        tier = 1;
-        energyPerDamage = 1000;
-        visDiscount = 4;
->>>>>>> master
+        this(Strings.Items.ELECTRIC_GOGGLES_NAME, ArmorMaterial.IRON, 10000, 100, 1, 500, 4);
     }
 
-    protected ItemElectricGoggles(String name, ArmorMaterial material) {
+    protected ItemElectricGoggles(String name, ArmorMaterial material, int maxCharge, int transferLimit, int tier, int energyPerDamage, int visDiscount) {
         super(name , material, 0, EntityEquipmentSlot.HEAD);
-<<<<<<< HEAD
         this.setUnlocalizedName(Reference.MOD_ID + "." + name);
-=======
         setNoRepair();
         setMaxDamage(0);
->>>>>>> master
         setCreativeTab(ElectroMagicTools.EMTtab);
-//        maxCharge = 0;
-//        transferLimit = 0;
-//        tier = 10;
-//        energyPerDamage = 0;
-//        visDiscount = 0;
+        this.maxCharge = maxCharge;
+        this.transferLimit = transferLimit;
+        this.tier = tier;
+        this.energyPerDamage = energyPerDamage;
+        this.visDiscount = visDiscount;
     }
 
 
@@ -158,38 +136,19 @@ public class ItemElectricGoggles extends ItemArmourBase implements IDamagelessEl
     }
 
     @Override
-<<<<<<< HEAD
-    public boolean showDurabilityBar(ItemStack stack) {
-        return true;
-    }
-
-    @Override
-    public double getDurabilityForDisplay(ItemStack stack) {
-        return 1.0D - ElectricItem.manager.getCharge(stack) / this.getMaxCharge(stack);
-    }
-
-    @Override
-    public ArmorProperties getProperties(EntityLivingBase player, @Nonnull ItemStack armor, DamageSource source, double damage, int slot) {
-        if(source.isUnblockable() && !this.isBlockingEverything()){
-=======
     public ArmorProperties getProperties(EntityLivingBase player, @Nonnull ItemStack armor, @Nonnull DamageSource source, double damage, int slot) {
-        if(source.isUnblockable()){
->>>>>>> master
+        if(source.isUnblockable() && !this.isBlockingEverything()){
             return new ISpecialArmor.ArmorProperties(0,0, 0);
         } else if (source.getDamageType().equals(IC2DamageSource.electricity.getDamageType()) && IC2.config.getFlag("SpecialElectricArmor")) {
             return !hasElectricBoots(player) ? new ArmorProperties(0, 1.0D, (int)this.maxCharge - (int)ElectricItem.manager.getCharge(armor)) : new ArmorProperties(0, 1.0D, 2147483647);
         } else{
             double absorptionRatio = 0.15 * getAbsorptionRatio();
-<<<<<<< HEAD
+
             double energyPerDamage = this.energyPerDamage;
             energyPerDamage *= IC2.config.getFloat("electricSuitEnergyCostModifier");
             absorptionRatio *= IC2.config.getFloat("electricSuitAbsorbtionScale");
             int damageLimit = (int)(energyPerDamage > 0.0D ? ElectricItem.manager.discharge(armor, 2.147483647E9D, 2147483647, true, false, true) / energyPerDamage : 0.0D);
             return new ISpecialArmor.ArmorProperties(0, absorptionRatio, damageLimit);
-=======
-            double damageLimit = (25 * ElectricItem.manager.getCharge(armor)) / energyPerDamage;
-            return new ISpecialArmor.ArmorProperties(0, absorptionRatio, (int)damageLimit);
->>>>>>> master
         }
     }
 

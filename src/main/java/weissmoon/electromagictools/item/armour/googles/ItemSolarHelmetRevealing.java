@@ -28,15 +28,10 @@ public class ItemSolarHelmetRevealing extends ItemQuantumGoggles {
     public static final String NBT_INFUSED_SOLAR = "solarPanel";
 
     public ItemSolarHelmetRevealing(){
-        super(Strings.Items.SOLAR_GOGGLES_NAME, ArmorMaterial.IRON);
+        super(Strings.Items.SOLAR_GOGGLES_NAME, ArmorMaterial.IRON, 20000000, 18000, 4, 20000, 7);
 
         this.genDay = 65536;
         this.genNight = 4096;
-        this.maxCharge = 20000000;
-        this.transferLimit = 18000;
-        this.tier = 4;
-        this.energyPerDamage = 20000;
-        this.visDiscount = 7;
         this.setCreativeTab(null);
     }
 

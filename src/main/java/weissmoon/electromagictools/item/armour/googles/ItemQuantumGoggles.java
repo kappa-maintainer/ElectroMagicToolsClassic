@@ -17,24 +17,11 @@ import javax.annotation.Nullable;
 public class ItemQuantumGoggles extends ItemNanoGoggles {
 
     public ItemQuantumGoggles() {
-        super(Strings.Items.QUANTUM_GOGGLES_NAME, ArmorMaterial.IRON);
-<<<<<<< HEAD
-        this.maxCharge = 1000000;
-        this.transferLimit = 1200;
-        this.tier = 3;
-        this.energyPerDamage = 1000;
-        this.visDiscount = 8;
-=======
-        maxCharge = 10000000;
-        transferLimit = 12000;
-        tier = 3;
-        energyPerDamage = 20000;
-        visDiscount = 8;
->>>>>>> master
+        super(Strings.Items.QUANTUM_GOGGLES_NAME, ArmorMaterial.IRON, 1000000, 1200, 3, 1000, 8);
     }
 
-    public ItemQuantumGoggles(String name, ArmorMaterial material) {
-        super(name, material);
+    public ItemQuantumGoggles(String name, ArmorMaterial material, int maxCharge, int transferLimit, int tier, int energyPerDamage, int visDiscount) {
+        super(name, material, maxCharge, transferLimit, tier, energyPerDamage, visDiscount);
     }
 
     @Nullable
