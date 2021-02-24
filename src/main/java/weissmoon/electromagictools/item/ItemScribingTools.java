@@ -41,13 +41,8 @@ public class ItemScribingTools extends WeissItem implements IScribeTools, IDamag
     }
 
     @Override
-<<<<<<< HEAD
     public double getDurabilityForDisplay(ItemStack stack) {
-        return 1.0D - ElectricItem.manager.getCharge(stack) / this.getMaxCharge(stack);
-=======
-    public double getDurabilityForDisplay(ItemStack stack){
         return getDamage(stack) / 400D;
->>>>>>> master
     }
 
     @SideOnly(Side.CLIENT)
