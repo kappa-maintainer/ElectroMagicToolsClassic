@@ -14,6 +14,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemRecord;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
@@ -23,14 +24,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
-<<<<<<< HEAD
 import thaumcraft.common.entities.projectile.EntityAlumentum;
 import weissmoon.core.client.render.IIconRegister;
 import weissmoon.core.item.tools.WeissItemSword;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
-=======
 import thaumcraft.api.capabilities.IPlayerKnowledge;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import weissmoon.core.api.client.item.IItemRenderCustom;
@@ -43,7 +42,6 @@ import weissmoon.electromagictools.lib.Strings;
 import thaumcraft.common.entities.projectile.EntityAlumentum;
 import weissmoon.electromagictools.network.JukeboxNonRecordEventMessage;
 import weissmoon.electromagictools.network.PacketHandler;
->>>>>>> master
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -108,11 +106,11 @@ public class ItemStormCaster extends WeissItemSword implements IItemRenderCustom
         return multimap;
     }
 
-<<<<<<< HEAD
+
     @Override
     public void registerIcons(IIconRegister iconRegister) {
         this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
-=======
+    }
 //    @Override
 //    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ){
 //        IBlockState iblockstate = worldIn.getBlockState(pos);
@@ -168,6 +166,6 @@ public class ItemStormCaster extends WeissItemSword implements IItemRenderCustom
         protected ItemRecord() {
             super("magus", new SoundEvent(new ResourceLocation(Reference.MOD_ID, "magus")));
         }
->>>>>>> master
+
     }
 }
