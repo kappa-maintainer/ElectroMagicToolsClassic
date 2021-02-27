@@ -15,6 +15,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import weissmoon.core.item.armour.ItemArmourBase;
+import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.lib.Textures;
 
@@ -35,6 +36,7 @@ public class ItemEnergyPack extends ItemArmourBase implements IDamagelessElectri
 
     public ItemEnergyPack() {
         super(Strings.Items.ENERGY_PACK_NEME, ArmorMaterial.LEATHER, 0, EntityEquipmentSlot.CHEST);
+        this.setUnlocalizedName(Reference.MOD_ID + "." + Strings.Items.ENERGY_PACK_NEME);
         maxCharge = 160000;
         transferLimit = 200;
         setMaxDamage(0);

@@ -47,24 +47,17 @@ public class ItemMaterials extends WeissItem implements IItemRenderCustom{
 
     @SideOnly(Side.CLIENT)
     public void registerIcons (IIconRegister iconRegister){
-<<<<<<< HEAD
+
         this.itemIconWeiss = iconRegister.registerIcon(this, getRegistryName().toString());
         this.itemIconArray = new IIcon[Strings.Items.Materials.length];
         int i = 0;
         for(String nem : Strings.Items.Materials) {
             this.itemIconArray[i] = iconRegister.registerIcon(this, Reference.MOD_ID + ":" + nem);
-=======
-        itemIconWeiss = iconRegister.registerIcon(this, getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1));
+            itemIconWeiss = iconRegister.registerIcon(this, getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1));
+        }
         tabIcon = iconRegister.registerIcon(this, "itemthaumiumdrill");
         nanoWing = iconRegister.registerIcon(this, "itemnanowing");
         quantumWing = iconRegister.registerIcon(this, "itemquantumwing");
-        itemIconArray = new IIcon[Strings.Items.Materials.length];
-        int i = 0;
-        for(String nem:Strings.Items.Materials) {
-            itemIconArray[i] = iconRegister.registerIcon(this, Reference.MOD_ID + ":" + nem);
->>>>>>> master
-            i++;
-        }
     }
 
     @SideOnly(Side.CLIENT)
