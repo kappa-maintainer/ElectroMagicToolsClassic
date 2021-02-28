@@ -24,10 +24,21 @@ public class ItemScribingTools extends WeissItem implements IScribeTools, IDamag
     public ItemScribingTools() {
         super(Strings.Items.SCRIBING_TOOLS_NAME);
         this.setUnlocalizedName(getModID().toLowerCase() + "." + Strings.Items.SCRIBING_TOOLS_NAME);
-        setMaxDamage(0);
+        setMaxDamage(400);
         setNoRepair();
         setMaxStackSize(1);
         setCreativeTab(ElectroMagicTools.EMTtab);
+    }
+
+    @Override
+    public void setDamage(ItemStack stack, int damage){
+        //ElectricItem.manager.discharge(stack, 10, 0, true, false, false);
+        ElectricItem.manager.use(stack, 10, null);
+    }
+
+    @Override
+    public int getDamage(ItemStack stack){
+        return 400 - (int)ElectricItem.manager.getCharge(stack);
     }
 
     @Override

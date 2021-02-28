@@ -75,7 +75,7 @@ public class ModItems {
     public static final WeissItemElectricTool ironOmnitool = new ItemIronOmniTool();
     public static final WeissItemElectricTool diamondOmnitool = new ItemDiamondOmniTool();
     public static final WeissItemElectricTool thaumiumOmnitool = new ItemThaumiumOmniTool();
-    public static final Item stormCaster = new ItemStormCaster();
+    public static final ItemStormCaster stormCaster = new ItemStormCaster();
 
     public static final Item mjölnir = new ItemMjölnir();
     public static final Item chargeRing = new ItemChargeRing();

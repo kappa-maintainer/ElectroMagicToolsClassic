@@ -31,7 +31,7 @@ public class StormCraftingTicker {
         if(event.world == world){
             if(world.isBlockLoaded(pos)){
                 TileEntity ped = world.getTileEntity(pos.down(2));
-                if (ped != null && ped instanceof TilePedestal){
+                if (ped instanceof TilePedestal){
                     TilePedestal pedestal = (TilePedestal) ped;
                     if (pedestal.getStackInSlot(0).isEmpty()){
                         if(pedestal.getStackInSlot(0).getItem() == ModItems.stormBreaker){

@@ -84,7 +84,7 @@ repositories {
 dependencies {
     deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
-    compile "curse.maven:thaumcraft-223628:2629023"
+    deobfCompile "curse.maven:thaumcraft-223628:2629023"
     compile "curse.maven:baubles-227083:2518667"
     compile "curse.maven:ic2_classic-242942:3076009"
     compile "curse.maven:weisscore-226657:2776632"

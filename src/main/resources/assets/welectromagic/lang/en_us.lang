@@ -97,10 +97,10 @@ item.welectromagic:itemFeatherWings.name=Feather Duct-Taped Wings
 item.welectromagic:itemThaumiumWings.name=Thaumium Reinforced Wings
 item.welectromagic:itemNanoWings.name=Nanosuit Wings
 item.welectromagic:itemQuantumWings.name=Quantum Wings
-item.welectromagic:itemRockbreakerDrill.name=Drill of the Rockbreaker
+item.welectromagic.itemRockbreakerDrill.name=Drill of the Rockbreaker
 item.welectromagic:itemStormBreaker.name=Storm Breaker
 
-item.welectromagic:itemIridiumDrill.name=Iridium Drill
+item.welectromagic.itemIridiumDrill.name=Iridium Drill
 item.welectromagic:itemEnergyPack.name=Energy Pack
 item.welectromagic:itemCoin.name=Coin
 item.welectromagic:itemCoin1.name=Brass Coin
@@ -141,8 +141,8 @@ advancements.welectromagic.stormbringer.desc=Obtain the broken relic of Mjölnir
 tc.research_category.WEMT=Electro-Thaumic Tools
 
 #first %s is purple, second %s is reset
-item.welectromagic:itemOneRing.equipt1=You have worn the Ring. Your soul has now been forever %stainted%s.
-item.welectromagic:itemOneRing.equipt2=Beware of wearing the ring. The %stainting%s will only increase, and strange things will start happening.
+item.welectromagic.itemOneRing.equipt1=You have worn the Ring. Your soul has now been forever %stainted%s.
+item.welectromagic.itemOneRing.equipt2=Beware of wearing the ring. The %stainting%s will only increase, and strange things will start happening.
 
 research.example.text.stage.1=Text not Found
 
