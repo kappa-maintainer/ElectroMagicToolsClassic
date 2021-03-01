@@ -12,10 +12,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketSoundEffect;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.util.*;
 import net.minecraft.world.storage.loot.*;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.functions.LootFunction;
@@ -24,10 +21,13 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import org.apache.logging.log4j.Level;
+import thaumcraft.common.lib.SoundsTC;
+import thaumcraft.common.lib.enchantment.EnumInfusionEnchantment;
 import weissmoon.core.utils.LogHelper;
 import weissmoon.core.utils.NBTHelper;
 import weissmoon.electromagictools.advancements.BaubleHitTrigger;
@@ -38,6 +38,8 @@ import weissmoon.electromagictools.item.armour.wings.ItemFeatherWings;
 import weissmoon.electromagictools.item.armour.wings.ItemNanoWings;
 import weissmoon.electromagictools.item.armour.wings.ItemQuantumWings;
 import weissmoon.electromagictools.lib.Reference;
+import weissmoon.electromagictools.network.OverrideScanPacket;
+import weissmoon.electromagictools.network.PacketHandler;
 
 import java.util.List;
 
@@ -184,6 +186,24 @@ public class EventPool {
                 }
             }
         }
+    }
+
+    @SubscribeEvent(priority =  EventPriority.HIGH)
+    public void playerRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+        if (!event.getWorld().isRemote && event.getEntityPlayer() != null) {
+            event.getEntityPlayer().getActiveHand();
+            ItemStack heldItem = event.getEntityPlayer().getHeldItem(event.getEntityPlayer().getActiveHand());
+            if (!heldItem.isEmpty()) {
+                List<EnumInfusionEnchantment> list = EnumInfusionEnchantment.getInfusionEnchantments(heldItem);
+                if (list.contains(EnumInfusionEnchantment.SOUNDING) && event.getEntityPlayer().isSneaking()) {
+                    heldItem.damageItem(5, event.getEntityPlayer());
+                    event.getWorld().playSound(null, (double)event.getPos().getX() + 0.5D, (double)event.getPos().getY() + 0.5D, (double)event.getPos().getZ() + 0.5D, SoundsTC.wandfail, SoundCategory.BLOCKS, 0.2F, 0.2F + event.getWorld().rand.nextFloat() * 0.2F);
+                    PacketHandler.INSTANCE.sendTo(new OverrideScanPacket(event.getPos(), EnumInfusionEnchantment.getInfusionEnchantmentLevel(heldItem, EnumInfusionEnchantment.SOUNDING)), (EntityPlayerMP)event.getEntityPlayer());
+                    event.setCanceled(true);
+                }
+            }
+        }
+
     }
 
     @SubscribeEvent

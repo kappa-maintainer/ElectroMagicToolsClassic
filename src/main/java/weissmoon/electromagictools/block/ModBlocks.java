@@ -16,6 +16,7 @@ import weissmoon.electromagictools.block.tile.SolarTileEntity;
 import weissmoon.electromagictools.block.tile.TileIndustrialChargePedestal;
 import weissmoon.electromagictools.item.block.ItemBlockEssentia;
 import weissmoon.electromagictools.item.block.ItemBlockSolar;
+import weissmoon.electromagictools.item.block.ItemObsidianTile;
 import weissmoon.electromagictools.lib.Reference;
 
 /**
@@ -27,6 +28,8 @@ public class ModBlocks {
     public static final Block solarGeneratorCompressed = new SolarBlockBase(true);
     public static final Block essentiaGenerator = new EssentiaGeneratorBlock();
     public static final Block industrialVisCharger = new IndustrialChargePedestal();
+
+    public static final Block obsidianTile = new BlockObsidian();
 
     public static void init(){
         MinecraftForge.EVENT_BUS.register(new ModBlocks());
@@ -40,6 +43,7 @@ public class ModBlocks {
         blockRegistry.register(solarGeneratorCompressed);
         blockRegistry.register(essentiaGenerator);
         blockRegistry.register(industrialVisCharger);
+        blockRegistry.register(obsidianTile);
         GameRegistry.registerTileEntity(SolarTileEntity.class, new ResourceLocation(Reference.MOD_ID, "solarpanel"));
         GameRegistry.registerTileEntity(EssentiaGeneratorBase.class, new ResourceLocation(Reference.MOD_ID, "essentiagen"));
         GameRegistry.registerTileEntity(TileIndustrialChargePedestal.class, new ResourceLocation(Reference.MOD_ID, "chargepedestal"));
@@ -52,5 +56,7 @@ public class ModBlocks {
         blockRegistry.register(new ItemBlockSolar(true));
         blockRegistry.register(new ItemBlockEssentia());
         blockRegistry.register(new WeissItemBlock(industrialVisCharger).setCreativeTab(ElectroMagicTools.EMTtab));
+
+        blockRegistry.register(new ItemObsidianTile());
     }
 }

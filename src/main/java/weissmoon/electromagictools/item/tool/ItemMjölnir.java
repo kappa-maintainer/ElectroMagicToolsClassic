@@ -17,6 +17,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import weissmoon.core.item.tools.WeissItemSword;
 import weissmoon.electromagictools.ElectroMagicTools;
+import weissmoon.electromagictools.event.Cremation;
 import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.util.GenericHelper;
 
@@ -55,6 +56,8 @@ public class ItemMjölnir extends WeissItemSword {
             world.spawnEntity(lightning);
             world.spawnEntity(new EntityLightningBolt(world, player.posX - 0.5, player.posY + player.height, player.posZ - 0.5, true));
             player.swingArm(hand);
+            Cremation.lightning.put(lightning, player);
+            Cremation.queueTick();
 
 
         if(!player.isCreative())

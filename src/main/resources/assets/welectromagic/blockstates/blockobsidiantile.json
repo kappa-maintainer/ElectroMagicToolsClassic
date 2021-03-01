@@ -1,0 +1,23 @@
+{
+  "multipart": [
+    {   "apply": { "model": "welectromagic:blockobsidiantile" }},
+    {   "when": { "element": "1" },
+      "apply": { "model": "welectromagic:obsidianface1"}
+    },
+    {   "when": { "element": "2" },
+      "apply": { "model": "welectromagic:obsidianface2"}
+    },
+    {   "when": { "element": "3" },
+      "apply": { "model": "welectromagic:obsidianface3"}
+    },
+    {   "when": { "element": "4" },
+      "apply": { "model": "welectromagic:obsidianface4"}
+    },
+    {   "when": { "element": "5" },
+      "apply": { "model": "welectromagic:obsidianface5"}
+    },
+    {   "when": { "element": "6" },
+      "apply": { "model": "welectromagic:obsidianface6"}
+    }
+  ]
+}

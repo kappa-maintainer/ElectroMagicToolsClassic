@@ -3,11 +3,13 @@ package weissmoon.electromagictools.block.tile;
 import ic2.api.energy.prefab.BasicSource;
 import ic2.api.energy.tile.IEnergyAcceptor;
 import ic2.api.energy.tile.IEnergySource;
+import ic2.api.info.ILocatable;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.IAspectSource;
 import thaumcraft.common.lib.events.EssentiaHandler;
@@ -15,7 +17,7 @@ import thaumcraft.common.lib.events.EssentiaHandler;
 /**
  * Created by Weissmoon on 9/24/20.
  */
-public class EssentiaGeneratorBase extends TileEntity implements ITickable, IEnergySource {
+public class EssentiaGeneratorBase extends TileEntity implements ITickable, IEnergySource, ILocatable{
 
     private String BURN_TIME_NBT_KEY;
     int pulseTimer = 20;
@@ -33,7 +35,7 @@ public class EssentiaGeneratorBase extends TileEntity implements ITickable, IEne
             aspect = Aspect.FIRE;
         else
             aspect = Aspect.ENERGY;
-        energySource = new BasicSource(this, 100000000,3);
+        energySource = new BasicSource((ILocatable)this, 100000000,3);
     }
 
 
@@ -150,5 +152,15 @@ public class EssentiaGeneratorBase extends TileEntity implements ITickable, IEne
     @Override
     public boolean emitsEnergyTo(IEnergyAcceptor receiver, EnumFacing side) {
         return true;
+    }
+
+    @Override
+    public BlockPos getPosition(){
+        return pos;
+    }
+
+    @Override
+    public World getWorldObj(){
+        return world;
     }
 }

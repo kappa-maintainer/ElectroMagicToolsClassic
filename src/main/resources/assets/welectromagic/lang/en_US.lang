@@ -63,6 +63,8 @@ item.welectromagic:itemQuantumWings.name=Quantum Wings
 item.welectromagic:itemRockbreakerDrill.name=Drill of the Rockbreaker
 item.welectromagic:itemStormBreaker.name=Storm Breaker
 
+tile.welectromagic:blockObsidianTile.name=Obsidian Tile
+
 item.welectromagic:itemIridiumDrill.name=Iridium Drill
 item.welectromagic:itemEnergyPack.name=Energy Pack
 item.welectromagic:itemCoin.name=Coin
@@ -90,6 +92,10 @@ advancements.welectromagic.hitbauble.name=Kill me if you can
 advancements.welectromagic.hitbauble.desc=Block 50 points of damage with a hit bauble.
 advancements.welectromagic.stormbringer.name=Doomsday Clock
 advancements.welectromagic.stormbringer.desc=Obtain the broken relic of Mjölnir.
+advancements.welectromagic.cremation.name=Brutal Cremation
+advancements.welectromagic.cremation.desc=Cremate brutally.
+advancements.welectromagic.nine.name=⑨
+advancements.welectromagic.nine.desc=Get 9 Triple Compressed Elemental Solar Panels
 
 tc.research_category.WEMT=Electro-Thaumic Tools
 

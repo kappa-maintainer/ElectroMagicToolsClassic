@@ -262,8 +262,8 @@ public class EMTRecipes {
                         IC2Items.getItem("quantum_chestplate"),
                         new OreIngredient("nitor")));
         ItemStack rockbreakerDrillStack = new ItemStack(ModItems.rockBreakerDrill);
-        EnumInfusionEnchantment.addInfusionEnchantment(rockbreakerDrillStack, EnumInfusionEnchantment.SOUNDING, 2);
         EnumInfusionEnchantment.addInfusionEnchantment(rockbreakerDrillStack, EnumInfusionEnchantment.REFINING, 1);
+        EnumInfusionEnchantment.addInfusionEnchantment(rockbreakerDrillStack, EnumInfusionEnchantment.SOUNDING, 2);
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID, "rockbreakerdrill"),
                 new ElectricInfusionRecipe("ROCKBREAKERDRILL",
                         rockbreakerDrillStack,

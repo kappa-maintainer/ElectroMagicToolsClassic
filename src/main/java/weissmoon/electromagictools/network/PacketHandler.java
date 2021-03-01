@@ -16,5 +16,6 @@ public class PacketHandler {
         INSTANCE.registerMessage(JukeboxNonRecordEventMessage.class, JukeboxNonRecordEventMessage.class, 0, Side.CLIENT);
         INSTANCE.registerMessage(FlameParticleMessage.class, FlameParticleMessage.class, 1, Side.CLIENT);
         INSTANCE.registerMessage(TileUpdatePacket.class, TileUpdatePacket.class, 2, Side.CLIENT);
+        INSTANCE.registerMessage(OverrideScanPacket.class, OverrideScanPacket.class, 3, Side.CLIENT);
     }
 }

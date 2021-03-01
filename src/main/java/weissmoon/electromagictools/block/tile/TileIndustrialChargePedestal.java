@@ -3,6 +3,7 @@ package weissmoon.electromagictools.block.tile;
 import ic2.api.energy.prefab.BasicSink;
 import ic2.api.energy.tile.IEnergyEmitter;
 import ic2.api.energy.tile.IEnergySink;
+import ic2.api.info.ILocatable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,6 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -30,7 +32,7 @@ import javax.annotation.Nullable;
 /**
  * Created by Weissmoon on 11/27/20.
  */
-public class TileIndustrialChargePedestal extends TileEntity implements ITickable, IEnergySink, IAspectContainer{
+public class TileIndustrialChargePedestal extends TileEntity implements ITickable, IEnergySink, IAspectContainer, ILocatable{
 
     private Limithadler itemStackHandler = new Limithadler();
     private BasicSink energySink;
@@ -46,7 +48,7 @@ public class TileIndustrialChargePedestal extends TileEntity implements ITickabl
 
     public TileIndustrialChargePedestal(){
         super();
-        energySink = new BasicSink(this, 10000000, 4);
+        energySink = new BasicSink((ILocatable)this, 10000000, 4);
     }
 
     @Override
@@ -245,6 +247,16 @@ public class TileIndustrialChargePedestal extends TileEntity implements ITickabl
 
     public BlockPos getUP_POS() {
         return UP_POS;
+    }
+
+    @Override
+    public BlockPos getPosition(){
+        return pos;
+    }
+
+    @Override
+    public World getWorldObj(){
+        return world;
     }
 
 

@@ -63,5 +63,6 @@ public class Strings {
         public static final String SOLAR_COMPRESSED_BLOCK_NAME = "blockSolarCompressedPanel";
         public static final String ESSENTIA_GENERATOR_BLOCK_NAME = "blockEssentiaGenerator";
         public static final String INDUSTRIAL_CHARGE_PEDESTAL = "blockChargePedestal";
+        public static final String OBSIDIAN_TILE_NAME = "blockObsidianTile";
     }
 }

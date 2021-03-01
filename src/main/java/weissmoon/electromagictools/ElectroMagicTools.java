@@ -16,11 +16,13 @@ import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.casters.CasterTriggerRegistry;
 import weissmoon.core.client.creativetab.CreativeTabWeiss;
 import weissmoon.electromagictools.advancements.BaubleHitTrigger;
+import weissmoon.electromagictools.advancements.CremationTrigger;
 import weissmoon.electromagictools.advancements.RockbreakerTrigger;
 import weissmoon.electromagictools.advancements.WingDeathTrigger;
 import weissmoon.electromagictools.block.ModBlocks;
 import weissmoon.electromagictools.client.ClientEvents;
 import weissmoon.electromagictools.client.EMTTab;
+import weissmoon.electromagictools.event.Cremation;
 import weissmoon.electromagictools.event.EventPool;
 import weissmoon.electromagictools.event.WWMTCastTriggerManager;
 import weissmoon.electromagictools.item.ModItems;
@@ -29,6 +31,7 @@ import weissmoon.electromagictools.network.PacketHandler;
 import weissmoon.electromagictools.override.EnergyIconOverride;
 import weissmoon.electromagictools.recipe.EMTRecipes;
 import weissmoon.electromagictools.research.TCResearch;
+import weissmoon.electromagictools.world.ObsidianPillarGenerator;
 
 /**
  * Created by Weissmoon on 9/3/19.
@@ -62,6 +65,7 @@ public class ElectroMagicTools {
         EMTRecipes.initIC2Recipes();
         EMTRecipes.initSmeltingRecipes();
         MinecraftForge.EVENT_BUS.register(new EventPool());
+        MinecraftForge.EVENT_BUS.register(new Cremation());
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/wemt"));
         //ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/nya.json"));
         ModItems.compartTCtoIC();
@@ -73,6 +77,7 @@ public class ElectroMagicTools {
         CriteriaTriggers.register(WingDeathTrigger.INSTANCE);
         CriteriaTriggers.register(RockbreakerTrigger.INSTANCE);
         CriteriaTriggers.register(BaubleHitTrigger.INSTANCE);
+        CriteriaTriggers.register(CremationTrigger.INSTANCE);
         if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
             EnergyIconOverride.init();
         TCResearch.registerResearchTab();

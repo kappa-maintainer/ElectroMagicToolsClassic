@@ -3,11 +3,13 @@ package weissmoon.electromagictools.block.tile;
 import ic2.api.energy.prefab.BasicSource;
 import ic2.api.energy.tile.IEnergyAcceptor;
 import ic2.api.energy.tile.IEnergySource;
+import ic2.api.info.ILocatable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import weissmoon.electromagictools.api.ISolarRequirements;
 import weissmoon.electromagictools.block.solar.SolarBlockBase;
 
@@ -16,7 +18,7 @@ import static java.lang.System.out;
 /**
  * Created by Weissmoon on 9/7/20.
  */
-public class SolarTileEntity extends TileEntity implements ITickable, IEnergySource {
+public class SolarTileEntity extends TileEntity implements ITickable, IEnergySource, ILocatable{
 
     private ISolarRequirements requirements;
     private BasicSource energySource;
@@ -26,7 +28,7 @@ public class SolarTileEntity extends TileEntity implements ITickable, IEnergySou
     public SolarTileEntity(){
 //        super(3000, 1);
         requirements = SolarRegistry.defaultRequirements;
-        energySource = new BasicSource(this, 3000,1);
+        energySource = new BasicSource((ILocatable)this, 3000,1);
     }
 
     @Override
@@ -142,5 +144,15 @@ public class SolarTileEntity extends TileEntity implements ITickable, IEnergySou
     @Override
     public boolean emitsEnergyTo(IEnergyAcceptor receiver, EnumFacing side) {
         return side != EnumFacing.UP;
+    }
+
+    @Override
+    public BlockPos getPosition(){
+        return pos;
+    }
+
+    @Override
+    public World getWorldObj(){
+        return world;
     }
 }
