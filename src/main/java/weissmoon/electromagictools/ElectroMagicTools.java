@@ -23,6 +23,7 @@ import weissmoon.electromagictools.block.ModBlocks;
 import weissmoon.electromagictools.client.ClientEvents;
 import weissmoon.electromagictools.client.EMTTab;
 import weissmoon.electromagictools.event.Cremation;
+import weissmoon.electromagictools.event.EventHarvest;
 import weissmoon.electromagictools.event.EventPool;
 import weissmoon.electromagictools.event.WWMTCastTriggerManager;
 import weissmoon.electromagictools.item.ModItems;

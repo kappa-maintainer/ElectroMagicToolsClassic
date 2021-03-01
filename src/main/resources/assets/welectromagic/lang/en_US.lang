@@ -65,7 +65,7 @@ item.welectromagic:itemStormBreaker.name=Storm Breaker
 
 tile.welectromagic:blockObsidianTile.name=Obsidian Tile
 
-item.welectromagic:itemIridiumDrill.name=Iridium Drill
+item.welectromagic.itemIridiumDrill.name=Iridium Drill
 item.welectromagic:itemEnergyPack.name=Energy Pack
 item.welectromagic:itemCoin.name=Coin
 item.welectromagic:itemCoin1.name=Brass Coin

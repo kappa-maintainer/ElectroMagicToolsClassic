@@ -18,6 +18,7 @@ import net.minecraft.world.World;
 import weissmoon.core.item.tools.WeissItemSword;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.event.Cremation;
+import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.util.GenericHelper;
 
