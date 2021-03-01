@@ -4,8 +4,9 @@ import ic2.api.classic.recipe.ClassicRecipes;
 import ic2.api.classic.recipe.crafting.ICraftingRecipeList;
 import ic2.api.item.IC2Items;
 import ic2.api.item.IElectricItem;
-import ic2.api.recipe.IBasicMachineRecipeManager;
 import ic2.api.recipe.Recipes;
+import ic2.core.item.recipe.upgrades.FlagModifier;
+import ic2.core.platform.registry.Ic2Items;
 import ic2.core.item.recipe.upgrades.EnchantmentModifier;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
@@ -37,23 +38,25 @@ import weissmoon.electromagictools.lib.CraftingAspectList;
 import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.util.ItemHelper;
 
+import java.util.ConcurrentModificationException;
+
 /**
  * Created by Weissmoon on 9/7/19.
  */
 public class EMTRecipes {
 
     private static Ingredient refinedIron, denseIron, generatorWater;
+    static ICraftingRecipeList recipes = ClassicRecipes.advCrafting;
 
     static{
         initMaterials();
     }
 
     private static void initMaterials() {
+
         if (ElectroMagicTools.ic2ceLoaded) {
             refinedIron = new OreIngredient("plateRefinedIron");
             denseIron = new OreIngredient("plateDenseIron");
-//            refinedIron = new ItemStack(Item.getByNameOrId("ic2c_extras:refinedironplate"));
-//            denseIron = new ItemStack(Item.getByNameOrId("ic2c_extras:denseironplate"));
             generatorWater = Ingredient.fromStacks(new ItemStack(Item.getByNameOrId("ic2c_extras:orewashingplant")));
         }else{
             refinedIron = Ingredient.fromStacks(new ItemStack(IC2Items.getItem("ingot", "tin").getItem(), 1, 53));
@@ -63,7 +66,7 @@ public class EMTRecipes {
     }
 
     public static void initInfusionRecipes(){
-//        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":solarupgrade"),
+        //        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":solarupgrade"),
 //                new SolarUpgradeInfusionRecipe("WMMISSINGRESEARCH",
 //                        new ItemStack(ModItems.solarHelmet),
 //                        5,
@@ -163,7 +166,7 @@ public class EMTRecipes {
                         new ItemStack(ModItems.thaumiumChainsaw),
                         5,
                         CraftingAspectList.thaumiumChainsaw,
-                        new ItemStack(ModItems.diamondChainsaw),
+                        getDiamondChainsaw(),
                         new ItemStack(Items.DIAMOND),
                         new ItemStack(Items.DIAMOND),
                         new OreIngredient("plateThaumium"),
@@ -278,7 +281,7 @@ public class EMTRecipes {
                         IC2Items.getItem("resource", "reinforced_stone"),
                         IC2Items.getItem("crafting", "iridium"),
                         IC2Items.getItem("upgrade", "overclocker")
-                        ));
+                ));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID, "basicCompressed3"),
                 new InfusionRecipe("COMPRESSEDSOLAR",
                         new ItemStack(ModBlocks.solarGeneratorCompressed),
@@ -346,6 +349,13 @@ public class EMTRecipes {
                         ThaumcraftApiHelper.makeCrystal(Aspect.ORDER),
                         new ItemStack(BlocksTC.jarNormal)));
         initUUInfusionRecipes();
+    }
+
+    public static ItemStack getDiamondChainsaw(){
+        if (ElectroMagicTools.gtcxLoaded){
+            return new ItemStack(Item.getByNameOrId("gtc_expansion:diamond_chainsaw"), 1, OreDictionary.WILDCARD_VALUE);
+        }
+        return new ItemStack(ModItems.diamondChainsaw, 1, OreDictionary.WILDCARD_VALUE);
     }
 
     public static void initUUInfusionRecipes(){
@@ -480,7 +490,7 @@ public class EMTRecipes {
                         crystal, crystal));
     }
 
-    public static void initArcareCraftingRecipes(){
+    public static void initArcaneCraftingRecipes(){
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":scribingTools"),
                 new ShapedArcaneRecipe(new ResourceLocation(""),
                         "ELECTRICSCRIBINGTOOLS",
@@ -509,7 +519,7 @@ public class EMTRecipes {
                         10,
                         CraftingAspectList.diamondOmnitool,
                         ModItems.diamondOmnitool,
-                        new ItemStack(ModItems.diamondChainsaw),
+                        getDiamondChainsaw(),
                         IC2Items.getItem("diamond_drill")));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":diamondomnitoolupgrade"),
                 new ShapedArcaneRecipe(new ResourceLocation(""),
@@ -590,7 +600,6 @@ public class EMTRecipes {
                         new ItemStack(ModBlocks.solarGeneratorCompressed, 1, 2),
                         new ItemStack(ModBlocks.solarGeneratorCompressed),
                         CraftingAspectList.perditioSolar));
-
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation(Reference.MOD_ID, "ordoCompressed"),
                 new CrucibleRecipe("COMPRESSEDSOLARORDO",
                         new ItemStack(ModBlocks.solarGenerator, 1, 3),
@@ -679,13 +688,22 @@ public class EMTRecipes {
 
     public static void initIC2Recipes(){
 
-        GameRegistry.addShapedRecipe(new ResourceLocation("welectromagic:itemironomnitool"), null, new ItemStack(ModItems.ironOmnitool),
+        recipes.addRecipe(new ItemStack(ModItems.ironOmnitool),
                 "C", "p", "D",
                 'C', IC2Items.getItem("chainsaw"),
                 'D', IC2Items.getItem("drill"),
                 'p', refinedIron);
 
-        ICraftingRecipeList recipes = ClassicRecipes.advCrafting;
+
+        ItemStack helmet = new ItemStack(ModItems.quantumGoggles);
+        recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "EUReaderUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.euReader.copy());
+        recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "CropUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.cropAnalyzer.copy());
+        recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "ThermometerUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.thermometer.copy());
+        helmet = new ItemStack(ModItems.nanoGoggles);
+        recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "EUReaderUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.euReader.copy());
+        recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "CropUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.cropAnalyzer.copy());
+        recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "ThermometerUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.thermometer.copy());
+
 
         ItemStack thaumiumDrill = new ItemStack(ModItems.thaumiumDrill);
         recipes.addRecipe(new ItemStack(ModItems.thaumiumDrill),
@@ -747,9 +765,16 @@ public class EMTRecipes {
                 'L', new ItemStack(Blocks.LAPIS_BLOCK),
                 'P', new ItemStack(ModItems.gemPack),
                 'C', IC2Items.getItem("crafting", "advanced_circuit"));
+
+        if (!ElectroMagicTools.gtcxLoaded){
+            recipes.addRecipe(new ItemStack(ModItems.diamondChainsaw),
+                    "DD", "CD",
+                    'D', "gemDiamond",
+                    'C', IC2Items.getItem("chainsaw"));
+        }
         if(ElectroMagicTools.ic2ceLoaded){
             initIC2CERecipes();
-        }else{
+        } else {
             initIC2CRecipes();
         }
     }

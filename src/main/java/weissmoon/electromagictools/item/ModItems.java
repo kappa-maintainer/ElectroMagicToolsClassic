@@ -1,7 +1,6 @@
 package weissmoon.electromagictools.item;
 
 import ic2.api.item.IBoxable;
-import ic2.api.item.IC2Items;
 import ic2.api.item.IMetalArmor;
 import ic2.api.item.ItemWrapper;
 import net.minecraft.item.Item;
@@ -29,20 +28,27 @@ import weissmoon.electromagictools.item.armour.googles.ItemElectricGoggles;
 import weissmoon.electromagictools.item.armour.googles.ItemNanoGoggles;
 import weissmoon.electromagictools.item.armour.googles.ItemQuantumGoggles;
 import weissmoon.electromagictools.item.armour.googles.ItemSolarHelmetRevealing;
+import weissmoon.electromagictools.item.tool.ItemChargeRing;
+import weissmoon.electromagictools.item.tool.ItemEntropyStaff;
+import weissmoon.electromagictools.item.tool.ItemHitBauble;
+import weissmoon.electromagictools.item.tool.ItemStormBreaker;
+import weissmoon.electromagictools.item.tool.drill.ItemCoreDrill;
+import weissmoon.electromagictools.item.tool.chainsaw.ItemDiamondChainsaw;
+import weissmoon.electromagictools.item.tool.omnitool.ItemDiamondOmniTool;
+import weissmoon.electromagictools.item.tool.ItemElectricHoeGrowth;
+import weissmoon.electromagictools.item.tool.omnitool.ItemIronOmniTool;
+import weissmoon.electromagictools.item.tool.ItemMjölnir;
+import weissmoon.electromagictools.item.tool.ItemStormCaster;
+import weissmoon.electromagictools.item.tool.chainsaw.ItemStreamChainsaw;
+import weissmoon.electromagictools.item.tool.chainsaw.ItemThaumiumChainsaw;
+import weissmoon.electromagictools.item.tool.drill.ItemThaumiumDrill;
+import weissmoon.electromagictools.item.tool.omnitool.ItemThaumiumOmniTool;
 import weissmoon.electromagictools.item.armour.wings.ItemFeatherWings;
 import weissmoon.electromagictools.item.armour.wings.ItemNanoWings;
 import weissmoon.electromagictools.item.armour.wings.ItemQuantumWings;
 import weissmoon.electromagictools.item.armour.wings.ItemThaumiumWings;
-import weissmoon.electromagictools.item.tool.*;
-import weissmoon.electromagictools.item.tool.chainsaw.ItemDiamondChainsaw;
-import weissmoon.electromagictools.item.tool.chainsaw.ItemStreamChainsaw;
-import weissmoon.electromagictools.item.tool.chainsaw.ItemThaumiumChainsaw;
 import weissmoon.electromagictools.item.tool.drill.ItemIridiumDrill;
 import weissmoon.electromagictools.item.tool.drill.ItemRockBreakerDrill;
-import weissmoon.electromagictools.item.tool.drill.ItemThaumiumDrill;
-import weissmoon.electromagictools.item.tool.omnitool.ItemDiamondOmniTool;
-import weissmoon.electromagictools.item.tool.omnitool.ItemIronOmniTool;
-import weissmoon.electromagictools.item.tool.omnitool.ItemThaumiumOmniTool;
 
 /**
  * Created by Weissmoon on 9/3/19.
@@ -60,14 +66,17 @@ public class ModItems {
     public static final ItemHoe electricHoe = new ItemElectricHoeGrowth();
     public static final WeissItem materials = new ItemMaterials();
     public static final WeissItem onering = new ItemOneRing();
-    public static final WeissItemsPickaxe thaumiumDrill = new ItemThaumiumDrill();
-    public static final WeissItemAxe diamondChainsaw = new ItemDiamondChainsaw();
-    public static final WeissItemAxe thaumiumChainsaw = new ItemThaumiumChainsaw();
-    public static final WeissItemAxe streamChainsaw = new ItemStreamChainsaw();
-    public static final WeissItemsPickaxe ironOmnitool = new ItemIronOmniTool();
-    public static final WeissItemsPickaxe diamondOmnitool = new ItemDiamondOmniTool();
-    public static final WeissItemsPickaxe thaumiumOmnitool = new ItemThaumiumOmniTool();
+
+    public static final WeissItemElectricTool thaumiumDrill = new ItemThaumiumDrill();
+    public static final WeissItemElectricTool coreDrill = new ItemCoreDrill();
+    public static final WeissItemElectricTool diamondChainsaw = new ItemDiamondChainsaw();
+    public static final WeissItemElectricTool thaumiumChainsaw = new ItemThaumiumChainsaw();
+    public static final WeissItemElectricTool streamChainsaw = new ItemStreamChainsaw();
+    public static final WeissItemElectricTool ironOmnitool = new ItemIronOmniTool();
+    public static final WeissItemElectricTool diamondOmnitool = new ItemDiamondOmniTool();
+    public static final WeissItemElectricTool thaumiumOmnitool = new ItemThaumiumOmniTool();
     public static final ItemStormCaster stormCaster = new ItemStormCaster();
+
     public static final Item mjölnir = new ItemMjölnir();
     public static final Item chargeRing = new ItemChargeRing();
     public static final Item featherWings = new ItemFeatherWings();
@@ -77,7 +86,7 @@ public class ModItems {
     public static final Item rockBreakerDrill = new ItemRockBreakerDrill();
     public static final Item stormBreaker = new ItemStormBreaker();
 
-    public static final ItemPickaxe iridiumDrill = new ItemIridiumDrill();
+    public static final WeissItemElectricTool iridiumDrill = new ItemIridiumDrill();
     public static final Item gemPack = new ItemEnergyPack();
     public static final Item coin = new ItemCoin();
     public static final Item entropyStaff = new ItemEntropyStaff();
@@ -114,6 +123,7 @@ public class ModItems {
         GameRegistry.register(quantumBoots);
         GameRegistry.register(electricHoe);
         GameRegistry.register(thaumiumDrill);
+        GameRegistry.register(coreDrill);
         GameRegistry.register(diamondChainsaw);
         GameRegistry.register(thaumiumChainsaw);
         GameRegistry.register(streamChainsaw);

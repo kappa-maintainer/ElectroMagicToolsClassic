@@ -1,9 +1,12 @@
 package weissmoon.electromagictools.item.armour.boots;
 
 import ic2.api.classic.item.IDamagelessElectricItem;
+import ic2.api.classic.item.IElectricTool;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IMetalArmor;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -11,19 +14,23 @@ import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.LivingEvent.*;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.items.IVisDiscountGear;
+import weissmoon.core.client.render.IIconRegister;
 import weissmoon.core.item.armour.ItemArmourBase;
 import weissmoon.electromagictools.ElectroMagicTools;
+import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.lib.Textures;
 
@@ -39,7 +46,7 @@ import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
 /**
  * Created by Weissmoon on 9/3/19.
  */
-public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamagelessElectricItem, IVisDiscountGear, IMetalArmor, ISpecialArmor {
+public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamagelessElectricItem, IVisDiscountGear, IMetalArmor, ISpecialArmor, IElectricTool {
 
     protected float jumpBonus, speedBonus;
     protected int tier, energyPerDamage, visDiscount, maxCharge, transferLimit;
@@ -48,29 +55,23 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
     private UUID monsterMotionUUID = UUID.fromString("29d2b7de-c2dd-4d16-a401-190a7b34eb0d");
 
     public ItemElectricBootsTraveller(){
-        this(Strings.Items.ELECTRIC_BOOTS_NAME, ArmorMaterial.IRON);
-        maxCharge = 10000;
-        transferLimit = 100;
-        jumpBonus = 0.16F;
-        speedBonus = 0.0225F;
-        tier = 1;
-        energyPerDamage = 1000;
-        visDiscount = 2;
+        this(Strings.Items.ELECTRIC_BOOTS_NAME, ArmorMaterial.IRON, 10000, 100, 0.16F, 0.0225F, 1, 1000, 2);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    protected ItemElectricBootsTraveller(String name, ArmorMaterial materialIn) {
+    protected ItemElectricBootsTraveller(String name, ArmorMaterial materialIn, int maxCharge, int transferLimit, float jumpBonus, float speedBonus, int tier, int energyPerDamage, int visDiscount) {
         super(name, materialIn, 0, EntityEquipmentSlot.FEET);
         setNoRepair();
         setMaxDamage(0);
         setCreativeTab(ElectroMagicTools.EMTtab);
-//        maxCharge = 0;
-//        transferLimit = 0;
-//        jumpBonus = 0;
-//        tier = 10;
-//        energyPerDamage = 0;
-//        visDiscount = 0;
-//        speedBonus = 0;
+        this.setUnlocalizedName(Reference.MOD_ID + "." + name);
+        this.maxCharge = maxCharge;
+        this.transferLimit = transferLimit;
+        this.jumpBonus = jumpBonus;
+        this.tier = tier;
+        this.energyPerDamage = energyPerDamage;
+        this.visDiscount = visDiscount;
+        this.speedBonus = speedBonus;
     }
 
     @Nullable
@@ -93,6 +94,11 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
             list.add(stack);
             list.add(getChargedItem(this, 1));
         }
+    }
+
+    @Override
+    public void registerIcons(IIconRegister iconRegister) {
+        this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
     }
 
     @Override
@@ -232,5 +238,20 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
     public boolean playerHasBoots(EntityPlayer player){
         ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
         return stack.getItem() instanceof ItemElectricBootsTraveller;
+    }
+
+    @Override
+    public EnumEnchantmentType getType(ItemStack itemStack) {
+        return EnumEnchantmentType.ARMOR_FEET;
+    }
+
+    @Override
+    public boolean isSpecialSupported(ItemStack itemStack, Enchantment enchantment) {
+        return false;
+    }
+
+    @Override
+    public boolean isExcluded(ItemStack itemStack, Enchantment enchantment) {
+        return enchantment == Enchantments.MENDING || enchantment == Enchantments.THORNS;
     }
 }

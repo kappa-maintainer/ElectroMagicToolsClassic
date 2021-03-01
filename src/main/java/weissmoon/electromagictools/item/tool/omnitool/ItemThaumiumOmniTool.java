@@ -11,14 +11,9 @@ import weissmoon.electromagictools.lib.Strings;
 public class ItemThaumiumOmniTool extends ItemDiamondOmniTool {
 
     public ItemThaumiumOmniTool() {
-        super(ThaumcraftMaterials.TOOLMAT_THAUMIUM, Strings.Items.THAUMIUM_OMNITOOL_NAME);
-        maxCharge = 200000;
-        cost = 300;
-        hitCost = 650;
-        tier = 2;
-        transferLimit = 800;
-        efficiency = 21;
-        attackDamage = 11;
+        super(11, ThaumcraftMaterials.TOOLMAT_THAUMIUM, Strings.Items.THAUMIUM_OMNITOOL_NAME, 200000, 800, 2);
+        this.operationEnergyCost = 300;
+        this.efficiency = 21;
     }
 
     @Override
@@ -28,12 +23,12 @@ public class ItemThaumiumOmniTool extends ItemDiamondOmniTool {
 
     @Override
     public int getExtraSpeed(ItemStack drill) {
-        return 5;
+        return 2 + super.getExtraSpeed(drill);
     }
 
     @Override
     public int getExtraEnergyCost(ItemStack drill) {
-        return 23;
+        return 7 + super.getExtraEnergyCost(drill);
     }
 
 }

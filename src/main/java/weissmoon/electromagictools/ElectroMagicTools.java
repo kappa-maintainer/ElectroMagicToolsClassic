@@ -6,10 +6,11 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.*;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.logging.log4j.Logger;
 import net.minecraftforge.fml.relauncher.Side;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.blocks.BlocksTC;
@@ -44,11 +45,17 @@ public class ElectroMagicTools {
     public static CreativeTabWeiss EMTtab = new EMTTab();
 
     public static boolean ic2ceLoaded;
+    public static boolean gtcxLoaded;
+
+    public static Logger logger;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event){
+        logger = event.getModLog();
         ic2ceLoaded = Loader.isModLoaded("ic2c_extras");
+        gtcxLoaded = Loader.isModLoaded("gtc_expansion");
         ModItems.init();
+        MinecraftForge.EVENT_BUS.register(new EventHarvest());
         ModBlocks.init();
         PacketHandler.init();
         if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
@@ -58,7 +65,7 @@ public class ElectroMagicTools {
     @EventHandler
     public void init(FMLInitializationEvent event){
         OreDictionaryEntries.initOreEntries();
-        EMTRecipes.initArcareCraftingRecipes();
+        EMTRecipes.initArcaneCraftingRecipes();
         EMTRecipes.initInfusionRecipes();
         EMTRecipes.initCrucibleRecipes();
         EMTRecipes.initNativeClusters();

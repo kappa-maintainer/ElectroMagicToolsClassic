@@ -1,14 +1,28 @@
 package weissmoon.electromagictools.item.tool;
 
+import ic2.api.classic.crops.IDropController;
 import ic2.api.classic.item.IDamagelessElectricItem;
+import ic2.api.classic.item.IElectricTool;
 import ic2.api.item.ElectricItem;
+import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -29,7 +43,8 @@ import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
 /**
  * Created by Weissmoon on 9/6/19.
  */
-public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessElectricItem {
+public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessElectricItem, IElectricTool, IDropController {
+
 
     private Random all0 = new Random(){
         public int nextInt(int na){
@@ -46,6 +61,9 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessEl
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos blockPos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (player.isSneaking()){
+            return super.onItemUse(player, world, blockPos, hand, facing, hitX, hitY, hitZ);
+        }
         ItemStack hoeStack = player.getHeldItem(hand);
         NBTHelper.setBoolean(hoeStack, "Unbreakable", true);
         boolean used = false;
@@ -66,17 +84,55 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessEl
         if(ElectricItem.manager.canUse(hoeStack, 250)){
             used = ItemDye.applyBonemeal(new ItemStack(Items.DYE, 1, 15), world, blockPos);
             if (!used){
-                if (world.getBlockState(blockPos).getBlock() == BlocksTC.saplingGreatwood){
+                IBlockState state = world.getBlockState(blockPos);
+                Block block = state.getBlock();
+                if (block == BlocksTC.saplingGreatwood){
                     if(!world.isRemote)
                         ((IGrowable)BlocksTC.saplingGreatwood).grow(world, all0, blockPos, world.getBlockState(blockPos));
                     world.playEvent(2005, blockPos, 0);
                     used = true;
                 }
-                if(world.getBlockState(blockPos).getBlock() == BlocksTC.saplingSilverwood){
+                if(block == BlocksTC.saplingSilverwood){
                     if(!world.isRemote)
                         ((IGrowable)BlocksTC.saplingSilverwood).grow(world, all0, blockPos, world.getBlockState(blockPos));
                     world.playEvent(2005, blockPos, 0);
                     used = true;
+                }
+                if (block == Blocks.REEDS){
+                    if (world.getBlockState(blockPos.up()).getBlock() == Blocks.REEDS && world.isAirBlock(blockPos.up(2)) && world.getBlockState(blockPos.down()).getBlock() != Blocks.REEDS){
+                        world.setBlockState(blockPos.up(2), Blocks.REEDS.getDefaultState());
+                        ElectricItem.manager.use(hoeStack, 250, player);
+                        world.playEvent(2005, blockPos, 0);
+                        used = true;
+                    }
+                    if (!used){
+                        if (((world.getBlockState(blockPos.down()).getBlock() != Blocks.REEDS) || (world.getBlockState(blockPos.down()).getBlock() == Blocks.REEDS && world.getBlockState(blockPos.down(2)).getBlock() != Blocks.REEDS)) && world.isAirBlock(blockPos.up())){
+                            world.setBlockState(blockPos.up(), Blocks.REEDS.getDefaultState());
+                            ElectricItem.manager.use(hoeStack, 250, player);
+                            world.playEvent(2005, blockPos, 0);
+                            used = true;
+                        }
+                    }
+                }
+                if (block == Blocks.CACTUS){
+                    if (world.getBlockState(blockPos.up()).getBlock() == Blocks.CACTUS && world.isAirBlock(blockPos.up(2)) && world.getBlockState(blockPos.down()).getBlock() != Blocks.CACTUS){
+                        if (Blocks.CACTUS.canPlaceBlockAt(world, blockPos.up(2))){
+                            world.setBlockState(blockPos.up(2), Blocks.CACTUS.getDefaultState());
+                            ElectricItem.manager.use(hoeStack, 250, player);
+                            world.playEvent(2005, blockPos, 0);
+                            used = true;
+                        }
+                    }
+                    if (!used){
+                        if (((world.getBlockState(blockPos.down()).getBlock() != Blocks.CACTUS) || (world.getBlockState(blockPos.down()).getBlock() == Blocks.CACTUS && world.getBlockState(blockPos.down(2)).getBlock() != Blocks.CACTUS)) && world.isAirBlock(blockPos.up())){
+                            if (Blocks.CACTUS.canPlaceBlockAt(world, blockPos.up())){
+                                world.setBlockState(blockPos.up(), Blocks.CACTUS.getDefaultState());
+                                ElectricItem.manager.use(hoeStack, 250, player);
+                                world.playEvent(2005, blockPos, 0);
+                                used = true;
+                            }
+                        }
+                    }
                 }
             }else{
                 ElectricItem.manager.use(hoeStack, 250, player);
@@ -132,5 +188,25 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessEl
     @Override
     public double getTransferLimit(ItemStack stack) {
         return 1000;
+    }
+
+    @Override
+    public EnumEnchantmentType getType(ItemStack itemStack) {
+        return EnumEnchantmentType.BREAKABLE;
+    }
+
+    @Override
+    public boolean isSpecialSupported(ItemStack itemStack, Enchantment enchantment) {
+        return enchantment == Enchantments.FORTUNE || enchantment == Enchantments.UNBREAKING;
+    }
+
+    @Override
+    public boolean isExcluded(ItemStack itemStack, Enchantment enchantment) {
+        return enchantment == Enchantments.MENDING;
+    }
+
+    @Override
+    public boolean isChangingCropDrops(ItemStack itemStack) {
+        return true;
     }
 }

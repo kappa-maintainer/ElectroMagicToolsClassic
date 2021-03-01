@@ -4,10 +4,14 @@ import com.google.common.collect.Multimap;
 import ic2.api.classic.item.IDamagelessElectricItem;
 import ic2.api.item.ElectricItem;
 import ic2.core.IC2;
+import ic2.core.platform.registry.Ic2Lang;
+import ic2.core.util.misc.StackUtil;
+import ic2.core.util.obj.ToolTipType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -17,12 +21,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTable;
 import net.minecraftforge.common.IShearable;
@@ -33,10 +40,13 @@ import weissmoon.core.api.item.IModesCore;
 import weissmoon.core.item.tools.WeissItemAxe;
 import weissmoon.core.utils.NBTHelper;
 import weissmoon.electromagictools.ElectroMagicTools;
+import weissmoon.electromagictools.item.WeissItemElectricTool;
+import weissmoon.electromagictools.lib.LocaleComps;
 import weissmoon.electromagictools.lib.Strings;
 
 import javax.annotation.Nonnull;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -46,31 +56,40 @@ import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
 /**
  * Created by Weissmoon on 9/22/19.
  */
-public class ItemDiamondChainsaw extends WeissItemAxe implements IDamagelessElectricItem {
-    
-    protected int maxCharge, cost, hitCost, tier, transferLimit;
+public class ItemDiamondChainsaw extends WeissItemElectricTool /* implements IModesCore */ {
+
+    protected int hitCost;
+    protected double transferLimit, attackDamage;
     private static final String SHEARMODE_NBT_TAG= "shearsMode";
 
     public ItemDiamondChainsaw() {
-        this(ThaumcraftMaterials.TOOLMAT_THAUMIUM, 0, -3.2F, Strings.Items.DIAMOND_CHAINSAW_NAME);
-        maxCharge = 100000;
-        cost = 250;
-        hitCost = 300;
-        tier = 1;
-        transferLimit = 100;
-        efficiency = 16F;
+        this(ToolMaterial.DIAMOND, 15, 0.0F, Strings.Items.DIAMOND_CHAINSAW_NAME, 10000, 100, 1);
     }
 
-    public ItemDiamondChainsaw(ToolMaterial material, float damage, float speed, String name) {
-        super(material, damage, speed, name);
-//        maxCharge = 0;
-//        cost = 0;
-//        hitCost = 0;
-//        tier = 0;
-//        transferLimit = 0;
-//        efficiency = 0;
-        setNoRepair();
-        setCreativeTab(ElectroMagicTools.EMTtab);
+    public ItemDiamondChainsaw(ToolMaterial material, float damage, float speed, String name, int maxCharge, int transferLimit, int tier) {
+        super(damage - 1, speed, material, name);
+        this.attackDamage = damage;
+        this.maxCharge = maxCharge;
+        this.operationEnergyCost = 50;
+        this.hitCost = operationEnergyCost + 100;
+        this.tier = tier;
+        this.transferLimit = transferLimit;
+        this.efficiency = 10;
+        this.setHarvestLevel("axe", 3);
+        this.setCreativeTab(ElectroMagicTools.EMTtab);
+    }
+
+    @Override
+    public void onSortedItemToolTip(ItemStack stack, EntityPlayer player, boolean debugTooltip, List<String> tooltip, Map<ToolTipType, List<String>> sortedTooltip) {
+        NBTTagCompound tag = StackUtil.getOrCreateNbtData(stack);
+        if (!tag.getBoolean(SHEARMODE_NBT_TAG)) {
+            tooltip.add(LocaleComps.MESSAGE_DIAMOND_CHAINSAW_NORMAL.getLocalized());
+        } else {
+            tooltip.add(LocaleComps.MESSAGE_DIAMOND_CHAINSAW_NO_SHEAR.getLocalized());
+        }
+        List<String> ctrlTip = sortedTooltip.get(ToolTipType.Ctrl);
+        ctrlTip.add(Ic2Lang.onItemRightClick.getLocalized());
+        ctrlTip.add(Ic2Lang.pressTo.getLocalizedFormatted(IC2.keyboard.getKeyName(2), LocaleComps.DIAMOND_CHAINSAW_SHEAR_TOGGLE.getLocalized()));
     }
 
     @Override
@@ -90,20 +109,19 @@ public class ItemDiamondChainsaw extends WeissItemAxe implements IDamagelessElec
 
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-        ElectricItem.manager.use(stack, cost, entityLiving);
+        ElectricItem.manager.use(stack, operationEnergyCost, entityLiving);
         return true;
     }
 
     @Override
     public boolean canHarvestBlock(IBlockState state, ItemStack stack) {
         return Items.DIAMOND_AXE.canHarvestBlock(state, stack) ||
-                Items.DIAMOND_AXE.canHarvestBlock(state, stack) ||
                 Items.SHEARS.canHarvestBlock(state, stack);
     }
 
     @Override
     public float getDestroySpeed(ItemStack stack, IBlockState block) {
-        if (!ElectricItem.manager.canUse(stack, cost)) {
+        if (!ElectricItem.manager.canUse(stack, operationEnergyCost)) {
             return 1.0F;
         }
 
@@ -117,7 +135,7 @@ public class ItemDiamondChainsaw extends WeissItemAxe implements IDamagelessElec
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker){
         if(attacker instanceof EntityPlayer){
-            if (ElectricItem.manager.use(stack, cost, attacker)){
+            if (ElectricItem.manager.use(stack, hitCost, attacker)){
                 target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)attacker), 10.0F);
             } else {
                 target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)attacker), 1.0F);
@@ -130,15 +148,27 @@ public class ItemDiamondChainsaw extends WeissItemAxe implements IDamagelessElec
                 IC2.achievements.issueStat((EntityPlayer)attacker, "chainsawKills");
             }
 
-            return true;
+            return false;
         }
         return true;
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand handIn){
-        //Tool mode handled by changeToolMode
-        return super.onItemRightClick(world, player, handIn);
+        ItemStack stack = player.getHeldItem(handIn);
+        NBTTagCompound tag = StackUtil.getOrCreateNbtData(stack);
+        if (IC2.platform.isSimulating() && IC2.keyboard.isModeSwitchKeyDown(player)) {
+            if (tag.getBoolean(SHEARMODE_NBT_TAG)) {
+                tag.setBoolean(SHEARMODE_NBT_TAG, false);
+                IC2.platform.messagePlayer(player, TextFormatting.GREEN, LocaleComps.MESSAGE_DIAMOND_CHAINSAW_NORMAL);
+            } else {
+                tag.setBoolean(SHEARMODE_NBT_TAG, true);
+                IC2.platform.messagePlayer(player, TextFormatting.RED, LocaleComps.MESSAGE_DIAMOND_CHAINSAW_NO_SHEAR);
+            }
+            return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
+        } else {
+            return super.onItemRightClick(world, player, handIn);
+        }
     }
 
     @Override
@@ -231,30 +261,14 @@ public class ItemDiamondChainsaw extends WeissItemAxe implements IDamagelessElec
     }
 
     @Override
+    public EnumEnchantmentType getType(ItemStack itemStack) {
+        return EnumEnchantmentType.DIGGER;
+    }
+
+    @Override
     public Set<String> getToolClasses(ItemStack stack)
     {
         return com.google.common.collect.ImmutableSet.of("axe");
-    }
-
-
-    @Override
-    public boolean canProvideEnergy(ItemStack stack) {
-        return false;
-    }
-
-    @Override
-    public double getMaxCharge(ItemStack stack) {
-        return maxCharge;
-    }
-
-    @Override
-    public int getTier(ItemStack stack) {
-        return tier;
-    }
-
-    @Override
-    public double getTransferLimit(ItemStack stack) {
-        return transferLimit;
     }
 
 //    @Override

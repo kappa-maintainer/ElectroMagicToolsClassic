@@ -22,11 +22,8 @@ public class ItemIridiumDrill extends ItemThaumiumDrill{
     private static String MODE_NBT_KEY = "emtMode";
 
     public ItemIridiumDrill(){
-        super(ToolMaterial.DIAMOND, Strings.Items.IRIDIUM_DRILL_NAME);
-        maxCharge = 300000;
-        cost = 800;//todo
-        tier = 2;
-        transferLimit = 1000;
+        super(ToolMaterial.DIAMOND, Strings.Items.IRIDIUM_DRILL_NAME, 300000, 1000, 2);
+        operationEnergyCost = 800;//todo
         efficiency = 25F;
         MinecraftForge.EVENT_BUS.register(new IridiumDrillEvent());
     }

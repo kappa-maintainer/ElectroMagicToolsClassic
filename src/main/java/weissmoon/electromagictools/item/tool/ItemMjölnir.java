@@ -15,6 +15,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import weissmoon.core.client.render.IIconRegister;
 import weissmoon.core.item.tools.WeissItemSword;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Reference;
@@ -31,6 +32,7 @@ import java.util.List;
 public class ItemMjölnir extends WeissItemSword {
     public ItemMjölnir() {
         super(ToolMaterial.DIAMOND, Strings.Items.MJÖLNIR_NAME);
+        this.setUnlocalizedName(Reference.MOD_ID + "." + Strings.Items.MJÖLNIR_NAME);
         setMaxDamage(2000);
         setNoRepair();
         setCreativeTab(ElectroMagicTools.EMTtab);
@@ -79,5 +81,10 @@ public class ItemMjölnir extends WeissItemSword {
             multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 2, 0));
 
         return multimap;
+    }
+
+    @Override
+    public void registerIcons(IIconRegister iconRegister) {
+        this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
     }
 }
