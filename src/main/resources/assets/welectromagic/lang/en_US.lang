@@ -63,8 +63,6 @@ item.welectromagic:itemQuantumWings.name=Quantum Wings
 item.welectromagic:itemRockbreakerDrill.name=Drill of the Rockbreaker
 item.welectromagic:itemStormBreaker.name=Storm Breaker
 
-tile.welectromagic:blockObsidianTile.name=Obsidian Tile
-
 item.welectromagic.itemIridiumDrill.name=Iridium Drill
 item.welectromagic:itemEnergyPack.name=Energy Pack
 item.welectromagic:itemCoin.name=Coin
