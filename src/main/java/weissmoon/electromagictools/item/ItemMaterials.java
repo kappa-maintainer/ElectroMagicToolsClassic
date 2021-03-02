@@ -11,15 +11,20 @@ import weissmoon.core.api.client.item.IItemRenderer;
 import weissmoon.core.client.render.IIcon;
 import weissmoon.core.client.render.IIconRegister;
 import weissmoon.core.item.WeissItem;
+import weissmoon.core.utils.NBTHelper;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created by Weissmoon on 9/17/19.
  */
 public class ItemMaterials extends WeissItem implements IItemRenderCustom{
 
+    @SideOnly(Side.CLIENT)
+    protected IIcon tabIcon, nanoWing, quantumWing;
 
     public ItemMaterials() {
         super(Strings.Items.MATERIALS_NAME);
@@ -37,18 +42,22 @@ public class ItemMaterials extends WeissItem implements IItemRenderCustom{
         }catch (ArrayIndexOutOfBoundsException e){
             //sub = sub;
         }
-        return "item." + Reference.MOD_ID + ":" + Strings.Items.MATERIALS_NAME + sub;
+        return "item." + Reference.MOD_ID + "." + Strings.Items.MATERIALS_NAME + sub;
     }
 
     @SideOnly(Side.CLIENT)
     public void registerIcons (IIconRegister iconRegister){
-        this.itemIconWeiss = iconRegister.registerIcon(this, getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1));
+
+        this.itemIconWeiss = iconRegister.registerIcon(this, getRegistryName().toString());
         this.itemIconArray = new IIcon[Strings.Items.Materials.length];
         int i = 0;
-        for(String nem:Strings.Items.Materials) {
+        for(String nem : Strings.Items.Materials) {
             this.itemIconArray[i] = iconRegister.registerIcon(this, Reference.MOD_ID + ":" + nem);
-            i++;
+            itemIconWeiss = iconRegister.registerIcon(this, getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1));
         }
+        tabIcon = iconRegister.registerIcon(this, "itemthaumiumdrill");
+        nanoWing = iconRegister.registerIcon(this, "itemnanowing");
+        quantumWing = iconRegister.registerIcon(this, "itemquantumwing");
     }
 
     @SideOnly(Side.CLIENT)
@@ -59,26 +68,43 @@ public class ItemMaterials extends WeissItem implements IItemRenderCustom{
             if (itemIconArray[i] != null)
                 return itemIconArray[i];
         }catch (ArrayIndexOutOfBoundsException e){
+            if(NBTHelper.hasTag(stack, "恋の抑止力")){
+                return tabIcon;
+            }
+            if(NBTHelper.hasTag(stack, "icon")){
+                if(NBTHelper.getInt(stack, "icon") == 1)
+                    return nanoWing;
+                if(NBTHelper.getInt(stack, "icon") == 2)
+                    return quantumWing;
+            }
             //e.printStackTrace();
         }
-        return this.itemIconWeiss;
+        return itemIconWeiss;
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems(CreativeTabs creativeTabs, NonNullList<ItemStack> list) {
-        if(creativeTabs != this.getCreativeTab())
+    public void getSubItems(@Nonnull CreativeTabs creativeTabs, @Nonnull NonNullList<ItemStack> list) {
+        if (!isInCreativeTab(creativeTabs))
             return;
 
         list.add(new ItemStack(this, 1, 0));
+        list.add(new ItemStack(this, 1, 1));
+        list.add(new ItemStack(this, 1, 2));
         list.add(new ItemStack(this, 1, 3));
+        list.add(new ItemStack(this, 1, 4));
         list.add(new ItemStack(this, 1, 5));
-        return;
+        list.add(new ItemStack(this, 1, 6));
+        list.add(new ItemStack(this, 1, 7));
+        list.add(new ItemStack(this, 1, 9));
+        list.add(new ItemStack(this, 1, 10));
+        //return;
 
-//        if (ElectroMagicTools.ic2ceLoaded) {
-//            for (int i = 1; i <= Strings.Items.Materials.length; i++) {
-//                list.add(new ItemStack(this, 1, i - 1));
-//            }
+        if (ElectroMagicTools.ic2ceLoaded) {
+            for (int i = 12; i <= Strings.Items.Materials.length; i++) {
+                list.add(new ItemStack(this, 1, i - 1));
+            }
+        }
 //        }else{
 //            for (int i = 1; i <= Strings.Items.Materials.length-4; i++) {
 //                list.add(new ItemStack(this, 1, i - 1));

@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:blaze_powder"
+    },
+    "title": {
+      "translate": "advancements.welectromagic.cremation.name"
+    },
+    "description": {
+      "translate": "advancements.welectromagic.cremation.desc"
+    },
+    "hidden": true
+  },
+  "parent": "welectromagic:electrothaumic/root",
+  "criteria": {
+    "dead": {
+      "trigger": "welectromagic:brutalcremation"
+    }
+  }
+}

@@ -15,8 +15,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import weissmoon.core.client.render.IIconRegister;
 import weissmoon.core.item.tools.WeissItemSword;
 import weissmoon.electromagictools.ElectroMagicTools;
+import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.util.GenericHelper;
 
@@ -30,7 +32,9 @@ import java.util.List;
 public class ItemMjölnir extends WeissItemSword {
     public ItemMjölnir() {
         super(ToolMaterial.DIAMOND, Strings.Items.MJÖLNIR_NAME);
+        this.setUnlocalizedName(Reference.MOD_ID + "." + Strings.Items.MJÖLNIR_NAME);
         setMaxDamage(2000);
+        setNoRepair();
         setCreativeTab(ElectroMagicTools.EMTtab);
     }
 
@@ -45,13 +49,17 @@ public class ItemMjölnir extends WeissItemSword {
         EntityLightningBolt lightning = null;
         if(result.typeOfHit == RayTraceResult.Type.BLOCK)
             lightning = new EntityLightningBolt(world, result.getBlockPos().getX(), result.getBlockPos().getY(), result.getBlockPos().getZ(), false);
-        else if (result.typeOfHit == RayTraceResult.Type.ENTITY)
+        else if(result.typeOfHit == RayTraceResult.Type.ENTITY)
             lightning = new EntityLightningBolt(world, result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ, false);
 
         if(lightning == null)
             return ActionResult.newResult(EnumActionResult.PASS, itemstack);
         else
             world.spawnEntity(lightning);
+            world.spawnEntity(new EntityLightningBolt(world, player.posX - 0.5, player.posY + player.height, player.posZ - 0.5, true));
+            player.swingArm(hand);
+//            Cremation.lightning.put(lightning, player);
+//            Cremation.queueTick();
 
 
         if(!player.isCreative())
@@ -73,5 +81,10 @@ public class ItemMjölnir extends WeissItemSword {
             multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 2, 0));
 
         return multimap;
+    }
+
+    @Override
+    public void registerIcons(IIconRegister iconRegister) {
+        this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
     }
 }

@@ -11,8 +11,8 @@
       "data": 2
     },
     "G": {
-      "type": "forge:ore_dict",
-      "ore": "glue"
+      "item": "welectromagic:itemmaterial",
+      "data": 3
     },
     "C": {
       "item": "welectromagic:itemmaterial",

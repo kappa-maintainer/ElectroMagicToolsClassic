@@ -1,0 +1,100 @@
+{
+  "display": {
+    "icon": {
+      "item": "welectromagic:blockSolarCompressedPanel",
+      "data": 1
+    },
+    "title": {
+      "translate": "advancements.welectromagic.nine.name"
+    },
+    "description": {
+      "translate": "advancements.welectromagic.nine.desc"
+    },
+    "hidden": true
+  },
+  "parent": "welectromagic:electrothaumic/root",
+  "criteria": {
+    "aqua": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "welectromagic:blockSolarCompressedPanel",
+            "data": 1,
+            "count": {"min":9, "max": 9}
+          }
+        ]
+      }
+    },
+    "perditio": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "welectromagic:blockSolarCompressedPanel",
+            "data": 2,
+            "count": {"min":9, "max": 9}
+          }
+        ]
+      }
+    },
+    "ordo": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "welectromagic:blockSolarCompressedPanel",
+            "data": 3,
+            "count": {"min":9, "max": 9}
+          }
+        ]
+      }
+    },
+    "ignis": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "welectromagic:blockSolarCompressedPanel",
+            "data": 4,
+            "count": {"min":9, "max": 9}
+          }
+        ]
+      }
+    },
+    "aer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "welectromagic:blockSolarCompressedPanel",
+            "data": 5,
+            "count": {"min":9, "max": 9}
+          }
+        ]
+      }
+    },
+    "terra": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "welectromagic:blockSolarCompressedPanel",
+            "data": 6,
+            "count": {"min":9, "max": 9}
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "aqua",
+      "perditio",
+      "ordo",
+      "ignis",
+      "aer",
+      "terra"
+    ]
+  ]
+}

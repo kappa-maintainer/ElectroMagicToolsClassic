@@ -1,0 +1,9 @@
+{
+  "parent": "welectromagic:item/blocks/itemsolarbase",
+  "textures": {
+    "side": "welectromagic:blocks/solarterra",
+    "bottom": "welectromagic:blocks/solarbottom",
+    "top": "welectromagic:blocks/solartop1",
+    "particle": "welectromagic:blocks/solarterra"
+  }
+}

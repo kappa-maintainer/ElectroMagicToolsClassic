@@ -1,0 +1,44 @@
+{
+  "wingflap": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "entity.ghast.shoot",
+        "volume": 0.7,
+        "pitch": 1.0
+      }
+    ],
+    "subtitle": "subtitle.welectromagic.wings.flap"
+  },
+  "magus": {
+    "sounds": [
+      {
+        "name": "welectromagic:music/magus",
+        "stream": true
+      }
+    ]
+  },
+  "night": {
+    "sounds": [
+      {
+        "name": "welectromagic:music/night",
+        "stream": true
+      }
+    ]
+  },
+  "fever": {
+    "sounds": [
+      {
+        "name": "welectromagic:music/fever",
+        "stream": true
+      }
+    ]
+  },
+  "hitcancel": {
+    "sounds": [
+      {
+        "name": "welectromagic:mob/wa"
+      }
+    ]
+  }
+}

@@ -11,8 +11,10 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import weissmoon.core.client.render.IIconRegister;
 import weissmoon.core.item.WeissItem;
 import weissmoon.electromagictools.ElectroMagicTools;
+import weissmoon.electromagictools.lib.Reference;
 
 import java.util.Map;
 
@@ -29,8 +31,14 @@ public class ItemOneRing extends WeissItem implements IBauble {
 
     public ItemOneRing() {
         super("itemOneRing");
+        this.setUnlocalizedName(Reference.MOD_ID + ".itemOneRing");
         setMaxStackSize(1);
         setCreativeTab(ElectroMagicTools.EMTtab);
+    }
+
+    @Override
+    public void registerIcons(IIconRegister iconRegister) {
+        this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
     }
 
     @Override
@@ -93,11 +101,11 @@ public class ItemOneRing extends WeissItem implements IBauble {
         entityData.setInteger(CORRUPTION_NBT_TAG, 0);
         if(!player.world.isRemote){
             Object r = TextFormatting.DARK_RED.toString();
-            String equipt1 = r + new TextComponentTranslation("item.welectromagic:itemOneRing.equipt1", TextFormatting.DARK_PURPLE, r).getUnformattedText();
+            String equipt1 = r + new TextComponentTranslation("item.welectromagic.itemOneRing.equipt1", TextFormatting.DARK_PURPLE, r).getUnformattedText();
             player.sendMessage(new TextComponentString(equipt1));
             Object o = (TextFormatting.RED.toString() + TextFormatting.ITALIC.toString());
             Object p = (TextFormatting.DARK_PURPLE.toString() + TextFormatting.ITALIC.toString());
-            String equipt2 = o + new TextComponentTranslation("item.welectromagic:itemOneRing.equipt2", p, o).getUnformattedText();
+            String equipt2 = o + new TextComponentTranslation("item.welectromagic.itemOneRing.equipt2", p, o).getUnformattedText();
             player.sendMessage(new TextComponentString(equipt2));
         }
         playersWithRing.put(player.getName(), 0);
@@ -112,11 +120,6 @@ public class ItemOneRing extends WeissItem implements IBauble {
         entityData.removeTag(CORRUPTION_NBT_TAG);
         if(!((EntityPlayer) player).capabilities.isCreativeMode)
             ((EntityPlayer) player).capabilities.disableDamage = false;
-    }
-
-    @Override
-    public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
-        return true;
     }
 
     @Override
