@@ -66,7 +66,7 @@ public class EMTRecipes {
     }
 
     public static void initInfusionRecipes(){
-        //        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":solarupgrade"),
+//        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":solarupgrade"),
 //                new SolarUpgradeInfusionRecipe("WMMISSINGRESEARCH",
 //                        new ItemStack(ModItems.solarHelmet),
 //                        5,
@@ -280,8 +280,7 @@ public class EMTRecipes {
                         IC2Items.getItem("lapotron_crystal"),
                         IC2Items.getItem("resource", "reinforced_stone"),
                         IC2Items.getItem("crafting", "iridium"),
-                        IC2Items.getItem("upgrade", "overclocker")
-                ));
+                        IC2Items.getItem("upgrade", "overclocker")));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID, "basicCompressed3"),
                 new InfusionRecipe("COMPRESSEDSOLAR",
                         new ItemStack(ModBlocks.solarGeneratorCompressed),

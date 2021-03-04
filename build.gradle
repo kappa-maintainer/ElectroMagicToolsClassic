@@ -7,11 +7,16 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath "com.wynprice.cursemaven:CurseMaven:2.1.0"
     }
 }
+apply plugin: "com.wynprice.cursemaven"
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 /*
@@ -20,7 +25,7 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "1.12.2-0.0.7-9"
+version = "1.12.2-0.0.7-10"
 group= "weissmoon.electromagictools" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ElectroMagicToolsIC2C"
 

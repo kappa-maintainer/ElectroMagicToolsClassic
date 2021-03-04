@@ -4,7 +4,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import weissmoon.core.client.creativetab.CreativeTabWeiss;
 import weissmoon.core.utils.NBTHelper;
-import weissmoon.electromagictools.item.DummyLogo;
 import weissmoon.electromagictools.item.ModItems;
 import weissmoon.electromagictools.lib.Reference;
 

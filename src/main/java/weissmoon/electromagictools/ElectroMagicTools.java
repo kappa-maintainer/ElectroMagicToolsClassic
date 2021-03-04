@@ -23,7 +23,6 @@ import weissmoon.electromagictools.advancements.WingDeathTrigger;
 import weissmoon.electromagictools.block.ModBlocks;
 import weissmoon.electromagictools.client.ClientEvents;
 import weissmoon.electromagictools.client.EMTTab;
-import weissmoon.electromagictools.event.EventHarvest;
 import weissmoon.electromagictools.event.EventPool;
 import weissmoon.electromagictools.event.WWMTCastTriggerManager;
 import weissmoon.electromagictools.item.ModItems;
@@ -55,7 +54,6 @@ public class ElectroMagicTools {
         ic2ceLoaded = Loader.isModLoaded("ic2c_extras");
         gtcxLoaded = Loader.isModLoaded("gtc_expansion");
         ModItems.init();
-        MinecraftForge.EVENT_BUS.register(new EventHarvest());
         ModBlocks.init();
         PacketHandler.init();
         if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
