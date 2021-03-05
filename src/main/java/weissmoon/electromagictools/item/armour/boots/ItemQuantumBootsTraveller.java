@@ -28,8 +28,7 @@ public class ItemQuantumBootsTraveller extends ItemNanoBootsTraveller {
 
     @Nullable
     @Override
-    public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
-    {
+    public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type){
         return Textures.Armour.QUANTUM_ARMOUR_TEXTURE;
     }
 
@@ -38,29 +37,7 @@ public class ItemQuantumBootsTraveller extends ItemNanoBootsTraveller {
         return 1;
     }
 
-    public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-        if (source == DamageSource.FALL) {
-            int energyPerDamage = this.energyPerDamage;
-            int damageLimit = (int)(energyPerDamage > 0 ? ElectricItem.manager.discharge(armor, 2.147483647E9D, 2147483647, true, false, true) / (double)energyPerDamage : 0.0D);
-            return new ArmorProperties(10, (double)(1.0F * IC2.config.getFloat("electricSuitAbsorbtionScale")), damageLimit);
-        } else {
-            return super.getProperties(player, armor, source, damage, slot);
-        }
-    }
-
-    public void damageAbsorbed(EntityPlayer player, int damage) {
+    public void damageAbsorbed(EntityPlayer player, int damage){
         IC2.achievements.issueStat(player, "quantumArmorDamageTaken", damage);
-    }
-
-    @SubscribeEvent
-    public void onNanoBootsFall(LivingFallEvent event){
-        if (event.getEntityLiving() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-            ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-            if(stack.getItem() instanceof ItemNanoBootsTraveller) {
-                if (ElectricItem.manager.use(stack, energyPerDamage, player))
-                    event.setCanceled(true);
-            }
-        }
     }
 }

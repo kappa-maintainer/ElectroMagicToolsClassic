@@ -32,18 +32,6 @@ public class ItemNanoBootsTraveller extends ItemElectricBootsTraveller {
         return Textures.Armour.NANO_ARMOUR_TEXTURE;
     }
 
-    public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-        if (source == DamageSource.FALL) {
-            int energyPerDamage = this.energyPerDamage;
-            int damageLimit = (int)(energyPerDamage > 0 ? ElectricItem.manager.discharge(armor, 2.147483647E9D, 2147483647, true, false, true) / (double)energyPerDamage : 0.0D);
-            float absorbtion = damage < 8.0D ? 1.0F : 0.875F;
-            absorbtion *= IC2.config.getFloat("electricSuitAbsorbtionScale");
-            return new ArmorProperties(10, (double)absorbtion, damageLimit);
-        } else {
-            return super.getProperties(player, armor, source, damage, slot);
-        }
-    }
-
     @Override
     protected double getAbsorptionRatio(){
         return 0.9;

@@ -9,10 +9,13 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketSoundEffect;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.storage.loot.*;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.functions.LootFunction;
@@ -34,6 +37,7 @@ import weissmoon.electromagictools.advancements.BaubleHitTrigger;
 import weissmoon.electromagictools.advancements.WingDeathTrigger;
 import weissmoon.electromagictools.item.ModItems;
 import weissmoon.electromagictools.item.armour.boots.ItemNanoBootsTraveller;
+import weissmoon.electromagictools.item.armour.boots.ItemQuantumBootsTraveller;
 import weissmoon.electromagictools.item.armour.wings.ItemFeatherWings;
 import weissmoon.electromagictools.item.armour.wings.ItemNanoWings;
 import weissmoon.electromagictools.item.armour.wings.ItemQuantumWings;
@@ -121,7 +125,10 @@ public class EventPool {
 
     @SubscribeEvent
     public void onNanoBootsFall(LivingFallEvent event){
-        if (event.getDistance() < 3)
+        PotionEffect potioneffect = event.getEntityLiving().getActivePotionEffect(MobEffects.JUMP_BOOST);
+        float f = potioneffect == null ? 0.0F : (float)(potioneffect.getAmplifier() + 1);
+        int i = MathHelper.ceil((event.getDistance() - 3.0F - f) * event.getDamageMultiplier());
+        if (i > 0)
             return;
         if (event.getEntityLiving() instanceof EntityPlayer){
             EntityPlayer player = (EntityPlayer) event.getEntityLiving();
@@ -131,8 +138,12 @@ public class EventPool {
                     event.setCanceled(true);
             }
 
-            if(event.isCanceled())
+            if(event.isCanceled()){
+                if(stack.getItem() instanceof ItemQuantumBootsTraveller)
+                    ((ItemQuantumBootsTraveller)stack.getItem()).damageAbsorbed(player, i);
                 return;
+            }
+
             ItemStack chestStack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
             ItemStack bodyStack = BaublesApi.getBaublesHandler(player).getStackInSlot(5);
             wings:
