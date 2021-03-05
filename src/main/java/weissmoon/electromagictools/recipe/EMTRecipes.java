@@ -45,8 +45,7 @@ import java.util.ConcurrentModificationException;
  */
 public class EMTRecipes {
 
-    private static Ingredient refinedIron, denseIron, generatorWater;
-    static ICraftingRecipeList recipes = ClassicRecipes.advCrafting;
+    private static Ingredient refinedIron, denseIron, generatorWater, diamondChainsaw;
 
     static{
         initMaterials();
@@ -54,7 +53,7 @@ public class EMTRecipes {
 
     private static void initMaterials() {
 
-        if (ElectroMagicTools.ic2ceLoaded) {
+        if (ElectroMagicTools.ic2ceLoaded){
             refinedIron = new OreIngredient("plateRefinedIron");
             denseIron = new OreIngredient("plateDenseIron");
             generatorWater = Ingredient.fromStacks(new ItemStack(Item.getByNameOrId("ic2c_extras:orewashingplant")));
@@ -62,6 +61,12 @@ public class EMTRecipes {
             refinedIron = Ingredient.fromStacks(new ItemStack(IC2Items.getItem("ingot", "tin").getItem(), 1, 53));
             denseIron = new OreIngredient("blockIron");
             generatorWater = Ingredient.fromStacks(IC2Items.getItem("te", "electrolyzer"));
+        }
+
+        if (ElectroMagicTools.gtcxLoaded){
+            diamondChainsaw = Ingredient.fromItem(Item.getByNameOrId("gtc_expansion:diamond_chainsaw"));
+        }else{
+            diamondChainsaw = Ingredient.fromItem(ModItems.diamondChainsaw);
         }
     }
 
@@ -166,7 +171,7 @@ public class EMTRecipes {
                         new ItemStack(ModItems.thaumiumChainsaw),
                         5,
                         CraftingAspectList.thaumiumChainsaw,
-                        getDiamondChainsaw(),
+                        diamondChainsaw,
                         new ItemStack(Items.DIAMOND),
                         new ItemStack(Items.DIAMOND),
                         new OreIngredient("plateThaumium"),
@@ -350,13 +355,6 @@ public class EMTRecipes {
         initUUInfusionRecipes();
     }
 
-    public static ItemStack getDiamondChainsaw(){
-        if (ElectroMagicTools.gtcxLoaded){
-            return new ItemStack(Item.getByNameOrId("gtc_expansion:diamond_chainsaw"), 1, OreDictionary.WILDCARD_VALUE);
-        }
-        return new ItemStack(ModItems.diamondChainsaw, 1, OreDictionary.WILDCARD_VALUE);
-    }
-
     public static void initUUInfusionRecipes(){
         ItemStack crystal = new ItemStack(ModItems.materials, 1, 10);
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID, "uuglowstone"),
@@ -518,7 +516,7 @@ public class EMTRecipes {
                         10,
                         CraftingAspectList.diamondOmnitool,
                         ModItems.diamondOmnitool,
-                        getDiamondChainsaw(),
+                        diamondChainsaw,
                         IC2Items.getItem("diamond_drill")));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Reference.MOD_ID + ":diamondomnitoolupgrade"),
                 new ShapedArcaneRecipe(new ResourceLocation(""),
@@ -567,6 +565,7 @@ public class EMTRecipes {
                         'p', new ItemStack(ModBlocks.solarGenerator)));
 
     }
+
     public static void initCrucibleRecipes(){
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation(Reference.MOD_ID, "aquaCompressed"),
                 new CrucibleRecipe("COMPRESSEDSOLARAQUA",
@@ -687,12 +686,20 @@ public class EMTRecipes {
 
     public static void initIC2Recipes(){
 
-        recipes.addRecipe(new ItemStack(ModItems.ironOmnitool),
+        GameRegistry.addShapedRecipe(new ResourceLocation("welectromagic:itemironomnitool"), null, new ItemStack(ModItems.ironOmnitool),
                 "C", "p", "D",
                 'C', IC2Items.getItem("chainsaw"),
                 'D', IC2Items.getItem("drill"),
                 'p', refinedIron);
 
+        if (!ElectroMagicTools.gtcxLoaded){
+            GameRegistry.addShapedRecipe(new ResourceLocation("welectromagic:diamondchainsaw"), null, new ItemStack(ModItems.diamondChainsaw),
+                    " D ",
+                    "DCD",
+                    'D', "gemDiamond",
+                    'C', IC2Items.getItem("chainsaw"));
+        }
+        ICraftingRecipeList recipes = ClassicRecipes.advCrafting;
 
         ItemStack helmet = new ItemStack(ModItems.quantumGoggles);
         recipes.addShapelessRecipe(helmet.copy(), (new FlagModifier(helmet.copy(), "EUReaderUpgrade", true)).setUsesInput(), helmet.copy(), Ic2Items.euReader.copy());
@@ -765,12 +772,6 @@ public class EMTRecipes {
                 'P', new ItemStack(ModItems.gemPack),
                 'C', IC2Items.getItem("crafting", "advanced_circuit"));
 
-        if (!ElectroMagicTools.gtcxLoaded){
-            recipes.addRecipe(new ItemStack(ModItems.diamondChainsaw),
-                    "DD", "CD",
-                    'D', "gemDiamond",
-                    'C', IC2Items.getItem("chainsaw"));
-        }
         if(ElectroMagicTools.ic2ceLoaded){
             initIC2CERecipes();
         } else {
