@@ -63,14 +63,14 @@ public class ItemDiamondChainsaw extends WeissItemElectricTool /* implements IMo
     private static final String SHEARMODE_NBT_TAG= "shearsMode";
 
     public ItemDiamondChainsaw() {
-        this(ToolMaterial.DIAMOND, 15, 0.0F, Strings.Items.DIAMOND_CHAINSAW_NAME, 10000, 100, 1);
+        this(ToolMaterial.DIAMOND, 15, 0.0F, Strings.Items.DIAMOND_CHAINSAW_NAME, 10000, 50, 100, 1);
     }
 
-    public ItemDiamondChainsaw(ToolMaterial material, float damage, float speed, String name, int maxCharge, int transferLimit, int tier) {
+    public ItemDiamondChainsaw(ToolMaterial material, float damage, float speed, String name, int maxCharge, int operationEnergyCost, int transferLimit, int tier) {
         super(damage - 1, speed, material, name);
         this.attackDamage = damage;
         this.maxCharge = maxCharge;
-        this.operationEnergyCost = 50;
+        this.operationEnergyCost = operationEnergyCost;
         this.hitCost = operationEnergyCost + 100;
         this.tier = tier;
         this.transferLimit = transferLimit;

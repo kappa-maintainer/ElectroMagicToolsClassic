@@ -21,8 +21,8 @@ import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.common.lib.enchantment.EnumInfusionEnchantment;
 import thaumcraft.common.lib.utils.BlockUtils;
 import thaumcraft.common.lib.utils.Utils;
-import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Strings;
+import weissmoon.electromagictools.util.GenericHelper;
 
 import javax.annotation.Nonnull;
 
@@ -33,12 +33,8 @@ import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
  */
 public class ItemStreamChainsaw extends ItemDiamondChainsaw {
 
-    int range = 7;
-    double speed = 0.04D;
-
     public ItemStreamChainsaw() {
-        super(ThaumcraftMaterials.TOOLMAT_THAUMIUM, 12, -3.2F, Strings.Items.STREAM_CHAINSAW_NAME, 1000000, 900, 2);
-        operationEnergyCost = 400;
+        super(ThaumcraftMaterials.TOOLMAT_THAUMIUM, 12, -3.2F, Strings.Items.STREAM_CHAINSAW_NAME, 1000000, 400, 900, 2);
         efficiency = 25F;
     }
 
@@ -67,34 +63,44 @@ public class ItemStreamChainsaw extends ItemDiamondChainsaw {
                 return;
             }
             if (!player.isHandActive()){
-                ElectroMagicTools.logger.info("hand no longer active");
+//                ElectroMagicTools.logger.info("hand no longer active");
                 return;
             }
             double x = player.posX;
             double y = player.posY + 1.5;
             double z = player.posZ;
             int pulled = 0;
-            for (EntityItem item : worldIn.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(x, y, z, x + 1, y
-                    + 1, z + 1).grow(range))) {
+            for (EntityItem item : worldIn.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(x, y, z, x + 1, y + 1, z + 1).grow(10))) {
                 if (item.getEntityData().getBoolean("PreventRemoteMovement")) {
                     continue;
                 }
                 if (!canPull(stack) || pulled > 200) {
                     break;
                 }
-                item.addVelocity((x - item.posX) * speed, (y - item.posY) * speed, (z - item.posZ) * speed);
+//                item.addVelocity((x - item.posX) * speed, (y - item.posY) * speed, (z - item.posZ) * speed);
+                double xd = item.posX - player.posX;
+                double yd = item.posY - player.posY + (double)(player.height / 2.0F);
+                double zd = item.posZ - player.posZ;
+                double distance = Math.sqrt(xd * xd + yd *yd + zd * zd);
+                xd /= distance;
+                yd /= distance;
+                zd /= distance;
+                item.motionX -= GenericHelper.minMaxClamp(-0.25, 0.25, xd);
+                item.motionY -= GenericHelper.minMaxClamp(-0.25, 0.25, yd);
+                item.motionZ -= GenericHelper.minMaxClamp(-0.25, 0.25, zd);
                 ElectricItem.manager.use(stack, (float)operationEnergyCost / 2, player);
                 pulled++;
-                if (worldIn.isRemote) {
-                    //FXDispatcher.INSTANCE.crucibleBubble((float)item.posX + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.2F, (float)item.posY + item.height + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.2F, (float)item.posZ + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.2F, 0.33F, 0.33F, 1.0F);
-                }
+//                if (worldIn.isRemote) {
+                FXDispatcher.INSTANCE.crucibleBubble((float)item.posX + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.2F, (float)item.posY + item.height + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.2F, (float)item.posZ + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.2F, 0.33F, 0.33F, 1.0F);
+//                }
             }
         }
     }
 
     @Override
     public boolean canContinueUsing(ItemStack oldStack, ItemStack newStack) {
-        return StackUtil.isStackEqual(oldStack, newStack, false, false);
+        return  oldStack.getItem() == newStack.getItem();
+//        return StackUtil.isStackEqual(oldStack, newStack, false, false);
     }
 
     public boolean canPull(ItemStack stack) {

@@ -27,4 +27,9 @@ public class GenericHelper {
 
         return entity.world.rayTraceBlocks(vec3d, vec3d1, collideLiquid, true, false);
     }
+
+    public static double minMaxClamp(double min, double max, double var){
+        double returning = Math.max(min, var);
+        return Math.min(max, returning);
+    }
 }

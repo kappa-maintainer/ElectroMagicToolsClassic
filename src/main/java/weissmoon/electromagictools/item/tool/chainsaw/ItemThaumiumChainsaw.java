@@ -9,8 +9,7 @@ import weissmoon.electromagictools.lib.Strings;
 public class ItemThaumiumChainsaw extends ItemDiamondChainsaw {
 
     public ItemThaumiumChainsaw() {
-        super(ThaumcraftMaterials.TOOLMAT_THAUMIUM, 12, -3.2F, Strings.Items.THAUMIUM_CHAINSAW_NAME, 100000, 600, 1);
-        operationEnergyCost = 250;
+        super(ThaumcraftMaterials.TOOLMAT_THAUMIUM, 12, -3.2F, Strings.Items.THAUMIUM_CHAINSAW_NAME, 100000, 250, 600, 1);
         efficiency = 21F;
     }
 
