@@ -23,7 +23,6 @@ import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 public class ItemScribingTools extends WeissItem implements IScribeTools, IDamagelessElectricItem{
     public ItemScribingTools() {
         super(Strings.Items.SCRIBING_TOOLS_NAME);
-        this.setUnlocalizedName(getModID().toLowerCase() + "." + Strings.Items.SCRIBING_TOOLS_NAME);
         setMaxDamage(400);
         setNoRepair();
         setMaxStackSize(1);
@@ -84,10 +83,5 @@ public class ItemScribingTools extends WeissItem implements IScribeTools, IDamag
     @Override
     public double getTransferLimit(ItemStack stack) {
         return 5;
-    }
-
-    @Override
-    public void registerIcons(IIconRegister iconRegister) {
-        this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
     }
 }

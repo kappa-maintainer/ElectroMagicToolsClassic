@@ -32,7 +32,6 @@ import java.util.List;
 public class ItemMjölnir extends WeissItemSword {
     public ItemMjölnir() {
         super(ToolMaterial.DIAMOND, Strings.Items.MJÖLNIR_NAME);
-        this.setUnlocalizedName(Reference.MOD_ID + "." + Strings.Items.MJÖLNIR_NAME);
         setMaxDamage(2000);
         setNoRepair();
         setCreativeTab(ElectroMagicTools.EMTtab);
@@ -81,10 +80,5 @@ public class ItemMjölnir extends WeissItemSword {
             multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 2, 0));
 
         return multimap;
-    }
-
-    @Override
-    public void registerIcons(IIconRegister iconRegister) {
-        this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
     }
 }

@@ -42,7 +42,7 @@ public class ItemMaterials extends WeissItem implements IItemRenderCustom{
         }catch (ArrayIndexOutOfBoundsException e){
             //sub = sub;
         }
-        return "item." + Reference.MOD_ID + "." + Strings.Items.MATERIALS_NAME + sub;
+        return "item." + Reference.MOD_ID + ":" + Strings.Items.MATERIALS_NAME + sub;
     }
 
     @SideOnly(Side.CLIENT)
@@ -51,9 +51,9 @@ public class ItemMaterials extends WeissItem implements IItemRenderCustom{
         this.itemIconWeiss = iconRegister.registerIcon(this, getRegistryName().toString());
         this.itemIconArray = new IIcon[Strings.Items.Materials.length];
         int i = 0;
-        for(String nem : Strings.Items.Materials) {
+        for(String nem:Strings.Items.Materials){
             this.itemIconArray[i] = iconRegister.registerIcon(this, Reference.MOD_ID + ":" + nem);
-            itemIconWeiss = iconRegister.registerIcon(this, getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1));
+            i++;
         }
         tabIcon = iconRegister.registerIcon(this, "itemthaumiumdrill");
         nanoWing = iconRegister.registerIcon(this, "itemnanowing");

@@ -41,7 +41,7 @@ import weissmoon.core.item.tools.WeissItemAxe;
 import weissmoon.core.utils.NBTHelper;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.item.WeissItemElectricTool;
-import weissmoon.electromagictools.lib.LocaleComps;
+import weissmoon.electromagictools.lib.Strings.LocaleComps;
 import weissmoon.electromagictools.lib.Strings;
 
 import javax.annotation.Nonnull;

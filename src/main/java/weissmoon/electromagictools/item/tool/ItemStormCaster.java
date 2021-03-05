@@ -59,7 +59,6 @@ public class ItemStormCaster extends WeissItemSword implements IItemRenderCustom
 
     public ItemStormCaster() {
         super(ToolMaterial.DIAMOND, Strings.Items.STORMBRINGER_NAME);
-        this.setUnlocalizedName(Reference.MOD_ID + "." + Strings.Items.STORMBRINGER_NAME);
         setMaxDamage(1000);
         setNoRepair();
         setCreativeTab(ElectroMagicTools.EMTtab);
@@ -106,11 +105,6 @@ public class ItemStormCaster extends WeissItemSword implements IItemRenderCustom
         return multimap;
     }
 
-
-    @Override
-    public void registerIcons(IIconRegister iconRegister) {
-        this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
-    }
 //    @Override
 //    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ){
 //        IBlockState iblockstate = worldIn.getBlockState(pos);

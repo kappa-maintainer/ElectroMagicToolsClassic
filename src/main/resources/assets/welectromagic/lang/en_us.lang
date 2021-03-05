@@ -16,43 +16,6 @@ tile.welectromagic:essentiaAura.name=Aura
 tile.welectromagic:essentiaIgnis.name=Ignis
 tile.welectromagic:blockChargePedestal.name=Industrial Vis Charging Station
 
-item.welectromagic.itemElectricScribingTools.name=Electric Scribing Tools
-item.welectromagic.itemElectricGoggles.name=Electric Goggles of Revealing
-item.welectromagic.itemNanoGoggles.name=Nanosuit Goggles of Revealing
-item.welectromagic.itemQuantumGoggles.name=Quantum Goggles of Revealing
-item.welectromagic.itemSolarGoggles.name=Solar Goggles of Revealing
-item.welectromagic.itemElectricBoots.name=Electric Boots of the Traveller
-item.welectromagic.itemNanoBoots.name=Nanosuit Boots of the Traveller
-item.welectromagic.itemQuantumBoots.name=Quantum Boots of the Traveller
-item.welectromagic.itemElectricHoe.name=Electric Hoe of Growth
-item.welectromagic.itemThaumiumDrill.name=Thaumium Drill
-item.welectromagic.itemCoreDrill.name=Drill of the Core
-item.welectromagic.itemDiamondChainsaw.name=Diamond Chainsaw
-item.welectromagic.itemThaumiumChainsaw.name=Thaumium Chainsaw
-item.welectromagic.itemStreamChainsaw.name=Chainsaw of the Stream
-item.welectromagic.itemIronOmniTool.name=Iron Omnitool
-item.welectromagic.itemDiamondOmniTool.name=Diamond Omnitool
-item.welectromagic.itemThaumiumOmniTool.name=Thaumium Omnitool
-item.welectromagic.itemMaterialNull.name=NULL
-item.welectromagic.itemMaterialUraniumCluster.name=Uranium Cluster
-item.welectromagic.itemMaterialLightningSummoner.name=Lightning Summoner
-item.welectromagic.itemMaterialFeatherMesh.name=Feather Mesh
-item.welectromagic.itemMaterialGlue.name=Glue
-item.welectromagic.itemMaterialDuctTape.name=Duct Tape
-item.welectromagic.itemMaterialRubberBall.name=Rubber Ball
-item.welectromagic.itemMaterialCardBoard.name=Cardboard
-item.welectromagic.itemMaterialFeatherWing.name=Feather Wings
-item.welectromagic.itemMaterialTaintedFeather.name=Tainted Feather
-item.welectromagic.itemMaterialThaumiumWing.name=Thaumium Wings
-item.welectromagic.itemMaterialUUMatterDrop.name=UU-Matter
-item.welectromagic.itemMaterialCrushedAmberOre.name=Crushed Amber Ore
-item.welectromagic.itemMaterialPurifiedAmberOre.name=Purified Amber Ore
-item.welectromagic.itemMaterialCrushedCinnabarOre.name=Crushed Cinnabar Ore
-item.welectromagic.itemMaterialPurifiedCinnabarOre.name=Purified Cinnabar Ore
-item.welectromagic.itemOneRing.name=The One Ring
-item.welectromagic.itemStormCaster.name=Storm Caster
-item.welectromagic.itemMjolnir.name=Mjölnir
-
 item.welectromagic:blockSolarPanel.name=Compressed Solar Panel
 item.welectromagic:blockEssentiaGenerator.name=Essentia Generator
 item.welectromagic:itemElectricScribingTools.name=Electric Scribing Tools
@@ -97,10 +60,10 @@ item.welectromagic:itemFeatherWings.name=Feather Duct-Taped Wings
 item.welectromagic:itemThaumiumWings.name=Thaumium Reinforced Wings
 item.welectromagic:itemNanoWings.name=Nanosuit Wings
 item.welectromagic:itemQuantumWings.name=Quantum Wings
-item.welectromagic.itemRockbreakerDrill.name=Drill of the Rockbreaker
+item.welectromagic:itemRockbreakerDrill.name=Drill of the Rockbreaker
 item.welectromagic:itemStormBreaker.name=Storm Breaker
 
-item.welectromagic.itemIridiumDrill.name=Iridium Drill
+item.welectromagic:itemIridiumDrill.name=Iridium Drill
 item.welectromagic:itemEnergyPack.name=Energy Pack
 item.welectromagic:itemCoin.name=Coin
 item.welectromagic:itemCoin1.name=Brass Coin
@@ -113,17 +76,10 @@ tooltip.EMT.hammer.broken.thor=It was once the Hammer of Thor.
 tooltip.EMT.hammer.broken.danger=It is now very dangerous.
 tooltip.EMT.hammer.broken.plsNoRightClick=Do NOT right-click.
 tooltip.EMT.hammer.broken.plsRightClick=Do right-click.
+tooltip.EMT.hammer.cast.thor=That's a bit much.
 
 tooltip.diamondChainsawShearToggle.name=Enable/Disable Shearing
 tooltip.diamondOmnitoolToggle.name=Cycle through Shearing and Dirt Modes
-message.diamondChainsawNormal.name=Enabled Shearing
-message.diamondChainsawNoShear.name=Disabled Shearing
-tooltip.EMT.hammer.broken.Mjölnir=The Hammer of Thor
-tooltip.EMT.hammer.broken.thor=It was once the Hammer of Thor.
-tooltip.EMT.hammer.broken.danger=It is now very dangerous.
-tooltip.EMT.hammer.broken.plsNoRightClick=Do NOT right-click.
-tooltip.EMT.hammer.broken.plsRightClick=Do right-click.
-tooltip.EMT.hammer.cast.thor=That's a bit much.
 
 subtitle.welectromagic.wings.flap=Wings flap
 
@@ -145,8 +101,10 @@ advancements.welectromagic.nine.desc=Get 9 Triple Compressed Elemental Solar Pan
 tc.research_category.WEMT=Electro-Thaumic Tools
 
 #first %s is purple, second %s is reset
-item.welectromagic.itemOneRing.equipt1=You have worn the Ring. Your soul has now been forever %stainted%s.
-item.welectromagic.itemOneRing.equipt2=Beware of wearing the ring. The %stainting%s will only increase, and strange things will start happening.
+message.itemOneRing.equipt1=You have worn the Ring. Your soul has now been forever %stainted%s.
+message.itemOneRing.equipt2=Beware of wearing the ring. The %stainting%s will only increase, and strange things will start happening.
+message.diamondChainsawNormal.name=Enabled Shearing
+message.diamondChainsawNoShear.name=Disabled Shearing
 
 research.example.text.stage.1=Text not Found
 

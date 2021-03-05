@@ -64,7 +64,6 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
         setNoRepair();
         setMaxDamage(0);
         setCreativeTab(ElectroMagicTools.EMTtab);
-        this.setUnlocalizedName(Reference.MOD_ID + "." + name);
         this.maxCharge = maxCharge;
         this.transferLimit = transferLimit;
         this.jumpBonus = jumpBonus;
@@ -94,11 +93,6 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
             list.add(stack);
             list.add(getChargedItem(this, 1));
         }
-    }
-
-    @Override
-    public void registerIcons(IIconRegister iconRegister) {
-        this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
     }
 
     @Override

@@ -22,9 +22,6 @@ public class CraftingAspectList {
     public static AspectList thaumiumChainsaw = new AspectList().add(Aspect.TOOL, 16).add(Aspect.AVERSION, 16).add(Aspect.ENERGY, 16);
     public static AspectList thaumiumOmnitool = new AspectList().add(Aspect.TOOL, 25).add(Aspect.MECHANISM, 25).add(Aspect.ENERGY, 25).add(Aspect.AVERSION, 25);
     public static AspectList streamChainsaw = new AspectList().add(Aspect.ENERGY, 48).add(Aspect.MECHANISM, 48).add(Aspect.TOOL, 32).add(Aspect.WATER, 32);
-
-    public static AspectList coreDrill = new AspectList().add(Aspect.ENERGY, 48).add(Aspect.MECHANISM, 48).add(Aspect.TOOL, 32).add(Aspect.EARTH, 32);
-
     public static AspectList armourChargingRing = new AspectList().add(Aspect.ENERGY, 64).add(Aspect.MECHANISM, 32).add(Aspect.MAGIC, 48);
     public static AspectList inventoryChargingRing = new AspectList().add(Aspect.ENERGY, 64).add(Aspect.TOOL, 32).add(Aspect.MAGIC, 48);
 
@@ -55,4 +52,6 @@ public class CraftingAspectList {
     public static AspectList generatorAuram = new AspectList().add(Aspect.AURA, 16).add(Aspect.EXCHANGE, 8);
     public static AspectList generatorAer = new AspectList().add(Aspect.AIR, 16).add(Aspect.EXCHANGE, 8);
     public static AspectList industrialCharger = new AspectList().add(Aspect.ENERGY, 48).add(Aspect.CRAFT, 48).add(Aspect.EXCHANGE, 48).add(Aspect.DESIRE, 48);
+
+    public static AspectList coreDrill = new AspectList().add(Aspect.ENERGY, 48).add(Aspect.MECHANISM, 48).add(Aspect.TOOL, 32).add(Aspect.EARTH, 32);
 }

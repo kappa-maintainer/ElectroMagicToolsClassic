@@ -1,5 +1,8 @@
 package weissmoon.electromagictools.lib;
 
+import ic2.core.platform.lang.components.base.LangComponentHolder;
+import ic2.core.platform.lang.components.base.LocaleComp;
+
 /**
  * Created by Weissmoon on 9/3/19.
  */
@@ -65,5 +68,13 @@ public class Strings {
         public static final String ESSENTIA_GENERATOR_BLOCK_NAME = "blockEssentiaGenerator";
         public static final String INDUSTRIAL_CHARGE_PEDESTAL = "blockChargePedestal";
         public static final String OBSIDIAN_TILE_NAME = "blockObsidianTile";
+    }
+
+    public static final class LocaleComps{
+        public static final LocaleComp MESSAGE_DIAMOND_CHAINSAW_NORMAL = new LangComponentHolder.LocaleItemInfoComp("message.diamondChainsawNormal.name");
+        public static final LocaleComp MESSAGE_DIAMOND_CHAINSAW_NO_SHEAR = new LangComponentHolder.LocaleItemInfoComp("message.diamondChainsawNoShear.name");
+
+        public static final LocaleComp DIAMOND_CHAINSAW_SHEAR_TOGGLE = new LangComponentHolder.LocaleItemInfoComp("tooltip.diamondChainsawShearToggle.name");
+        public static final LocaleComp DIAMOND_OMNITOOL_TOGGLE = new LangComponentHolder.LocaleItemInfoComp("tooltip.diamondOmnitoolToggle.name");
     }
 }

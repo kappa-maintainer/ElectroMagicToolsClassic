@@ -50,7 +50,6 @@ public class ItemElectricGoggles extends ItemArmourBase implements IDamagelessEl
 
     protected ItemElectricGoggles(String name, ArmorMaterial material, int maxCharge, int transferLimit, int tier, int energyPerDamage, int visDiscount) {
         super(name , material, 0, EntityEquipmentSlot.HEAD);
-        this.setUnlocalizedName(Reference.MOD_ID + "." + name);
         setNoRepair();
         setMaxDamage(0);
         setCreativeTab(ElectroMagicTools.EMTtab);
@@ -73,11 +72,6 @@ public class ItemElectricGoggles extends ItemArmourBase implements IDamagelessEl
     @Override
     public CreativeTabs[] getCreativeTabs(){
         return new CreativeTabs[]{ElectroMagicTools.EMTtab, CreativeTabs.COMBAT};
-    }
-
-    @Override
-    public void registerIcons(IIconRegister iconRegister) {
-        this.itemIconWeiss = iconRegister.registerIcon(this, this.getRegistryName().toString());
     }
 
     @SideOnly(Side.CLIENT)
