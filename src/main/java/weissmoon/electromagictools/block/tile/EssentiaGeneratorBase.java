@@ -78,8 +78,8 @@ public class EssentiaGeneratorBase extends TileEntity implements ITickable, IEne
                                     energy += 66.66666666;
                                     fade = 40;
 //                                    if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
-//                                        String key = System.currentTimeMillis() + ":" + pos.getX() + ":" + pos.getY() + ":" + pos.getZ() + ":" + xx + ":" + yy + ":" + zz + ":" + aspect.getColor();
-//                                        EssentiaHandler.sourceFX.put(key, new EssentiaHandler.EssentiaSourceFX(pos, new BlockPos(xx, yy, zz), aspect.getColor(), 1));
+                                        String key = System.currentTimeMillis() + ":" + pos.getX() + ":" + pos.getY() + ":" + pos.getZ() + ":" + xx + ":" + yy + ":" + zz + ":" + aspect.getColor();
+                                        EssentiaHandler.sourceFX.put(key, new EssentiaHandler.EssentiaSourceFX(pos, new BlockPos(xx, yy, zz), aspect.getColor(), 1));
 //                                    }
                                 }
                             }
