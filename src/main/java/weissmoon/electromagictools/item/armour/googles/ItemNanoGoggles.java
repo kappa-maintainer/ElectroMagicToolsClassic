@@ -6,16 +6,24 @@ import ic2.api.classic.item.IThermometer;
 import ic2.core.platform.registry.Ic2Lang;
 import ic2.core.util.misc.StackUtil;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import weissmoon.core.utils.NBTHelper;
 import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.lib.Textures;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
+
+import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 
 /**
  * Created by Weissmoon on 9/3/19.
@@ -62,6 +70,21 @@ public class ItemNanoGoggles extends ItemElectricGoggles implements IEUReader, I
     @Override
     public double getAbsorptionRatio(){
         return 0.9;
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> list) {
+        if (isInCreativeTab(tab)) {
+            ItemStack stack = new ItemStack(this, 1, 0);
+            list.add(stack);
+            list.add(getChargedItem(this, 1));
+            ItemStack full = getChargedItem(this, 1);
+            NBTHelper.setBoolean(full, "CropUpgrade", true);
+            NBTHelper.setBoolean(full, "EUReaderUpgrade", true);
+            NBTHelper.setBoolean(full, "ThermometerUpgrade", true);
+            list.add(full);
+        }
     }
 
     @Override
