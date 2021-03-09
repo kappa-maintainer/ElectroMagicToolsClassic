@@ -16,6 +16,8 @@ tile.welectromagic:essentiaAura.name=Aura
 tile.welectromagic:essentiaIgnis.name=Ignis
 tile.welectromagic:blockChargePedestal.name=Industrial Vis Charging Station
 
+tile.welectromagic:blockObsidianTile.name=Obsidian Tile
+
 item.welectromagic:blockSolarPanel.name=Compressed Solar Panel
 item.welectromagic:blockEssentiaGenerator.name=Essentia Generator
 item.welectromagic:itemElectricScribingTools.name=Electric Scribing Tools
