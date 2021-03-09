@@ -4,17 +4,18 @@ import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import weissmoon.core.client.render.IIconRegister;
+import weissmoon.core.helper.PlayerHelper;
 import weissmoon.core.item.WeissItem;
 import weissmoon.electromagictools.ElectroMagicTools;
-import weissmoon.electromagictools.lib.Reference;
 
 import java.util.Map;
 
@@ -103,6 +104,9 @@ public class ItemOneRing extends WeissItem implements IBauble {
             player.sendMessage(new TextComponentString(equipt2));
         }
         playersWithRing.put(player.getName(), 0);
+        if (!player.world.isRemote && player instanceof EntityPlayerMP) {
+            PlayerHelper.grantCriterion((EntityPlayerMP)player, new ResourceLocation("welectromagic", "electrothaumic/deadlysilence"), "code_trigger");
+        }
     }
 
     @Override
@@ -118,6 +122,10 @@ public class ItemOneRing extends WeissItem implements IBauble {
 
     @Override
     public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
+        if(player instanceof EntityPlayer)
+            if(((EntityPlayer)player).capabilities.isCreativeMode)
+                return true;
+
         int corruption;
         NBTTagCompound entityData = player.getEntityData();
 

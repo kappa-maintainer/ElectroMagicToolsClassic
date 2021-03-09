@@ -1,20 +1,20 @@
 {
   "display": {
     "icon": {
-      "item": "minecraft:blaze_powder"
+      "item": "thaumcraft:void_robe_helm"
     },
     "title": {
-      "translate": "advancements.welectromagic.cremation.name"
+      "translate": "advancements.welectromagic.deadlySilence.name"
     },
     "description": {
-      "translate": "advancements.welectromagic.cremation.desc"
+      "translate": "advancements.welectromagic.deadlySilence.desc"
     },
     "hidden": true
   },
   "parent": "welectromagic:electrothaumic/root",
   "criteria": {
-    "dead": {
-      "trigger": "welectromagic:brutalcremation"
+    "code_trigger": {
+      "trigger": "minecraft:impossible"
     }
   }
 }
