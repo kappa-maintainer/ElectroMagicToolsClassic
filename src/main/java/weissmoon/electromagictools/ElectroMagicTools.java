@@ -23,6 +23,7 @@ import weissmoon.electromagictools.advancements.WingDeathTrigger;
 import weissmoon.electromagictools.block.ModBlocks;
 import weissmoon.electromagictools.client.ClientEvents;
 import weissmoon.electromagictools.client.EMTTab;
+import weissmoon.electromagictools.event.Cremation;
 import weissmoon.electromagictools.event.EventPool;
 import weissmoon.electromagictools.event.WWMTCastTriggerManager;
 import weissmoon.electromagictools.item.ModItems;
@@ -70,7 +71,7 @@ public class ElectroMagicTools {
         EMTRecipes.initIC2Recipes();
         EMTRecipes.initSmeltingRecipes();
         MinecraftForge.EVENT_BUS.register(new EventPool());
-//        MinecraftForge.EVENT_BUS.register(new Cremation());
+        MinecraftForge.EVENT_BUS.register(new Cremation());
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/wemt"));
         //ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/nya.json"));
         ModItems.compartTCtoIC();
