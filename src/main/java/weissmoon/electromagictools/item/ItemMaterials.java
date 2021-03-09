@@ -1,6 +1,5 @@
 package weissmoon.electromagictools.item;
 
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -10,6 +9,7 @@ import weissmoon.core.api.client.item.IItemRenderCustom;
 import weissmoon.core.api.client.item.IItemRenderer;
 import weissmoon.core.client.render.IIcon;
 import weissmoon.core.client.render.IIconRegister;
+import weissmoon.core.client.render.renderOverride.CustomRenderRegistry;
 import weissmoon.core.item.WeissItem;
 import weissmoon.core.utils.NBTHelper;
 import weissmoon.electromagictools.ElectroMagicTools;
@@ -114,23 +114,6 @@ public class ItemMaterials extends WeissItem implements IItemRenderCustom{
 
     @Override
     public IItemRenderer getIItemRender() {
-        return new MaterialRender();
-    }
-
-    public class MaterialRender implements IItemRenderer{
-        @Override
-        public boolean handleRenderType(ItemStack item, ItemCameraTransforms.TransformType cameraTransformType) {
-            return false;
-        }
-
-        @Override
-        public boolean shouldUseRenderHelper(ItemCameraTransforms.TransformType cameraTransformType, ItemStack item, ItemRendererHelper helper) {
-            return false;
-        }
-
-        @Override
-        public void renderItem(ItemCameraTransforms.TransformType cameraTransformType, ItemStack item, Object... data) {
-
-        }
+        return CustomRenderRegistry.getMissingRender();
     }
 }
