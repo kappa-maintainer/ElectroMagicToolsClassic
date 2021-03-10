@@ -114,6 +114,7 @@ public class OverrideScanPacket implements IMessage, IMessageHandler<OverrideSca
         }
     }
 
+    @SideOnly(Side.CLIENT)
     private void generateParticle(ArrayList<BlockPos> group, BlockPos origin, BlockPos ping){
         World world = Minecraft.getMinecraft().player.world;
         double minX, minY, minZ, maxX, maxY, maxZ;
