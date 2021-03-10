@@ -54,7 +54,7 @@ public class ItemElectricHoeGrowth extends WeissItemHoe implements IDamagelessEl
     private final int maxCharge = 200000;
 
     public ItemElectricHoeGrowth() {
-        super(ThaumcraftMaterials.TOOLMAT_THAUMIUM, Strings.Items.ELECTRIC_HOE_NAME);
+        super(ThaumcraftMaterials.TOOLMAT_ELEMENTAL, Strings.Items.ELECTRIC_HOE_NAME);
         setNoRepair();
         setCreativeTab(ElectroMagicTools.EMTtab);
     }

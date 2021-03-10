@@ -233,8 +233,8 @@ public class ItemThaumiumDrill extends WeissItemElectricTool implements IMiningD
     }
 
     @Override
-    public int getExtraSpeed(ItemStack d) {
-        int pointBoost = this.getPointBoost(d);
+    public int getExtraSpeed(ItemStack drill){
+        int pointBoost = this.getPointBoost(drill);
         return pointBoost + 5;
     }
 
@@ -244,8 +244,8 @@ public class ItemThaumiumDrill extends WeissItemElectricTool implements IMiningD
     }
 
     @Override
-    public int getExtraEnergyCost(ItemStack d) {
-        int points = this.getEnergyChange(d) + 21;
+    public int getExtraEnergyCost(ItemStack drill) {
+        int points = this.getEnergyChange(drill) + 21;
         return Math.max(points, 0);
     }
 

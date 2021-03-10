@@ -24,6 +24,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import thaumcraft.api.ThaumcraftMaterials;
 import thaumcraft.common.lib.enchantment.EnumInfusionEnchantment;
 import thaumcraft.common.lib.utils.BlockUtils;
 import weissmoon.core.helper.RNGHelper;
@@ -41,8 +42,8 @@ import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 public class ItemRockBreakerDrill extends ItemThaumiumDrill {
     private EnumFacing.Axis side;
     public ItemRockBreakerDrill(){
-        super(ToolMaterial.DIAMOND, Strings.Items.ROCKBREAKER_DRILL_NAME, 900000, 1000, 2);
-        operationEnergyCost = 800;//todo
+        super(ThaumcraftMaterials.TOOLMAT_ELEMENTAL, Strings.Items.ROCKBREAKER_DRILL_NAME, 900000, 1000, 2);
+        operationEnergyCost = 350;
         efficiency = 25F;
     }
 

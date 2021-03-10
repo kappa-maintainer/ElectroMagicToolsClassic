@@ -2,7 +2,6 @@ package weissmoon.electromagictools.item.tool.chainsaw;
 
 import ic2.api.item.ElectricItem;
 import ic2.core.IC2;
-import ic2.core.util.misc.StackUtil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -34,7 +33,7 @@ import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 public class ItemStreamChainsaw extends ItemDiamondChainsaw {
 
     public ItemStreamChainsaw() {
-        super(ThaumcraftMaterials.TOOLMAT_THAUMIUM, 12, -3.2F, Strings.Items.STREAM_CHAINSAW_NAME, 1000000, 400, 900, 2);
+        super(ThaumcraftMaterials.TOOLMAT_ELEMENTAL, 12, -3.2F, Strings.Items.STREAM_CHAINSAW_NAME, 1000000, 400, 900, 2);
         efficiency = 25F;
     }
 

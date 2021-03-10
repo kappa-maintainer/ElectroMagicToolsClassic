@@ -13,6 +13,7 @@ import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import thaumcraft.api.ThaumcraftMaterials;
 import weissmoon.core.api.client.item.IItemRenderCustom;
 import weissmoon.core.api.client.item.IItemRenderer;
 import weissmoon.core.client.render.IIcon;
@@ -39,7 +40,7 @@ public class ItemStormBreaker extends WeissItemSword implements IDamagelessElect
     protected IIcon itemIconWeissE;
 
     public ItemStormBreaker() {
-        super(ToolMaterial.DIAMOND, Strings.Items.STORMBREAKER_NAME);
+        super(ThaumcraftMaterials.TOOLMAT_ELEMENTAL, Strings.Items.STORMBREAKER_NAME);
         setNoRepair();
         setCreativeTab(ElectroMagicTools.EMTtab);
     }

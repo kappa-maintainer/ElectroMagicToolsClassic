@@ -23,7 +23,7 @@ public class ItemIridiumDrill extends ItemThaumiumDrill{
 
     public ItemIridiumDrill(){
         super(ToolMaterial.DIAMOND, Strings.Items.IRIDIUM_DRILL_NAME, 300000, 1000, 2);
-        operationEnergyCost = 800;//todo
+        operationEnergyCost = 300;
         efficiency = 25F;
         MinecraftForge.EVENT_BUS.register(new IridiumDrillEvent());
     }
