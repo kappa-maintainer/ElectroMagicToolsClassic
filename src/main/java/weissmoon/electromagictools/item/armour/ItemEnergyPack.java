@@ -5,10 +5,12 @@ import baubles.api.IBauble;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import ic2.api.classic.item.IDamagelessElectricItem;
+import ic2.api.item.IMetalArmor;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -30,7 +32,7 @@ import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
 /**
  * Created by Weissmoon on 9/26/20.
  */
-public class ItemEnergyPack extends ItemArmourBase implements IDamagelessElectricItem, IBauble {
+public class ItemEnergyPack extends ItemArmourBase implements IDamagelessElectricItem, IBauble, IMetalArmor{
 
     protected int maxCharge, transferLimit;
 
@@ -102,5 +104,10 @@ public class ItemEnergyPack extends ItemArmourBase implements IDamagelessElectri
     @Override
     public BaubleType getBaubleType(ItemStack itemstack) {
         return BaubleType.BODY;
+    }
+
+    @Override
+    public boolean isMetalArmor(ItemStack itemstack, EntityPlayer player){
+        return true;
     }
 }
