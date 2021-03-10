@@ -72,6 +72,7 @@ public class ElectroMagicTools {
         EMTRecipes.initSmeltingRecipes();
         MinecraftForge.EVENT_BUS.register(new EventPool());
         MinecraftForge.EVENT_BUS.register(new Cremation());
+        MinecraftForge.TERRAIN_GEN_BUS.register(new ObsidianPillarGenerator());
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/wemt"));
         //ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/nya.json"));
         ModItems.compartTCtoIC();

@@ -17,24 +17,29 @@ import weissmoon.electromagictools.block.ModBlocks;
  */
 public class ObsidianPillarGenerator{
 //    WorldGenerator
-//    @SubscribeEvent
-//    public void generatePillar(DecorateBiomeEvent.Decorate event){
+    @SubscribeEvent
+    public void generatePillar(DecorateBiomeEvent.Decorate event){
 //        Biome.
-//
-//        int x = event.getChunkPos().getXStart() + 8;
-//        int z = event.getChunkPos().getZStart() + 8;
-//        World world= event.getWorld();
-//
-//        boolean gene = true;
-//        for(int i = 250;gene;i--){
-//            BlockPos pos = new BlockPos(x, i, z);
-//            if(!world.isAirBlock(pos)){
-//                world.setBlockState(pos.up(1), Blocks.OBSIDIAN.getDefaultState());
-//                world.setBlockState(pos.up(2), Blocks.OBSIDIAN.getDefaultState());
-//                world.setBlockState(pos.up(3), Blocks.OBSIDIAN.getDefaultState());
-//                world.setBlockState(pos.up(4), ModBlocks.obsidianTile.getDefaultState().withProperty(BlockObsidian.ELEMENT, RNGHelper.getRNGIntClamp(6)));
-//                return;
-//            }
-//        }
-//    }
+        if(event.getType() != DecorateBiomeEvent.Decorate.EventType.SAND_PASS2)
+            return;
+
+        int x = event.getChunkPos().getXStart() + 8;
+        int z = event.getChunkPos().getZStart() + 8;
+        World world = event.getWorld();
+
+        for(int i = 250;true;i--){
+            BlockPos pos = new BlockPos(x, i, z);
+            if(!world.isAirBlock(pos)){
+                if(RNGHelper.getRNGFloat() < 0.999)
+                    return;
+                if(!world.getBlockState(pos).isTopSolid() || world.getBlockState(pos).getBlock() == ModBlocks.obsidianTile)
+                    return;
+                world.setBlockState(pos.up(1), Blocks.OBSIDIAN.getDefaultState());
+                world.setBlockState(pos.up(2), Blocks.OBSIDIAN.getDefaultState());
+                world.setBlockState(pos.up(3), Blocks.OBSIDIAN.getDefaultState());
+                world.setBlockState(pos.up(4), ModBlocks.obsidianTile.getDefaultState().withProperty(BlockObsidian.ELEMENT, RNGHelper.getRNGIntClamp(6)));
+                return;
+            }
+        }
+    }
 }
