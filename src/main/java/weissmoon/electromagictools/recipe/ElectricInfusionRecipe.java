@@ -24,7 +24,7 @@ public class ElectricInfusionRecipe extends InfusionRecipe{
 
     @Override
     public Object getRecipeOutput(EntityPlayer player, ItemStack input, List<ItemStack> comps ) {
-        ItemStack itemOuput = ((ItemStack)this.recipeOutput).copy();
+        ItemStack itemOuput = ((ItemStack)getRecipeOutput()).copy();
         if(itemOuput.getItem() instanceof IElectricItem) {
             double totalCharge = 0;
             if(input.getItem() instanceof IElectricItem){

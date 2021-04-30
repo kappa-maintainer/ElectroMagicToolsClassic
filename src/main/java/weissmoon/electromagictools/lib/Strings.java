@@ -68,6 +68,7 @@ public class Strings {
         public static final String ESSENTIA_GENERATOR_BLOCK_NAME = "blockEssentiaGenerator";
         public static final String INDUSTRIAL_CHARGE_PEDESTAL = "blockChargePedestal";
         public static final String OBSIDIAN_TILE_NAME = "blockObsidianTile";
+        public static final String SCANNER_BLOCK_NAME = "blockScanner";
     }
 
     public static final class LocaleComps{
@@ -76,5 +77,7 @@ public class Strings {
 
         public static final LocaleComp DIAMOND_CHAINSAW_SHEAR_TOGGLE = new LangComponentHolder.LocaleItemInfoComp("tooltip.diamondChainsawShearToggle.name");
         public static final LocaleComp DIAMOND_OMNITOOL_TOGGLE = new LangComponentHolder.LocaleItemInfoComp("tooltip.diamondOmnitoolToggle.name");
+
+        public static final LocaleComp DRILL_OF_THE_CORE_TOOLTIP = new LangComponentHolder.LocaleItemInfoComp("tooltip.MEGALOMANIA.name");
     }
 }

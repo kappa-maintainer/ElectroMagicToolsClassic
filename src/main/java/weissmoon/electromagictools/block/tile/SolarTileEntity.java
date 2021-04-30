@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 import weissmoon.electromagictools.api.ISolarRequirements;
 import weissmoon.electromagictools.block.solar.SolarBlockBase;
 
-import static java.lang.System.out;
+import static weissmoon.electromagictools.ElectroMagicTools.logger;
 
 /**
  * Created by Weissmoon on 9/7/20.
@@ -83,6 +83,8 @@ public class SolarTileEntity extends TileEntity implements ITickable, IEnergySou
                     requirements = SolarRegistry.terra2;        break;
                 default:
                     requirements = SolarRegistry.defaultRequirements;
+                    logger.fatal("Broken Solar Panel at:");
+                    logger.fatal(pos);
             }
         }else{
             switch (tileID){
@@ -102,8 +104,8 @@ public class SolarTileEntity extends TileEntity implements ITickable, IEnergySou
                     requirements = SolarRegistry.terra3;        break;
                 default:
                     requirements = SolarRegistry.defaultRequirements;
-                    out.println("Broken Solar Panel at:");
-                    out.println(pos);
+                    logger.fatal("Broken Solar Panel at:");
+                    logger.fatal(pos);
             }
         }
     }

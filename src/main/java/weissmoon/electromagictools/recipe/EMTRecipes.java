@@ -273,11 +273,30 @@ public class EMTRecipes {
         EnumInfusionEnchantment.addInfusionEnchantment(rockbreakerDrillStack, EnumInfusionEnchantment.REFINING, 1);
         EnumInfusionEnchantment.addInfusionEnchantment(rockbreakerDrillStack, EnumInfusionEnchantment.SOUNDING, 2);
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID, "rockbreakerdrill"),
-                new ElectricInfusionRecipe("ROCKBREAKERDRILL",
+                new SpecialDrill("ROCKBREAKERDRILL",
                         rockbreakerDrillStack,
                         6,
                         CraftingAspectList.rockbreakerRill,
                         new ItemStack(ModItems.thaumiumDrill),
+                        false,
+                        new ItemStack(Items.FLINT_AND_STEEL),
+                        new ItemStack(Items.FIRE_CHARGE),
+                        new ItemStack(ItemsTC.elementalPick),
+                        new ItemStack(ItemsTC.elementalShovel),
+                        IC2Items.getItem("lapotron_crystal"),
+                        IC2Items.getItem("resource", "reinforced_stone"),
+                        IC2Items.getItem("crafting", "iridium"),
+                        IC2Items.getItem("upgrade", "overclocker")));
+        ItemStack coreDrillStack = new ItemStack(ModItems.coreDrill);
+        EnumInfusionEnchantment.addInfusionEnchantment(rockbreakerDrillStack, EnumInfusionEnchantment.REFINING, 1);
+        EnumInfusionEnchantment.addInfusionEnchantment(rockbreakerDrillStack, EnumInfusionEnchantment.SOUNDING, 2);
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID, "rockbreakerdrillspecial"),
+                new SpecialDrill("ROCKBREAKERDRILL",
+                        coreDrillStack,
+                        6,
+                        CraftingAspectList.rockbreakerRill,
+                        new ItemStack(ModItems.thaumiumDrill),
+                        true,
                         new ItemStack(Items.FLINT_AND_STEEL),
                         new ItemStack(Items.FIRE_CHARGE),
                         new ItemStack(ItemsTC.elementalPick),

@@ -72,6 +72,7 @@ item.welectromagic:itemCoin1.name=Brass Coin
 item.welectromagic:itemCoin2.name=Thaumium Coin
 item.welectromagic:itemCoin3.name=Void Coin
 item.welectromagic:itemEntropyStaff.name=Efferet's Gift
+item.welectromagic:itemCoreDrill.name=Drill of the Core
 
 tooltip.EMT.hammer.broken.Mjölnir=The Hammer of Thor
 tooltip.EMT.hammer.broken.thor=It was once the Hammer of Thor.
@@ -82,6 +83,7 @@ tooltip.EMT.hammer.cast.thor=That's a bit much.
 
 tooltip.diamondChainsawShearToggle.name=Enable/Disable Shearing
 tooltip.diamondOmnitoolToggle.name=Cycle through Shearing and Dirt Modes
+tooltip.MEGALOMANIA.name=A tool that can only be made a High Priest of the Old Ways.
 
 subtitle.welectromagic.wings.flap=Wings flap
 

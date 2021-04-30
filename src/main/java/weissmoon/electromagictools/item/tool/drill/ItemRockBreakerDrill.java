@@ -47,6 +47,10 @@ public class ItemRockBreakerDrill extends ItemThaumiumDrill {
         efficiency = 25F;
     }
 
+    public ItemRockBreakerDrill(ToolMaterial toolmatElemental, String coreDrillName, int i, int i1, int i2){
+        super(toolmatElemental, coreDrillName, i, i1, i2);
+    }
+
     @Override
     public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, EntityPlayer player){
         side = BlockUtils.getTargetBlock(player.world, player, false, false, 10).sideHit.getAxis();

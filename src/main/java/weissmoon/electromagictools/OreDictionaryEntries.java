@@ -1,6 +1,7 @@
 package weissmoon.electromagictools;
 
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.advancements.critereon.OredictItemPredicate;
 import net.minecraftforge.oredict.OreDictionary;
 import weissmoon.electromagictools.block.ModBlocks;
 import weissmoon.electromagictools.item.ModItems;
@@ -15,5 +16,7 @@ public class OreDictionaryEntries {
         OreDictionary.registerOre("glue", new ItemStack(ModItems.materials, 1, 3));
         OreDictionary.registerOre("slimeball", new ItemStack(ModItems.materials, 1, 3));
         OreDictionary.registerOre("obsidian", new ItemStack(ModBlocks.obsidianTile));
+        OreDictionary.registerOre("specialRockBreakerDrill", new ItemStack(ModItems.rockBreakerDrill));
+        OreDictionary.registerOre("specialRockBreakerDrill", new ItemStack(ModItems.coreDrill));
     }
 }
