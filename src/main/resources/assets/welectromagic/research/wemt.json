@@ -163,7 +163,7 @@
       "parents": ["~ELECTROTHAUMICTOOLS", "ELEMENTALTOOLS"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
-      "location": [-1, -4],
+      "location": [-1, -2],
       "stages": [
         {
           "text": "wemt.research.electricHoe.stage.1",
@@ -212,6 +212,12 @@
         {
           "text": "wemt.research.itemCluster.stage.2"
         }
+      ],
+      "addenda": [
+        {
+          "text": "wemt.research.itemCluster.addenda",
+          "required_research":["p_ic2c_extras"]
+        }
       ]
     },
     {
@@ -238,7 +244,7 @@
       "parents": ["~ELECTROTHAUMICTOOLS", "METALLURGY", "INFUSION"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
-      "location": [-1, -3],
+      "location": [-5, -4],
       "stages": [
         {
           "text": "wemt.research.itemThaumiumDrill.stage.1",
@@ -258,7 +264,7 @@
       "parents": ["~ELECTROTHAUMICTOOLS", "METALLURGY", "INFUSION", "~DIAMONDCHAINSAW"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
-      "location": [-1, -2],
+      "location": [-1, -4],
       "stages": [
         {
           "text": "wemt.research.itemThaumiumChainsaw.stage.1",
@@ -277,8 +283,8 @@
       "category": "WEMT",
       "parents": ["THAUMIUMCHAINSAW", "~ELEMENTALTOOLS"],
       "siblings": [],
-      "meta": ["ROUND", "HIDDEN"],
-      "location": [-3, -4],
+      "meta": ["ROUND", "HIDDEN", "REVERSE"],
+      "location": [-3, -6],
       "stages": [
         {
           "text": "wemt.research.itemStreamChainsaw.stage.1",
@@ -378,7 +384,7 @@
       "parents": ["~INFUSION", "~THAUMIUMDRILL"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
-      "location": [-5, -3],
+      "location": [-6, -2],
       "stages": [
         {
           "text": "wemt.research.itemInventoryRing.stage.1",
@@ -399,7 +405,7 @@
       "parents": ["INVENTORYCHARGINGRING", "~INFUSION", "~ELECTRICBOOTS"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
-      "location": [-7, -3],
+      "location": [-8, -2],
       "stages": [
         {
           "text": "wemt.research.itemArmourRing.stage.1",
@@ -444,7 +450,7 @@
         },
         {
           "text": "wemt.research.itemFeatherWings.stage.2",
-          "recipes": ["welectromagic:cardboard", "welectromagic:feathermesh", "welectromagic:featherwing", "welectromagic:featherwings"]
+          "recipes": ["welectromagic:cardboard", "welectromagic:ducttape", "welectromagic:feathermesh", "welectromagic:featherwing", "welectromagic:featherwings"]
         }
       ]
     },
@@ -515,8 +521,8 @@
       "category": "WEMT",
       "parents": ["THAUMIUMDRILL", "ELEMENTALTOOLS"],
       "siblings": [],
-      "meta": ["ROUND", "HIDDEN"],
-      "location": [-2, -4],
+      "meta": ["ROUND", "HIDDEN", "REVERSE"],
+      "location": [-3, -2],
       "stages": [
         {
           "text": "wemt.research.itemRockbreakerDrill.stage.1",
@@ -582,7 +588,7 @@
       ],
       "addenda": [
         {
-          "text": "",
+          "text": "wemt.research.blockSolarPanel.addenda",
           "recipes": ["welectromagic:basicCompressed3"],
           "required_research":["INFUSION"],
           "warp": 1

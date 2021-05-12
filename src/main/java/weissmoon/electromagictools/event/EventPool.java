@@ -29,6 +29,8 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import org.apache.logging.log4j.Level;
+import thaumcraft.api.capabilities.IPlayerKnowledge;
+import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.common.lib.SoundsTC;
 import thaumcraft.common.lib.enchantment.EnumInfusionEnchantment;
 import weissmoon.core.utils.LogHelper;
@@ -47,6 +49,7 @@ import weissmoon.electromagictools.network.PacketHandler;
 
 import java.util.List;
 
+import static weissmoon.electromagictools.ElectroMagicTools.ic2ceLoaded;
 import static weissmoon.electromagictools.item.ItemOneRing.CORRUPTION_NBT_TAG;
 import static weissmoon.electromagictools.item.ItemOneRing.playersWithRing;
 import static weissmoon.electromagictools.item.armour.boots.ItemElectricBootsTraveller.playersWithStepUp;
@@ -56,6 +59,18 @@ import static weissmoon.electromagictools.item.armour.boots.ItemElectricBootsTra
  */
 public class EventPool {
 
+
+    @SubscribeEvent
+    public void playerLoggedIn(PlayerEvent.PlayerLoggedInEvent event){
+        if(ic2ceLoaded)
+            if(!(event.player.world.isRemote)) {
+                IPlayerKnowledge knowledge = ThaumcraftCapabilities.getKnowledge(event.player);
+                if (!knowledge.isResearchKnown("p_ic2c_extras")) {
+                    knowledge.addResearch("p_ic2c_extras");
+                    knowledge.sync((EntityPlayerMP)event.player);
+                }
+            }
+    }
 
     @SubscribeEvent
     public void playerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
@@ -186,7 +201,7 @@ public class EventPool {
             int slot = BaublesApi.isBaubleEquipped(player, ModItems.hitBauble);
             if(slot != -1) {
                 ItemStack bauble = BaublesApi.getBaublesHandler(player).getStackInSlot(slot);
-                if(NBTHelper.getInt(bauble, "charge") == 200){
+                if(NBTHelper.getInt(bauble, "charge") >= 200){
                     event.setCanceled(true);
                     NBTHelper.setInteger(bauble, "charge", 0);
                     if(player instanceof EntityPlayerMP){
