@@ -37,7 +37,7 @@ import weissmoon.electromagictools.world.ObsidianPillarGenerator;
 /**
  * Created by Weissmoon on 9/3/19.
  */
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, dependencies = "required-after:weisscore@[0.1.1,);required-after:ic2;required-after:thaumcraft;required:ic2-classic-spmod")
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, dependencies = "required-after:weisscore@[0.1.1,);required-after:ic2-classic-spmod;required-after:thaumcraft")
 public class ElectroMagicTools {
 
     @Instance
