@@ -15,6 +15,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.casters.CasterTriggerRegistry;
+import thaumcraft.common.lib.events.ToolEvents;
 import weissmoon.core.client.creativetab.CreativeTabWeiss;
 import weissmoon.electromagictools.advancements.BaubleHitTrigger;
 import weissmoon.electromagictools.advancements.CremationTrigger;
@@ -25,6 +26,7 @@ import weissmoon.electromagictools.client.ClientEvents;
 import weissmoon.electromagictools.client.EMTTab;
 import weissmoon.electromagictools.event.Cremation;
 import weissmoon.electromagictools.event.EventPool;
+import weissmoon.electromagictools.event.SomethingEvil;
 import weissmoon.electromagictools.event.WWMTCastTriggerManager;
 import weissmoon.electromagictools.item.ModItems;
 import weissmoon.electromagictools.lib.Reference;
@@ -88,6 +90,8 @@ public class ElectroMagicTools {
         if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
             EnergyIconOverride.init();
         TCResearch.registerResearchTab();
+        MinecraftForge.EVENT_BUS.unregister(ToolEvents.class);
+        MinecraftForge.EVENT_BUS.register(SomethingEvil.class);
     }
 
 }

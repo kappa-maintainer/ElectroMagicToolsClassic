@@ -56,6 +56,10 @@ public class OreColourList{
         addOreList("AMBER", 16626469);
         addOreList("CINNABAR", 10159368);
         addOreList("QUARTZ", 15064789);
-        addOreList("uranium", 0x60b010);
+
+        addOreList("Uranium", 0x60b010);//6336528
+        addOreList("Ruby", 0xff353b);//16725307
+        addOreList("Sapphire", 0x2e33ff);//5330431
+        addOreList("GreenSapphire", 0x3ce63c);//3991100
     }
 }

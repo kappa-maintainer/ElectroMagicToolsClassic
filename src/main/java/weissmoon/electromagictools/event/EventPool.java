@@ -214,7 +214,7 @@ public class EventPool {
         }
     }
 
-    @SubscribeEvent(priority =  EventPriority.HIGH)
+    @SubscribeEvent
     public void playerRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         if (!event.getWorld().isRemote && event.getEntityPlayer() != null) {
             event.getEntityPlayer().getActiveHand();
@@ -225,7 +225,6 @@ public class EventPool {
                     heldItem.damageItem(5, event.getEntityPlayer());
                     event.getWorld().playSound(null, (double)event.getPos().getX() + 0.5D, (double)event.getPos().getY() + 0.5D, (double)event.getPos().getZ() + 0.5D, SoundsTC.wandfail, SoundCategory.BLOCKS, 0.2F, 0.2F + event.getWorld().rand.nextFloat() * 0.2F);
                     PacketHandler.INSTANCE.sendTo(new OverrideScanPacket(event.getPos(), EnumInfusionEnchantment.getInfusionEnchantmentLevel(heldItem, EnumInfusionEnchantment.SOUNDING)), (EntityPlayerMP)event.getEntityPlayer());
-                    event.setCanceled(true);
                 }
             }
         }
