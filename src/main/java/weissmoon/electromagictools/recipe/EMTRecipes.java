@@ -371,6 +371,20 @@ public class EMTRecipes {
                         new OreIngredient("blockDiamond"),
                         ThaumcraftApiHelper.makeCrystal(Aspect.ORDER),
                         new ItemStack(BlocksTC.jarNormal)));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID, "entropyStaff"),
+                new InfusionRecipe("ENTROPYSTAFF",
+                        new ItemStack(ModItems.entropyStaff),
+                        1,
+                        CraftingAspectList.efferetsGift,
+                        ThaumcraftApiHelper.makeCrystal(Aspect.FIRE),
+                        IC2Items.getItem("te","mv_transformer"),
+                        IC2Items.getItem("energy_crystal"),
+                        new ItemStack(ItemsTC.morphicResonator),
+                        new ItemStack(Items.BLAZE_ROD),
+                        new ItemStack(Items.BLAZE_ROD),
+                        new ItemStack(Items.QUARTZ),
+                        new ItemStack(Items.QUARTZ),
+                        new ItemStack(Items.QUARTZ)));
         initUUInfusionRecipes();
     }
 

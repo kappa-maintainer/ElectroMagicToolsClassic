@@ -33,7 +33,7 @@ import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 public class ItemStreamChainsaw extends ItemDiamondChainsaw {
 
     public ItemStreamChainsaw() {
-        super(ThaumcraftMaterials.TOOLMAT_ELEMENTAL, 12, -3.2F, Strings.Items.STREAM_CHAINSAW_NAME, 1000000, 400, 900, 2);
+        super(ThaumcraftMaterials.TOOLMAT_ELEMENTAL, 19, 0.0F, Strings.Items.STREAM_CHAINSAW_NAME, 1000000, 400, 900, 2);
         efficiency = 25F;
     }
 

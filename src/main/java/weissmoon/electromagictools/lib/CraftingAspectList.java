@@ -54,4 +54,6 @@ public class CraftingAspectList {
     public static AspectList industrialCharger = new AspectList().add(Aspect.ENERGY, 48).add(Aspect.CRAFT, 48).add(Aspect.EXCHANGE, 48).add(Aspect.DESIRE, 48);
 
     public static AspectList coreDrill = new AspectList().add(Aspect.ENERGY, 48).add(Aspect.MECHANISM, 48).add(Aspect.TOOL, 32).add(Aspect.EARTH, 32);
+
+    public static AspectList efferetsGift = new AspectList().add(Aspect.FIRE, 55).add(Aspect.CRAFT, 24).add(Aspect.ENERGY, 48).add(Aspect.COLD, 55);
 }

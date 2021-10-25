@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
@@ -24,6 +25,11 @@ public class ItemQuantumBootsTraveller extends ItemNanoBootsTraveller {
     public ItemQuantumBootsTraveller(){
         super(Strings.Items.QUANTUM_BOOTS_NAME, ArmorMaterial.IRON, 1000000, 1200, 0.67F, 0.067F, 3, 1000, 5);
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    @Override
+    public net.minecraftforge.common.IRarity getForgeRarity(ItemStack stack){
+        return EnumRarity.RARE;
     }
 
     @Nullable

@@ -958,6 +958,27 @@
           "recipes": ["welectromagic:industrialVisCharger"]
         }
       ]
+    },
+    {
+      "key": "ENTROPYSTAFF",
+      "name": "item.welectromagic:itemEntropyStaff.name",
+      "icons": ["welectromagic:itemEntropyStaff"],
+      "category": "WEMT",
+      "parents": ["~ELECTROTHAUMICTOOLS", "BASICALCHEMY", "INFUSION"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [1, 2],
+      "stages": [
+        {
+          "text": "wemt.research.itemEfferetsFlame.stage.1",
+          "required_knowledge": ["THEORY;ELDRITCH;1", "THEORY;INFUSION;1"],
+          "required_research":["!ignis","!gelum"]
+        },
+        {
+          "text": "wemt.research.itemEfferetsFlame.stage.2",
+          "recipes": ["welectromagic:entropyStaff"]
+        }
+      ]
     }
   ]
 }

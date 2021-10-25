@@ -169,7 +169,12 @@ public class OverrideScanPacket implements IMessage, IMessageHandler<OverrideSca
         Block block = state.getBlock();
         int colour = 12632256;
         if(block != Blocks.BEDROCK && block != Blocks.AIR){
-            int[] oreIDs = OreDictionary.getOreIDs(new ItemStack(block, 1, block.getMetaFromState(state)));
+            ItemStack stack = new ItemStack(block, 1, block.getMetaFromState(state));
+            if(block == Blocks.LIT_REDSTONE_ORE)
+                stack = new ItemStack(Blocks.REDSTONE_ORE);
+            if(stack.isEmpty())
+                return colour;
+            int[] oreIDs = OreDictionary.getOreIDs(stack);
             if(oreIDs.length > 0){
                 for(int id:oreIDs){
                     for(String name:OreColourList.getNames()){

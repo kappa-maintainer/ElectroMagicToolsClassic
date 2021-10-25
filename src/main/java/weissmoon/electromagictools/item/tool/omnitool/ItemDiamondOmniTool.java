@@ -159,23 +159,26 @@ public class ItemDiamondOmniTool extends ItemIronOmniTool {
 
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving){
-        if(!entityLiving.isSneaking()) {
-            for (int a = 1; a < 8; a++) {
-                if (worldIn.getBlockState(pos.up(a)).getBlock() == Blocks.GRAVEL ||
-                        worldIn.getBlockState(pos.up(a)).getBlock() == Blocks.SAND) {
-                    EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByID(35), stack);
-                    if (ElectricItem.manager.canUse(stack, operationEnergyCost)) {
-                        IBlockState iblockstate = worldIn.getBlockState(pos.up(a));
-                        BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(worldIn, pos.up(a), iblockstate, (EntityPlayer) entityLiving);
-                        MinecraftForge.EVENT_BUS.post(event);
-                        if (!event.isCanceled()){
-                            if (breakBlock(worldIn, pos.up(a), (EntityPlayer) entityLiving, stack, event.getExpToDrop())) {
-                                ElectricItem.manager.use(stack, operationEnergyCost, entityLiving);
+        if(entityLiving instanceof EntityPlayer) {
+            if(!entityLiving.isSneaking()) {
+                for (int a = 1; a < 8; a++) {
+                    if (worldIn.getBlockState(pos.up(a)).getBlock() == Blocks.GRAVEL ||
+                            worldIn.getBlockState(pos.up(a)).getBlock() == Blocks.SAND) {
+                        EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByID(35), stack);
+                        if (ElectricItem.manager.canUse(stack, operationEnergyCost)) {
+                            IBlockState iblockstate = worldIn.getBlockState(pos.up(a));
+                            BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(worldIn, pos.up(a), iblockstate, (EntityPlayer) entityLiving);
+                            MinecraftForge.EVENT_BUS.post(event);
+                            if (!event.isCanceled()){
+                                if (breakBlock(worldIn, pos.up(a), (EntityPlayer) entityLiving, stack, event.getExpToDrop())) {
+                                    ElectricItem.manager.use(stack, operationEnergyCost, entityLiving);
+                                    IC2.achievements.issueStat((EntityPlayer)entityLiving, "blocksDrilled");
+                                }
                             }
                         }
-                    }
-                } else
-                    break;
+                    } else
+                        break;
+                }
             }
         }
         return super.onBlockDestroyed(stack, worldIn, state, pos, entityLiving);

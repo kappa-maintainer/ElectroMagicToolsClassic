@@ -5,6 +5,7 @@ import ic2.core.IC2;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import weissmoon.electromagictools.lib.Strings;
@@ -25,6 +26,10 @@ public class ItemNanoBootsTraveller extends ItemElectricBootsTraveller {
         super(name, materialIn, maxCharge, transferLimit, jumpBonus, speedBonus, tier, energyPerDamage, visDiscount);
     }
 
+    @Override
+    public net.minecraftforge.common.IRarity getForgeRarity(ItemStack stack){
+        return EnumRarity.UNCOMMON;
+    }
 
     @Nullable
     @Override

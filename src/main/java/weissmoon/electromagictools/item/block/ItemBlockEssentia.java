@@ -1,10 +1,14 @@
 package weissmoon.electromagictools.item.block;
 
+import ic2.core.platform.lang.storage.Ic2InfoLang;
+import ic2.core.platform.player.PlayerHandler;
 import net.minecraft.block.Block;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import weissmoon.core.item.WeissItemBlock;
@@ -12,6 +16,8 @@ import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
 
 import javax.annotation.Nonnull;
+
+import java.util.List;
 
 import static weissmoon.electromagictools.block.ModBlocks.essentiaGenerator;
 
@@ -39,6 +45,14 @@ public class ItemBlockEssentia extends WeissItemBlock {
                 list.add(stack);
                 i++;
             }
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        PlayerHandler handler = PlayerHandler.getClientPlayerHandler();
+        if (handler.hasEUReader()) {
+            tooltip.add(Ic2InfoLang.electricProduction.getLocalizedFormatted(Ic2InfoLang.electricTransferRateVariable.getLocalized()));
         }
     }
 

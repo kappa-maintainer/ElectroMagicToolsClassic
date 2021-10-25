@@ -1,6 +1,7 @@
 package weissmoon.electromagictools.item.tool.drill;
 
 import ic2.api.item.ElectricItem;
+import ic2.core.IC2;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -92,6 +93,7 @@ public class ItemRockBreakerDrill extends ItemThaumiumDrill {
                         if (!event.isCanceled()){
                             if (breakBlock(worldIn, effectPos, (EntityPlayer) entityLiving, stack, event.getExpToDrop())) {
                                 ElectricItem.manager.use(stack, operationEnergyCost, entityLiving);
+                                IC2.achievements.issueStat((EntityPlayer)entityLiving, "blocksDrilled");
                             }
                         }
                     }

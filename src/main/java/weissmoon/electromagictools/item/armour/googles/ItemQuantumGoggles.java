@@ -4,6 +4,7 @@ import ic2.core.platform.registry.Ic2Items;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import weissmoon.electromagictools.lib.Strings;
@@ -22,6 +23,11 @@ public class ItemQuantumGoggles extends ItemNanoGoggles {
 
     public ItemQuantumGoggles(String name, ArmorMaterial material, int maxCharge, int transferLimit, int tier, int energyPerDamage, int visDiscount) {
         super(name, material, maxCharge, transferLimit, tier, energyPerDamage, visDiscount);
+    }
+
+    @Override
+    public net.minecraftforge.common.IRarity getForgeRarity(ItemStack stack){
+        return EnumRarity.RARE;
     }
 
     @Nullable

@@ -63,11 +63,11 @@ public class ItemDiamondChainsaw extends WeissItemElectricTool /* implements IMo
     private static final String SHEARMODE_NBT_TAG= "shearsMode";
 
     public ItemDiamondChainsaw() {
-        this(ToolMaterial.DIAMOND, 15, 0.0F, Strings.Items.DIAMOND_CHAINSAW_NAME, 10000, 50, 100, 1);
+        this(ToolMaterial.DIAMOND, 13, 0.0F, Strings.Items.DIAMOND_CHAINSAW_NAME, 10000, 50, 100, 1);
     }
 
     public ItemDiamondChainsaw(ToolMaterial material, float damage, float speed, String name, int maxCharge, int operationEnergyCost, int transferLimit, int tier) {
-        super(damage - 1, speed, material, name);
+        super(1 - material.getAttackDamage(), speed, material, name);
         this.attackDamage = damage;
         this.maxCharge = maxCharge;
         this.operationEnergyCost = operationEnergyCost;
@@ -136,7 +136,7 @@ public class ItemDiamondChainsaw extends WeissItemElectricTool /* implements IMo
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker){
         if(attacker instanceof EntityPlayer){
             if (ElectricItem.manager.use(stack, hitCost, attacker)){
-                target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)attacker), 10.0F);
+                target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)attacker), (float)attackDamage);
             } else {
                 target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)attacker), 1.0F);
             }
@@ -232,23 +232,23 @@ public class ItemDiamondChainsaw extends WeissItemElectricTool /* implements IMo
         return 4;
     }
 
-    @Override
-    public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack){
-        Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(slot);
-
-        if (slot == EntityEquipmentSlot.MAINHAND)
-        {
-            double stackAttackDamage = 1.5;
-            if(ElectricItem.manager.canUse(stack, ((ItemDiamondChainsaw)stack.getItem()).hitCost)) {
-                stackAttackDamage = attackDamage;
-            }
-            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Tool modifier", stackAttackDamage, 0));
-            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Tool modifier", attackSpeed, 0));
-        }
-
-        return multimap;
-        //return this.getItemAttributeModifiers(slot);
-    }
+//    @Override
+//    public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack){
+//        Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(slot);
+//
+//        if (slot == EntityEquipmentSlot.MAINHAND)
+//        {
+//            double stackAttackDamage = 1.5;
+//            if(ElectricItem.manager.canUse(stack, ((ItemDiamondChainsaw)stack.getItem()).hitCost)) {
+//                stackAttackDamage = attackDamage;
+//            }
+//            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Tool modifier", stackAttackDamage, 0));
+//            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Tool modifier", attackSpeed, 0));
+//        }
+//
+//        return multimap;
+//        //return this.getItemAttributeModifiers(slot);
+//    }
 
     @SideOnly(Side.CLIENT)
     @Override

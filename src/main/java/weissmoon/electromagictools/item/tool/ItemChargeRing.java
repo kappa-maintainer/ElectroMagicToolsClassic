@@ -4,12 +4,16 @@ import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
+import ic2.core.platform.lang.storage.Ic2InfoLang;
+import ic2.core.platform.player.PlayerHandler;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import weissmoon.core.api.client.item.IItemRenderCustom;
@@ -23,6 +27,7 @@ import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 
 /**
  * Created by Weissmoon on 3/18/20.
@@ -52,6 +57,14 @@ public class ItemChargeRing extends WeissItem implements IBauble, IItemRenderCus
 
         list.add(new ItemStack(this, 1, 0));
         list.add(new ItemStack(this, 1, 1));
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        PlayerHandler handler = PlayerHandler.getClientPlayerHandler();
+        if (handler.hasEUReader()) {
+            tooltip.add(Ic2InfoLang.electricProduction.getLocalizedFormatted(32.0));
+        }
     }
 
     @SideOnly(Side.CLIENT)

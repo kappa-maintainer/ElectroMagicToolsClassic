@@ -77,7 +77,7 @@ public class ItemThaumiumDrill extends WeissItemElectricTool implements IMiningD
     }
 
     public ItemThaumiumDrill(ToolMaterial material, String name, int maxCharge, int transferLimit, int tier) {
-        super(0.0F, -3.0F, material, name);
+        super(1 - material.getAttackDamage(), -3.0F, material, name);
         this.maxCharge = maxCharge;
         this.operationEnergyCost = 0;
         this.tier = tier;
@@ -111,26 +111,30 @@ public class ItemThaumiumDrill extends WeissItemElectricTool implements IMiningD
 
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState block, BlockPos pos, EntityLivingBase entityLiving) {
-        if(!entityLiving.isSneaking()) {
-            for (int a = 1; a < 8; a++) {
-                if (world.getBlockState(pos.up(a)).getBlock() == Blocks.GRAVEL ||
-                        world.getBlockState(pos.up(a)).getBlock() == Blocks.SAND) {
-                    EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByID(35), stack);
-                    if (ElectricItem.manager.canUse(stack, operationEnergyCost)) {
-                        IBlockState iblockstate = world.getBlockState(pos.up(a));
-                        BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(world, pos.up(a), iblockstate, (EntityPlayer) entityLiving);
-                        MinecraftForge.EVENT_BUS.post(event);
-                        if (!event.isCanceled()) {
-                            if (breakBlock(world, pos.up(a), (EntityPlayer) entityLiving, stack, event.getExpToDrop())) {
-                                ElectricItem.manager.use(stack, operationEnergyCost, entityLiving);
+        if(entityLiving instanceof EntityPlayer) {
+            if(!entityLiving.isSneaking()) {
+                for (int a = 1; a < 8; a++) {
+                    if (world.getBlockState(pos.up(a)).getBlock() == Blocks.GRAVEL ||
+                            world.getBlockState(pos.up(a)).getBlock() == Blocks.SAND) {
+                        EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByID(35), stack);
+                        if (ElectricItem.manager.canUse(stack, operationEnergyCost)) {
+                            IBlockState iblockstate = world.getBlockState(pos.up(a));
+                            BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(world, pos.up(a), iblockstate, (EntityPlayer) entityLiving);
+                            MinecraftForge.EVENT_BUS.post(event);
+                            if (!event.isCanceled()) {
+                                if (breakBlock(world, pos.up(a), (EntityPlayer) entityLiving, stack, event.getExpToDrop())) {
+                                    ElectricItem.manager.use(stack, operationEnergyCost, entityLiving);
+                                    IC2.achievements.issueStat((EntityPlayer)entityLiving, "blocksDrilled");
+                                }
                             }
                         }
-                    }
-                } else
-                    break;
+                    } else
+                        break;
+                }
             }
+            ElectricItem.manager.use(stack, operationEnergyCost, entityLiving);
+            IC2.achievements.issueStat((EntityPlayer)entityLiving, "blocksDrilled");
         }
-        ElectricItem.manager.use(stack, operationEnergyCost, entityLiving);
         return true;
     }
 

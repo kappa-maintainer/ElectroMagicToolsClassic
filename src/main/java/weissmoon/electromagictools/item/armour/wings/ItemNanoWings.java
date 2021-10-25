@@ -8,6 +8,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.NonNullList;
@@ -49,6 +50,11 @@ public class ItemNanoWings extends ItemThaumiumWings implements IDamagelessElect
         super(name, materialIn);
         setNoRepair();
         setMaxDamage(0);
+    }
+
+    @Override
+    public net.minecraftforge.common.IRarity getForgeRarity(ItemStack stack){
+        return EnumRarity.UNCOMMON;
     }
 
     @SideOnly(Side.CLIENT)

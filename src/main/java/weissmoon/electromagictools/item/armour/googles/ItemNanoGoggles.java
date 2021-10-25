@@ -9,6 +9,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
@@ -58,6 +59,11 @@ public class ItemNanoGoggles extends ItemElectricGoggles implements IEUReader, I
                 }
             }
         }
+    }
+
+    @Override
+    public net.minecraftforge.common.IRarity getForgeRarity(ItemStack stack){
+        return EnumRarity.UNCOMMON;
     }
 
     @Nullable

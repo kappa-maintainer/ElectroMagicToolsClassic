@@ -80,6 +80,13 @@ tooltip.EMT.hammer.broken.danger=It is now very dangerous.
 tooltip.EMT.hammer.broken.plsNoRightClick=Do NOT right-click.
 tooltip.EMT.hammer.broken.plsRightClick=Do right-click.
 tooltip.EMT.hammer.cast.thor=That's a bit much.
+tooltip.EMT.solar.aer=Generating when above Y level 160: %s
+tooltip.EMT.solar.terra=Generating when below Y level 11: %s
+tooltip.EMT.solar.perditio=Generating during nightime: %d
+tooltip.EMT.solar.aqua=Generating when raining: %s
+tooltip.EMT.solar.tempestas=Generating during a thunderstorm: %s
+tooltip.EMT.solar.ignis=Generating in a hell type biome: %s
+tooltip.EMT.solar.ending=%s EU
 
 tooltip.diamondChainsawShearToggle.name=Enable/Disable Shearing
 tooltip.diamondOmnitoolToggle.name=Cycle through Shearing and Dirt Modes
@@ -118,7 +125,7 @@ wemt.research.WEMT.stage.1=Who says magic and technology can't go together?
 wemt.research.WEMT.stage.2=Who says magic can't work with technology? I have decided to find ways of merging Thaumaturgy with Industrial technology to achieve the effectiveness of magic coupled with the convenience of electric tools.
 
 wemt.research.electricGoggles.stage.1=The best of both worlds
-wemt.research.electricGoggles.stage.2=I have found a way to detect auras using purely electronic means, no longer requiring mystical energy that can be depleted over time. I can now create a pair of Goggles of Revealing that can be recharged with EU while being able to function just like did before. A diamond helmet is required to house the sensitive vis sensing circuitry and prevent it from being damaged, which also has the added benefit of providing extra protection.
+wemt.research.electricGoggles.stage.2=I can now create a pair of Goggles of Revealing that can be recharged with EU while being able to function just like did before. A diamond helmet is required to house the sensitive vis sensing circuitry and prevent it from being damaged, which also has the added benefit of providing extra protection.
 
 wemt.research.nanoGoggles.stage.1=Top-tier eye protection
 wemt.research.nanoGoggles.stage.2=I have discovered a way to incorporate my previous vis sensors to a Nanosuit Helmet without moving too much around. By infusing the nano helmet with magic, I will be able to use it like a normal pair of Goggles of Revealing. During the magical process, the control circuits for the night vision feature are replaced with capacitors to absorb the excess magical energy and vis-sensing microchips.
@@ -197,11 +204,11 @@ wemt.research.itemRockbreakerDrill.stage.2=After studying the Pickaxe of the Cor
 
 wemt.research.crystalUU.name=UU-Matter Infusion
 wemt.research.crystalUU.stage.1=A magically charged metamorphic liquid...
-wemt.research.crystalUU.stage.2=I have always found the powers possessed by UU-Mater very strange, even... magical looking, especially the ability to take a large number of shapes if manipulated correctly. And here I am, having discovered a way to shape the liquid through the process of Infusion Crafting. Many recipes are available to me now, and all of them use between 4 to 32 of each primal aspect.
+wemt.research.crystalUU.stage.2=I have always found the powers possessed by Universally Usable Matter very strange, even... magical looking, especially the ability to take a large number of shapes if manipulated correctly. And here I am, having discovered a way to shape the liquid through the process of Infusion Crafting. Many recipes are available to me now, and all of them use between 4 to 32 of each primal aspect.
 
 wemt.research.blockSolarPanel.name=Increase the efficiency!
 wemt.research.blockSolarPanel.stage.2=I have found a way to compress 9 mundane Solar Panels in a magical one, that acts as if it was made of 10 mundane solar panels, generating 10 EU/t. I may repeat this process with compressed solar panels, allowing me to increase the power potential per block even higher.
-wemt.research.blockSolarPanel.addenda=I can also, by magical infusion, create triple compressed solar panels, taking the folly a step further.
+wemt.research.blockSolarPanel.addenda=I can also, by magical infusion, create triple compressed solar panels, taking the folly a step further. I wonder what would happen if I tried to compress 9 of these yet again. No, that would just be silly... perhaps.
 
 wemt.research.blockSolarAqua.name=Water Infused Solar Panels
 wemt.research.blockSolarAqua.stage.1=Curse you rain!
@@ -255,3 +262,6 @@ wemt.research.blockEssentiaGeneratorAer.stage.2=I have discovered the enormous p
 
 wemt.research.blockChargePedestal.stage.1=Charging your wand the industrial way
 wemt.research.blockChargePedestal.stage.2=I have managed to combine the powers of the Recharge Pedestal with those of the mighty UU-Matter, resulting in a machine capable of replicating vis in my items, at the cost of 10000 EU to recharge 1 unit of vis in the item.
+
+wemt.research.itemEfferetsFlame.stage.1=I had a dream last night about a being covered from head to toe in fire, who was holding what seemed to be an Ignis Vis Crystal. There was a stream of magical energy that looked like essentia and then closing his hands together. Then while extending out his hands, said to me in a language I didn't understand, "This is yours now." As he was opening his hands, I had awoken.
+wemt.research.itemEfferetsFlame.stage.2=I finally remembered the rest of my dream. The item in his hands was a stick with a jewel that smelted all blocks it interacted with, without the need to break them first. But once agian I don't recall the whole dream, this magical item had a name which I cannot recall, so I will call it "Efferet's Gift", until I can recall it's name.
