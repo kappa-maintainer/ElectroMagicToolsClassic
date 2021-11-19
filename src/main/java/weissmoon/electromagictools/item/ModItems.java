@@ -174,7 +174,7 @@ public class ModItems {
         e.registerObjectTag(new ItemStack(materials, 1, 1), new AspectList().add(Aspect.ENERGY, 20).add(Aspect.MAGIC, 15));
         e.registerObjectTag(new ItemStack(materials, 1, 3), new AspectList().add(Aspect.CRAFT, 12).add(Aspect.TRAP, 10).add(Aspect.WATER, 3));
         e.registerObjectTag(new ItemStack(materials, 1, 7), new AspectList().add(Aspect.FLIGHT, 40).add(Aspect.AIR, 69).add(Aspect.PLANT, 150).add(Aspect.CRAFT, 300));
-        e.registerObjectTag(new ItemStack(materials, 1, 7), new AspectList().add(Aspect.FLIGHT, 60).add(Aspect.AIR, 69).add(Aspect.PLANT, 20).add(Aspect.CRAFT, 350).add(Aspect.METAL, 70));
+        e.registerObjectTag(new ItemStack(materials, 1, 8), new AspectList().add(Aspect.FLIGHT, 60).add(Aspect.AIR, 69).add(Aspect.PLANT, 20).add(Aspect.CRAFT, 350).add(Aspect.METAL, 70));
         e.registerObjectTag(new ItemStack(onering), new AspectList().add(Aspect.DESIRE, 501).add(Aspect.DEATH, 499).add(Aspect.TRAP, 498).add(Aspect.FLUX, 498).add(Aspect.VOID, 498).add(Aspect.MAN, 498).add(Aspect.SOUL, 499));
     }
 }

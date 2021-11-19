@@ -8,13 +8,12 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
-import weissmoon.core.item.WeissItemBlock;
-import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.block.solar.SolarBlockBase;
 import weissmoon.electromagictools.block.tile.EssentiaGeneratorBase;
 import weissmoon.electromagictools.block.tile.SolarTileEntity;
 import weissmoon.electromagictools.block.tile.TileIndustrialChargePedestal;
 import weissmoon.electromagictools.item.block.ItemBlockEssentia;
+import weissmoon.electromagictools.item.block.ItemBlockIndustrialVisChargingStation;
 import weissmoon.electromagictools.item.block.ItemBlockSolar;
 import weissmoon.electromagictools.item.block.ItemObsidianTile;
 import weissmoon.electromagictools.lib.Reference;
@@ -55,7 +54,7 @@ public class ModBlocks {
         blockRegistry.register(new ItemBlockSolar(false));
         blockRegistry.register(new ItemBlockSolar(true));
         blockRegistry.register(new ItemBlockEssentia());
-        blockRegistry.register(new WeissItemBlock(industrialVisCharger).setCreativeTab(ElectroMagicTools.EMTtab));
+        blockRegistry.register(new ItemBlockIndustrialVisChargingStation());
 
         blockRegistry.register(new ItemObsidianTile());
     }

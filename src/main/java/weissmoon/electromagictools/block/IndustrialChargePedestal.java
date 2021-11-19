@@ -14,6 +14,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import thaumcraft.api.items.IRechargable;
 import weissmoon.core.block.WeissBlock;
 import weissmoon.core.helper.InventoryHelper;
+import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.block.tile.TileIndustrialChargePedestal;
 import weissmoon.electromagictools.lib.Strings;
 
@@ -25,6 +26,7 @@ import javax.annotation.Nullable;
 public class IndustrialChargePedestal extends WeissBlock {
     public IndustrialChargePedestal() {
         super(Strings.Blocks.INDUSTRIAL_CHARGE_PEDESTAL, Material.IRON);
+        setCreativeTab(ElectroMagicTools.EMTtab);
     }
 
     @Override

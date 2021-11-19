@@ -25,70 +25,55 @@ public class WWMTCastTriggerManager implements ICasterTriggerManager {
 
     @Override
     public boolean performTrigger(World world, ItemStack casterStack, EntityPlayer player, BlockPos pos, EnumFacing side, int event) {
-        if(event == 1) {
-            try {
+        if(event == 1)
+            try{
                 TileEntity tileEntity = world.getTileEntity(pos);
-                if (tileEntity instanceof TileInfusionMatrix) {
+                if(tileEntity instanceof TileInfusionMatrix){
                     TileInfusionMatrix matrix = (TileInfusionMatrix) tileEntity;
                     if(!matrix.active)
                         return false;
 
                     TileEntity ped = world.getTileEntity(pos.down(2));
-                    if (ped instanceof TilePedestal) {
+                    if(ped instanceof TilePedestal){
                         TilePedestal pedestal = (TilePedestal) ped;
                         ItemStack input = pedestal.getStackInSlot(0);
-                        if (input.isEmpty()) {
+                        if (input.isEmpty())
                             return false;
-                        }
 
                         ArrayList<BlockPos> pedestals = new ArrayList<>();
 
                         int x, y, z;
-                        h:
-                        for (int a = -8; a <= 8; a++) {
-                            for (int b = -8; b <= 8; b++) {
-                                for (int c = -3; c <= 7; c++) {
+                        for(int a = -8; a <= 8; a++)
+                            for(int b = -8; b <= 8; b++)
+                                for(int c = -3; c <= 7; c++){
                                     x = -a;
                                     y = c;
                                     z = -b;
-                                    if ((a == 0 && b == 0)) {
+                                    if ((a == 0 && b == 0))
                                         continue;
-                                    }
+
                                     BlockPos effectPos = new BlockPos(pos).add(x, y, z);
                                     Block block = world.getBlockState(effectPos).getBlock();
-                                    if (block instanceof BlockPedestal) {
+                                    if (block instanceof BlockPedestal)
                                         pedestals.add(effectPos);
-                                    }
-//                                    EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByID(35), stack);
-//                                    if (ElectricItem.manager.canUse(stack, cost)) {
-//                                        IBlockState iblockstate = worldIn.getBlockState(effectPos);
-//                                        BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(worldIn, effectPos, iblockstate, (EntityPlayer) entityLiving);
-//                                        MinecraftForge.EVENT_BUS.post(event);
-//                                        if (!event.isCanceled()) {
-//                                            if (breakBlock(worldIn, effectPos, (EntityPlayer) entityLiving, stack, event.getExpToDrop())) {
-//                                                ElectricItem.manager.use(stack, cost, entityLiving);
-//                                            }
-//                                        }
-//                                    }
-                                }
-                            }
                         }
                         ArrayList<ItemStack> components = new ArrayList<>();
-                        for (BlockPos epos : pedestals) {
+                        for (BlockPos epos : pedestals){
                             TileEntity pedC = world.getTileEntity(epos);
-                            if (pedC instanceof TilePedestal) {
+                            if (pedC instanceof TilePedestal){
                                 TilePedestal pedestalC = (TilePedestal) pedC;
-                                if (!pedestalC.getStackInSlot(0).isEmpty()) {
+                                if (!pedestalC.getStackInSlot(0).isEmpty())
                                     components.add(pedestalC.getStackInSlot(0).copy());
-                                }
                             }
                         }
                         InfusionRecipe recipe = ThaumcraftCraftingManager.findMatchingInfusionRecipe(components, input.copy(), player);
-                        if (!(recipe == null)) {
-                            if (recipe.getRecipeOutput() instanceof ItemStack && !(((ItemStack) recipe.getRecipeOutput()).getItem() == ModItems.stormBreaker)) {
+                        if (!(recipe == null)){
+                            if (recipe.getRecipeOutput() instanceof ItemStack){
+                                if (!(((ItemStack) recipe.getRecipeOutput()).getItem() == ModItems.stormBreaker))
+                                    return false;
+                            }else
                                 return false;
-                            }
-                        } else
+                        }else
                             return false;
                     }
                 }
@@ -96,7 +81,6 @@ public class WWMTCastTriggerManager implements ICasterTriggerManager {
                 world.getWorldInfo().setRaining(true);
                 MinecraftForge.EVENT_BUS.register(new StormCraftingTicker(world, pos));
             }catch(Error ignored){}
-        }
         return false;
     }
 }

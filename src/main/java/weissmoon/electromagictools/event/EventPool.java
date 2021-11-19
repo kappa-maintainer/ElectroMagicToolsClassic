@@ -62,14 +62,17 @@ public class EventPool {
 
     @SubscribeEvent
     public void playerLoggedIn(PlayerEvent.PlayerLoggedInEvent event){
-        if(ic2ceLoaded)
-            if(!(event.player.world.isRemote)) {
-                IPlayerKnowledge knowledge = ThaumcraftCapabilities.getKnowledge(event.player);
-                if (!knowledge.isResearchKnown("p_ic2c_extras")) {
-                    knowledge.addResearch("p_ic2c_extras");
-                    knowledge.sync((EntityPlayerMP)event.player);
-                }
+        if(!(event.player.world.isRemote)){
+            IPlayerKnowledge knowledge = ThaumcraftCapabilities.getKnowledge(event.player);
+            if(ic2ceLoaded){
+                if(!knowledge.addResearch("p_ic2c_extras"))
+                    return;
+            }else{
+                if(!knowledge.removeResearch("p_ic2c_extras"))
+                    return;
             }
+            knowledge.sync((EntityPlayerMP)event.player);
+        }
     }
 
     @SubscribeEvent

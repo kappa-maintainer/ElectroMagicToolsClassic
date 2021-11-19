@@ -107,7 +107,7 @@ public class SolarRegistry {
         public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
             PlayerHandler handler = PlayerHandler.getClientPlayerHandler();
             if (handler.hasEUReader()) {
-                tooltip.add(Ic2InfoLang.electricProduction.getLocalizedFormatted(100.0));
+                tooltip.add(Ic2InfoLang.electricProduction.getLocalizedFormatted(1000.0));
             }
         }
     };

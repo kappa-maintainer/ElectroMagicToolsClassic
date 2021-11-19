@@ -372,7 +372,7 @@ public class EMTRecipes {
                         ThaumcraftApiHelper.makeCrystal(Aspect.ORDER),
                         new ItemStack(BlocksTC.jarNormal)));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID, "entropyStaff"),
-                new InfusionRecipe("ENTROPYSTAFF",
+                new ElectricInfusionRecipe("ENTROPYSTAFF",
                         new ItemStack(ModItems.entropyStaff),
                         1,
                         CraftingAspectList.efferetsGift,

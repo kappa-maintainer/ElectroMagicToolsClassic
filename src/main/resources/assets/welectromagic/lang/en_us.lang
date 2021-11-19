@@ -91,6 +91,7 @@ tooltip.EMT.solar.ending=%s EU
 tooltip.diamondChainsawShearToggle.name=Enable/Disable Shearing
 tooltip.diamondOmnitoolToggle.name=Cycle through Shearing and Dirt Modes
 tooltip.MEGALOMANIA.name=A tool that can only be made a High Priest of the Old Ways.
+tooltip.jei.electricRecipe=Electric
 
 subtitle.welectromagic.wings.flap=Wings flap
 
@@ -107,7 +108,7 @@ advancements.welectromagic.stormbringer.desc=Obtain the broken relic of Mjölnir
 advancements.welectromagic.cremation.name=Brutal Cremation
 advancements.welectromagic.cremation.desc=Cremate brutally.
 advancements.welectromagic.nine.name=⑨
-advancements.welectromagic.nine.desc=Get 9 Triple Compressed Elemental Solar Panels
+advancements.welectromagic.nine.desc=Obtain 9 Triple Compressed Elemental Solar Panels
 advancements.welectromagic.deadlySilence.name=Deadly Silence
 advancements.welectromagic.deadlySilence.desc=Find and equip The One Ring.
 

@@ -48,6 +48,7 @@ public class ElectroMagicTools {
 
     public static boolean ic2ceLoaded;
     public static boolean gtcxLoaded;
+    public static boolean thaumicJEILoaded;
 
     public static Logger logger;
 
@@ -56,6 +57,7 @@ public class ElectroMagicTools {
         logger = event.getModLog();
         ic2ceLoaded = Loader.isModLoaded("ic2c_extras");
         gtcxLoaded = Loader.isModLoaded("gtc_expansion");
+        thaumicJEILoaded = Loader.isModLoaded("thaumicjei");
         ModItems.init();
         ModBlocks.init();
         PacketHandler.init();

@@ -25,7 +25,7 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "1.12.2-0.0.9-12"
+version = "1.12.2-0.0.10-13"
 group= "weissmoon.electromagictools" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ElectroMagicToolsIC2C"
 
@@ -93,6 +93,7 @@ dependencies {
     compile "curse.maven:baubles-227083:2518667"
     compile "curse.maven:ic2_classic-242942:3076009"
     compile "curse.maven:weisscore-226657:2776632"
+    compile "curse.maven:thaumic-jei-285492:2705304"
 }
 
 processResources
