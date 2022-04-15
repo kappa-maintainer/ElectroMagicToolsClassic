@@ -119,6 +119,10 @@ message.itemOneRing.equipt1=You have worn the Ring. Your soul has now been forev
 message.itemOneRing.equipt2=Beware of wearing the ring. The %stainting%s will only increase, and strange things will start happening.
 message.diamondChainsawNormal.name=Enabled Shearing
 message.diamondChainsawNoShear.name=Disabled Shearing
+message.iridiumDrillFortune.name=Enabled Fortune
+message.iridiumDrillNoFortune.name=Disabled Fortune
+message.iridiumDrillSilk.name=Enabled Silktouch
+message.iridiumDrillNoSilk.name=Disabled Silktouch
 
 research.example.text.stage.1=Text not Found
 

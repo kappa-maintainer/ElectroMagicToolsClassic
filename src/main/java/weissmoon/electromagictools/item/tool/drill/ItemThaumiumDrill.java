@@ -117,13 +117,13 @@ public class ItemThaumiumDrill extends WeissItemElectricTool implements IMiningD
                     if (world.getBlockState(pos.up(a)).getBlock() == Blocks.GRAVEL ||
                             world.getBlockState(pos.up(a)).getBlock() == Blocks.SAND) {
                         EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByID(35), stack);
-                        if (ElectricItem.manager.canUse(stack, operationEnergyCost)) {
+                        if (ElectricItem.manager.canUse(stack, getEnergyCost(stack))) {
                             IBlockState iblockstate = world.getBlockState(pos.up(a));
                             BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(world, pos.up(a), iblockstate, (EntityPlayer) entityLiving);
                             MinecraftForge.EVENT_BUS.post(event);
                             if (!event.isCanceled()) {
                                 if (breakBlock(world, pos.up(a), (EntityPlayer) entityLiving, stack, event.getExpToDrop())) {
-                                    ElectricItem.manager.use(stack, operationEnergyCost, entityLiving);
+                                    ElectricItem.manager.use(stack, getEnergyCost(stack), entityLiving);
                                     IC2.achievements.issueStat((EntityPlayer)entityLiving, "blocksDrilled");
                                 }
                             }
@@ -132,7 +132,7 @@ public class ItemThaumiumDrill extends WeissItemElectricTool implements IMiningD
                         break;
                 }
             }
-            ElectricItem.manager.use(stack, operationEnergyCost, entityLiving);
+            ElectricItem.manager.use(stack, getEnergyCost(stack), entityLiving);
             IC2.achievements.issueStat((EntityPlayer)entityLiving, "blocksDrilled");
         }
         return true;
@@ -146,7 +146,7 @@ public class ItemThaumiumDrill extends WeissItemElectricTool implements IMiningD
 
     @Override
     public float getDestroySpeed(ItemStack stack, IBlockState block) {
-        if (!ElectricItem.manager.canUse(stack, operationEnergyCost)) {
+        if (!ElectricItem.manager.canUse(stack, getEnergyCost(stack))) {
             return 1.0F;
         }
         NBTTagCompound nbt = StackUtil.getOrCreateNbtData(stack);

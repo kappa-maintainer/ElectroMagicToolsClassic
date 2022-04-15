@@ -79,5 +79,10 @@ public class Strings {
         public static final LocaleComp DIAMOND_OMNITOOL_TOGGLE = new LangComponentHolder.LocaleItemInfoComp("tooltip.diamondOmnitoolToggle.name");
 
         public static final LocaleComp DRILL_OF_THE_CORE_TOOLTIP = new LangComponentHolder.LocaleItemInfoComp("tooltip.MEGALOMANIA.name");
+
+        public static final LocaleComp MESSAGE_IRIDIUM_DRILL_FORTUNE = new LangComponentHolder.LocaleItemInfoComp("message.iridiumDrillFortune.name");
+        public static final LocaleComp MESSAGE_IRIDIUM_DRILL_NO_FORTUNE = new LangComponentHolder.LocaleItemInfoComp("message.iridiumDrillNoFortune.name");
+        public static final LocaleComp MESSAGE_IRIDIUM_DRILL_SILK = new LangComponentHolder.LocaleItemInfoComp("message.iridiumDrillSilk.name");
+        public static final LocaleComp MESSAGE_IRIDIUM_DRILL_NO_SILK = new LangComponentHolder.LocaleItemInfoComp("message.iridiumDrillNoSilk.name");
     }
 }
