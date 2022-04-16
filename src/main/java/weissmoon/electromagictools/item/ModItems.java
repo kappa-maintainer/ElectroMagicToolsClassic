@@ -80,6 +80,8 @@ public class ModItems {
     public static final Item entropyStaff = new ItemEntropyStaff();
     public static final Item hitBauble = new ItemHitBauble();
     public static final WeissItemElectricTool coreDrill = new ItemCoreDrill();
+//    public static final Item frostAxe = new FrostAxeItem();
+    public static final Item kappaArm = new ItemKappaArm();
 
     public static Item crafing;
     public static Item focusCristmas;
@@ -136,6 +138,8 @@ public class ModItems {
         GameRegistry.register(coin);
         GameRegistry.register(entropyStaff);
         GameRegistry.register(hitBauble);
+//        GameRegistry.register(frostAxe);
+        GameRegistry.register(kappaArm);
     }
 
     public static void compartTCtoIC(){

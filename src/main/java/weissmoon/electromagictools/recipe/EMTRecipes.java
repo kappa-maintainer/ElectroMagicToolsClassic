@@ -597,6 +597,16 @@ public class EMTRecipes {
                         "ppp", "ppp", "ppp",
                         'p', new ItemStack(ModBlocks.solarGenerator)));
 
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Reference.MOD_ID +  ":kappaArm"),
+                new ShapedArcaneRecipe(new ResourceLocation(""),
+                        "KAPPAARM",
+                        10,
+                        CraftingAspectList.kappaArm,
+                        new ItemStack(ModItems.kappaArm, 1, 8),
+                        " IL", "III", "pI ",
+                        'p', new ItemStack(Blocks.PLANKS, 1, OreDictionary.WILDCARD_VALUE),
+                        'I', refinedIron,
+                        'L', new ItemStack(Items.LEATHER)));
     }
 
     public static void initCrucibleRecipes(){

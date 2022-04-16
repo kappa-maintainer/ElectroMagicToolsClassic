@@ -41,6 +41,7 @@ public class Strings {
         public static final String COIN_NAME = "itemCoin";
         public static final String ENTROPY_STAFF_NAME = "itemEntropyStaff";
         public static final String HIT_BAUBLE = "itemHitBauble";
+        public static final String KAPPA_ARM_NAME = "itemKappaArm";
 
         public static final String MATERIALS_NAME = "itemMaterial";
         public static final String[] Materials = {

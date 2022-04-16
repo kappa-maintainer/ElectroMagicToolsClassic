@@ -979,6 +979,27 @@
           "recipes": ["welectromagic:entropyStaff"]
         }
       ]
+    },
+    {
+      "key": "KAPPAARM",
+      "name": "item.welectromagic:itemKappaArm.name",
+      "icons": ["welectromagic:itemKappaArm"],
+      "category": "WEMT",
+      "parents": ["~ELECTROTHAUMICTOOLS", "BASICALCHEMY"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [1, 4],
+      "stages": [
+        {
+          "text": "wemt.research.itemKappaArm.stage.1",
+          "required_knowledge": ["THEORY;ARTIFICE;1"],
+          "required_research":["!instrumentum","!machina", "!motus"]
+        },
+        {
+          "text": "wemt.research.itemKappaArm.stage.2",
+          "recipes": ["welectromagic:kappaArm"]
+        }
+      ]
     }
   ]
 }

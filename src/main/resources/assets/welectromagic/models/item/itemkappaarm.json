@@ -1,0 +1,18 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "welectromagic:items/itemkappaarm"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [ 0, -90, -230 ],
+      "translation": [ 0, -2, -5 ],
+      "scale": [ 0.6, 0.6, 0.6 ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [ 0, 90, 230 ],
+      "translation": [ 0, -2, -5 ],
+      "scale": [ 0.6, 0.6, 0.6 ]
+    }
+  }
+}

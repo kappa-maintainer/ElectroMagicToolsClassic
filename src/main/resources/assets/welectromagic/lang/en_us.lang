@@ -73,6 +73,7 @@ item.welectromagic:itemCoin2.name=Thaumium Coin
 item.welectromagic:itemCoin3.name=Void Coin
 item.welectromagic:itemEntropyStaff.name=Efferet's Gift
 item.welectromagic:itemCoreDrill.name=Drill of the Core
+item.welectromagic:itemKappaArm.name=Kappa Arm
 
 tooltip.EMT.hammer.broken.Mjölnir=The Hammer of Thor
 tooltip.EMT.hammer.broken.thor=It was once the Hammer of Thor.
@@ -270,3 +271,6 @@ wemt.research.blockChargePedestal.stage.2=I have managed to combine the powers o
 
 wemt.research.itemEfferetsFlame.stage.1=I had a dream last night about a being covered from head to toe in fire, who was holding what seemed to be an Ignis Vis Crystal. There was a stream of magical energy that looked like essentia and then closing his hands together. Then while extending out his hands, said to me in a language I didn't understand, "This is yours now." As he was opening his hands, I had awoken.
 wemt.research.itemEfferetsFlame.stage.2=I finally remembered the rest of my dream. The item in his hands was a stick with a jewel that smelted all blocks it interacted with, without the need to break them first. But once agian I don't recall the whole dream, this magical item had a name which I cannot recall, so I will call it "Efferet's Gift", until I can recall it's name.
+
+wemt.research.itemKappaArm.stage.1=I witnessed something strange today, a small girl in a light blue dress with many pockets, a green hat and a massive aquamarine backpack, was fighting many monsters. She had all sorts of strange devices in her backpack, a water gun similar to my mining laser, a large metal ball she could swing with ease, a propeller she used to hover and move around, a grappling hook and many more things I can't recall. <BR><BR>During her fighting she dropped one of these devices, an extendable arm, it seemed quite handy being able to touch blocks well out of my reach. <BR><BR>I didn't have much time to study this device however, as soon as she realized she had lost it she found me, took the arm, and fled. I could not chase after her as there were still many monsters that surrounded me.
+wemt.research.itemKappaArm.stage.2=This device that I have made does not feel as refined as the one that girl was carrying. It can't reach as far, and it also is difficult to wield.
