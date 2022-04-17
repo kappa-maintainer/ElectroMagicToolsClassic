@@ -16,7 +16,7 @@ import weissmoon.electromagictools.item.ModItems;
 public class JukeboxNonRecordEventMessage implements IMessage, IMessageHandler<JukeboxNonRecordEventMessage,IMessage> {
 
     private byte keyPress;
-    private static int x, y, z;
+    private int x, y, z;
 
     public JukeboxNonRecordEventMessage(){}
 
@@ -47,10 +47,14 @@ public class JukeboxNonRecordEventMessage implements IMessage, IMessageHandler<J
     public IMessage onMessage(JukeboxNonRecordEventMessage message, MessageContext ctx){
         try {
             SoundEvent event = null;
-            if (keyPress == 0) {
+            if(message.keyPress == 0)
                 event = ModItems.stormCaster.getSound();
-            }
-            Minecraft.getMinecraft().player.world.playRecord(new BlockPos(x, y, z), event);
+            else if(message.keyPress == 1)
+                event = ModItems.mjölnir.getSound();
+            else if(message.keyPress == 2)
+                event = ModItems.stormBreaker.getSound();
+
+            Minecraft.getMinecraft().player.world.playRecord(new BlockPos(message.x, message.y, message.z), event);
         }catch (Error ignored){
 
         }

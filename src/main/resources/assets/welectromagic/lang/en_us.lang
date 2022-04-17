@@ -100,9 +100,9 @@ advancements.welectromagic.root.desc=Magic and Science
 advancements.welectromagic.wings.desc=Die from fall damage with wings equipped.
 advancements.welectromagic.rockBreaker.name=Equivalent Exchange
 advancements.welectromagic.rockBreaker.desc=Die using the Rockbreaker Drill with no energy.
-advancements.welectromagic.efferet.name=Embraced by the flame
+advancements.welectromagic.efferet.name=Embraced by the Flame
 advancements.welectromagic.efferet.desc=Obtain Efferet's Gift.
-advancements.welectromagic.hitbauble.name=Kill me if you can
+advancements.welectromagic.hitbauble.name=Killing Me If You Can
 advancements.welectromagic.hitbauble.desc=Block 50 points of damage with a hit bauble.
 advancements.welectromagic.stormbringer.name=Doomsday Clock
 advancements.welectromagic.stormbringer.desc=Obtain the broken relic of Mjölnir.
@@ -112,6 +112,12 @@ advancements.welectromagic.nine.name=⑨
 advancements.welectromagic.nine.desc=Obtain 9 Triple Compressed Elemental Solar Panels
 advancements.welectromagic.deadlySilence.name=Deadly Silence
 advancements.welectromagic.deadlySilence.desc=Find and equip The One Ring.
+advancements.welectromagic.allyheart.name=Allyheart
+advancements.welectromagic.allyheart.desc=Obtain the limb of a mystical water creature.
+
+item.record.magus.desc=Magus
+item.record.night.desc=Night
+item.record.fever.desc=Fever
 
 tc.research_category.WEMT=Electro-Thaumic Tools
 

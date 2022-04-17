@@ -84,7 +84,7 @@ public class ItemIridiumDrill extends ItemThaumiumDrill{
     }
 
     @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack, net.minecraft.enchantment.Enchantment enchantment){
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment){
         if(enchantment == Enchantments.FORTUNE || enchantment == Enchantments.SILK_TOUCH)
             return false;
         return enchantment.type.canEnchantItem(stack.getItem());
@@ -130,13 +130,13 @@ public class ItemIridiumDrill extends ItemThaumiumDrill{
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
         if(NBTHelper.getBoolean(stack, "silkAddition")){
             NBTHelper.setBoolean(stack, "silkAddition", false);
-            Map enchants = EnchantmentHelper.getEnchantments(stack);
+            Map<Enchantment, Integer> enchants = EnchantmentHelper.getEnchantments(stack);
             enchants.remove(Enchantments.SILK_TOUCH);
             EnchantmentHelper.setEnchantments(enchants, stack);
         }
         if(NBTHelper.getBoolean(stack, "fortuneAddition")){
             NBTHelper.setBoolean(stack, "fortuneAddition", false);
-            Map enchants = EnchantmentHelper.getEnchantments(stack);
+            Map<Enchantment, Integer> enchants = EnchantmentHelper.getEnchantments(stack);
             enchants.remove(Enchantments.FORTUNE);
             EnchantmentHelper.setEnchantments(enchants, stack);
         }

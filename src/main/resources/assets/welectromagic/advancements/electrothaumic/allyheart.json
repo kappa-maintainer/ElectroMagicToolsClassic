@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "welectromagic:itemMjolnir"
+    },
+    "title": {
+      "translate": "advancements.welectromagic.allyheart.name"
+    },
+    "description": {
+      "translate": "advancements.welectromagic.allyheart.desc"
+    },
+    "hidden": true
+  },
+  "parent": "welectromagic:electrothaumic/root",
+  "criteria": {
+    "iron": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "welectromagic:itemKappaArm"
+          }
+        ]
+      }
+    }
+  }
+}

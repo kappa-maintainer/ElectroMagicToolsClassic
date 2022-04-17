@@ -65,14 +65,14 @@ public class ModItems {
     public static final WeissItemElectricTool diamondOmnitool = new ItemDiamondOmniTool();
     public static final WeissItemElectricTool thaumiumOmnitool = new ItemThaumiumOmniTool();
     public static final ItemStormCaster stormCaster = new ItemStormCaster();
-    public static final Item mjölnir = new ItemMjölnir();
+    public static final ItemMjölnir mjölnir = new ItemMjölnir();
     public static final Item chargeRing = new ItemChargeRing();
     public static final Item featherWings = new ItemFeatherWings();
     public static final Item thaumiumWings = new ItemThaumiumWings();
     public static final Item nanoWings = new ItemNanoWings();
     public static final Item quantumWings = new ItemQuantumWings();
     public static final Item rockBreakerDrill = new ItemRockBreakerDrill();
-    public static final Item stormBreaker = new ItemStormBreaker();
+    public static final ItemStormBreaker stormBreaker = new ItemStormBreaker();
 
     public static final WeissItemElectricTool iridiumDrill = new ItemIridiumDrill();
     public static final Item gemPack = new ItemEnergyPack();

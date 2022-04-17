@@ -2,14 +2,18 @@ package weissmoon.electromagictools.item.tool;
 
 import ic2.api.classic.item.IDamagelessElectricItem;
 import ic2.api.item.ElectricItem;
-import ic2.api.util.IKeyboard;
-import ic2.api.util.Keys;
+import net.minecraft.block.BlockJukebox;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -20,12 +24,15 @@ import weissmoon.core.client.render.IIcon;
 import weissmoon.core.client.render.IIconRegister;
 import weissmoon.core.client.render.renderOverride.CustomRenderRegistry;
 import weissmoon.core.item.tools.WeissItemSword;
-import weissmoon.core.utils.NBTHelper;
 import weissmoon.electromagictools.ElectroMagicTools;
+import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
+import weissmoon.electromagictools.network.JukeboxNonRecordEventMessage;
+import weissmoon.electromagictools.network.PacketHandler;
 
 import javax.annotation.Nonnull;
 
+import static net.minecraft.block.BlockJukebox.HAS_RECORD;
 import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
 
@@ -34,6 +41,7 @@ import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
  */
 public class ItemStormBreaker extends WeissItemSword implements IDamagelessElectricItem, IItemRenderCustom {
 
+    private ItemRecord record = new ItemRecord();
     private final int maxCharge = 2000000;
     private int cost = 5000;
     private double summonCost = 75000;
@@ -188,5 +196,43 @@ public class ItemStormBreaker extends WeissItemSword implements IDamagelessElect
     @Override
     public IItemRenderer getIItemRender() {
         return CustomRenderRegistry.getMissingRender();
+    }
+
+    @Override
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ){
+        IBlockState iblockstate = worldIn.getBlockState(pos);
+
+        if (iblockstate.getBlock() == Blocks.JUKEBOX && !(iblockstate.getValue(HAS_RECORD)))
+        {
+            ItemStack itemstack = player.getHeldItem(hand);
+            iblockstate = iblockstate.withProperty(HAS_RECORD, true);
+            worldIn.setBlockState(pos, iblockstate, 2);
+            ((BlockJukebox)Blocks.JUKEBOX).insertRecord(worldIn, pos, iblockstate, itemstack);
+            worldIn.playEvent(null, 1010, pos, Item.getIdFromItem(this));
+            if (!worldIn.isRemote){
+                PacketHandler.INSTANCE.sendToDimension(new JukeboxNonRecordEventMessage((byte) 2, pos), worldIn.provider.getDimension());
+            }
+            itemstack.shrink(1);
+            player.addStat(StatList.RECORD_PLAYED);
+
+            return EnumActionResult.SUCCESS;
+        }
+        else
+        {
+            return EnumActionResult.PASS;
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public SoundEvent getSound()
+    {
+        return record.getSound();
+    }
+
+    private static class ItemRecord extends net.minecraft.item.ItemRecord{
+
+        protected ItemRecord() {
+            super("fever", new SoundEvent(new ResourceLocation(Reference.MOD_ID, "fever")));
+        }
     }
 }

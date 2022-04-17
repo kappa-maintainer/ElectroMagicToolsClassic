@@ -105,30 +105,30 @@ public class ItemStormCaster extends WeissItemSword implements IItemRenderCustom
         return multimap;
     }
 
-//    @Override
-//    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ){
-//        IBlockState iblockstate = worldIn.getBlockState(pos);
-//
-//        if (iblockstate.getBlock() == Blocks.JUKEBOX && !(iblockstate.getValue(HAS_RECORD)))
-//        {
-//            ItemStack itemstack = player.getHeldItem(hand);
-//            iblockstate = iblockstate.withProperty(HAS_RECORD, true);
-//            worldIn.setBlockState(pos, iblockstate, 2);
-//            ((BlockJukebox)Blocks.JUKEBOX).insertRecord(worldIn, pos, iblockstate, itemstack);
-//            worldIn.playEvent(null, 1010, pos, Item.getIdFromItem(this));
-//            if (!worldIn.isRemote){
-//                PacketHandler.INSTANCE.sendToDimension(new JukeboxNonRecordEventMessage((byte) 0, pos), worldIn.provider.getDimension());
-//            }
-//            itemstack.shrink(1);
-//            player.addStat(StatList.RECORD_PLAYED);
-//
-//            return EnumActionResult.SUCCESS;
-//        }
-//        else
-//        {
-//            return EnumActionResult.PASS;
-//        }
-//    }
+    @Override
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ){
+        IBlockState iblockstate = worldIn.getBlockState(pos);
+
+        if (iblockstate.getBlock() == Blocks.JUKEBOX && !(iblockstate.getValue(HAS_RECORD)))
+        {
+            ItemStack itemstack = player.getHeldItem(hand);
+            iblockstate = iblockstate.withProperty(HAS_RECORD, true);
+            worldIn.setBlockState(pos, iblockstate, 2);
+            ((BlockJukebox)Blocks.JUKEBOX).insertRecord(worldIn, pos, iblockstate, itemstack);
+            worldIn.playEvent(null, 1010, pos, Item.getIdFromItem(this));
+            if (!worldIn.isRemote){
+                PacketHandler.INSTANCE.sendToDimension(new JukeboxNonRecordEventMessage((byte) 0, pos), worldIn.provider.getDimension());
+            }
+            itemstack.shrink(1);
+            player.addStat(StatList.RECORD_PLAYED);
+
+            return EnumActionResult.SUCCESS;
+        }
+        else
+        {
+            return EnumActionResult.PASS;
+        }
+    }
 
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected){
@@ -160,6 +160,5 @@ public class ItemStormCaster extends WeissItemSword implements IItemRenderCustom
         protected ItemRecord() {
             super("magus", new SoundEvent(new ResourceLocation(Reference.MOD_ID, "magus")));
         }
-
     }
 }
