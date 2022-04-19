@@ -145,7 +145,7 @@ public class ItemFeatherWings extends ItemArmourBase implements IBauble, IRender
     @Override
     public void onPlayerBaubleRender(ItemStack stack, EntityPlayer player, RenderType type, float partialTicks) {
         if(type == RenderType.BODY) {
-            model.renderB(stack, player, type, partialTicks);
+            ((WingsModelRenderer)getArmorModel(player, stack, null, null)).renderB(stack, player, type, partialTicks);
         }
     }
 }
