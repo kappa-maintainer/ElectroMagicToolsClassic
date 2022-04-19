@@ -3,20 +3,15 @@ package weissmoon.electromagictools.item.tool;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
-import net.minecraft.block.BlockJukebox;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemRecord;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -25,7 +20,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 import thaumcraft.common.entities.projectile.EntityAlumentum;
-import weissmoon.core.client.render.IIconRegister;
 import weissmoon.core.item.tools.WeissItemSword;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Reference;
@@ -34,25 +28,17 @@ import thaumcraft.api.capabilities.IPlayerKnowledge;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import weissmoon.core.api.client.item.IItemRenderCustom;
 import weissmoon.core.api.client.item.IItemRenderer;
-import weissmoon.core.item.tools.WeissItemSword;
-import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.client.item.StormCasterRenderer;
-import weissmoon.electromagictools.lib.Reference;
-import weissmoon.electromagictools.lib.Strings;
-import thaumcraft.common.entities.projectile.EntityAlumentum;
 import weissmoon.electromagictools.network.JukeboxNonRecordEventMessage;
-import weissmoon.electromagictools.network.PacketHandler;
 
 import javax.annotation.Nullable;
 import java.util.List;
-
-import static net.minecraft.block.BlockJukebox.HAS_RECORD;
 
 /**
  * Created by Weissmoon on 2/15/20.
  * Tainted
  */
-public class ItemStormCaster extends WeissItemSword implements IItemRenderCustom {
+public class ItemStormCaster extends WeissItemSword implements IItemRenderCustom, IMusicProxyItem {
 
     private ItemRecord record = new ItemRecord();
     private List<EntityPlayer> players = Lists.newArrayList();
@@ -107,27 +93,7 @@ public class ItemStormCaster extends WeissItemSword implements IItemRenderCustom
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ){
-        IBlockState iblockstate = worldIn.getBlockState(pos);
-
-        if (iblockstate.getBlock() == Blocks.JUKEBOX && !(iblockstate.getValue(HAS_RECORD)))
-        {
-            ItemStack itemstack = player.getHeldItem(hand);
-            iblockstate = iblockstate.withProperty(HAS_RECORD, true);
-            worldIn.setBlockState(pos, iblockstate, 2);
-            ((BlockJukebox)Blocks.JUKEBOX).insertRecord(worldIn, pos, iblockstate, itemstack);
-            worldIn.playEvent(null, 1010, pos, Item.getIdFromItem(this));
-            if (!worldIn.isRemote){
-                PacketHandler.INSTANCE.sendToDimension(new JukeboxNonRecordEventMessage((byte) 0, pos), worldIn.provider.getDimension());
-            }
-            itemstack.shrink(1);
-            player.addStat(StatList.RECORD_PLAYED);
-
-            return EnumActionResult.SUCCESS;
-        }
-        else
-        {
-            return EnumActionResult.PASS;
-        }
+        return this.handleMusic(player, worldIn, pos, hand);
     }
 
     @Override
@@ -149,9 +115,14 @@ public class ItemStormCaster extends WeissItemSword implements IItemRenderCustom
         return new StormCasterRenderer();
     }
 
+    @Override
+    public JukeboxNonRecordEventMessage getPacket(BlockPos pos){
+        return new JukeboxNonRecordEventMessage(Item.getIdFromItem(this),  pos);
+    }
+
     @SideOnly(Side.CLIENT)
-    public SoundEvent getSound()
-    {
+    @Override
+    public SoundEvent getSound(){
         return record.getSound();
     }
 

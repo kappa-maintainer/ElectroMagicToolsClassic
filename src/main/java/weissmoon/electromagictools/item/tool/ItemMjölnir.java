@@ -2,18 +2,14 @@ package weissmoon.electromagictools.item.tool;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.block.BlockJukebox;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -27,19 +23,16 @@ import weissmoon.electromagictools.event.Cremation;
 import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.network.JukeboxNonRecordEventMessage;
-import weissmoon.electromagictools.network.PacketHandler;
 import weissmoon.electromagictools.util.GenericHelper;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static net.minecraft.block.BlockJukebox.HAS_RECORD;
-
 /**
  * Created by Weissmoon on 2/15/20.
  * Thor Hammer
  */
-public class ItemMjölnir extends WeissItemSword {
+public class ItemMjölnir extends WeissItemSword implements IMusicProxyItem {
 
     private ItemRecord record = new ItemRecord();
 
@@ -97,32 +90,17 @@ public class ItemMjölnir extends WeissItemSword {
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ){
-        IBlockState iblockstate = worldIn.getBlockState(pos);
+        return this.handleMusic(player, worldIn, pos, hand);
+    }
 
-        if (iblockstate.getBlock() == Blocks.JUKEBOX && !(iblockstate.getValue(HAS_RECORD)))
-        {
-            ItemStack itemstack = player.getHeldItem(hand);
-            iblockstate = iblockstate.withProperty(HAS_RECORD, true);
-            worldIn.setBlockState(pos, iblockstate, 2);
-            ((BlockJukebox)Blocks.JUKEBOX).insertRecord(worldIn, pos, iblockstate, itemstack);
-            worldIn.playEvent(null, 1010, pos, Item.getIdFromItem(this));
-            if (!worldIn.isRemote){
-                PacketHandler.INSTANCE.sendToDimension(new JukeboxNonRecordEventMessage((byte) 1, pos), worldIn.provider.getDimension());
-            }
-            itemstack.shrink(1);
-            player.addStat(StatList.RECORD_PLAYED);
-
-            return EnumActionResult.SUCCESS;
-        }
-        else
-        {
-            return EnumActionResult.PASS;
-        }
+    @Override
+    public JukeboxNonRecordEventMessage getPacket(BlockPos pos){
+        return new JukeboxNonRecordEventMessage(Item.getIdFromItem(this),  pos);
     }
 
     @SideOnly(Side.CLIENT)
-    public SoundEvent getSound()
-    {
+    @Override
+    public SoundEvent getSound(){
         return record.getSound();
     }
 

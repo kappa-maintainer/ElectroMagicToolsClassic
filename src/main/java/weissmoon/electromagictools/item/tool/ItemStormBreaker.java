@@ -2,16 +2,12 @@ package weissmoon.electromagictools.item.tool;
 
 import ic2.api.classic.item.IDamagelessElectricItem;
 import ic2.api.item.ElectricItem;
-import net.minecraft.block.BlockJukebox;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -28,18 +24,16 @@ import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.network.JukeboxNonRecordEventMessage;
-import weissmoon.electromagictools.network.PacketHandler;
 
 import javax.annotation.Nonnull;
 
-import static net.minecraft.block.BlockJukebox.HAS_RECORD;
 import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
 
 /**
  * Created by Weissmoon on 9/26/20.
  */
-public class ItemStormBreaker extends WeissItemSword implements IDamagelessElectricItem, IItemRenderCustom {
+public class ItemStormBreaker extends WeissItemSword implements IDamagelessElectricItem, IItemRenderCustom, IMusicProxyItem {
 
     private ItemRecord record = new ItemRecord();
     private final int maxCharge = 2000000;
@@ -200,32 +194,17 @@ public class ItemStormBreaker extends WeissItemSword implements IDamagelessElect
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ){
-        IBlockState iblockstate = worldIn.getBlockState(pos);
+        return this.handleMusic(player, worldIn, pos, hand);
+    }
 
-        if (iblockstate.getBlock() == Blocks.JUKEBOX && !(iblockstate.getValue(HAS_RECORD)))
-        {
-            ItemStack itemstack = player.getHeldItem(hand);
-            iblockstate = iblockstate.withProperty(HAS_RECORD, true);
-            worldIn.setBlockState(pos, iblockstate, 2);
-            ((BlockJukebox)Blocks.JUKEBOX).insertRecord(worldIn, pos, iblockstate, itemstack);
-            worldIn.playEvent(null, 1010, pos, Item.getIdFromItem(this));
-            if (!worldIn.isRemote){
-                PacketHandler.INSTANCE.sendToDimension(new JukeboxNonRecordEventMessage((byte) 2, pos), worldIn.provider.getDimension());
-            }
-            itemstack.shrink(1);
-            player.addStat(StatList.RECORD_PLAYED);
-
-            return EnumActionResult.SUCCESS;
-        }
-        else
-        {
-            return EnumActionResult.PASS;
-        }
+    @Override
+    public JukeboxNonRecordEventMessage getPacket(BlockPos pos){
+        return new JukeboxNonRecordEventMessage(Item.getIdFromItem(this),  pos);
     }
 
     @SideOnly(Side.CLIENT)
-    public SoundEvent getSound()
-    {
+    @Override
+    public SoundEvent getSound(){
         return record.getSound();
     }
 

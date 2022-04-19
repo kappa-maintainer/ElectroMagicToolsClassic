@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import weissmoon.core.item.WeissItem;
+import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Strings;
 
 import java.util.UUID;
@@ -20,6 +21,7 @@ public class ItemKappaArm extends WeissItem{
     public ItemKappaArm(){
         super(Strings.Items.KAPPA_ARM_NAME);
         setMaxStackSize(1);
+        setCreativeTab(ElectroMagicTools.EMTtab);
     }
 
     @Override

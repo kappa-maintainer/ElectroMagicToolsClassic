@@ -983,7 +983,7 @@
     {
       "key": "KAPPAARM",
       "name": "item.welectromagic:itemKappaArm.name",
-      "icons": ["welectromagic:itemKappaArm"],
+      "icons": ["welectromagic:textures/kappabag.png"],
       "category": "WEMT",
       "parents": ["~ELECTROTHAUMICTOOLS", "BASICALCHEMY"],
       "siblings": [],

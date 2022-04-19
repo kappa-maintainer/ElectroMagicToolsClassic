@@ -2,26 +2,25 @@ package weissmoon.electromagictools.network;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.ItemRecord;
+import net.minecraft.item.Item;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import weissmoon.electromagictools.item.ModItems;
+import weissmoon.electromagictools.item.tool.IMusicProxyItem;
 
 /**
  * Created by Weissmoon on 9/18/20.
  */
 public class JukeboxNonRecordEventMessage implements IMessage, IMessageHandler<JukeboxNonRecordEventMessage,IMessage> {
 
-    private byte keyPress;
-    private int x, y, z;
+    private int x, y, z, id;
 
     public JukeboxNonRecordEventMessage(){}
 
-    public JukeboxNonRecordEventMessage(byte val, BlockPos pos){
-        keyPress = val;
+    public JukeboxNonRecordEventMessage(int id, BlockPos pos){
+        this.id = id;
         x = pos.getX();
         y = pos.getY();
         z = pos.getZ();
@@ -29,7 +28,7 @@ public class JukeboxNonRecordEventMessage implements IMessage, IMessageHandler<J
 
     @Override
     public void fromBytes(ByteBuf buf) {
-        keyPress = buf.readByte();
+        id = buf.readInt();
         x = buf.readInt();
         y = buf.readInt();
         z = buf.readInt();
@@ -37,7 +36,7 @@ public class JukeboxNonRecordEventMessage implements IMessage, IMessageHandler<J
 
     @Override
     public void toBytes(ByteBuf buf) {
-        buf.writeByte(keyPress);
+        buf.writeInt(id);
         buf.writeInt(x);
         buf.writeInt(y);
         buf.writeInt(z);
@@ -46,15 +45,11 @@ public class JukeboxNonRecordEventMessage implements IMessage, IMessageHandler<J
     @Override
     public IMessage onMessage(JukeboxNonRecordEventMessage message, MessageContext ctx){
         try {
-            SoundEvent event = null;
-            if(message.keyPress == 0)
-                event = ModItems.stormCaster.getSound();
-            else if(message.keyPress == 1)
-                event = ModItems.mjölnir.getSound();
-            else if(message.keyPress == 2)
-                event = ModItems.stormBreaker.getSound();
-
-            Minecraft.getMinecraft().player.world.playRecord(new BlockPos(message.x, message.y, message.z), event);
+            Item item = Item.getItemById(message.id);
+            if(item instanceof IMusicProxyItem){
+                SoundEvent event = ((IMusicProxyItem)item).getSound();
+                Minecraft.getMinecraft().player.world.playRecord(new BlockPos(message.x, message.y, message.z), event);
+            }
         }catch (Error ignored){
 
         }
