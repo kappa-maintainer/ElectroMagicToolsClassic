@@ -2,6 +2,9 @@ package weissmoon.electromagictools.item;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementManager;
+import net.minecraft.advancements.PlayerAdvancements;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -105,7 +108,16 @@ public class ItemOneRing extends WeissItem implements IBauble {
         }
         playersWithRing.put(player.getName(), 0);
         if (!player.world.isRemote && player instanceof EntityPlayerMP) {
-            PlayerHelper.grantCriterion((EntityPlayerMP)player, new ResourceLocation("welectromagic", "electrothaumic/deadlysilence"), "code_trigger");
+            grantCriterion((EntityPlayerMP)player, new ResourceLocation("welectromagic", "electrothaumic/deadlysilence"), "code_trigger");
+        }
+    }
+
+    public static void grantCriterion(EntityPlayerMP player, ResourceLocation advancementId, String criterion) {
+        PlayerAdvancements advancements = player.getAdvancements();
+        AdvancementManager manager = player.getServerWorld().getMinecraftServer().getAdvancementManager();
+        Advancement advancement = manager.getAdvancement(advancementId);
+        if (advancement != null) {
+            advancements.grantCriterion(advancement, criterion);
         }
     }
 
