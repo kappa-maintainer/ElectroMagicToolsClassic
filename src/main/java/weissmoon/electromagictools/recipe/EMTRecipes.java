@@ -441,12 +441,12 @@ public class EMTRecipes {
                         crystal,
                         crystal,
                         crystal));
-        if(OreDictionary.doesOreNameExist("oreLead")) {
+        if(OreDictionary.doesOreNameExist("oreLead") && OreDictionary.getOres("oreLead").size() != 0) {
             ItemStack leadStack = OreDictionary.getOres("oreLead").get(0);
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Reference.MOD_ID, "uulead"),
                     new InfusionRecipe("UUCRYSTAL",
                             //new ItemStack(IC2Items.getItem("resource", "lead_ore").getItem(), 16, IC2Items.getItem("resource", "lead_ore").getItemDamage()),
-                            leadStack,
+                            new ItemStack(leadStack.getItem(), 16, leadStack.getItemDamage()),
                             4,
                             CraftingAspectList.uu8,
                             new ItemStack(BlocksTC.amberBlock),
