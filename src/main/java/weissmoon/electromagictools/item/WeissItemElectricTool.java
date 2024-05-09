@@ -17,7 +17,7 @@ public abstract class WeissItemElectricTool extends ItemElectricTool implements 
         super(attackDamageIn, attackSpeedIn, material);
         this.ModId = Loader.instance().activeModContainer().getModId();
         this.regName = name;
-        this.setUnlocalizedName(this.ModId.toLowerCase() + ":" + this.regName);
+        this.setTranslationKey(this.ModId.toLowerCase() + ":" + this.regName);
         this.setRegistryName(this.ModId.toLowerCase() + ":" + this.regName);
         WeissItemRegistry.weissItemRegistry.regItem(this);
     }

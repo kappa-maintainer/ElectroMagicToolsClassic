@@ -133,8 +133,8 @@ public class ItemStormBreaker extends WeissItemSword implements IDamagelessElect
 
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIconWeiss = iconRegister.registerIcon(this, getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1));
-//        this.itemIconWeissE = iconRegister.registerIcon(this, getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1) +"e");
+        this.itemIconWeiss = iconRegister.registerIcon(this, getTranslationKey().substring(getTranslationKey().indexOf(".") + 1));
+//        this.itemIconWeissE = iconRegister.registerIcon(this, getTranslationKey().substring(getTranslationKey().indexOf(".") + 1) +"e");
     }
 
     @Override

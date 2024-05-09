@@ -34,7 +34,7 @@ public class ItemMaterials extends WeissItem implements IItemRenderCustom{
 
 
     @Override
-    public String getUnlocalizedName(ItemStack itemstack) {
+    public String getTranslationKey(ItemStack itemstack) {
         String sub = "Null";
         try{
             int i = itemstack.getMetadata();

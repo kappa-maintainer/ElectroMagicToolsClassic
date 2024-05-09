@@ -38,17 +38,17 @@ public class ItemCoin extends WeissItem implements ICoinItem, IItemRenderCustom 
 //    itemInfo.coinValue.name
     @SideOnly(Side.CLIENT)
     public void registerIcons (IIconRegister iconRegister){
-        itemIconWeiss = iconRegister.registerIcon(this, getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1));
+        itemIconWeiss = iconRegister.registerIcon(this, getTranslationKey().substring(getTranslationKey().indexOf(".") + 1));
         itemIconArray = new IIcon[6];
         int i = 0;
         for(String nem:mat) {
-            itemIconArray[i] = iconRegister.registerIcon(this, getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1)+ nem);
+            itemIconArray[i] = iconRegister.registerIcon(this, getTranslationKey().substring(getTranslationKey().indexOf(".") + 1)+ nem);
             i++;
         }
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack itemstack) {
+    public String getTranslationKey(ItemStack itemstack) {
         return "item.itemIndustrialCoin";
     }
     @Override

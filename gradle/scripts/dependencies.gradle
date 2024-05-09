@@ -1,0 +1,86 @@
+apply from: 'gradle/scripts/helpers.gradle'
+
+repositories {
+    // Other repositories described by default:
+    // CleanroomMC: https://maven.cleanroommc.com
+    exclusiveContent {
+        forRepository {
+            maven {
+                name 'CurseMaven'
+                url 'https://cursemaven.com'
+            }
+        }
+        filter {
+            includeGroup 'curse.maven'
+        }
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name 'Modrinth'
+                url 'https://api.modrinth.com/maven'
+            }
+        }
+        filter {
+            includeGroup 'maven.modrinth'
+        }
+    }
+    mavenLocal() // Must be last for caching to work
+    maven {
+        name "JEI"
+        url "https://dvs1.progwml6.com/files/maven"
+    }
+    maven {
+        name "JEI Fallback"
+        url "https://modmaven.k-4u.nl"
+    }
+}
+
+dependencies {
+    // Example - Dependency descriptor:
+    // 'com.google.code.gson:gson:2.8.6' << group: com.google.code.gson, name:gson, version:2.8.6
+    // 'group:name:version:classifier' where classifier is optional
+
+    // Example - Deobfuscating dependencies:
+    // rfg.deobf('curse.maven:had-enough-items-557549:4543375')
+    // By wrapping a dependency descriptor in rfg.deobf() method call, the dependency is queued for deobfuscation
+    // When deobfuscating, RFG respects the mapping_channel + mapping_version stated in gradle.properties
+
+    // Example - CurseMaven dependencies:
+    // 'curse.maven:had-enough-items-557549:4543375' << had-enough-items = project slug, 557549 = project id, 4543375 = file id
+    // Full documentation: https://cursemaven.com/
+
+    // Example - Modrinth dependencies:
+    // 'maven.modrinth:jei:4.16.1.1000' << jei = project name, 4.16.1.1000 = file version
+    // Full documentation: https://docs.modrinth.com/docs/tutorials/maven/
+
+    // Common dependency types (configuration):
+    // implementation = dependency available at both compile time and runtime
+    // runtimeOnly = runtime dependency
+    // compileOnly = compile time dependency
+    // annotationProcessor = annotation processing dependencies
+
+    // Transitive dependencies:
+    // (Dependencies that your dependency depends on)
+    // If you wish to exclude transitive dependencies in the described dependencies
+    // Use a closure as such:
+    // implementation ('com.google.code.gson:gson:2.8.6') {
+    //     transitive = false
+    // }
+    implementation "mezz.jei:jei_1.12.2:${jei_version}:api"
+    implementation "mezz.jei:jei_1.12.2:${jei_version}"
+
+    runtimeOnly rfg.deobf("curse.maven:weisscore-226657:2776632")
+    compileOnly rfg.deobf("curse.maven:weisscore-226657:2776632")
+
+    compileOnly rfg.deobf("curse.maven:thaumcraft-223628:2629023")
+    compileOnly "curse.maven:baubles-227083:2518667"
+    compileOnly "curse.maven:ic2_classic-242942:5167044"
+    compileOnly "curse.maven:thaumic-jei-285492:2705304"
+    compileOnly rfg.deobf("curse.maven:ta-319441:5129455")
+
+    runtimeOnly rfg.deobf("curse.maven:ic2_classic-242942:5167044")
+    runtimeOnly rfg.deobf("curse.maven:thaumcraft-223628:2629023")
+    runtimeOnly rfg.deobf("curse.maven:baubles-227083:2518667")
+    runtimeOnly rfg.deobf("curse.maven:ta-319441:5129455")
+}

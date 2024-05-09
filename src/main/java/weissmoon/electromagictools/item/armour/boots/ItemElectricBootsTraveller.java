@@ -52,7 +52,7 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
     protected int tier, energyPerDamage, visDiscount, maxCharge, transferLimit;
 
     public static final List<String> playersWithStepUp = new ArrayList<String>();
-    private UUID monsterMotionUUID = UUID.fromString("29d2b7de-c2dd-4d16-a401-190a7b34eb0d");
+    private final UUID monsterMotionUUID = UUID.fromString("29d2b7de-c2dd-4d16-a401-190a7b34eb0d");
 
     public ItemElectricBootsTraveller(){
         this(Strings.Items.ELECTRIC_BOOTS_NAME, ArmorMaterial.IRON, 10000, 100, 0.16F, 0.0225F, 1, 1000, 2);

@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketSoundEffect;
 import net.minecraft.potion.PotionEffect;
@@ -20,6 +21,7 @@ import net.minecraft.world.storage.loot.*;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraftforge.event.LootTableLoadEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -44,10 +46,12 @@ import weissmoon.electromagictools.item.armour.wings.ItemFeatherWings;
 import weissmoon.electromagictools.item.armour.wings.ItemNanoWings;
 import weissmoon.electromagictools.item.armour.wings.ItemQuantumWings;
 import weissmoon.electromagictools.lib.Reference;
+import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.network.OverrideScanPacket;
 import weissmoon.electromagictools.network.PacketHandler;
 
 import java.util.List;
+import java.util.Locale;
 
 import static weissmoon.electromagictools.ElectroMagicTools.ic2ceLoaded;
 import static weissmoon.electromagictools.item.ItemOneRing.CORRUPTION_NBT_TAG;
@@ -232,6 +236,17 @@ public class EventPool {
             }
         }
 
+    }
+
+    @SubscribeEvent
+    public void onEntitySpawn(EntityJoinWorldEvent event) {
+        if (event.getEntity() instanceof EntityItem) {
+            EntityItem item = (EntityItem) event.getEntity();
+            if (item.getItem().getItem().equals(ModItems.onering)) {
+                item.setEntityInvulnerable(true);
+                item.setNoDespawn();
+            }
+        }
     }
 
     @SubscribeEvent

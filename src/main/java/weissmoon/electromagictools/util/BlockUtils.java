@@ -28,7 +28,7 @@ public class BlockUtils {
             boolean flag = iblockstate.getBlock().canHarvestBlock(world, pos, player);
             boolean flag1 = iblockstate.getBlock().removedByPlayer(iblockstate, world, pos, player, flag);
             if (flag1){
-                iblockstate.getBlock().onBlockDestroyedByPlayer(world, pos, iblockstate);
+                iblockstate.getBlock().onPlayerDestroy(world, pos, iblockstate);
                 if(flag)
                     iblockstate.getBlock().harvestBlock(world, player, pos, iblockstate, tileentity, stack);
             }
