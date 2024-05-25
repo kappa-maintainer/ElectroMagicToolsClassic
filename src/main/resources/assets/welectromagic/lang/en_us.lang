@@ -219,6 +219,7 @@ wemt.research.crystalUU.stage.1=A magically charged metamorphic liquid...
 wemt.research.crystalUU.stage.2=I have always found the powers possessed by Universally Usable Matter very strange, even... magical looking, especially the ability to take a large number of shapes if manipulated correctly. And here I am, having discovered a way to shape the liquid through the process of Infusion Crafting. Many recipes are available to me now, and all of them use between 4 to 32 of each primal aspect.
 
 wemt.research.blockSolarPanel.name=Increase the efficiency!
+wemt.research.blockSolarPanel.stage.1=Increase the efficiency!
 wemt.research.blockSolarPanel.stage.2=I have found a way to compress 9 mundane Solar Panels in a magical one, that acts as if it was made of 10 mundane solar panels, generating 10 EU/t. I may repeat this process with compressed solar panels, allowing me to increase the power potential per block even higher.
 wemt.research.blockSolarPanel.addenda=I can also, by magical infusion, create triple compressed solar panels, taking the folly a step further. I wonder what would happen if I tried to compress 9 of these yet again. No, that would just be silly... perhaps.
 
