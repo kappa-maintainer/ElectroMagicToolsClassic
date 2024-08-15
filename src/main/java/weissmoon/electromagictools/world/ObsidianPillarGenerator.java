@@ -9,7 +9,9 @@ import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.apache.commons.lang3.RandomUtils;
 import weissmoon.core.helper.RNGHelper;
+import weissmoon.electromagictools.EMTConfig;
 import weissmoon.electromagictools.block.BlockObsidian;
 import weissmoon.electromagictools.block.ModBlocks;
 
@@ -27,13 +29,13 @@ public class ObsidianPillarGenerator{
 
         ChunkPos cp = event.getChunkPos();
 
-        int x = Math.abs(RNGHelper.getRNGInt() % 8);
-        int z = Math.abs(RNGHelper.getRNGInt() % 8);
+        int x = RandomUtils.nextInt(0, 7);
+        int z = RandomUtils.nextInt(0, 7);
         int y = world.getChunk(cp.getXStart(), cp.getZStart()).getHeightValue(x, z);
         x += cp.getXStart();
         z += cp.getZStart();
         BlockPos pos = new BlockPos(x, y, z);
-        if(RNGHelper.getRNGFloat() < 0.999)
+        if(RandomUtils.nextFloat(0, 1) < 1.0 - EMTConfig.ObsidianPillarRate)
             return;
         if(!world.getBlockState(pos).isSideSolid(world, pos, EnumFacing.UP) || world.getBlockState(pos).getBlock() == ModBlocks.obsidianTile)
             return;

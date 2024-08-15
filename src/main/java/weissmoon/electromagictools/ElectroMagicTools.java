@@ -1,7 +1,6 @@
 package weissmoon.electromagictools;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,7 +17,6 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.casters.CasterTriggerRegistry;
 import thaumcraft.common.lib.events.ToolEvents;
-import thecodex6824.thaumicaugmentation.api.TAConfig;
 import thecodex6824.thaumicaugmentation.client.model.MorphicArmorExclusions;
 import weissmoon.core.client.creativetab.CreativeTabWeiss;
 import weissmoon.electromagictools.advancements.BaubleHitTrigger;
@@ -41,10 +39,8 @@ import weissmoon.electromagictools.recipe.EMTRecipes;
 import weissmoon.electromagictools.research.TCResearch;
 import weissmoon.electromagictools.world.ObsidianPillarGenerator;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 
 /**
  * Created by Weissmoon on 9/3/19.
