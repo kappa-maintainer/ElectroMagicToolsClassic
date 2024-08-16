@@ -5,5 +5,8 @@ import weissmoon.electromagictools.lib.Reference;
 
 @Config(modid = Reference.MOD_ID)
 public class EMTConfig {
-    public static float ObsidianPillarRate = 0.001F;
+    @Config.Name("Obsidian Pillar Generation Rate")
+    @Config.Comment("Divide by 1000")
+    @Config.RequiresMcRestart
+    public static int ObsidianPillarRate = 1;
 }
