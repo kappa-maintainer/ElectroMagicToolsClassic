@@ -271,6 +271,26 @@ public class ItemDiamondChainsaw extends WeissItemElectricTool /* implements IMo
         return com.google.common.collect.ImmutableSet.of("axe");
     }
 
+    @Override
+    public boolean canProvideEnergy(ItemStack stack) {
+        return false;
+    }
+
+    @Override
+    public double getMaxCharge(ItemStack stack) {
+        return maxCharge;
+    }
+
+    @Override
+    public int getTier(ItemStack stack) {
+        return tier;
+    }
+
+    @Override
+    public double getTransferLimit(ItemStack stack) {
+        return transferLimit;
+    }
+
 //    @Override
 //    public void changeToolMode(ItemStack stack){
 //        NBTHelper.toggleBoolean(stack, SHEARMODE_NBT_TAG);
