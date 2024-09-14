@@ -16,6 +16,7 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.NonNullList;
@@ -23,6 +24,7 @@ import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -155,7 +157,7 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
 
     @Override
     public void damageArmor(EntityLivingBase entity, @Nonnull ItemStack stack, DamageSource source, int damage, int slot) {
-        ElectricItem.manager.discharge(stack, damage * energyPerDamage, 2147483647, true, false, false);
+        ElectricItem.manager.discharge(stack, damage * energyPerDamage, Integer.MAX_VALUE, true, false, false);
     }
 
     protected double getAbsorptionRatio(){
@@ -172,7 +174,25 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
                 boolean energyRecieved = discharge != 0;
                 if(energyRecieved){
                     player.motionY += ((ItemElectricBootsTraveller)stack.getItem()).jumpBonus;
-                    player.fallDistance -= (((ItemElectricBootsTraveller)stack.getItem()).jumpBonus * 8.5);
+                    player.fallDistance -= (float) (((ItemElectricBootsTraveller)stack.getItem()).jumpBonus * 8.5);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void onPlayerFall(LivingFallEvent event){
+        if(event.getEntityLiving() instanceof EntityPlayer){
+            EntityPlayer player = (EntityPlayer)event.getEntityLiving();
+            if(playerHasBoots(player)){
+                ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+                double discharge = ElectricItem.manager.discharge(stack, event.getDistance() * 100, getTier(stack), true, false, true);
+                if(discharge != 0){
+                    if (stack.getItem() instanceof ItemNanoBootsTraveller){
+                        event.setDamageMultiplier(0.0F);
+                    } else {
+                        event.setDamageMultiplier(0.2F);
+                    }
                 }
             }
         }

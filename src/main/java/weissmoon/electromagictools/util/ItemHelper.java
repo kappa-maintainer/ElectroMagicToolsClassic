@@ -4,6 +4,7 @@ import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import weissmoon.electromagictools.ElectroMagicTools;
 
 /**
  * Created by Weissmoon on 9/7/19.
@@ -21,7 +22,7 @@ public class ItemHelper {
         }
     }
 
-    public static double getElectricDurability(ItemStack stack ) {
+    public static double getElectricDurability(ItemStack stack) {
         if(!(stack.getItem() instanceof IElectricItem))
             return 0;
         double maxCharge = ((IElectricItem)stack.getItem()).getMaxCharge(stack);
