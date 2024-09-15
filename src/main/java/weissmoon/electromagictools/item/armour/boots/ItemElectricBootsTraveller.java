@@ -38,9 +38,7 @@ import weissmoon.electromagictools.lib.Textures;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static weissmoon.electromagictools.util.ItemHelper.getChargedItem;
 import static weissmoon.electromagictools.util.ItemHelper.getElectricDurability;
@@ -53,7 +51,7 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
     protected float jumpBonus, speedBonus;
     protected int tier, energyPerDamage, visDiscount, maxCharge, transferLimit;
 
-    public static final List<String> playersWithStepUp = new ArrayList<String>();
+    public static final Set<String> playersWithStepUp = new HashSet<>();
     private final UUID monsterMotionUUID = UUID.fromString("29d2b7de-c2dd-4d16-a401-190a7b34eb0d");
 
     public ItemElectricBootsTraveller(){
