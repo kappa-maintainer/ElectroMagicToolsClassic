@@ -203,12 +203,12 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
             if (playersWithStepUp.contains(player.getName())) {
                 if(playerHasBoots(player)){
                     ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-                    double discharge = ElectricItem.manager.discharge(stack, 1.2, ((ItemElectricBootsTraveller)stack.getItem()).getTier(stack), true, false, true);
-                    boolean energyRecieved = discharge != 0;
+                    //double discharge = ElectricItem.manager.discharge(stack, 1.2, ((ItemElectricBootsTraveller)stack.getItem()).getTier(stack), true, false, true);
+                    //boolean energyRecieved = discharge != 0;
                     //boolean trust = ElectricItem.manager.use(stack, 40, null); //Works here always return false
-                    if ((!player.capabilities.isFlying) && player.moveForward > 0 && energyRecieved){
+                    if ((!player.capabilities.isFlying) && player.moveForward > 0){
                         //boolean trust = ElectricItem.rawManager.use(stack, 40, null); //Does not work here always return false
-                        ElectricItem.manager.discharge(stack, discharge, ((ItemElectricBootsTraveller)stack.getItem()).getTier(stack), true, false, false);
+                        //ElectricItem.manager.discharge(stack, discharge, ((ItemElectricBootsTraveller)stack.getItem()).getTier(stack), true, false, false);
                         player.moveRelative(0, 0, ((ItemElectricBootsTraveller)stack.getItem()).getSpeedBonus(), 1.5F);
 
                         if (player.isSneaking())

@@ -83,4 +83,6 @@ dependencies {
     runtimeOnly rfg.deobf("curse.maven:thaumcraft-223628:2629023")
     runtimeOnly rfg.deobf("curse.maven:baubles-227083:2518667")
     runtimeOnly rfg.deobf("curse.maven:ta-319441:5129455")
+
+    runtimeOnly rfg.deobf("curse.maven:nbt-274816:2567902")
 }
