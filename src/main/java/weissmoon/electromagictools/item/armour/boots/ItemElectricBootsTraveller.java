@@ -4,6 +4,7 @@ import ic2.api.classic.item.IDamagelessElectricItem;
 import ic2.api.classic.item.IElectricTool;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IMetalArmor;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -20,11 +21,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.NonNullList;
+import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -51,8 +54,7 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
     protected float jumpBonus, speedBonus;
     protected int tier, energyPerDamage, visDiscount, maxCharge, transferLimit;
 
-    public static final Set<String> playersWithStepUp = new HashSet<>();
-    private final UUID monsterMotionUUID = UUID.fromString("29d2b7de-c2dd-4d16-a401-190a7b34eb0d");
+    private static final Map<ItemStack, Integer> counter = new HashMap<>(10);
 
     public ItemElectricBootsTraveller(){
         this(Strings.Items.ELECTRIC_BOOTS_NAME, ArmorMaterial.IRON, 10000, 100, 0.16F, 0.0225F, 1, 1000, 2);
@@ -196,51 +198,24 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
         }
     }
 
-    @SubscribeEvent
-    public void onPlayerTick(LivingUpdateEvent event){
-        if(event.getEntityLiving() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-            if (playersWithStepUp.contains(player.getName())) {
-                if(playerHasBoots(player)){
-                    ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-                    //double discharge = ElectricItem.manager.discharge(stack, 1.2, ((ItemElectricBootsTraveller)stack.getItem()).getTier(stack), true, false, true);
-                    //boolean energyRecieved = discharge != 0;
-                    //boolean trust = ElectricItem.manager.use(stack, 40, null); //Works here always return false
-                    if ((!player.capabilities.isFlying) && player.moveForward > 0){
-                        //boolean trust = ElectricItem.rawManager.use(stack, 40, null); //Does not work here always return false
-                        //ElectricItem.manager.discharge(stack, discharge, ((ItemElectricBootsTraveller)stack.getItem()).getTier(stack), true, false, false);
-                        player.moveRelative(0, 0, ((ItemElectricBootsTraveller)stack.getItem()).getSpeedBonus(), 1.5F);
 
-                        if (player.isSneaking())
-                            player.stepHeight = 0.60001F;
-                        else
-                            player.stepHeight = 1.25F;
-                    }else{
-                        player.stepHeight = 0.6F;
-                    }
-                }else{
-                    playersWithStepUp.remove(player.getName());
-                    player.stepHeight = 0.6F;
-                }
-            }else{
-                if(playerHasBoots(player)){
-                    playersWithStepUp.add(player.getName());
-                }
-            }
-        }else{
-            EntityLivingBase entityLiving = event.getEntityLiving();
-            ItemStack stack = entityLiving.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-            AbstractAttributeMap entityAttributeMap = entityLiving.getAttributeMap();
-            IAttributeInstance iattributeinstance = entityAttributeMap.getAttributeInstance(SharedMonsterAttributes.MOVEMENT_SPEED);
-            iattributeinstance.removeModifier(monsterMotionUUID);
-            if(stack.getItem() instanceof ItemElectricBootsTraveller && ElectricItem.manager.getCharge(stack) > 0){
+    @Override
+    public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
+        if ((!player.capabilities.isFlying) && player.moveForward > 0) {
 
-                iattributeinstance.applyModifier(new AttributeModifier(monsterMotionUUID,
-                        monsterMotionUUID.toString(),
-                        ((ItemElectricBootsTraveller)stack.getItem()).getSpeedBonus() - 1,
-                        2));
-            }
+            double charge = ElectricItem.manager.discharge(stack, 1.2, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, false);
+            if (charge == 0) return;
+
+            player.moveRelative(0, 0, ((ItemElectricBootsTraveller) stack.getItem()).getSpeedBonus(), 1.5F);
+
+            if (player.isSneaking())
+                player.stepHeight = 0.60001F;
+            else
+                player.stepHeight = 1.25F;
+        } else {
+            player.stepHeight = 0.6F;
         }
+
     }
 
     public float getSpeedBonus(){

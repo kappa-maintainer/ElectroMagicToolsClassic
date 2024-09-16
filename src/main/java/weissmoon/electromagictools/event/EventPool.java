@@ -11,7 +11,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketSoundEffect;
 import net.minecraft.potion.PotionEffect;
@@ -46,17 +45,13 @@ import weissmoon.electromagictools.item.armour.wings.ItemFeatherWings;
 import weissmoon.electromagictools.item.armour.wings.ItemNanoWings;
 import weissmoon.electromagictools.item.armour.wings.ItemQuantumWings;
 import weissmoon.electromagictools.lib.Reference;
-import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.network.OverrideScanPacket;
 import weissmoon.electromagictools.network.PacketHandler;
 
 import java.util.List;
-import java.util.Locale;
 
 import static weissmoon.electromagictools.ElectroMagicTools.ic2ceLoaded;
 import static weissmoon.electromagictools.item.ItemOneRing.CORRUPTION_NBT_TAG;
-import static weissmoon.electromagictools.item.ItemOneRing.playersWithRing;
-import static weissmoon.electromagictools.item.armour.boots.ItemElectricBootsTraveller.playersWithStepUp;
 
 /**
  * Created by Weissmoon on 9/19/19.
@@ -79,17 +74,6 @@ public class EventPool {
         }
     }
 
-    @SubscribeEvent
-    public void playerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
-        String username = event.player.getName();
-        playersWithStepUp.remove(username);
-        if(playersWithRing.containsKey(username)) {
-            playersWithRing.remove(username);
-            if (!event.player.capabilities.isCreativeMode)
-                (event.player).capabilities.disableDamage = false;
-            event.player.setInvisible(false);
-        }
-    }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onDeath(LivingDeathEvent event){
