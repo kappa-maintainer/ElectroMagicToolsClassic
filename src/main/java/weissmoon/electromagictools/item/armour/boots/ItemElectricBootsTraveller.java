@@ -5,6 +5,7 @@ import ic2.api.classic.item.IElectricTool;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IMetalArmor;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -19,6 +20,8 @@ import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
@@ -201,12 +204,12 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
-        if ((!player.capabilities.isFlying) && player.moveForward > 0) {
-
-            double charge = ElectricItem.manager.discharge(stack, 1.2, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, false);
+        if ((!player.capabilities.isFlying) && player.isSprinting()) {
+            double charge = ElectricItem.manager.discharge(stack, 1.2, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, true);
             if (charge == 0) return;
+            ElectricItem.manager.discharge(stack, charge, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, false);
 
-            player.moveRelative(0, 0, ((ItemElectricBootsTraveller) stack.getItem()).getSpeedBonus(), 1.5F);
+            player.moveRelative(0, 0, ((ItemElectricBootsTraveller) stack.getItem()).getSpeedBonus(), 2.0F);
 
             if (player.isSneaking())
                 player.stepHeight = 0.60001F;
