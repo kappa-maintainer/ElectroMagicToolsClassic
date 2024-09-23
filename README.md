@@ -1,0 +1,1 @@
+Electro Magic Tools for IC2C, forked from https://www.curseforge.com/minecraft/mc-mods/electro-magic-tools-ic2-classic
