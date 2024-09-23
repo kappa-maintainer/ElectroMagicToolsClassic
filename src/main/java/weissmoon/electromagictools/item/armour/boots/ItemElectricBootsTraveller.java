@@ -217,7 +217,7 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
             if (player.isSprinting()) {
                 player.moveRelative(0, 0, ((ItemElectricBootsTraveller) stack.getItem()).getSpeedBonus(), 2.0F);
                 ElectricItem.manager.discharge(stack, charge, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, false);
-            } else if (player.moveForward > 0.0F) {
+            } else if (player.motionX != 0 || player.motionZ != 0) {
                 ElectricItem.manager.discharge(stack, 1.0F, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, false);
 
                 if (player.onGround) {
