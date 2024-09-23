@@ -16,6 +16,7 @@ import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -27,6 +28,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
@@ -34,8 +36,13 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import thaumcraft.api.capabilities.IPlayerKnowledge;
+import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.api.items.IVisDiscountGear;
+import thaumcraft.api.items.ItemsTC;
+import thaumcraft.common.config.ConfigResearch;
 import thaumcraft.common.lib.events.PlayerEvents;
+import thaumcraft.common.lib.research.ResearchManager;
 import weissmoon.core.client.render.IIconRegister;
 import weissmoon.core.item.armour.ItemArmourBase;
 import weissmoon.electromagictools.ElectroMagicTools;
@@ -205,6 +212,9 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
+        if (!world.isRemote && player.ticksExisted % 200 == 0) {
+            ElectricItem.manager.discharge(stack, 100, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, false);
+        }
         if ((!player.capabilities.isFlying)) {
             double charge;
             if (world.isRemote) {
@@ -212,38 +222,55 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
             } else {
                 charge = ElectricItem.manager.discharge(stack, 1.2, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, true);
             }
-            if (charge == 0) return;
+            if (charge == 0) {
+                if (PlayerEvents.prevStep.containsKey(player.getEntityId())) {
+                    player.stepHeight = PlayerEvents.prevStep.get(player.getEntityId());
+                    PlayerEvents.prevStep.remove(player.getEntityId());
+                }
+                return;
+            }
+
+            if (!PlayerEvents.prevStep.containsKey(player.getEntityId())) {
+                PlayerEvents.prevStep.put(player.getEntityId(), player.stepHeight);
+                if (player.isSneaking())
+                    player.stepHeight = 0.61F;
+                else
+                    player.stepHeight = 1.25F;
+            }
 
             if (player.isSprinting()) {
                 player.moveRelative(0, 0, ((ItemElectricBootsTraveller) stack.getItem()).getSpeedBonus(), 2.0F);
                 ElectricItem.manager.discharge(stack, charge, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, false);
-            } else if (player.motionX != 0 || player.motionZ != 0) {
-                ElectricItem.manager.discharge(stack, 1.0F, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, false);
+            } else if (player.moveForward > 0) {
 
-                if (world.isRemote) {
-                    if (player.onGround) {
-                        float bonus = 0.05F;
-                        if (player.isInWater()) {
-                            bonus /= 4.0F;
-                        }
-
-                        player.moveRelative(0.0F, 0.0F, bonus, 1.0F);
-                    } else {
-                        if (player.isInWater()) {
-                            player.moveRelative(0.0F, 0.0F, 0.025F, 1.0F);
-                        }
-
-                        player.jumpMovementFactor = 0.05F;
+                if (player.onGround) {
+                    float bonus = 0.05F;
+                    if (player.isInWater()) {
+                        bonus /= 4.0F;
                     }
-                }
-            }
 
-            if (player.isSneaking())
-                player.stepHeight = 0.61F;
-            else
-                player.stepHeight = 1.25F;
-        } else {
-            player.stepHeight = 0.6F;
+                    player.moveRelative(0.0F, 0.0F, bonus, 1.0F);
+                } else {
+                    if (player.isInWater()) {
+                        player.moveRelative(0.0F, 0.0F, 0.025F, 1.0F);
+                    }
+
+                    player.jumpMovementFactor = 0.05F;
+                }
+
+            }
+        }
+
+    }
+
+    @SubscribeEvent
+    public static void handleStepHeight(LivingEvent.LivingUpdateEvent event) {
+        if (event.getEntity() instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer)event.getEntity();
+            if (player.world.isRemote && !(player.inventory.armorInventory.get(0).getItem() instanceof ItemElectricBootsTraveller) && PlayerEvents.prevStep.containsKey(player.getEntityId())) {
+                player.stepHeight = PlayerEvents.prevStep.get(player.getEntityId());
+                PlayerEvents.prevStep.remove(player.getEntityId());
+            }
         }
 
     }
