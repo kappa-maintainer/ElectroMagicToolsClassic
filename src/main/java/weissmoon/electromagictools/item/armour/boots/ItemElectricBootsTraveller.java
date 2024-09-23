@@ -220,19 +220,21 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
             } else if (player.motionX != 0 || player.motionZ != 0) {
                 ElectricItem.manager.discharge(stack, 1.0F, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, false);
 
-                if (player.onGround) {
-                    float bonus = 0.05F;
-                    if (player.isInWater()) {
-                        bonus /= 4.0F;
-                    }
+                if (world.isRemote) {
+                    if (player.onGround) {
+                        float bonus = 0.05F;
+                        if (player.isInWater()) {
+                            bonus /= 4.0F;
+                        }
 
-                    player.moveRelative(0.0F, 0.0F, bonus, 1.0F);
-                } else {
-                    if (player.isInWater()) {
-                        player.moveRelative(0.0F, 0.0F, 0.025F, 1.0F);
-                    }
+                        player.moveRelative(0.0F, 0.0F, bonus, 1.0F);
+                    } else {
+                        if (player.isInWater()) {
+                            player.moveRelative(0.0F, 0.0F, 0.025F, 1.0F);
+                        }
 
-                    player.jumpMovementFactor = 0.05F;
+                        player.jumpMovementFactor = 0.05F;
+                    }
                 }
             }
 
