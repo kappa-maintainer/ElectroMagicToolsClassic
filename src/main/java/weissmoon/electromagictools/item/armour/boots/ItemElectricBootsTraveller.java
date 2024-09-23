@@ -35,6 +35,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.items.IVisDiscountGear;
+import thaumcraft.common.lib.events.PlayerEvents;
 import weissmoon.core.client.render.IIconRegister;
 import weissmoon.core.item.armour.ItemArmourBase;
 import weissmoon.electromagictools.ElectroMagicTools;
@@ -208,7 +209,6 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
             double charge;
             if (world.isRemote) {
                 charge = ElectricItem.manager.canUse(stack, 1.2) ? 1.2 : 0;
-
             } else {
                 charge = ElectricItem.manager.discharge(stack, 1.2, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, true);
             }
@@ -217,6 +217,23 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
             if (player.isSprinting()) {
                 player.moveRelative(0, 0, ((ItemElectricBootsTraveller) stack.getItem()).getSpeedBonus(), 2.0F);
                 ElectricItem.manager.discharge(stack, charge, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, false);
+            } else if (player.moveForward > 0.0F) {
+                ElectricItem.manager.discharge(stack, 1.0F, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, false);
+
+                if (player.onGround) {
+                    float bonus = 0.05F;
+                    if (player.isInWater()) {
+                        bonus /= 4.0F;
+                    }
+
+                    player.moveRelative(0.0F, 0.0F, bonus, 1.0F);
+                } else {
+                    if (player.isInWater()) {
+                        player.moveRelative(0.0F, 0.0F, 0.025F, 1.0F);
+                    }
+
+                    player.jumpMovementFactor = 0.05F;
+                }
             }
 
             if (player.isSneaking())
