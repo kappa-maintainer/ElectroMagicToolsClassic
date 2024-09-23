@@ -204,15 +204,23 @@ public class ItemElectricBootsTraveller extends ItemArmourBase implements IDamag
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
-        if ((!player.capabilities.isFlying) && player.isSprinting()) {
-            double charge = ElectricItem.manager.discharge(stack, 1.2, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, true);
-            if (charge == 0) return;
-            ElectricItem.manager.discharge(stack, charge, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, false);
+        if ((!player.capabilities.isFlying)) {
+            double charge;
+            if (world.isRemote) {
+                charge = ElectricItem.manager.canUse(stack, 1.2) ? 1.2 : 0;
 
-            player.moveRelative(0, 0, ((ItemElectricBootsTraveller) stack.getItem()).getSpeedBonus(), 2.0F);
+            } else {
+                charge = ElectricItem.manager.discharge(stack, 1.2, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, true);
+            }
+            if (charge == 0) return;
+
+            if (player.isSprinting()) {
+                player.moveRelative(0, 0, ((ItemElectricBootsTraveller) stack.getItem()).getSpeedBonus(), 2.0F);
+                ElectricItem.manager.discharge(stack, charge, ((ItemElectricBootsTraveller) stack.getItem()).getTier(stack), true, false, false);
+            }
 
             if (player.isSneaking())
-                player.stepHeight = 0.60001F;
+                player.stepHeight = 0.61F;
             else
                 player.stepHeight = 1.25F;
         } else {
