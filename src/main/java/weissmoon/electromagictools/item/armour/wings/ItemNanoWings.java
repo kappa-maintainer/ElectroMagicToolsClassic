@@ -78,13 +78,16 @@ public class ItemNanoWings extends ItemThaumiumWings implements IDamagelessElect
         }
     }
 
-    public void tickWings(EntityPlayer player, ItemStack wings, World world){
+    @Override
+    public void tickWings(@Nonnull EntityPlayer player, ItemStack wings, World world){
         byte flap = NBTHelper.getByte(wings, "flap");
 
         if(!Keys.instance.isJumpKeyDown(player) && flap > 0)
             ElectricItem.manager.use(wings, energyPerJump * flap, player);
 
-        super.tickWings(player, wings, world);
+        if (ElectricItem.manager.getCharge(wings) > 5) {
+            super.tickWings(player, wings, world);
+        }
     }
 
     @Override

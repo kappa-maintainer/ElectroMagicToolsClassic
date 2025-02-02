@@ -7,6 +7,8 @@ import weissmoon.core.utils.NBTHelper;
 import weissmoon.electromagictools.item.ModItems;
 import weissmoon.electromagictools.lib.Reference;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created by Weissmoon on 9/3/19.
  */
@@ -18,7 +20,9 @@ public class EMTTab extends CreativeTabWeiss {
         super(Reference.MOD_NAME, null);
     }
 
-    public ItemStack getTabIconItem (){
+    @Nonnull
+    @Override
+    public ItemStack createIcon (){
         if (this.tabItem == null){
             try {
                 ItemStack s = new ItemStack(ModItems.materials, 1, 16);

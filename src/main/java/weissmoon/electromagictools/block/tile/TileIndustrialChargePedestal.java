@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  */
 public class TileIndustrialChargePedestal extends TileEntity implements ITickable, IEnergySink, IAspectContainer, ILocatable{
 
-    private Limithadler itemStackHandler = new Limithadler();
-    private BasicSink energySink;
+    private final Limithadler itemStackHandler = new Limithadler();
+    private final BasicSink energySink;
     private int charging = 0;
     private boolean hasItem = false;
     private static final AspectList EMPTY_ASPECT_LIST = new AspectList();
@@ -135,6 +135,7 @@ public class TileIndustrialChargePedestal extends TileEntity implements ITickabl
         return null;
     }
 
+    @Nonnull
     @Override
     public NBTTagCompound getUpdateTag(){
         NBTTagCompound compound = new NBTTagCompound();
@@ -147,15 +148,16 @@ public class TileIndustrialChargePedestal extends TileEntity implements ITickabl
     }
 
     @Override
-    public void handleUpdateTag(NBTTagCompound compound){
+    public void handleUpdateTag(@Nonnull NBTTagCompound compound){
         super.readFromNBT(compound);
         if(compound.hasKey("items")) {
             itemStackHandler.deserializeNBT((NBTTagCompound) compound.getTag("items"));
         }
     }
 
+    @Nonnull
     @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+    public NBTTagCompound writeToNBT(@Nonnull NBTTagCompound compound) {
         super.writeToNBT(compound);
         compound.setTag("items", itemStackHandler.serializeNBT());
         energySink.writeToNBT(compound);
@@ -163,7 +165,7 @@ public class TileIndustrialChargePedestal extends TileEntity implements ITickabl
     }
 
     @Override
-    public void readFromNBT(NBTTagCompound compound) {
+    public void readFromNBT(@Nonnull NBTTagCompound compound) {
         super.readFromNBT(compound);
         if(compound.hasKey("items")) {
             itemStackHandler.deserializeNBT((NBTTagCompound) compound.getTag("items"));

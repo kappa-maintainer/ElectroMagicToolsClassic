@@ -1,11 +1,15 @@
 package weissmoon.electromagictools.item.armour.wings;
 
+import ic2.api.item.ElectricItem;
+import ic2.api.util.Keys;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import weissmoon.core.utils.NBTHelper;
@@ -14,6 +18,7 @@ import weissmoon.electromagictools.item.ModItems;
 import weissmoon.electromagictools.lib.Strings;
 import weissmoon.electromagictools.lib.Textures;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
@@ -35,6 +40,18 @@ public class ItemQuantumWings extends ItemNanoWings{
 
     protected double getAbsorptionRatio(){
         return 1;
+    }
+
+    @Override
+    public void tickWings(@Nonnull EntityPlayer player, ItemStack wings, World world){
+        byte flap = NBTHelper.getByte(wings, "flap");
+
+        if(!Keys.instance.isJumpKeyDown(player) && flap > 0)
+            ElectricItem.manager.use(wings, energyPerJump * flap, player);
+
+        if (ElectricItem.manager.getCharge(wings) > 5) {
+            super.tickWings(player, wings, world);
+        }
     }
 
     @Override
