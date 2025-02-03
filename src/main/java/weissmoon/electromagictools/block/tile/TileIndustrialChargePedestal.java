@@ -48,7 +48,7 @@ public class TileIndustrialChargePedestal extends TileEntity implements ITickabl
 
     public TileIndustrialChargePedestal(){
         super();
-        energySink = new BasicSink((ILocatable)this, 10000000, 4);
+        energySink = new BasicSink((ILocatable)this, 100000, 4);
     }
 
     @Override
