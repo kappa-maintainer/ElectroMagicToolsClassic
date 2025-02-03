@@ -2,10 +2,11 @@
 {
   "modid": "welectromagic",
   "name": "Electro-Magic Tools",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "mcVersion": "1.12.2",
   "authorList": [
-    "Weissmoon"
+    "Weissmoon",
+    "kappa_maintainer"
   ],
   "description": "Random things I want in the game.",
   "dependencies": [
