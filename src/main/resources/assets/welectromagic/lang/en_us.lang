@@ -185,10 +185,12 @@ wemt.research.itemOmniTool.stage.2=While tinkering with the inner workings of so
 
 wemt.research.itemDiamondOmniTool.stage.1=Jack of all trades
 wemt.research.itemDiamondOmniTool.stage.2=My discovery of an Iron Omnitool has driven me to try to accomplish the same with some more powerful devices. I have discovered a way to combine the Diamond Drill and the Diamond Chainsaw, resulting in a tool capable of both mining, cutting down trees and attacking enemies, while maintaining the speed and capacity bonuses of the diamond tools. As diamonds are incredibly tough and nearly impossible to reshape once the raw diamonds have been fashioned into tools such as drills and chainsaws, I will require a little bit of magic to coax them to merge.
+wemt.research.itemDiamondOmniTool.addenda=With the knowledge of the Diamond Chainsaw, I can also craft a Diamond Omnitool directly without infusion.
 
 wemt.research.itemThaumicOmniTool.stage.1=Mystical multitool
 wemt.research.itemThaumicOmniTool.stage.2=After creating the Diamond and Iron Omnitools, the next logical step was to do the same with Thaumium. Unfortunately, this isn't as easy.
 wemt.research.itemThaumicOmniTool.addenda.1=I have discovered a way to combine the Thaumium Drill and the Thaumium Chainsaw, resulting in a tool capable of mining and chopping trees at great speed with a high energy capacity. These tools have already once been infused with magic. I am not sure what will happen if they were to be infused again.
+wemt.research.itemThaumicOmniTool.addenda.2=Using pipes, I can upgrade a Diamond Omnitool into a Thaumium Omnitool without needing to research the Thaumium Drill and Thaumium Chainsaw separately.
 
 wemt.research.itemInventoryRing.stage.1=Passive charger
 wemt.research.itemInventoryRing.stage.2=While other thaumaturgists use rings to charge their runic shields, I feel that there are better applications for them.  By fusing power sources into a mundane ring, I have learned how to funnel its charging effects into electric items in my inventory instead. It doesn't generate much at only 32 EU per tick, but that just means there's room for improvement.
@@ -226,26 +228,32 @@ wemt.research.blockSolarPanel.addenda=I can also, by magical infusion, create tr
 wemt.research.blockSolarAqua.name=Water Infused Solar Panels
 wemt.research.blockSolarAqua.stage.1=Curse you rain!
 wemt.research.blockSolarAqua.stage.2=I always hated rain, especially when all my power came from Solar Panels. I hated it so much that I decided to find a way to make my Solar Panels keep running during rain. I managed... kind of. The Water Infused Solar Panels work during rain, and during rain only.
+wemt.research.blockSolarAqua.addenda=By soaking Aqua essentia, I can also create a triple compressed Water Infused Solar Panel.
 
 wemt.research.blockSolarPerditio.name=Entropy Infused Solar Panels
 wemt.research.blockSolarPerditio.stage.1=Not afraid of the dark
 wemt.research.blockSolarPerditio.stage.2=I know that Solar Panels stop working at nightime. To counter that, I found a way to make my Solar Panels produce energy at night!
+wemt.research.blockSolarPerditio.addenda=By soaking Perditio essentia, I can also create a triple compressed Entropy Infused Solar Panel.
 
 wemt.research.blockSolarOrdo.name=Order Infused Solar Panels
 wemt.research.blockSolarOrdo.stage.1=I've got the power!
 wemt.research.blockSolarOrdo.stage.2=Harnessing the power of Order, I have managed to triple the output of my Solar Panels at day!
+wemt.research.blockSolarOrdo.addenda=By soaking Ordo essentia, I can also create a triple compressed Order Infused Solar Panel.
 
 wemt.research.blockSolarIgnis.name=Fire Infused Solar Panels
 wemt.research.blockSolarIgnis.stage.1=Where it is hot and dangerous...
 wemt.research.blockSolarIgnis.stage.2=Fascinated by the Nether, I created a monster. These Solar Panels work like normal in the Overworld, but also produce more energy when they are located in the Nether! A monster I tell you...
+wemt.research.blockSolarIgnis.addenda=By soaking Ignis essentia, I can also create a triple compressed Fire Infused Solar Panel.
 
 wemt.research.blockSolarAer.name=Air Infused Solar Panels
 wemt.research.blockSolarAer.stage.1=Don't be afraid of heights
 wemt.research.blockSolarAer.stage.2=My adventurous mind and the natural amount of air existing at the top of the world make these Solar Panels yield more energy when located over Y = 160.
+wemt.research.blockSolarAer.addenda=By soaking Aer essentia, I can also create a triple compressed Air Infused Solar Panel.
 
 wemt.research.blockSolarTerra.name=Earth Infused Solar Panels
 wemt.research.blockSolarTerra.stage.1=Not for claustrophobic persons
 wemt.research.blockSolarTerra.stage.2=I have decided to get closer to the core. These Solar Panels produce more energy under Y = 10, but keep in mind the rebellious spirits need to be able to see the sun to work.
+wemt.research.blockSolarTerra.addenda=By soaking Terra essentia, I can also create a triple compressed Earth Infused Solar Panel.
 
 wemt.research.itemStormCaster.name=The Legend
 wemt.research.itemStormCaster.stage.1=Childhood memories...

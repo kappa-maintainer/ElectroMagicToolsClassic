@@ -338,7 +338,7 @@
       ],
       "addenda": [
         {
-          "text": "",
+          "text": "wemt.research.itemDiamondOmniTool.addenda",
           "recipes": ["welectromagic:diamondomnitool"],
           "required_research":["DIAMONDCHAINSAW"]
         }
@@ -370,7 +370,7 @@
           "required_research":["THAUMIUMCHAINSAW", "METALLURGY", "THAUMIUMDRILL"]
         },
         {
-          "text": "",
+          "text": "wemt.research.itemThaumicOmniTool.addenda.2",
           "recipes": ["welectromagic:thaumiumomnitoolupgrade"],
           "required_research":["TUBES"]
         }
@@ -619,7 +619,7 @@
       ],
       "addenda": [
         {
-          "text": "",
+          "text": "wemt.research.blockSolarAqua.addenda",
           "recipes": ["welectromagic:aquaCompressed3"],
           "required_research":["INFUSION"],
           "warp": 1
@@ -650,7 +650,7 @@
       ],
       "addenda": [
         {
-          "text": "",
+          "text": "wemt.research.blockSolarPerditio.addenda",
           "recipes": ["welectromagic:perditioCompressed3"],
           "required_research":["INFUSION"],
           "warp": 2
@@ -681,7 +681,7 @@
       ],
       "addenda": [
         {
-          "text": "",
+          "text": "wemt.research.blockSolarOrdo.addenda",
           "recipes": ["welectromagic:ordoCompressed3"],
           "required_research":["INFUSION"],
           "warp": 4
@@ -712,7 +712,7 @@
       ],
       "addenda": [
         {
-          "text": "",
+          "text": "wemt.research.blockSolarIgnis.addenda",
           "recipes": ["welectromagic:ignisCompressed3"],
           "required_research":["INFUSION"],
           "warp": 2
@@ -742,7 +742,7 @@
       ],
       "addenda": [
         {
-          "text": "",
+          "text": "wemt.research.blockSolarAer.addenda",
           "recipes": ["welectromagic:aerCompressed3"],
           "required_research":["INFUSION"],
           "warp": 1
@@ -773,7 +773,7 @@
       ],
       "addenda": [
         {
-          "text": "",
+          "text": "wemt.research.blockSolarTerra.addenda",
           "recipes": ["welectromagic:terraCompressed3"],
           "required_research":["INFUSION"],
           "warp": 1
