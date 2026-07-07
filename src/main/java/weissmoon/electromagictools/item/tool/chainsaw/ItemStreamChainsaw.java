@@ -38,11 +38,12 @@ public class ItemStreamChainsaw extends ItemDiamondChainsaw {
     }
 
     @Override
-    public int getMaxItemUseDuration(ItemStack stack) {
+    public int getMaxItemUseDuration(@Nonnull ItemStack stack) {
         return 7200;
     }
 
     @Override
+    @Nonnull
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand handIn) {
         if (IC2.platform.isSimulating()){
             if (IC2.keyboard.isModeSwitchKeyDown(player)) {
@@ -55,7 +56,7 @@ public class ItemStreamChainsaw extends ItemDiamondChainsaw {
     }
 
     @Override
-    public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
+    public void onUsingTick(@Nonnull ItemStack stack, EntityLivingBase player, int count) {
         World worldIn = player.getEntityWorld();
         if (worldIn.getTotalWorldTime() % 2 == 0) {
             if (!(player instanceof EntityPlayer)) {
@@ -89,9 +90,9 @@ public class ItemStreamChainsaw extends ItemDiamondChainsaw {
                 item.motionZ -= GenericHelper.minMaxClamp(-0.25, 0.25, zd);
                 ElectricItem.manager.use(stack, (float)operationEnergyCost / 2, player);
                 pulled++;
-//                if (worldIn.isRemote) {
-                FXDispatcher.INSTANCE.crucibleBubble((float)item.posX + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.2F, (float)item.posY + item.height + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.2F, (float)item.posZ + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.2F, 0.33F, 0.33F, 1.0F);
-//                }
+                if (worldIn.isRemote) {
+                    FXDispatcher.INSTANCE.crucibleBubble((float)item.posX + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.2F, (float)item.posY + item.height + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.2F, (float)item.posZ + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.2F, 0.33F, 0.33F, 1.0F);
+                }
             }
         }
     }
