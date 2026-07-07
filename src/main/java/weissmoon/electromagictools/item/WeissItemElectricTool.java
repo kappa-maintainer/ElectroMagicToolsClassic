@@ -3,10 +3,10 @@ package weissmoon.electromagictools.item;
 import ic2.core.item.base.ItemElectricTool;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
-import weissmoon.core.client.render.IIcon;
-import weissmoon.core.client.render.IIconRegister;
-import weissmoon.core.helper.WeissItemRegistry;
-import weissmoon.core.item.IItemWeiss;
+import weissmoon.electromagictools.core.client.render.IIcon;
+import weissmoon.electromagictools.core.client.render.IIconRegister;
+import weissmoon.electromagictools.core.helper.WeissItemRegistry;
+import weissmoon.electromagictools.core.item.IItemWeiss;
 import weissmoon.electromagictools.lib.Reference;
 
 public abstract class WeissItemElectricTool extends ItemElectricTool implements IItemWeiss {

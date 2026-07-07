@@ -5,8 +5,8 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
-import weissmoon.core.api.client.item.IItemRenderer;
-import weissmoon.core.helper.RNGHelper;
+import weissmoon.electromagictools.core.api.client.item.IItemRenderer;
+import weissmoon.electromagictools.core.helper.RNGHelper;
 import weissmoon.electromagictools.item.ModItems;
 
 /**

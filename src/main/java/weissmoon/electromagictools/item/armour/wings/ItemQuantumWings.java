@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import weissmoon.core.utils.NBTHelper;
+import weissmoon.electromagictools.core.utils.NBTHelper;
 import weissmoon.electromagictools.client.WingsModelRenderer;
 import weissmoon.electromagictools.item.ModItems;
 import weissmoon.electromagictools.lib.Strings;

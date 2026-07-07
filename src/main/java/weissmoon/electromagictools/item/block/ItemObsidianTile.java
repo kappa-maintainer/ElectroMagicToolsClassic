@@ -3,7 +3,7 @@ package weissmoon.electromagictools.item.block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import weissmoon.core.item.WeissItemBlock;
+import weissmoon.electromagictools.core.item.WeissItemBlock;
 import weissmoon.electromagictools.block.ModBlocks;
 
 import javax.annotation.Nonnull;

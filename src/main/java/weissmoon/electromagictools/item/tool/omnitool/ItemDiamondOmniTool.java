@@ -30,7 +30,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
-import weissmoon.core.utils.NBTHelper;
+import weissmoon.electromagictools.core.utils.NBTHelper;
 import weissmoon.electromagictools.lib.Strings.LocaleComps;
 import weissmoon.electromagictools.lib.Strings;
 

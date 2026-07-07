@@ -16,13 +16,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import weissmoon.core.helper.PlayerHelper;
-import weissmoon.core.item.WeissItem;
+import weissmoon.electromagictools.core.helper.PlayerHelper;
+import weissmoon.electromagictools.core.item.WeissItem;
 import weissmoon.electromagictools.ElectroMagicTools;
 
 import java.util.Map;
 
-import static weissmoon.core.helper.RNGHelper.random;
+import static weissmoon.electromagictools.core.helper.RNGHelper.random;
 
 /**
  * Created by Weissmoon on 9/18/19.

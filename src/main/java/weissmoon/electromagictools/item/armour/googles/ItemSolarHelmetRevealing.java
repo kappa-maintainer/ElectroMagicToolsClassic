@@ -11,7 +11,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import weissmoon.core.utils.NBTHelper;
+import weissmoon.electromagictools.core.utils.NBTHelper;
 import weissmoon.electromagictools.api.ISolarRequirements;
 import weissmoon.electromagictools.api.SolarHelmetRegistry;
 import weissmoon.electromagictools.lib.Strings;

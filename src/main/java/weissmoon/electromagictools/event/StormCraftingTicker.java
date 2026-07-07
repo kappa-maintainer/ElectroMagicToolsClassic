@@ -9,7 +9,7 @@ import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import thaumcraft.common.tiles.crafting.TilePedestal;
-import weissmoon.core.helper.RNGHelper;
+import weissmoon.electromagictools.core.helper.RNGHelper;
 import weissmoon.electromagictools.item.ModItems;
 
 /**

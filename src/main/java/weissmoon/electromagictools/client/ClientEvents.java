@@ -13,7 +13,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import weissmoon.core.client.render.IIcon;
+import weissmoon.electromagictools.core.client.render.IIcon;
+import weissmoon.electromagictools.core.client.render.IIconRegister;
 import weissmoon.electromagictools.block.tile.EssentiaGeneratorBase;
 import weissmoon.electromagictools.block.tile.TileIndustrialChargePedestal;
 import weissmoon.electromagictools.client.block.EssentiaGeneratorTESR;
@@ -43,6 +44,7 @@ public class ClientEvents {
 //        ModelLoader.registerItemVariants(ModItems.gemPack, new ModelResourceLocation("minecraft:ic2itemarmorbatpack#inventory"));
 //        evt.getModelRegistry().putObject(new ModelResourceLocation("welectromagic:solartop1"));
 //        this.itemIconWeiss = evt.getMap().loadTexture();
+        IIconRegister.INSTANCE.exnste();
         registerTESR();
     }
 

@@ -8,8 +8,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.items.IScribeTools;
-import weissmoon.core.client.render.IIconRegister;
-import weissmoon.core.item.WeissItem;
+import weissmoon.electromagictools.core.client.render.IIconRegister;
+import weissmoon.electromagictools.core.item.WeissItem;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Strings;
 

@@ -3,7 +3,7 @@ package weissmoon.electromagictools.lib;
 import com.google.common.collect.Maps;
 import net.minecraftforge.fml.common.Loader;
 import org.apache.logging.log4j.Level;
-import weissmoon.core.utils.LogHelper;
+import weissmoon.electromagictools.core.utils.LogHelper;
 
 import javax.annotation.Nonnull;
 import java.util.IdentityHashMap;

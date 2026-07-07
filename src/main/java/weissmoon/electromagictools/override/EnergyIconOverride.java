@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
-import weissmoon.core.client.render.renderOverride.WeissOverrideMesh;
+import weissmoon.electromagictools.core.client.render.renderOverride.WeissOverrideMesh;
 import weissmoon.electromagictools.item.ModItems;
 
 /**

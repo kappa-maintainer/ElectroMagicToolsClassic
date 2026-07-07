@@ -13,7 +13,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import weissmoon.core.block.WeissBlock;
+import weissmoon.electromagictools.core.block.WeissBlock;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.block.tile.SolarTileEntity;
 import weissmoon.electromagictools.lib.Strings;

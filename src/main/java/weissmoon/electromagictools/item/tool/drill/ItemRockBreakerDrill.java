@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.ThaumcraftMaterials;
 import thaumcraft.common.lib.enchantment.EnumInfusionEnchantment;
 import thaumcraft.common.lib.utils.BlockUtils;
-import weissmoon.core.helper.RNGHelper;
+import weissmoon.electromagictools.core.helper.RNGHelper;
 import weissmoon.electromagictools.advancements.RockbreakerTrigger;
 import weissmoon.electromagictools.lib.Strings;
 

@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import thaumcraft.client.fx.FXDispatcher;
-import weissmoon.core.helper.RNGHelper;
+import weissmoon.electromagictools.core.helper.RNGHelper;
 
 /**
  * Created by Weissmoon on 10/21/20.

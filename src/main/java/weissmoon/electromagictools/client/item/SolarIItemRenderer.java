@@ -6,9 +6,9 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
-import weissmoon.core.api.client.item.IItemRenderer;
-import weissmoon.core.client.render.WeissRenderItem;
-import weissmoon.core.proxy.ClientProxy;
+import weissmoon.electromagictools.core.api.client.item.IItemRenderer;
+import weissmoon.electromagictools.core.client.render.WeissRenderItem;
+import weissmoon.electromagictools.core.proxy.ClientProxy;
 import weissmoon.electromagictools.lib.Reference;
 
 /**

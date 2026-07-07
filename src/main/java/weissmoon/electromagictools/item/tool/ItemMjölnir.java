@@ -17,7 +17,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import weissmoon.core.item.tools.WeissItemSword;
+import weissmoon.electromagictools.core.item.tools.WeissItemSword;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.event.Cremation;
 import weissmoon.electromagictools.lib.Reference;

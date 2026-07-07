@@ -29,8 +29,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.ThaumcraftMaterials;
 import thaumcraft.api.blocks.BlocksTC;
-import weissmoon.core.item.tools.WeissItemHoe;
-import weissmoon.core.utils.NBTHelper;
+import weissmoon.electromagictools.core.item.tools.WeissItemHoe;
+import weissmoon.electromagictools.core.utils.NBTHelper;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Strings;
 

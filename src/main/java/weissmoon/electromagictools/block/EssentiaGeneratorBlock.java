@@ -15,7 +15,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import weissmoon.core.block.WeissBlock;
+import weissmoon.electromagictools.core.block.WeissBlock;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.block.tile.EssentiaGeneratorBase;
 import weissmoon.electromagictools.lib.Strings;

@@ -9,8 +9,8 @@ import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
-import weissmoon.core.api.client.item.IItemRenderer;
-import weissmoon.core.utils.NBTHelper;
+import weissmoon.electromagictools.core.api.client.item.IItemRenderer;
+import weissmoon.electromagictools.core.utils.NBTHelper;
 
 /**
  * Created by Weissmoon on 10/1/20.

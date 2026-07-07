@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import weissmoon.core.item.WeissItemBlock;
+import weissmoon.electromagictools.core.item.WeissItemBlock;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.block.ModBlocks;
 

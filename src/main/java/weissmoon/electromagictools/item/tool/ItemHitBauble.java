@@ -4,8 +4,8 @@ import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
-import weissmoon.core.item.WeissItem;
-import weissmoon.core.utils.NBTHelper;
+import weissmoon.electromagictools.core.item.WeissItem;
+import weissmoon.electromagictools.core.utils.NBTHelper;
 import weissmoon.electromagictools.lib.Strings;
 
 /**

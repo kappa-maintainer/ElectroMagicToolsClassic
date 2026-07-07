@@ -9,7 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.InfusionRecipe;
-import weissmoon.core.utils.NBTHelper;
+import weissmoon.electromagictools.core.utils.NBTHelper;
 import weissmoon.electromagictools.item.armour.googles.ItemNanoGoggles;
 
 import java.util.List;

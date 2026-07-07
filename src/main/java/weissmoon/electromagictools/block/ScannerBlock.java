@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import thaumcraft.api.research.ScanningManager;
-import weissmoon.core.block.WeissBlockContainer;
+import weissmoon.electromagictools.core.block.WeissBlockContainer;
 import weissmoon.electromagictools.block.tile.ScannerTile;
 import weissmoon.electromagictools.lib.Strings;
 

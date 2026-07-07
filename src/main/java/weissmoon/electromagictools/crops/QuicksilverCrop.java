@@ -13,7 +13,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.items.ItemsTC;
-import weissmoon.core.helper.RNGHelper;
+import weissmoon.electromagictools.core.helper.RNGHelper;
 import weissmoon.electromagictools.lib.Reference;
 
 import java.util.List;

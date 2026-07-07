@@ -46,7 +46,7 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.ThaumcraftMaterials;
-import weissmoon.core.item.tools.WeissItemsPickaxe;
+import weissmoon.electromagictools.core.item.tools.WeissItemsPickaxe;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.item.WeissItemElectricTool;
 import weissmoon.electromagictools.lib.Strings;

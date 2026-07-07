@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.commons.lang3.RandomUtils;
-import weissmoon.core.helper.RNGHelper;
+import weissmoon.electromagictools.core.helper.RNGHelper;
 import weissmoon.electromagictools.EMTConfig;
 import weissmoon.electromagictools.block.BlockObsidian;
 import weissmoon.electromagictools.block.ModBlocks;

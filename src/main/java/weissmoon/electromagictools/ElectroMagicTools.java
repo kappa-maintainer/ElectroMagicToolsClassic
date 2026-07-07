@@ -18,7 +18,9 @@ import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.casters.CasterTriggerRegistry;
 import thaumcraft.common.lib.events.ToolEvents;
 import thecodex6824.thaumicaugmentation.client.model.MorphicArmorExclusions;
-import weissmoon.core.client.creativetab.CreativeTabWeiss;
+import weissmoon.electromagictools.core.client.creativetab.CreativeTabWeiss;
+import weissmoon.electromagictools.core.client.render.renderOverride.CustomRenderRegistry;
+import weissmoon.electromagictools.core.proxy.ClientProxy;
 import weissmoon.electromagictools.advancements.BaubleHitTrigger;
 import weissmoon.electromagictools.advancements.CremationTrigger;
 import weissmoon.electromagictools.advancements.RockbreakerTrigger;
@@ -45,7 +47,7 @@ import java.util.Locale;
 /**
  * Created by Weissmoon on 9/3/19.
  */
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, dependencies = "required-after:weisscore@[0.1.1,);required-after:ic2-classic-spmod;required-after:thaumcraft")
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, dependencies = "required-after:ic2-classic-spmod;required-after:thaumcraft")
 public class ElectroMagicTools {
 
     @Instance
@@ -80,8 +82,10 @@ public class ElectroMagicTools {
         ModItems.init();
         ModBlocks.init();
         PacketHandler.init();
-        if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
+        if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT){
             MinecraftForge.EVENT_BUS.register(new ClientEvents());
+            MinecraftForge.EVENT_BUS.register(new ClientProxy());
+        }
     }
 
     @EventHandler
@@ -100,6 +104,8 @@ public class ElectroMagicTools {
         //ThaumcraftApi.registerResearchLocation(new ResourceLocation(Reference.MOD_ID, "research/nya.json"));
         ModItems.compartTCtoIC();
         CasterTriggerRegistry.registerWandBlockTrigger(new WWMTCastTriggerManager(), 1, BlocksTC.infusionMatrix.getDefaultState(), Reference.MOD_ID);
+        if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
+            CustomRenderRegistry.registerToModelManager();
     }
 
     @EventHandler

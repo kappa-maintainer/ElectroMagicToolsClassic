@@ -20,14 +20,14 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 import thaumcraft.common.entities.projectile.EntityAlumentum;
-import weissmoon.core.item.tools.WeissItemSword;
+import weissmoon.electromagictools.core.item.tools.WeissItemSword;
 import weissmoon.electromagictools.ElectroMagicTools;
 import weissmoon.electromagictools.lib.Reference;
 import weissmoon.electromagictools.lib.Strings;
 import thaumcraft.api.capabilities.IPlayerKnowledge;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
-import weissmoon.core.api.client.item.IItemRenderCustom;
-import weissmoon.core.api.client.item.IItemRenderer;
+import weissmoon.electromagictools.core.api.client.item.IItemRenderCustom;
+import weissmoon.electromagictools.core.api.client.item.IItemRenderer;
 import weissmoon.electromagictools.client.item.StormCasterRenderer;
 import weissmoon.electromagictools.network.JukeboxNonRecordEventMessage;
 

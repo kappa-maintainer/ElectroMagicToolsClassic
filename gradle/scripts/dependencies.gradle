@@ -70,9 +70,6 @@ dependencies {
     implementation "mezz.jei:jei_1.12.2:${jei_version}:api"
     implementation "mezz.jei:jei_1.12.2:${jei_version}"
 
-    runtimeOnly rfg.deobf("curse.maven:weisscore-226657:2776632")
-    compileOnly rfg.deobf("curse.maven:weisscore-226657:2776632")
-
     compileOnly rfg.deobf("curse.maven:thaumcraft-223628:2629023")
     compileOnly "curse.maven:baubles-227083:2518667"
     compileOnly "curse.maven:ic2_classic-242942:5167044"
